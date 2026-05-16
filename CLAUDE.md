@@ -8,12 +8,16 @@ kifsy is a digital agency targeting small businesses in Israel (restaurants, sal
 
 Brand voice: minimal, premium, smart, friendly, startup, modern, accessible.
 
-## Live repository
+## Live repositories
 
-GitHub: https://github.com/DoronZeltzer/kifsy.com
+This project pushes to **two** remotes on every update. Both must stay in sync.
 
-Remote: `origin` = `https://github.com/DoronZeltzer/kifsy.com.git`
-Default branch: `main`
+| Remote name | URL | Purpose |
+|---|---|---|
+| `origin` | https://github.com/DoronZeltzer/kifsy.com.git | Original repo (personal account) |
+| `kifsy-org` | https://github.com/kifsy/HomeSiteKifsy.git | Organization repo (primary going forward) |
+
+Default branch on both: `main`
 
 ## Files
 
@@ -69,11 +73,12 @@ Everything lives in `index.html`. CSS and JS are inline. The site must work by o
 2. Make changes in `index.html` (or another file if needed).
 3. Open `index.html` in a browser. Verify BOTH Hebrew and English. Check mobile width.
 4. Stage, commit with a short present-tense message. No em dashes. No `--no-verify`.
-5. Push to `origin main`:
+5. Push to **both** remotes:
    ```
    git add .
    git commit -m "summary of change"
-   git push
+   git push origin main
+   git push kifsy-org main
    ```
 6. **Update the Changelog below** with date and a one-line summary. If you forgot in the same commit, do a small follow-up commit and push that too.
 
@@ -108,6 +113,7 @@ When adding new components: include keyboard support, `aria-label` for icon butt
 
 _Newest first. One line per push: `YYYY-MM-DD · summary`._
 
+- **2026-05-17** · Added second remote `kifsy-org` pointing to https://github.com/kifsy/HomeSiteKifsy. Updated CLAUDE.md to document both remotes and require pushing to both on every update. Pushed current codebase to the new org repo.
 - **2026-05-17** · Fix accessibility panel disappearing during use. Root causes: document-level outside-click handler was firing for clicks that bubbled through the statement modal and panel internals; closed statement still trapped pointer events for 300ms during its fade; `.a11y-toggle` lacked `position: relative` so its dot pseudo was anchored to the panel. Solution: `stopPropagation` inside the panel and statement card; `pointer-events: none` on closed statement; FAB now shows accent color when expanded; better dark-mode contrast for menu controls.
 - **2026-05-17** · Added Israeli-law accessibility layer: floating menu with text-size / contrast / dark mode / grayscale / link highlight / readable font / larger cursor / motion controls (persisted to localStorage), full bilingual accessibility statement modal with coordinator contact info, skip-to-content link, `<main>` landmark, focus indicators, footer link to the statement. Updated this CLAUDE.md with the a11y rules.
 - **2026-05-17** · Initial commit. Hebrew-first marketing site with full bilingual toggle, 8 sections (hero, services, pricing, why kifsy, portfolio, testimonials, final CTA, footer), Heebo + Inter Tight typography, palette derived from the kifsy logo, RTL-aware arrows and quotes, no em dashes anywhere. Added `CLAUDE.md` as the canonical contributor guide.
