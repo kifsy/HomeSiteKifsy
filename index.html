@@ -961,7 +961,15 @@
   html.a11y-contrast-dark .mini-card{ background: rgba(244,247,240,0.06); border-color: rgba(244,247,240,0.08); }
   html.a11y-contrast-dark .final-cta{ background: #0E1410; }
 
-  html.a11y-grayscale body{ filter: grayscale(100%); }
+  html.a11y-grayscale body::before{
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    -webkit-backdrop-filter: grayscale(100%);
+    backdrop-filter: grayscale(100%);
+  }
 
   html.a11y-links a:not(.btn):not(.logo):not(.nav-cta):not(.lang-toggle button):not(.socials a){
     text-decoration: underline !important;
