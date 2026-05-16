@@ -705,7 +705,7 @@
     position: fixed;
     inset-block-end: 24px;
     inset-inline-start: 24px;
-    z-index: 200;
+    z-index: 250;
     width: 54px; height: 54px;
     border-radius: 50%;
     background: var(--ink);
@@ -715,7 +715,20 @@
     transition: transform .25s var(--ease), background .2s var(--ease);
   }
   .a11y-fab:hover{ transform: translateY(-3px) scale(1.05); background: #1E2B20; }
+  .a11y-fab[aria-expanded="true"]{ background: var(--accent); }
+  .a11y-fab[aria-expanded="true"]:hover{ background: var(--accent-deep); }
   .a11y-fab svg{ width: 26px; height: 26px; }
+
+  /* Dark-mode contrast for a11y controls */
+  html.a11y-contrast-dark .a11y-btn{ background: rgba(244,247,240,0.08); color: var(--ink); }
+  html.a11y-contrast-dark .a11y-btn:hover{ background: rgba(244,247,240,0.15); }
+  html.a11y-contrast-dark .a11y-btn.active{ background: var(--ink); color: var(--bg); }
+  html.a11y-contrast-dark .a11y-toggle{ background: rgba(244,247,240,0.08); color: var(--ink); }
+  html.a11y-contrast-dark .a11y-toggle:hover{ background: rgba(244,247,240,0.15); }
+  html.a11y-contrast-dark .a11y-toggle::after{ background: rgba(244,247,240,0.22); }
+  html.a11y-contrast-dark .a11y-close{ background: rgba(244,247,240,0.08); color: var(--ink-2); }
+  html.a11y-contrast-dark .a11y-close:hover{ background: rgba(244,247,240,0.15); }
+  html.a11y-contrast-dark .a11y-statement-content .a11y-contact{ background: rgba(244,247,240,0.05); }
 
   /* Accessibility panel */
   .a11y-panel{
@@ -780,7 +793,7 @@
     cursor: pointer;
   }
   .a11y-btn{ flex: 1; }
-  .a11y-toggle{ display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 6px; text-align: start; padding: 10px 12px; }
+  .a11y-toggle{ display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 6px; text-align: start; padding: 10px 12px; position: relative; }
   .a11y-toggle:last-child{ margin-bottom: 0; }
   .a11y-toggle::after{
     content: '';
@@ -798,13 +811,16 @@
     width: 14px; height: 14px;
     border-radius: 50%;
     background: #fff;
-    margin-inline-start: 35px;
-    margin-block-start: 2px;
+    inset-block-start: 50%;
+    inset-inline-end: 14px;
+    margin-block-start: -7px;
     transition: transform .2s var(--ease);
     box-shadow: 0 1px 2px rgba(0,0,0,0.2);
   }
-  html[dir="ltr"] .a11y-toggle.active::before{ transform: translateX(14px); }
-  html[dir="rtl"] .a11y-toggle.active::before{ transform: translateX(-14px); }
+  html[dir="ltr"] .a11y-toggle::before{ transform: translateX(-14px); }
+  html[dir="ltr"] .a11y-toggle.active::before{ transform: translateX(0); }
+  html[dir="rtl"] .a11y-toggle::before{ transform: translateX(14px); }
+  html[dir="rtl"] .a11y-toggle.active::before{ transform: translateX(0); }
   .a11y-btn:hover, .a11y-toggle:hover{ background: rgba(42,58,44,.08); }
   .a11y-btn.active{ background: var(--ink); color: var(--bg); }
   .a11y-btn .sz-sm{ font-size: 11px; }
@@ -846,8 +862,9 @@
     padding: 20px;
     opacity: 0;
     transition: opacity .25s var(--ease);
+    pointer-events: none;
   }
-  .a11y-statement.open{ opacity: 1; }
+  .a11y-statement.open{ opacity: 1; pointer-events: auto; }
   .a11y-backdrop{
     position: absolute; inset: 0;
     background: rgba(42,58,44,0.65);
@@ -2000,10 +2017,20 @@
     setTimeout(() => { if (!statement.classList.contains('open')) statement.hidden = true; }, 300);
   }
 
-  fab.addEventListener('click', togglePanel);
-  panelClose.addEventListener('click', closePanel);
-  statementClose.addEventListener('click', closeStatement);
-  statementBackdrop.addEventListener('click', closeStatement);
+  fab.addEventListener('click', (e) => {
+    e.stopPropagation();
+    togglePanel();
+  });
+  /* Clicks inside the panel never reach the document, so the
+     close-on-outside-click below cannot close it accidentally. */
+  panel.addEventListener('click', (e) => e.stopPropagation());
+
+  panelClose.addEventListener('click', (e) => { e.stopPropagation(); closePanel(); });
+
+  const statementCard = document.querySelector('.a11y-statement-card');
+  statementCard.addEventListener('click', (e) => e.stopPropagation());
+  statementClose.addEventListener('click', (e) => { e.stopPropagation(); closeStatement(); });
+  statementBackdrop.addEventListener('click', (e) => { e.stopPropagation(); closeStatement(); });
 
   document.querySelectorAll('[data-a11y]').forEach(btn => {
     btn.addEventListener('click', (e) => {
@@ -2019,11 +2046,10 @@
     else if (!panel.hidden && panel.classList.contains('open')) closePanel();
   });
 
-  /* Click outside the panel closes it */
-  document.addEventListener('click', (e) => {
-    if (panel.hidden || !panel.classList.contains('open')) return;
-    if (panel.contains(e.target) || fab.contains(e.target)) return;
-    closePanel();
+  /* True outside-click closes the panel. Clicks inside panel/statement
+     never reach here because of stopPropagation above. */
+  document.addEventListener('click', () => {
+    if (panel.classList.contains('open')) closePanel();
   });
 
   /* Apply persisted accessibility state on load */
