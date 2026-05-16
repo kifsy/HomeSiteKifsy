@@ -63,19 +63,38 @@ Everything lives in `index.html`. CSS and JS are inline. The site must work by o
 - Hebrew uses the proper quote glyph `״` not `"` in testimonial styling.
 - Reduced motion is respected via `@media (prefers-reduced-motion: reduce)`.
 
+## Git workflow (team rules)
+
+This repo is worked on by multiple collaborators. Follow these rules without exception:
+
+- **Never auto-push.** Every push requires a manual review first.
+- **Pull before starting work.** Always fetch/pull the latest `main` before making any changes.
+- **Pull again before pushing.** Rebase or merge any new upstream changes before you push your commit.
+- Keep commits clean and focused. One logical change per commit.
+- Avoid editing files unrelated to the current task.
+
+```
+git pull origin main          # before you start
+# ... make changes ...
+git pull origin main          # before you push
+git add <specific files>
+git commit -m "short message"
+git push origin main
+```
+
 ## Workflow for every change
 
 1. **Read this file fully** before touching anything.
-2. Make changes in `index.html` (or another file if needed).
-3. Open `index.html` in a browser. Verify BOTH Hebrew and English. Check mobile width.
-4. Stage, commit with a short present-tense message. No em dashes. No `--no-verify`.
-5. Push to `origin main`:
+2. Pull the latest `main` (`git pull origin main`).
+3. Make changes in `index.html` (or another file if needed).
+4. Open `index.html` in a browser. Verify BOTH Hebrew and English. Check mobile width.
+5. Pull again (`git pull origin main`) to catch any concurrent changes.
+6. Stage, commit with a short present-tense message. No em dashes. No `--no-verify`.
+7. Push only after manual review:
    ```
-   git add .
-   git commit -m "summary of change"
    git push origin main
    ```
-6. **Update the Changelog below** with date and a one-line summary. If you forgot in the same commit, do a small follow-up commit and push that too.
+8. **Update the Changelog below** with date and a one-line summary. If you forgot in the same commit, do a small follow-up commit and push that too.
 
 ## Setup notes (one-time, for new contributors)
 
@@ -108,6 +127,7 @@ When adding new components: include keyboard support, `aria-label` for icon butt
 
 _Newest first. One line per push: `YYYY-MM-DD · summary`._
 
+- **2026-05-17** · Fix accessibility FAB position: now bottom-right in English (LTR) and bottom-left in Hebrew (RTL), using inset-inline-end. Updated CLAUDE.md with team git workflow rules (pull before work, manual review before push).
 - **2026-05-17** · Migrated repo to https://github.com/kifsy/HomeSiteKifsy (org repo). Removed defunct personal repo remote. Updated CLAUDE.md to point to new canonical repo.
 - **2026-05-17** · Fix accessibility panel disappearing during use. Root causes: document-level outside-click handler was firing for clicks that bubbled through the statement modal and panel internals; closed statement still trapped pointer events for 300ms during its fade; `.a11y-toggle` lacked `position: relative` so its dot pseudo was anchored to the panel. Solution: `stopPropagation` inside the panel and statement card; `pointer-events: none` on closed statement; FAB now shows accent color when expanded; better dark-mode contrast for menu controls.
 - **2026-05-17** · Added Israeli-law accessibility layer: floating menu with text-size / contrast / dark mode / grayscale / link highlight / readable font / larger cursor / motion controls (persisted to localStorage), full bilingual accessibility statement modal with coordinator contact info, skip-to-content link, `<main>` landmark, focus indicators, footer link to the statement. Updated this CLAUDE.md with the a11y rules.
