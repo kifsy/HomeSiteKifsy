@@ -87,8 +87,26 @@ git config user.email "you@example.com"
 
 If `git push` asks for credentials, sign in with Git Credential Manager (browser flow), set up an SSH key on GitHub, or use a Personal Access Token in the remote URL.
 
+## Accessibility (Israeli SI 5568 / WCAG 2.0 AA)
+
+The site is built to comply with the Israeli accessibility regulations (תקנות שוויון זכויות לאנשים עם מוגבלות, תשע״ג-2013). When making changes, preserve these features:
+
+- **Floating accessibility menu** (`.a11y-fab` + `.a11y-panel`) available on every page, with controls for: text size (3 levels), contrast (normal, high contrast, dark), grayscale, link highlighting, readable font (Arial), larger cursor, and animation pause. Choices persist to `localStorage` as `kifsy-a11y`.
+- **Accessibility statement modal** (`#a11yStatement`) with full bilingual content (HE/EN) including coordinator contact info, list of implemented adjustments, known limitations, last-updated date. Linked from footer and from the panel.
+- **Skip-to-content link** (first child of `<body>`), visible only on keyboard focus.
+- **`<main id="main">` landmark** wrapping the page content.
+- **Focus indicators**: `:focus-visible` outline in accent color, 3px, 3px offset.
+- **Semantic structure**: proper heading order (h1, h2, h3), `aria-label` on icon-only buttons, `aria-pressed` on toggles, `aria-expanded` on the FAB, `role="dialog"` + `aria-modal="true"` on the statement, `hidden` attribute + transition for show/hide.
+- **Esc closes** the statement first, then the panel.
+- All accessibility menu strings carry `data-he` / `data-en`.
+
+**Coordinator placeholder:** the statement names Doron Zeltzer with `hello@kifsy.co` and `+972-50-000-0000`. Replace with the real coordinator details before going live.
+
+When adding new components: include keyboard support, `aria-label` for icon buttons, focusable interactive elements, and adequate contrast. Test with the `a11y-contrast-high` class applied.
+
 ## Changelog
 
 _Newest first. One line per push: `YYYY-MM-DD · summary`._
 
+- **2026-05-17** · Added Israeli-law accessibility layer: floating menu with text-size / contrast / dark mode / grayscale / link highlight / readable font / larger cursor / motion controls (persisted to localStorage), full bilingual accessibility statement modal with coordinator contact info, skip-to-content link, `<main>` landmark, focus indicators, footer link to the statement. Updated this CLAUDE.md with the a11y rules.
 - **2026-05-17** · Initial commit. Hebrew-first marketing site with full bilingual toggle, 8 sections (hero, services, pricing, why kifsy, portfolio, testimonials, final CTA, footer), Heebo + Inter Tight typography, palette derived from the kifsy logo, RTL-aware arrows and quotes, no em dashes anywhere. Added `CLAUDE.md` as the canonical contributor guide.

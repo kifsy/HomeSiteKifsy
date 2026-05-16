@@ -675,9 +675,317 @@
     .reveal{ opacity: 1; transform: none; transition: none; }
     .blob, .hero-leaves{ animation: none; }
   }
+
+  /* ─────────────────────── Accessibility menu ─────────────────────── */
+  /* Skip-to-content link (visible only on keyboard focus) */
+  .skip-link{
+    position: absolute;
+    inset-inline-start: 12px;
+    top: -100px;
+    z-index: 500;
+    background: var(--ink); color: var(--bg);
+    padding: 10px 16px; border-radius: 10px;
+    font-weight: 600; font-size: 14px;
+    transition: top .2s var(--ease);
+  }
+  .skip-link:focus{ top: 12px; outline: 3px solid var(--accent); outline-offset: 2px; }
+
+  /* Focus indicators */
+  :focus-visible{
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  .btn:focus-visible, .lang-toggle button:focus-visible, .nav-links a:focus-visible{
+    outline-offset: 4px;
+  }
+
+  /* Floating accessibility button */
+  .a11y-fab{
+    position: fixed;
+    inset-block-end: 24px;
+    inset-inline-start: 24px;
+    z-index: 200;
+    width: 54px; height: 54px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--bg);
+    box-shadow: var(--shadow-lg);
+    display: flex; align-items: center; justify-content: center;
+    transition: transform .25s var(--ease), background .2s var(--ease);
+  }
+  .a11y-fab:hover{ transform: translateY(-3px) scale(1.05); background: #1E2B20; }
+  .a11y-fab svg{ width: 26px; height: 26px; }
+
+  /* Accessibility panel */
+  .a11y-panel{
+    position: fixed;
+    inset-block-end: 92px;
+    inset-inline-start: 24px;
+    z-index: 199;
+    width: 340px;
+    max-width: calc(100vw - 32px);
+    max-height: calc(100vh - 130px);
+    overflow-y: auto;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    padding: 22px;
+    opacity: 0;
+    transform: translateY(10px) scale(.98);
+    transition: opacity .25s var(--ease), transform .25s var(--ease);
+    pointer-events: none;
+  }
+  .a11y-panel.open{ opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+  .a11y-panel[hidden]{ display: none; }
+
+  .a11y-header{
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 16px;
+  }
+  .a11y-header h2{ font-size: 17px; margin: 0; }
+  .a11y-close{
+    width: 32px; height: 32px; border-radius: 8px;
+    color: var(--ink-2); background: var(--bg-soft);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; line-height: 1;
+    transition: background .2s var(--ease);
+  }
+  .a11y-close:hover{ background: rgba(42,58,44,.1); }
+
+  .a11y-section{ margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--line-soft); }
+  .a11y-section:last-of-type{ border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+  .a11y-section h3{
+    font-size: 12px; color: var(--ink-3);
+    font-weight: 600; margin-bottom: 10px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  html[lang="he"] .a11y-section h3{ text-transform: none; letter-spacing: 0.03em; font-size: 12.5px; }
+
+  .a11y-row{ display: flex; gap: 6px; }
+  .a11y-grid-2{ display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+
+  .a11y-btn, .a11y-toggle{
+    padding: 9px 10px;
+    border-radius: 10px;
+    background: var(--bg-soft);
+    color: var(--ink);
+    font-size: 13px;
+    font-weight: 500;
+    border: 1px solid transparent;
+    transition: all .2s var(--ease);
+    text-align: center;
+    cursor: pointer;
+  }
+  .a11y-btn{ flex: 1; }
+  .a11y-toggle{ display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 6px; text-align: start; padding: 10px 12px; }
+  .a11y-toggle:last-child{ margin-bottom: 0; }
+  .a11y-toggle::after{
+    content: '';
+    width: 32px; height: 18px;
+    border-radius: 999px;
+    background: rgba(42,58,44,.18);
+    position: relative;
+    transition: background .2s var(--ease);
+    flex-shrink: 0;
+  }
+  .a11y-toggle.active::after{ background: var(--accent); }
+  .a11y-toggle::before{
+    content: '';
+    position: absolute;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: #fff;
+    margin-inline-start: 35px;
+    margin-block-start: 2px;
+    transition: transform .2s var(--ease);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  }
+  html[dir="ltr"] .a11y-toggle.active::before{ transform: translateX(14px); }
+  html[dir="rtl"] .a11y-toggle.active::before{ transform: translateX(-14px); }
+  .a11y-btn:hover, .a11y-toggle:hover{ background: rgba(42,58,44,.08); }
+  .a11y-btn.active{ background: var(--ink); color: var(--bg); }
+  .a11y-btn .sz-sm{ font-size: 11px; }
+  .a11y-btn .sz-md{ font-size: 14px; }
+  .a11y-btn .sz-lg{ font-size: 17px; }
+
+  .a11y-actions{ display: grid; gap: 8px; margin-top: 8px; }
+  .a11y-reset{
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .2s var(--ease);
+  }
+  .a11y-reset:hover{ background: var(--accent-soft); }
+  .a11y-statement-link{
+    width: 100%;
+    padding: 6px;
+    color: var(--ink-3);
+    font-size: 12.5px;
+    text-decoration: underline;
+    cursor: pointer;
+    background: none;
+    border: none;
+  }
+  .a11y-statement-link:hover{ color: var(--ink); }
+
+  /* Accessibility statement modal */
+  .a11y-statement[hidden]{ display: none; }
+  .a11y-statement{
+    position: fixed; inset: 0;
+    z-index: 300;
+    display: flex; align-items: center; justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity .25s var(--ease);
+  }
+  .a11y-statement.open{ opacity: 1; }
+  .a11y-backdrop{
+    position: absolute; inset: 0;
+    background: rgba(42,58,44,0.65);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+  .a11y-statement-card{
+    position: relative;
+    width: min(720px, 100%);
+    max-height: 85vh;
+    overflow-y: auto;
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    padding: 38px 40px;
+    transform: scale(.96);
+    transition: transform .25s var(--ease);
+  }
+  .a11y-statement.open .a11y-statement-card{ transform: scale(1); }
+  .a11y-statement-card .a11y-header{
+    margin-bottom: 22px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .a11y-statement-card h2{ font-size: 24px; margin: 0; }
+  .a11y-statement-content{ color: var(--ink-2); line-height: 1.7; font-size: 14.5px; }
+  .a11y-statement-content h3{ font-size: 16px; color: var(--ink); margin: 20px 0 8px; font-weight: 600; }
+  .a11y-statement-content h3:first-child{ margin-top: 0; }
+  .a11y-statement-content p{ margin-bottom: 10px; }
+  .a11y-statement-content a{ color: var(--accent); text-decoration: underline; }
+  .a11y-statement-content ul{ padding-inline-start: 22px; margin-bottom: 12px; }
+  .a11y-statement-content li{ margin-bottom: 4px; }
+  .a11y-statement-content .a11y-contact{
+    background: var(--bg-soft);
+    padding: 16px 18px;
+    border-radius: 12px;
+    margin: 14px 0;
+  }
+  .a11y-statement-content .a11y-contact p{ margin-bottom: 4px; }
+  @media (max-width: 600px){
+    .a11y-statement-card{ padding: 28px 22px; }
+    .a11y-statement-card h2{ font-size: 20px; }
+  }
+
+  /* ─────────────────────── Applied a11y states ─────────────────────── */
+  html.a11y-font-large{ font-size: 18px; }
+  html.a11y-font-larger{ font-size: 20.5px; }
+
+  html.a11y-contrast-high{
+    --bg: #FFFFFF;
+    --bg-soft: #F2F2F2;
+    --bg-warm: #FAFAFA;
+    --surface: #FFFFFF;
+    --surface-2: #F5F5F5;
+    --ink: #000000;
+    --ink-2: #1A1A1A;
+    --ink-3: #333333;
+    --accent: #8A1A2A;
+    --accent-soft: rgba(138, 26, 42, 0.12);
+    --line: rgba(0,0,0,0.5);
+    --line-soft: rgba(0,0,0,0.25);
+  }
+  html.a11y-contrast-high body{ background: #FFFFFF; color: #000000; }
+  html.a11y-contrast-high .blob,
+  html.a11y-contrast-high .hero-leaves,
+  html.a11y-contrast-high .final-leaves{ display: none; }
+  html.a11y-contrast-high .nav{ background: rgba(255,255,255,0.96); }
+
+  html.a11y-contrast-dark{
+    --bg: #1A201B;
+    --bg-soft: #232a25;
+    --bg-warm: #1f2520;
+    --surface: #2A332C;
+    --surface-2: #2A332C;
+    --ink: #F4F7F0;
+    --ink-2: #C9D2CA;
+    --ink-3: #99A39B;
+    --accent: #E07385;
+    --accent-soft: rgba(224, 115, 133, 0.15);
+    --accent-deep: #C95566;
+    --line: rgba(244, 247, 240, 0.16);
+    --line-soft: rgba(244, 247, 240, 0.08);
+  }
+  html.a11y-contrast-dark body{ background: var(--bg); color: var(--ink); }
+  html.a11y-contrast-dark .nav{ background: rgba(35, 42, 37, 0.85); }
+  html.a11y-contrast-dark .nav-wrap.scrolled .nav{ background: rgba(35, 42, 37, 0.96); }
+  html.a11y-contrast-dark .blob{ opacity: .25; }
+  html.a11y-contrast-dark .browser{ background: #2A332C; border-color: rgba(244,247,240,0.1); }
+  html.a11y-contrast-dark .browser-bar{ background: rgba(244,247,240,0.04); }
+  html.a11y-contrast-dark .mini-headline,
+  html.a11y-contrast-dark .mini-h,
+  html.a11y-contrast-dark .mini-block{ background: rgba(244,247,240,0.35); }
+  html.a11y-contrast-dark .mini-card{ background: rgba(244,247,240,0.06); border-color: rgba(244,247,240,0.08); }
+  html.a11y-contrast-dark .final-cta{ background: #0E1410; }
+
+  html.a11y-grayscale body{ filter: grayscale(100%); }
+
+  html.a11y-links a:not(.btn):not(.logo):not(.nav-cta):not(.lang-toggle button):not(.socials a){
+    text-decoration: underline !important;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1.5px;
+    color: var(--accent) !important;
+  }
+
+  html.a11y-readable,
+  html.a11y-readable *:not(.brand-mark):not(.brand-mark *){
+    font-family: Arial, 'Segoe UI', sans-serif !important;
+    letter-spacing: 0 !important;
+  }
+  html.a11y-readable h1, html.a11y-readable h2, html.a11y-readable h3, html.a11y-readable h4{
+    font-weight: 700 !important;
+  }
+
+  html.a11y-cursor, html.a11y-cursor *{
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><path d="M3 2L3 26 11 19 16 33 21 31 16 17 27 17z" fill="black" stroke="white" stroke-width="2" stroke-linejoin="round"/></svg>') 2 2, auto !important;
+  }
+  html.a11y-cursor a, html.a11y-cursor button, html.a11y-cursor .btn, html.a11y-cursor [role="button"]{
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><path d="M14 4 14 18 9 18 18 32 27 18 22 18 22 4z" fill="%23A64253" stroke="white" stroke-width="2" stroke-linejoin="round"/></svg>') 18 4, pointer !important;
+  }
+
+  html.a11y-no-motion *,
+  html.a11y-no-motion *::before,
+  html.a11y-no-motion *::after{
+    animation-duration: 0.001s !important;
+    animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001s !important;
+    scroll-behavior: auto !important;
+  }
+  html.a11y-no-motion .blob,
+  html.a11y-no-motion .hero-leaves,
+  html.a11y-no-motion .eyebrow .pulse{ animation: none !important; }
+  html.a11y-no-motion .reveal{ opacity: 1 !important; transform: none !important; }
 </style>
 </head>
 <body>
+
+<a href="#main" class="skip-link" data-he="דלגו לתוכן" data-en="Skip to content">דלגו לתוכן</a>
 
 <!-- Reusable 3-leaf logo SVG -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -718,6 +1026,8 @@
     </div>
   </nav>
 </div>
+
+<main id="main">
 
 <!-- ────────────── Hero ────────────── -->
 <section class="hero">
@@ -1291,6 +1601,8 @@
   </div>
 </section>
 
+</main>
+
 <!-- ────────────── Footer ────────────── -->
 <footer>
   <div class="container">
@@ -1321,6 +1633,7 @@
           <li><a href="#work" data-he="העבודות שלנו" data-en="Our work">העבודות שלנו</a></li>
           <li><a href="#testimonials" data-he="המלצות" data-en="Testimonials">המלצות</a></li>
           <li><a href="#contact" data-he="צרו קשר" data-en="Contact">צרו קשר</a></li>
+          <li><a href="#" data-a11y="statement" data-he="הצהרת נגישות" data-en="Accessibility statement">הצהרת נגישות</a></li>
         </ul>
       </div>
       <div class="foot-col">
@@ -1343,6 +1656,178 @@
     </div>
   </div>
 </footer>
+
+<!-- ────────────── Accessibility Menu ────────────── -->
+<button class="a11y-fab"
+        id="a11yFab"
+        aria-label="הגדרות נגישות / Accessibility settings"
+        aria-expanded="false"
+        aria-controls="a11yPanel"
+        title="הגדרות נגישות">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <circle cx="12" cy="4.2" r="2.1"/>
+    <path d="M4 8.5c0-.7.6-1.3 1.3-1.3h13.4c.7 0 1.3.6 1.3 1.3 0 .7-.6 1.3-1.3 1.3H14l.8 4.5 1.7 5.5c.2.7-.2 1.3-.9 1.5-.7.2-1.3-.2-1.5-.9L12.5 16h-1l-1.6 4.4c-.2.7-.9 1.1-1.5.9-.7-.2-1.1-.9-.9-1.5l1.7-5.5L10 9.8H5.3C4.6 9.8 4 9.2 4 8.5z"/>
+  </svg>
+</button>
+
+<aside class="a11y-panel"
+       id="a11yPanel"
+       role="dialog"
+       aria-labelledby="a11yTitle"
+       aria-modal="false"
+       hidden>
+  <header class="a11y-header">
+    <h2 id="a11yTitle" data-he="הגדרות נגישות" data-en="Accessibility settings">הגדרות נגישות</h2>
+    <button class="a11y-close" id="a11yClose" aria-label="סגירה / Close" type="button">×</button>
+  </header>
+
+  <section class="a11y-section">
+    <h3 data-he="גודל טקסט" data-en="Text size">גודל טקסט</h3>
+    <div class="a11y-row">
+      <button type="button" class="a11y-btn" data-a11y="font-reset" aria-pressed="true"><span class="sz-sm">A</span></button>
+      <button type="button" class="a11y-btn" data-a11y="font-large" aria-pressed="false"><span class="sz-md">A</span></button>
+      <button type="button" class="a11y-btn" data-a11y="font-larger" aria-pressed="false"><span class="sz-lg">A</span></button>
+    </div>
+  </section>
+
+  <section class="a11y-section">
+    <h3 data-he="ניגודיות וצבעים" data-en="Contrast & colors">ניגודיות וצבעים</h3>
+    <div class="a11y-grid-2">
+      <button type="button" class="a11y-btn" data-a11y="contrast-normal" aria-pressed="true"
+              data-he="רגיל" data-en="Default">רגיל</button>
+      <button type="button" class="a11y-btn" data-a11y="contrast-high" aria-pressed="false"
+              data-he="ניגודיות גבוהה" data-en="High contrast">ניגודיות גבוהה</button>
+      <button type="button" class="a11y-btn" data-a11y="contrast-dark" aria-pressed="false"
+              data-he="מצב כהה" data-en="Dark mode">מצב כהה</button>
+      <button type="button" class="a11y-btn" data-a11y="grayscale" aria-pressed="false"
+              data-he="גווני אפור" data-en="Grayscale">גווני אפור</button>
+    </div>
+  </section>
+
+  <section class="a11y-section">
+    <h3 data-he="עזרי קריאה" data-en="Reading aids">עזרי קריאה</h3>
+    <button type="button" class="a11y-toggle" data-a11y="links" aria-pressed="false">
+      <span data-he="הדגשת קישורים" data-en="Highlight links">הדגשת קישורים</span>
+    </button>
+    <button type="button" class="a11y-toggle" data-a11y="readable" aria-pressed="false">
+      <span data-he="פונט קריא" data-en="Readable font">פונט קריא</span>
+    </button>
+    <button type="button" class="a11y-toggle" data-a11y="cursor" aria-pressed="false">
+      <span data-he="סמן גדול" data-en="Larger cursor">סמן גדול</span>
+    </button>
+  </section>
+
+  <section class="a11y-section">
+    <h3 data-he="הנפשה ותנועה" data-en="Motion">הנפשה ותנועה</h3>
+    <button type="button" class="a11y-toggle" data-a11y="no-motion" aria-pressed="false">
+      <span data-he="עצירת אנימציות" data-en="Pause animations">עצירת אנימציות</span>
+    </button>
+  </section>
+
+  <div class="a11y-actions">
+    <button type="button" class="a11y-reset" data-a11y="reset"
+            data-he="איפוס כל ההגדרות" data-en="Reset all settings">איפוס כל ההגדרות</button>
+    <button type="button" class="a11y-statement-link" data-a11y="statement"
+            data-he="פתיחת הצהרת הנגישות המלאה" data-en="Open the full accessibility statement">פתיחת הצהרת הנגישות המלאה</button>
+  </div>
+</aside>
+
+<!-- Accessibility statement modal -->
+<div class="a11y-statement" id="a11yStatement" role="dialog" aria-modal="true" aria-labelledby="a11yStatementTitle" hidden>
+  <div class="a11y-backdrop" id="a11yStatementBackdrop"></div>
+  <div class="a11y-statement-card">
+    <header class="a11y-header">
+      <h2 id="a11yStatementTitle" data-he="הצהרת נגישות" data-en="Accessibility statement">הצהרת נגישות</h2>
+      <button class="a11y-close" id="a11yStatementClose" aria-label="סגירה / Close" type="button">×</button>
+    </header>
+    <div class="a11y-statement-content"
+         data-he-html='
+           <h3>המחויבות שלנו</h3>
+           <p>אתר kifsy מחויב לנגישות מלאה לאנשים עם מוגבלות, על פי חוק שוויון זכויות לאנשים עם מוגבלות, התשנ״ח-1998, ותקנותיו (תקנות שוויון זכויות לאנשים עם מוגבלות (התאמות נגישות לשירות), התשע״ג-2013).</p>
+
+           <h3>רמת הנגישות באתר</h3>
+           <p>האתר עומד בדרישות תקן ישראלי 5568 ברמה AA, המבוסס על הנחיות WCAG 2.0 של ארגון W3C ברמת AA.</p>
+
+           <h3>ההתאמות שבוצעו באתר</h3>
+           <ul>
+             <li>תפריט נגישות צף, זמין מכל עמוד באתר.</li>
+             <li>אפשרות להגדלת גודל הטקסט עד 130%.</li>
+             <li>מצב ניגודיות גבוהה ומצב כהה.</li>
+             <li>גווני אפור עבור משתמשים רגישים לצבעים.</li>
+             <li>הדגשת קישורים בקו תחתון בולט.</li>
+             <li>החלפה לגופן קריא (Arial) במקום גופן עיצובי.</li>
+             <li>סמן עכבר מוגדל ובולט.</li>
+             <li>עצירת אנימציות ותנועה אוטומטית.</li>
+             <li>ניווט מלא באמצעות מקלדת ומחווני פוקוס ברורים.</li>
+             <li>קישור ״דלגו לתוכן״ זמין בלחיצת Tab.</li>
+             <li>מבנה כותרות סמנטי תקין (h1, h2, h3...).</li>
+             <li>תיאורי aria-label לאלמנטים אינטראקטיביים.</li>
+             <li>ניגודיות צבעים תקנית בהתאם לתקן.</li>
+             <li>תמיכה בקוראי מסך (NVDA, JAWS, VoiceOver).</li>
+             <li>שמירת העדפות הנגישות בין ביקורים.</li>
+             <li>תמיכה מלאה ב-RTL בעברית.</li>
+           </ul>
+
+           <h3>מגבלות ידועות</h3>
+           <p>חרף מאמצינו לאפשר גלישה נוחה ונגישה, ייתכן ויימצאו באתר חלקים שטרם הותאמו במלואם. אנו פועלים באופן שוטף לשיפור הנגישות.</p>
+
+           <h3>פנייה לרכז הנגישות</h3>
+           <p>מצאתם תקלת נגישות? נשמח לשמוע ונטפל בהקדם.</p>
+           <div class="a11y-contact">
+             <p><strong>רכז הנגישות:</strong> דורון זלצר</p>
+             <p><strong>דוא״ל:</strong> <a href="mailto:hello@kifsy.co">hello@kifsy.co</a></p>
+             <p><strong>טלפון:</strong> <a href="tel:+972500000000" dir="ltr">+972-50-000-0000</a></p>
+             <p><strong>זמן מענה:</strong> תוך 5 ימי עסקים.</p>
+           </div>
+
+           <h3>תאריך עדכון</h3>
+           <p>הצהרה זו עודכנה לאחרונה בתאריך 17 במאי 2026.</p>
+         '
+         data-en-html='
+           <h3>Our commitment</h3>
+           <p>The kifsy website is committed to making its content fully accessible to people with disabilities, in accordance with the Israeli Equal Rights for Persons with Disabilities Law, 5758-1998, and its regulations (Equal Rights for Persons with Disabilities (Service Accessibility Adjustments) Regulations, 5773-2013).</p>
+
+           <h3>Accessibility level</h3>
+           <p>The site meets the requirements of Israeli Standard SI 5568 at Level AA, which is based on the W3C WCAG 2.0 guidelines at Level AA.</p>
+
+           <h3>Accessibility features implemented</h3>
+           <ul>
+             <li>A floating accessibility menu, available on every page.</li>
+             <li>Text size enlargement up to 130%.</li>
+             <li>High-contrast mode and dark mode.</li>
+             <li>Grayscale mode for users sensitive to color.</li>
+             <li>Strong link highlighting with underlines.</li>
+             <li>Switchable readable font (Arial) replacing the display font.</li>
+             <li>Enlarged, high-visibility cursor.</li>
+             <li>Pause automatic animations and motion.</li>
+             <li>Full keyboard navigation with clear focus indicators.</li>
+             <li>"Skip to content" link available via Tab.</li>
+             <li>Proper semantic heading structure (h1, h2, h3...).</li>
+             <li>aria-label descriptions on interactive elements.</li>
+             <li>Standards-compliant color contrast.</li>
+             <li>Screen reader support (NVDA, JAWS, VoiceOver).</li>
+             <li>Accessibility preferences persisted across visits.</li>
+             <li>Full RTL support for Hebrew.</li>
+           </ul>
+
+           <h3>Known limitations</h3>
+           <p>Despite our efforts to enable accessible browsing, some parts of the site may not yet be fully accessible. We work continually to improve accessibility.</p>
+
+           <h3>Contact the accessibility coordinator</h3>
+           <p>Found an issue? Let us know and we will address it promptly.</p>
+           <div class="a11y-contact">
+             <p><strong>Accessibility coordinator:</strong> Doron Zeltzer</p>
+             <p><strong>Email:</strong> <a href="mailto:hello@kifsy.co">hello@kifsy.co</a></p>
+             <p><strong>Phone:</strong> <a href="tel:+972500000000" dir="ltr">+972-50-000-0000</a></p>
+             <p><strong>Response time:</strong> within 5 business days.</p>
+           </div>
+
+           <h3>Last updated</h3>
+           <p>This statement was last updated on May 17, 2026.</p>
+         '>
+    </div>
+  </div>
+</div>
 
 <script>
   /* ─── Language switching ─── */
@@ -1411,6 +1896,138 @@
       card.style.setProperty('--my', (e.clientY - r.top)  + 'px');
     });
   });
+
+  /* ─── Accessibility menu ─── */
+  const A11Y_KEY = 'kifsy-a11y';
+  const defaultA11y = { font: '', contrast: '', grayscale: false, links: false, readable: false, cursor: false, noMotion: false };
+  let a11yState = { ...defaultA11y };
+  try { a11yState = { ...a11yState, ...JSON.parse(localStorage.getItem(A11Y_KEY) || '{}') }; } catch(e) {}
+
+  function applyA11y() {
+    const h = document.documentElement;
+    h.classList.remove('a11y-font-large','a11y-font-larger');
+    if (a11yState.font) h.classList.add('a11y-' + a11yState.font);
+
+    h.classList.remove('a11y-contrast-high','a11y-contrast-dark');
+    if (a11yState.contrast) h.classList.add('a11y-' + a11yState.contrast);
+
+    h.classList.toggle('a11y-grayscale', !!a11yState.grayscale);
+    h.classList.toggle('a11y-links',     !!a11yState.links);
+    h.classList.toggle('a11y-readable',  !!a11yState.readable);
+    h.classList.toggle('a11y-cursor',    !!a11yState.cursor);
+    h.classList.toggle('a11y-no-motion', !!a11yState.noMotion);
+
+    refreshA11yButtons();
+  }
+
+  function refreshA11yButtons() {
+    document.querySelectorAll('[data-a11y]').forEach(btn => {
+      const k = btn.dataset.a11y;
+      let active = false;
+      switch (k) {
+        case 'font-reset':     active = !a11yState.font; break;
+        case 'font-large':     active = a11yState.font === 'font-large'; break;
+        case 'font-larger':    active = a11yState.font === 'font-larger'; break;
+        case 'contrast-normal':active = !a11yState.contrast; break;
+        case 'contrast-high':  active = a11yState.contrast === 'contrast-high'; break;
+        case 'contrast-dark':  active = a11yState.contrast === 'contrast-dark'; break;
+        case 'grayscale':      active = !!a11yState.grayscale; break;
+        case 'links':          active = !!a11yState.links; break;
+        case 'readable':       active = !!a11yState.readable; break;
+        case 'cursor':         active = !!a11yState.cursor; break;
+        case 'no-motion':      active = !!a11yState.noMotion; break;
+      }
+      if (btn.classList.contains('a11y-btn') || btn.classList.contains('a11y-toggle')) {
+        btn.classList.toggle('active', active);
+        btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+      }
+    });
+  }
+
+  function saveA11y() {
+    try { localStorage.setItem(A11Y_KEY, JSON.stringify(a11yState)); } catch(e) {}
+  }
+
+  function handleA11y(action) {
+    switch (action) {
+      case 'font-reset':   a11yState.font = ''; break;
+      case 'font-large':   a11yState.font = a11yState.font === 'font-large' ? '' : 'font-large'; break;
+      case 'font-larger':  a11yState.font = a11yState.font === 'font-larger' ? '' : 'font-larger'; break;
+      case 'contrast-normal': a11yState.contrast = ''; break;
+      case 'contrast-high':   a11yState.contrast = a11yState.contrast === 'contrast-high' ? '' : 'contrast-high'; break;
+      case 'contrast-dark':   a11yState.contrast = a11yState.contrast === 'contrast-dark' ? '' : 'contrast-dark'; break;
+      case 'grayscale':    a11yState.grayscale = !a11yState.grayscale; break;
+      case 'links':        a11yState.links     = !a11yState.links; break;
+      case 'readable':     a11yState.readable  = !a11yState.readable; break;
+      case 'cursor':       a11yState.cursor    = !a11yState.cursor; break;
+      case 'no-motion':    a11yState.noMotion  = !a11yState.noMotion; break;
+      case 'reset':        a11yState = { ...defaultA11y }; break;
+      case 'statement':    return openStatement();
+    }
+    applyA11y();
+    saveA11y();
+  }
+
+  /* Panel open/close */
+  const fab        = document.getElementById('a11yFab');
+  const panel      = document.getElementById('a11yPanel');
+  const panelClose = document.getElementById('a11yClose');
+  const statement  = document.getElementById('a11yStatement');
+  const statementClose    = document.getElementById('a11yStatementClose');
+  const statementBackdrop = document.getElementById('a11yStatementBackdrop');
+
+  function openPanel(){
+    panel.hidden = false;
+    requestAnimationFrame(() => panel.classList.add('open'));
+    fab.setAttribute('aria-expanded', 'true');
+  }
+  function closePanel(){
+    panel.classList.remove('open');
+    fab.setAttribute('aria-expanded', 'false');
+    setTimeout(() => { if (!panel.classList.contains('open')) panel.hidden = true; }, 300);
+  }
+  function togglePanel(){
+    if (panel.hidden || !panel.classList.contains('open')) openPanel(); else closePanel();
+  }
+  function openStatement(){
+    statement.hidden = false;
+    requestAnimationFrame(() => statement.classList.add('open'));
+    document.body.style.overflow = 'hidden';
+  }
+  function closeStatement(){
+    statement.classList.remove('open');
+    document.body.style.overflow = '';
+    setTimeout(() => { if (!statement.classList.contains('open')) statement.hidden = true; }, 300);
+  }
+
+  fab.addEventListener('click', togglePanel);
+  panelClose.addEventListener('click', closePanel);
+  statementClose.addEventListener('click', closeStatement);
+  statementBackdrop.addEventListener('click', closeStatement);
+
+  document.querySelectorAll('[data-a11y]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      if (btn.tagName === 'A') e.preventDefault();
+      handleA11y(btn.dataset.a11y);
+    });
+  });
+
+  /* Keyboard: Esc closes statement, then panel */
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    if (!statement.hidden) closeStatement();
+    else if (!panel.hidden && panel.classList.contains('open')) closePanel();
+  });
+
+  /* Click outside the panel closes it */
+  document.addEventListener('click', (e) => {
+    if (panel.hidden || !panel.classList.contains('open')) return;
+    if (panel.contains(e.target) || fab.contains(e.target)) return;
+    closePanel();
+  });
+
+  /* Apply persisted accessibility state on load */
+  applyA11y();
 </script>
 </body>
 </html>
