@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>kifsy · אתרים מודרניים לעסקים מודרניים</title>
+<meta name="description" content="kifsy בונים אתרים מהירים, מודרניים ובמחיר נגיש לעסקים קטנים בישראל. תמחור פשוט, ליווי שוטף, ובינה מלאכותית מאחורי הקלעים." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ───────────────────────── Tokens ───────────────────────── */
+  :root{
+    --bg:           #D6E3D1;
+    --bg-soft:      #E1ECDC;
+    --bg-warm:      #ECEFE6;
+    --surface:      #FFFFFF;
+    --surface-2:    #F4F7F0;
+    --ink:          #2A3A2C;
+    --ink-2:        #4C5C4E;
+    --ink-3:        #7C8A7D;
+    --accent:       #A64253;
+    --accent-soft:  rgba(166, 66, 83, 0.10);
+    --accent-deep:  #8A3344;
+    --line:         rgba(42, 58, 44, 0.10);
+    --line-soft:    rgba(42, 58, 44, 0.06);
+    --shadow-sm:    0 1px 2px rgba(42,58,44,.04), 0 1px 1px rgba(42,58,44,.03);
+    --shadow-md:    0 4px 14px rgba(42,58,44,.06), 0 1px 2px rgba(42,58,44,.04);
+    --shadow-lg:    0 24px 60px -20px rgba(42,58,44,.18), 0 8px 24px -8px rgba(42,58,44,.08);
+    --radius-sm:    10px;
+    --radius:       16px;
+    --radius-lg:    22px;
+    --radius-xl:    28px;
+    --max:          1180px;
+    --ease:         cubic-bezier(.2,.7,.2,1);
+
+    --font-he:      'Heebo', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-en:      'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-en-disp: 'Inter Tight', 'Inter', sans-serif;
+  }
+
+  /* ───────────────────────── Reset ───────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body{
+    font-family: var(--font-he);
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+  html[lang="en"] body{ font-family: var(--font-en); line-height: 1.6; font-feature-settings: 'ss01','cv11'; }
+
+  img, svg { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+  ::selection { background: var(--ink); color: var(--bg); }
+
+  h1,h2,h3,h4{
+    font-family: var(--font-he);
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    line-height: 1.15;
+    color: var(--ink);
+  }
+  html[lang="en"] h1,
+  html[lang="en"] h2,
+  html[lang="en"] h3,
+  html[lang="en"] h4 { font-family: var(--font-en-disp); font-weight: 600; letter-spacing: -0.02em; line-height: 1.08; }
+
+  h1 { font-size: clamp(2.4rem, 6vw, 5rem); letter-spacing: -0.025em; }
+  html[lang="en"] h1 { letter-spacing: -0.035em; }
+  h2 { font-size: clamp(1.9rem, 4vw, 3.1rem); letter-spacing: -0.02em; }
+  html[lang="en"] h2 { letter-spacing: -0.03em; }
+  h3 { font-size: 1.25rem; letter-spacing: -0.005em; }
+  p  { color: var(--ink-2); }
+
+  .container{ max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+
+  /* The brand wordmark stays Latin in both modes */
+  .brand-mark{ direction: ltr; unicode-bidi: isolate; font-family: var(--font-en-disp); font-weight: 600; letter-spacing: -0.04em; }
+  .logo-dot{ color: var(--accent); }
+
+  /* ───────────────────────── Buttons ───────────────────────── */
+  .btn{
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 13px 22px;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    transition: transform .25s var(--ease), background .2s var(--ease), color .2s var(--ease), box-shadow .25s var(--ease), border-color .2s var(--ease);
+    will-change: transform;
+  }
+  .btn-primary{
+    background: var(--ink); color: var(--bg);
+    box-shadow: var(--shadow-md);
+  }
+  .btn-primary:hover{ background: #1E2B20; transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+  .btn-ghost{
+    background: transparent; color: var(--ink);
+    border: 1px solid var(--line);
+  }
+  .btn-ghost:hover{ background: rgba(42,58,44,.04); transform: translateY(-2px); }
+  .btn-accent{
+    background: var(--accent); color: #fff;
+    box-shadow: 0 6px 18px -4px rgba(166,66,83,.35);
+  }
+  .btn-accent:hover{ background: var(--accent-deep); transform: translateY(-2px); }
+  .btn .arrow{ transition: transform .25s var(--ease); }
+  /* Arrow points "forward", flip in RTL */
+  html[dir="rtl"] .btn .arrow,
+  html[dir="rtl"] .more .arrow{ transform: scaleX(-1); }
+  html[dir="ltr"] .btn:hover .arrow,
+  html[dir="ltr"] .more:hover .arrow{ transform: translateX(3px); }
+  html[dir="rtl"] .btn:hover .arrow,
+  html[dir="rtl"] .more:hover .arrow{ transform: scaleX(-1) translateX(3px); }
+
+  /* ───────────────────────── Navbar ───────────────────────── */
+  .nav-wrap{ position: sticky; top: 0; z-index: 100; transition: all .3s var(--ease); padding-top: 18px; }
+  .nav-wrap.scrolled{ padding-top: 10px; }
+  .nav{
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 11px 18px 11px 22px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 14px;
+    border-radius: 999px;
+    background: rgba(214, 227, 209, 0.75);
+    backdrop-filter: saturate(140%) blur(14px);
+    -webkit-backdrop-filter: saturate(140%) blur(14px);
+    border: 1px solid var(--line-soft);
+    transition: all .3s var(--ease);
+  }
+  .nav-wrap.scrolled .nav{
+    background: rgba(214, 227, 209, 0.92);
+    box-shadow: var(--shadow-md);
+  }
+  .logo{
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 20px;
+  }
+  .logo svg{ width: 26px; height: 26px; }
+  .nav-links{ display: flex; gap: 26px; }
+  .nav-links a{ font-size: 14.5px; color: var(--ink-2); font-weight: 500; transition: color .2s var(--ease); }
+  .nav-links a:hover{ color: var(--ink); }
+  .nav-right{ display: flex; align-items: center; gap: 10px; }
+  .nav-cta{ padding: 9px 18px; font-size: 14px; }
+
+  /* Language toggle */
+  .lang-toggle{
+    display: inline-flex;
+    background: rgba(255,255,255,0.5);
+    border: 1px solid var(--line-soft);
+    border-radius: 999px;
+    padding: 3px;
+    font-size: 12.5px;
+    font-weight: 500;
+  }
+  .lang-toggle button{
+    padding: 5px 11px;
+    border-radius: 999px;
+    color: var(--ink-3);
+    transition: color .2s var(--ease), background .2s var(--ease);
+    font-family: var(--font-en);
+    letter-spacing: 0;
+  }
+  .lang-toggle button.active{
+    background: var(--ink);
+    color: var(--bg);
+  }
+  .lang-toggle button:not(.active):hover{ color: var(--ink); }
+
+  @media (max-width: 820px){
+    .nav-links{ display: none; }
+    .nav-cta span{ display: none; }
+    .nav-cta{ padding: 9px 12px; }
+  }
+
+  /* ───────────────────────── Hero ───────────────────────── */
+  .hero{
+    position: relative;
+    padding: 110px 0 120px;
+    overflow: hidden;
+  }
+  .hero-bg{ position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+  .blob{
+    position: absolute; border-radius: 50%;
+    filter: blur(80px); opacity: .55;
+    animation: float 18s ease-in-out infinite;
+  }
+  .blob.b1{ width: 480px; height: 480px; background: #B8CFB0; top: -120px; right: -80px; }
+  .blob.b2{ width: 380px; height: 380px; background: #D9C3C8; bottom: -100px; left: -80px; opacity: .35; animation-delay: -6s; }
+  .blob.b3{ width: 320px; height: 320px; background: #C9DAC0; top: 40%; left: 35%; opacity: .3; animation-delay: -12s; }
+  @keyframes float{
+    0%,100% { transform: translate(0,0) scale(1); }
+    50%     { transform: translate(20px,-30px) scale(1.08); }
+  }
+  .hero-leaves{
+    position: absolute;
+    top: 14%; left: 8%;
+    width: 220px; height: 220px;
+    opacity: .12;
+    animation: spin 60s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .hero-inner{ position: relative; z-index: 1; text-align: center; }
+  .eyebrow{
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 14px;
+    background: rgba(255,255,255,0.55);
+    border: 1px solid var(--line-soft);
+    border-radius: 999px;
+    font-size: 13px; font-weight: 500;
+    color: var(--ink-2);
+    margin-bottom: 28px;
+    backdrop-filter: blur(8px);
+  }
+  .eyebrow .pulse{
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 0 rgba(166,66,83,.6);
+    animation: pulse 2.4s var(--ease) infinite;
+  }
+  @keyframes pulse{
+    0%   { box-shadow: 0 0 0 0   rgba(166,66,83,.5); }
+    70%  { box-shadow: 0 0 0 10px rgba(166,66,83,0); }
+    100% { box-shadow: 0 0 0 0   rgba(166,66,83,0); }
+  }
+
+  .hero h1 { max-width: 22ch; margin: 0 auto; }
+  html[lang="en"] .hero h1 { max-width: 18ch; }
+  .accent-dot { color: var(--accent); }
+  .hero-sub{
+    margin: 26px auto 40px;
+    max-width: 600px;
+    font-size: clamp(16px, 1.6vw, 19px);
+    color: var(--ink-2);
+    line-height: 1.6;
+  }
+  .hero-ctas{ display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+  .hero-stats{
+    margin-top: 90px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--line-soft);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--line-soft);
+  }
+  .hero-stat{
+    background: rgba(255,255,255,.45);
+    padding: 26px 22px;
+    text-align: start;
+    backdrop-filter: blur(8px);
+  }
+  .hero-stat .n{ font-weight: 700; font-size: clamp(1.6rem, 3vw, 2.2rem); letter-spacing: -0.02em; color: var(--ink); display: flex; align-items: baseline; gap: 6px; }
+  html[lang="en"] .hero-stat .n { font-family: var(--font-en-disp); font-weight: 600; letter-spacing: -0.025em; }
+  .hero-stat .n .unit{ color: var(--accent); font-size: 0.55em; font-weight: 500; }
+  .hero-stat .l{ font-size: 13.5px; color: var(--ink-3); margin-top: 4px; }
+  @media (max-width: 720px){ .hero-stats{ grid-template-columns: repeat(2, 1fr); } }
+
+  /* ───────────────────────── Section base ───────────────────────── */
+  .section{ padding: 110px 0; position: relative; }
+  .section-warm{ background: linear-gradient(180deg, var(--bg) 0%, var(--bg-warm) 50%, var(--bg) 100%); }
+  .section-soft{ background: var(--bg-soft); }
+  .section-head{ text-align: center; max-width: 680px; margin: 0 auto 64px; }
+  .section-head .kicker{
+    display: inline-block;
+    font-size: 13px; font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+  }
+  html[lang="he"] .section-head .kicker{ text-transform: none; letter-spacing: 0.06em; }
+  .section-head p{ margin-top: 16px; font-size: 17px; }
+
+  /* ───────────────────────── Services ───────────────────────── */
+  .services-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .service{
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius-lg);
+    padding: 32px 28px;
+    transition: transform .35s var(--ease), box-shadow .35s var(--ease), border-color .25s var(--ease);
+    overflow: hidden;
+  }
+  .service::after{
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(380px circle at var(--mx,50%) var(--my,50%), rgba(166,66,83,0.06), transparent 60%);
+    opacity: 0; transition: opacity .3s var(--ease); pointer-events: none;
+  }
+  .service:hover{ transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--line); }
+  .service:hover::after{ opacity: 1; }
+  .service-icon{
+    width: 44px; height: 44px;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--bg-soft);
+    border-radius: 12px;
+    margin-bottom: 22px;
+    color: var(--ink);
+  }
+  .service:nth-child(2) .service-icon{ background: rgba(166,66,83,0.08); color: var(--accent); }
+  .service:nth-child(4) .service-icon{ background: rgba(166,66,83,0.08); color: var(--accent); }
+  .service h3{ margin-bottom: 10px; }
+  .service p{ font-size: 15px; line-height: 1.6; }
+  .service .more{
+    display: inline-flex; align-items: center; gap: 6px;
+    margin-top: 22px;
+    font-size: 13.5px; font-weight: 500;
+    color: var(--ink);
+  }
+  .service .more .arrow{ transition: transform .25s var(--ease); }
+  @media (max-width: 960px){ .services-grid{ grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 620px){ .services-grid{ grid-template-columns: 1fr; } }
+
+  /* ───────────────────────── Pricing ───────────────────────── */
+  .pricing-wrap{
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 32px;
+    align-items: center;
+  }
+  .pricing-copy h2{ margin-bottom: 18px; }
+  .pricing-copy p{ font-size: 17px; max-width: 460px; }
+  .pricing-points{ margin-top: 28px; display: grid; gap: 14px; }
+  .pricing-points li{
+    list-style: none;
+    display: flex; align-items: center; gap: 12px;
+    font-size: 15px; color: var(--ink-2);
+  }
+  .pricing-points .check{
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--accent-soft); color: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .price-card{
+    background: var(--surface);
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius-xl);
+    padding: 40px;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+  }
+  .price-card::before{
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--accent) 0%, var(--ink) 100%);
+  }
+  .price-tag{
+    display: inline-block;
+    font-size: 12px; font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    margin-bottom: 22px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  html[lang="he"] .price-tag{ text-transform: none; letter-spacing: 0.05em; }
+  .price-card h3{ font-size: 24px; margin-bottom: 6px; }
+  .price-card .desc{ font-size: 14.5px; color: var(--ink-3); margin-bottom: 28px; }
+
+  .price-block{
+    display: flex; align-items: baseline; gap: 8px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .price-block:last-of-type{ border-bottom: none; }
+  .price-block .amt{
+    font-weight: 700; font-size: 38px; color: var(--ink);
+    letter-spacing: -0.02em;
+    direction: ltr; unicode-bidi: isolate;
+  }
+  html[lang="en"] .price-block .amt{ font-family: var(--font-en-disp); font-weight: 600; letter-spacing: -0.03em; }
+  .price-block .per{ font-size: 14px; color: var(--ink-3); }
+  .price-block .label{ font-size: 14px; color: var(--ink-2); margin-inline-start: auto; }
+
+  .price-features{ margin: 24px 0 32px; display: grid; gap: 10px; }
+  .price-features li{
+    list-style: none;
+    display: flex; align-items: center; gap: 10px;
+    font-size: 14.5px; color: var(--ink-2);
+  }
+  .price-features .dot{
+    width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0;
+  }
+  .price-card .btn{ width: 100%; justify-content: center; }
+  @media (max-width: 880px){ .pricing-wrap{ grid-template-columns: 1fr; gap: 48px; } }
+
+  /* ───────────────────────── Why ───────────────────────── */
+  .why-grid{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+  }
+  .why{
+    background: var(--surface);
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius);
+    padding: 28px 22px;
+    text-align: start;
+    transition: transform .3s var(--ease), border-color .25s var(--ease);
+  }
+  .why:hover{ transform: translateY(-4px); border-color: var(--line); }
+  .why .num{
+    font-family: var(--font-en);
+    font-size: 13px; font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 18px;
+    letter-spacing: 0.05em;
+  }
+  .why h3{ font-size: 17px; margin-bottom: 8px; }
+  .why p{ font-size: 14.5px; line-height: 1.55; }
+  @media (max-width: 1000px){ .why-grid{ grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 540px){ .why-grid{ grid-template-columns: 1fr; } }
+
+  /* ───────────────────────── Portfolio ───────────────────────── */
+  .port-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 18px;
+  }
+  .port{
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: transform .35s var(--ease), box-shadow .35s var(--ease);
+    cursor: pointer;
+  }
+  .port:hover{ transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+  .port-mock{
+    aspect-ratio: 16/10;
+    position: relative;
+    overflow: hidden;
+  }
+  .port-mock .browser{
+    position: absolute; inset-inline: 18px; top: 18px; bottom: 0;
+    border-radius: 12px 12px 0 0;
+    background: #fff;
+    border: 1px solid rgba(42,58,44,.08);
+    border-bottom: none;
+    box-shadow: 0 10px 30px -10px rgba(42,58,44,.18);
+    overflow: hidden;
+    direction: ltr;
+  }
+  .browser-bar{
+    height: 22px;
+    background: #F5F7F2;
+    display: flex; align-items: center; gap: 5px;
+    padding: 0 10px;
+    border-bottom: 1px solid rgba(42,58,44,.06);
+  }
+  .browser-bar i{ width: 7px; height: 7px; border-radius: 50%; display: block; background: #d8dcd2; }
+  .browser-bar i:nth-child(1){ background: #E89A9A; }
+  .browser-bar i:nth-child(2){ background: #E8C58C; }
+  .browser-bar i:nth-child(3){ background: #A8C9A2; }
+  .port-info{
+    padding: 22px 24px 26px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 12px;
+  }
+  .port-info h3{ font-size: 17px; }
+  .port-info .cat{ font-size: 12.5px; color: var(--ink-3); margin-top: 4px; letter-spacing: 0.02em; }
+  .port-info .arrow-circle{
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--bg-soft);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    transition: background .2s var(--ease), color .2s var(--ease), transform .25s var(--ease);
+  }
+  html[dir="rtl"] .port-info .arrow-circle svg{ transform: scaleX(-1); }
+  .port:hover .arrow-circle{ background: var(--ink); color: var(--bg); transform: rotate(-45deg); }
+  html[dir="rtl"] .port:hover .arrow-circle{ transform: rotate(45deg); }
+
+  .port-mock-bg-1{ background: linear-gradient(135deg, #E8DCC2, #D8C49E); }
+  .port-mock-bg-2{ background: linear-gradient(135deg, #C5D9C0, #A8C2A0); }
+  .port-mock-bg-3{ background: linear-gradient(135deg, #E5C8CD, #C9A4AB); }
+  .port-mock-bg-4{ background: linear-gradient(135deg, #D6E0EA, #B8CADB); }
+  .port-mock-bg-5{ background: linear-gradient(135deg, #E3D8D2, #C7B5AC); }
+
+  .mini-site{ padding: 14px 14px 0; height: 100%; }
+  .mini-h{ height: 7px; border-radius: 3px; background: rgba(42,58,44,.15); width: 30%; margin-bottom: 8px; }
+  .mini-row{ display: flex; gap: 6px; margin-bottom: 6px; }
+  .mini-block{ height: 5px; border-radius: 3px; background: rgba(42,58,44,.1); flex: 1; }
+  .mini-card{
+    height: 26px; border-radius: 6px;
+    background: rgba(255,255,255,.55);
+    border: 1px solid rgba(42,58,44,.08);
+    flex: 1;
+  }
+  .mini-row.cards{ margin-top: 8px; }
+  .mini-pill{
+    display: inline-block; padding: 3px 8px;
+    border-radius: 999px;
+    background: rgba(42,58,44,.85);
+    color: #fff; font-size: 7px; font-weight: 500;
+    margin-bottom: 8px;
+    font-family: var(--font-en);
+  }
+  .mini-headline{
+    height: 11px; border-radius: 4px; background: rgba(42,58,44,.7);
+    width: 70%; margin-bottom: 5px;
+  }
+  .mini-headline.s{ width: 50%; }
+  .mini-acc{ background: var(--accent) !important; opacity: .85; }
+
+  @media (max-width: 980px){ .port-grid{ grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px){ .port-grid{ grid-template-columns: 1fr; } }
+
+  /* ───────────────────────── Testimonials ───────────────────────── */
+  .test-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+  .test{
+    background: var(--surface);
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius-lg);
+    padding: 30px 28px;
+    display: flex; flex-direction: column;
+    transition: transform .3s var(--ease), border-color .25s var(--ease);
+  }
+  .test:hover{ transform: translateY(-3px); border-color: var(--line); }
+  .test .quote{
+    font-size: 17px; line-height: 1.55;
+    color: var(--ink);
+    margin-bottom: 26px;
+    font-weight: 500;
+  }
+  .test .quote::before{
+    content: '“'; color: var(--accent);
+    font-size: 38px; line-height: 0; vertical-align: -10px;
+    margin-inline-end: 4px; font-family: serif;
+  }
+  html[lang="he"] .test .quote::before{ content: '״'; font-size: 32px; vertical-align: -4px; }
+  .test-person{
+    margin-top: auto;
+    display: flex; align-items: center; gap: 12px;
+    padding-top: 22px;
+    border-top: 1px solid var(--line-soft);
+  }
+  .avatar{
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 14px;
+    color: var(--ink);
+    background: var(--bg-soft);
+    flex-shrink: 0;
+  }
+  .avatar.a2{ background: rgba(166,66,83,0.14); color: var(--accent); }
+  .avatar.a3{ background: #DDE7D6; color: var(--ink); }
+  .test-person .name{ font-size: 14.5px; font-weight: 600; color: var(--ink); line-height: 1.2; }
+  .test-person .role{ font-size: 13px; color: var(--ink-3); margin-top: 2px; }
+  @media (max-width: 900px){ .test-grid{ grid-template-columns: 1fr; } }
+
+  /* ───────────────────────── Final CTA ───────────────────────── */
+  .final-cta{
+    position: relative;
+    background: var(--ink);
+    color: var(--bg);
+    border-radius: var(--radius-xl);
+    padding: 80px 48px;
+    text-align: center;
+    overflow: hidden;
+    margin: 0 24px;
+  }
+  .final-cta::before{
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(600px circle at 20% 30%, rgba(166,66,83,0.22), transparent 60%),
+      radial-gradient(500px circle at 80% 70%, rgba(184,207,176,0.16), transparent 60%);
+    pointer-events: none;
+  }
+  .final-cta-inner{ position: relative; z-index: 1; max-width: 660px; margin: 0 auto; }
+  .final-cta h2{ color: var(--bg); margin-bottom: 18px; }
+  .final-cta p{ color: rgba(255,255,255,0.72); font-size: 17px; max-width: 520px; margin: 0 auto 36px; }
+  .final-cta .btn-primary{ background: var(--bg); color: var(--ink); }
+  .final-cta .btn-primary:hover{ background: #fff; }
+  .final-cta .btn-ghost{
+    color: var(--bg); border-color: rgba(255,255,255,0.22);
+  }
+  .final-cta .btn-ghost:hover{ background: rgba(255,255,255,0.08); }
+  .final-cta-row{ display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .final-leaves{
+    position: absolute; top: -30px; right: -30px; width: 200px; opacity: .07;
+  }
+  @media (max-width: 640px){ .final-cta{ padding: 60px 28px; } }
+
+  /* ───────────────────────── Footer ───────────────────────── */
+  footer{
+    padding: 64px 0 36px;
+    margin-top: 80px;
+    border-top: 1px solid var(--line-soft);
+  }
+  .foot-grid{
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .foot-brand p{ font-size: 14.5px; color: var(--ink-2); margin-top: 16px; max-width: 340px; line-height: 1.6; }
+  .foot-col h4{
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    color: var(--ink-3);
+    font-weight: 600;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+  html[lang="he"] .foot-col h4{ text-transform: none; }
+  .foot-col ul{ list-style: none; display: grid; gap: 10px; }
+  .foot-col a{
+    font-size: 14.5px; color: var(--ink-2);
+    transition: color .2s var(--ease);
+  }
+  .foot-col a:hover{ color: var(--ink); }
+  .foot-bottom{
+    margin-top: 28px;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 12px;
+    font-size: 13px; color: var(--ink-3);
+  }
+  .socials{ display: flex; gap: 10px; }
+  .socials a{
+    width: 34px; height: 34px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%;
+    border: 1px solid var(--line-soft);
+    color: var(--ink-2);
+    transition: all .2s var(--ease);
+  }
+  .socials a:hover{ background: var(--ink); color: var(--bg); border-color: var(--ink); transform: translateY(-2px); }
+  @media (max-width: 780px){ .foot-grid{ grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 480px){ .foot-grid{ grid-template-columns: 1fr; } }
+
+  /* ───────────────────────── Reveal animations ───────────────────────── */
+  .reveal{
+    opacity: 0; transform: translateY(20px);
+    transition: opacity .9s var(--ease), transform .9s var(--ease);
+  }
+  .reveal.in{ opacity: 1; transform: translateY(0); }
+  .reveal-d-1{ transition-delay: .08s; }
+  .reveal-d-2{ transition-delay: .16s; }
+  .reveal-d-3{ transition-delay: .24s; }
+  .reveal-d-4{ transition-delay: .32s; }
+  .reveal-d-5{ transition-delay: .4s; }
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ opacity: 1; transform: none; transition: none; }
+    .blob, .hero-leaves{ animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Reusable 3-leaf logo SVG -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="leaves" viewBox="-80 -160 160 160">
+      <g fill="currentColor">
+        <path d="M 0,0 C -10,-22 -10,-78 0,-110 C 10,-78 10,-22 0,0 Z" transform="rotate(-26) scale(.78)"/>
+        <path d="M 0,0 C -12,-28 -12,-104 0,-138 C 12,-104 12,-28 0,0 Z" transform="rotate(-4)"/>
+        <path d="M 0,0 C -11,-24 -11,-90 0,-118 C 11,-90 11,-24 0,0 Z" transform="rotate(20) scale(.88)"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ────────────── Navbar ────────────── -->
+<div class="nav-wrap" id="navWrap">
+  <nav class="nav container">
+    <a href="#" class="logo" aria-label="kifsy">
+      <svg viewBox="-80 -160 160 160"><use href="#leaves"/></svg>
+      <span class="brand-mark">kifsy<span class="logo-dot">.</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="#services"      data-he="שירותים"   data-en="Services">שירותים</a>
+      <a href="#pricing"       data-he="מחירים"     data-en="Pricing">מחירים</a>
+      <a href="#work"          data-he="עבודות"    data-en="Work">עבודות</a>
+      <a href="#why"           data-he="למה kifsy" data-en="Why kifsy">למה kifsy</a>
+      <a href="#testimonials"  data-he="המלצות"    data-en="Reviews">המלצות</a>
+    </div>
+    <div class="nav-right">
+      <div class="lang-toggle" role="tablist" aria-label="Language">
+        <button id="lang-he" class="active" data-lang="he">עב</button>
+        <button id="lang-en" data-lang="en">EN</button>
+      </div>
+      <a href="#contact" class="btn btn-primary nav-cta">
+        <span data-he="בואו נתחיל" data-en="Get started">בואו נתחיל</span>
+        <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<!-- ────────────── Hero ────────────── -->
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+    <svg class="hero-leaves" viewBox="-80 -160 160 160" style="color: var(--ink)"><use href="#leaves"/></svg>
+  </div>
+
+  <div class="container hero-inner">
+    <div class="eyebrow reveal">
+      <span class="pulse"></span>
+      <span data-he="מקבלים פרויקטים חדשים · מאי 2026" data-en="Now accepting new projects · May 2026">מקבלים פרויקטים חדשים · מאי 2026</span>
+    </div>
+
+    <h1 class="reveal reveal-d-1"
+        data-he-html='אתרים מודרניים<br>לעסקים מודרניים<span class="accent-dot">.</span>'
+        data-en-html='Modern websites<br>for modern businesses<span class="accent-dot">.</span>'>
+      אתרים מודרניים<br>לעסקים מודרניים<span class="accent-dot">.</span>
+    </h1>
+
+    <p class="hero-sub reveal reveal-d-2"
+       data-he="kifsy בונים אתרים מהירים ויפים לעסקים קטנים בישראל, עם תמחור פשוט, ליווי שוטף ובינה מלאכותית מאחורי הקלעים, כדי שהאתר שלכם יעלה לאוויר בימים, לא בחודשים."
+       data-en="kifsy builds fast, beautiful websites for small businesses in Israel, with simple pricing, ongoing support, and AI behind the scenes so you ship in days, not months.">
+      kifsy בונים אתרים מהירים ויפים לעסקים קטנים בישראל, עם תמחור פשוט, ליווי שוטף ובינה מלאכותית מאחורי הקלעים, כדי שהאתר שלכם יעלה לאוויר בימים, לא בחודשים.
+    </p>
+
+    <div class="hero-ctas reveal reveal-d-3">
+      <a href="#contact" class="btn btn-primary">
+        <span data-he="בואו נתחיל" data-en="Get started">בואו נתחיל</span>
+        <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#work" class="btn btn-ghost" data-he="צפו בעבודות" data-en="View projects">צפו בעבודות</a>
+    </div>
+
+    <div class="hero-stats reveal reveal-d-4">
+      <div class="hero-stat">
+        <div class="n">7<span class="unit" data-he="ימים" data-en="days">ימים</span></div>
+        <div class="l" data-he="זמן אספקה ממוצע" data-en="Average delivery time">זמן אספקה ממוצע</div>
+      </div>
+      <div class="hero-stat">
+        <div class="n">₪500</div>
+        <div class="l" data-he="עלות הקמה שקופה" data-en="Transparent setup cost">עלות הקמה שקופה</div>
+      </div>
+      <div class="hero-stat">
+        <div class="n">40+</div>
+        <div class="l" data-he="עסקים שהשקנו" data-en="Businesses launched">עסקים שהשקנו</div>
+      </div>
+      <div class="hero-stat">
+        <div class="n">24/7</div>
+        <div class="l" data-he="תמיכה שוטפת" data-en="Ongoing support">תמיכה שוטפת</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ────────────── Services ────────────── -->
+<section class="section" id="services">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker" data-he="שירותים" data-en="Services">שירותים</span>
+      <h2 data-he="כל מה שהעסק שלכם צריך כדי להיראות מצוין באינטרנט."
+          data-en="Everything your business needs to look great online.">
+        כל מה שהעסק שלכם צריך כדי להיראות מצוין באינטרנט.
+      </h2>
+      <p data-he="שישה שירותים ממוקדים. בלי תוספות מיותרות, בלי בלגן. רק מה שחשוב, מבוצע בצורה מושלמת."
+         data-en="Six focused services. No upsells, no fluff. Just the essentials, executed beautifully.">
+        שישה שירותים ממוקדים. בלי תוספות מיותרות, בלי בלגן. רק מה שחשוב, מבוצע בצורה מושלמת.
+      </p>
+    </div>
+
+    <div class="services-grid">
+      <article class="service reveal reveal-d-1">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3M3 9h18"/>
+          </svg>
+        </div>
+        <h3 data-he="אתרים עסקיים" data-en="Business Websites">אתרים עסקיים</h3>
+        <p data-he="אתרים רב-עמודיים שנבנים סביב השירותים, שעות הפעילות, יצירת קשר והזמנות. מעוצבים לבנות אמון מקומי."
+           data-en="Multi-page sites built around your services, hours, contact, and bookings. Designed to win local trust.">
+          אתרים רב-עמודיים שנבנים סביב השירותים, שעות הפעילות, יצירת קשר והזמנות. מעוצבים לבנות אמון מקומי.
+        </p>
+        <a href="#" class="more">
+          <span data-he="קראו עוד" data-en="Learn more">קראו עוד</span>
+          <svg class="arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </article>
+
+      <article class="service reveal reveal-d-2">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16v6H4zM4 14h10v6H4zM18 14l4 6h-4z"/>
+          </svg>
+        </div>
+        <h3 data-he="דפי נחיתה" data-en="Landing Pages">דפי נחיתה</h3>
+        <p data-he="דפי נחיתה עם המרה גבוהה, לקמפיינים, מבצעים והשקות. בנויים לקליקים, לא לרעש."
+           data-en="High-converting one-page sites for promotions, campaigns, or product launches. Built for clicks, not clutter.">
+          דפי נחיתה עם המרה גבוהה, לקמפיינים, מבצעים והשקות. בנויים לקליקים, לא לרעש.
+        </p>
+        <a href="#" class="more">
+          <span data-he="קראו עוד" data-en="Learn more">קראו עוד</span>
+          <svg class="arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </article>
+
+      <article class="service reveal reveal-d-3">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+          </svg>
+        </div>
+        <h3 data-he="ניהול אתרים" data-en="Website Management">ניהול אתרים</h3>
+        <p data-he="אנחנו דואגים שהאתר יישאר מהיר, מאובטח ומעודכן: עדכוני תוכן, גיבויים, ניטור ושינויים קטנים, כל חודש."
+           data-en="We keep your site fast, secure, and up to date. Content updates, backups, monitoring, and small tweaks every month.">
+          אנחנו דואגים שהאתר יישאר מהיר, מאובטח ומעודכן: עדכוני תוכן, גיבויים, ניטור ושינויים קטנים, כל חודש.
+        </p>
+        <a href="#" class="more">
+          <span data-he="קראו עוד" data-en="Learn more">קראו עוד</span>
+          <svg class="arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </article>
+
+      <article class="service reveal reveal-d-1">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/>
+          </svg>
+        </div>
+        <h3 data-he="התאמה למובייל" data-en="Mobile Optimization">התאמה למובייל</h3>
+        <p data-he="80% מהלקוחות שלכם בנייד. כל אתר של kifsy מתוכנן מובייל-קודם. גלילה חלקה, טעינה מיידית."
+           data-en="80% of your customers are on mobile. Every kifsy site is engineered mobile-first. Buttery scroll, instant load.">
+          80% מהלקוחות שלכם בנייד. כל אתר של kifsy מתוכנן מובייל-קודם. גלילה חלקה, טעינה מיידית.
+        </p>
+        <a href="#" class="more">
+          <span data-he="קראו עוד" data-en="Learn more">קראו עוד</span>
+          <svg class="arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </article>
+
+      <article class="service reveal reveal-d-2">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 11.5a8.38 8.38 0 0 1-1 4 8.5 8.5 0 0 1-7.6 4.5 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-1A8.5 8.5 0 0 1 21 11.5z"/>
+          </svg>
+        </div>
+        <h3 data-he="אינטגרציית ווטסאפ" data-en="WhatsApp Integration">אינטגרציית ווטסאפ</h3>
+        <p data-he="צ׳אט בלחיצה אחת, מענה אוטומטי, ותהליכי הזמנה ישירות לווטסאפ העסקי שלכם, בדיוק במקום שבו הלקוחות הישראלים נמצאים."
+           data-en="One-tap chat, auto-replies, and booking flows wired directly to your business WhatsApp, where Israeli customers already are.">
+          צ׳אט בלחיצה אחת, מענה אוטומטי, ותהליכי הזמנה ישירות לווטסאפ העסקי שלכם, בדיוק במקום שבו הלקוחות הישראלים נמצאים.
+        </p>
+        <a href="#" class="more">
+          <span data-he="קראו עוד" data-en="Learn more">קראו עוד</span>
+          <svg class="arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </article>
+
+      <article class="service reveal reveal-d-3">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+          </svg>
+        </div>
+        <h3 data-he="תהליכים מבוססי AI" data-en="AI-Powered Workflows">תהליכים מבוססי AI</h3>
+        <p data-he="מטיוטות תוכן ועד יצירת תמונות וקופי SEO. אנחנו משתמשים ב-AI כדי לספק יותר, מהר יותר, בפחות, בלי פשרות."
+           data-en="From content drafts to image generation and SEO copy. We use AI to deliver more, faster, for less, without compromise.">
+          מטיוטות תוכן ועד יצירת תמונות וקופי SEO. אנחנו משתמשים ב-AI כדי לספק יותר, מהר יותר, בפחות, בלי פשרות.
+        </p>
+        <a href="#" class="more">
+          <span data-he="קראו עוד" data-en="Learn more">קראו עוד</span>
+          <svg class="arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ────────────── Pricing ────────────── -->
+<section class="section section-warm" id="pricing">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker" data-he="מחירים" data-en="Pricing">מחירים</span>
+      <h2 data-he="חבילה אחת. בלי הפתעות."
+          data-en="One simple plan. No surprises.">
+        חבילה אחת. בלי הפתעות.
+      </h2>
+      <p data-he="עלות הקמה קבועה ודמי ניהול חודשיים נמוכים. הכל כלול: עיצוב, בנייה, אחסון, עדכונים ותמיכה."
+         data-en="A flat setup fee and a low monthly retainer. Everything included: design, build, hosting, updates, support.">
+        עלות הקמה קבועה ודמי ניהול חודשיים נמוכים. הכל כלול: עיצוב, בנייה, אחסון, עדכונים ותמיכה.
+      </p>
+    </div>
+
+    <div class="pricing-wrap">
+      <div class="pricing-copy reveal">
+        <h2 style="font-size: clamp(1.6rem, 2.6vw, 2.2rem);"
+            data-he="נבנה במיוחד לעסקים קטנים בישראל."
+            data-en="Built for Israeli small businesses.">
+          נבנה במיוחד לעסקים קטנים בישראל.
+        </h2>
+        <p data-he="רוב הסוכנויות מבקשות עשרות אלפי שקלים לאתר שלוקח חודשים. אצל kifsy תקבלו את אותה איכות בעלות נמוכה משמעותית. סטאק מודרני, מהירות בזכות AI, אספקה בימים."
+           data-en="Most agencies quote tens of thousands of shekels for a website that takes months. kifsy delivers in days for a fraction of the cost. Same quality, modern stack, AI-assisted speed.">
+          רוב הסוכנויות מבקשות עשרות אלפי שקלים לאתר שלוקח חודשים. אצל kifsy תקבלו את אותה איכות בעלות נמוכה משמעותית. סטאק מודרני, מהירות בזכות AI, אספקה בימים.
+        </p>
+        <ul class="pricing-points">
+          <li>
+            <span class="check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+            <span data-he="בלי חוזים ארוכים. אפשר לבטל בכל חודש."
+                  data-en="No long contracts. Cancel any month.">בלי חוזים ארוכים. אפשר לבטל בכל חודש.</span>
+          </li>
+          <li>
+            <span class="check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+            <span data-he="עברית ואנגלית, RTL מובנה כברירת מחדל."
+                  data-en="Hebrew & English, RTL-ready by default.">עברית ואנגלית, RTL מובנה כברירת מחדל.</span>
+          </li>
+          <li>
+            <span class="check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+            <span data-he="הדומיין שלכם, האחסון שלכם, הכל בבעלותכם."
+                  data-en="Your domain, your hosting, you own it all.">הדומיין שלכם, האחסון שלכם, הכל בבעלותכם.</span>
+          </li>
+          <li>
+            <span class="check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+            <span data-he="בני אדם אמיתיים בווטסאפ, מתי שצריך."
+                  data-en="Real humans on WhatsApp when you need us.">בני אדם אמיתיים בווטסאפ, מתי שצריך.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="price-card reveal reveal-d-1">
+        <span class="price-tag" data-he="חבילת הקמה" data-en="Starter package">חבילת הקמה</span>
+        <h3 data-he="כל מה שצריך כדי לעלות לאוויר, בצורה יפה."
+            data-en="Everything to get online, beautifully.">
+          כל מה שצריך כדי לעלות לאוויר, בצורה יפה.
+        </h3>
+        <p class="desc" data-he="מושלם למסעדות, מספרות, עורכי דין, מאמנים וחנויות מקומיות."
+           data-en="Perfect for restaurants, salons, lawyers, trainers, and local shops.">
+          מושלם למסעדות, מספרות, עורכי דין, מאמנים וחנויות מקומיות.
+        </p>
+
+        <div class="price-block">
+          <span class="amt">₪500</span>
+          <span class="per" data-he="חד פעמי" data-en="one-time">חד פעמי</span>
+          <span class="label" data-he="הקמה והשקה" data-en="Setup & launch">הקמה והשקה</span>
+        </div>
+        <div class="price-block">
+          <span class="amt">₪200</span>
+          <span class="per" data-he="/ חודש" data-en="/ month">/ חודש</span>
+          <span class="label" data-he="אחסון וניהול" data-en="Hosting & management">אחסון וניהול</span>
+        </div>
+
+        <ul class="price-features">
+          <li><span class="dot"></span><span data-he="עיצוב מותאם אישית למותג שלכם"
+                                             data-en="Custom design tailored to your brand">עיצוב מותאם אישית למותג שלכם</span></li>
+          <li><span class="dot"></span><span data-he="עד 5 עמודים, RTL ומובייל-קודם"
+                                             data-en="Up to 5 pages, RTL & mobile-first">עד 5 עמודים, RTL ומובייל-קודם</span></li>
+          <li><span class="dot"></span><span data-he="חיבור לווטסאפ וגוגל מפות"
+                                             data-en="WhatsApp & Google Maps integration">חיבור לווטסאפ וגוגל מפות</span></li>
+          <li><span class="dot"></span><span data-he="הגדרת SEO וחיבור לגוגל לעסק שלי"
+                                             data-en="SEO setup + Google Business linking">הגדרת SEO וחיבור לגוגל לעסק שלי</span></li>
+          <li><span class="dot"></span><span data-he="עדכונים ושינויים חודשיים כלולים"
+                                             data-en="Monthly updates and edits included">עדכונים ושינויים חודשיים כלולים</span></li>
+          <li><span class="dot"></span><span data-he="SSL חינם, גיבויים ואנליטיקס"
+                                             data-en="Free SSL, backups, and analytics">SSL חינם, גיבויים ואנליטיקס</span></li>
+        </ul>
+
+        <a href="#contact" class="btn btn-accent">
+          <span data-he="התחילו את הפרויקט" data-en="Start your project">התחילו את הפרויקט</span>
+          <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ────────────── Why ────────────── -->
+<section class="section" id="why">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker" data-he="למה kifsy" data-en="Why kifsy">למה kifsy</span>
+      <h2 data-he="הסוכנות שתמיד רציתם שתהיה."
+          data-en="The agency you wish existed.">
+        הסוכנות שתמיד רציתם שתהיה.
+      </h2>
+      <p data-he="איכות עיצוב בוטיקית, מהירות סטארטאפ, מחיר של פרילנסר. הכל במקום אחד."
+         data-en="Boutique design quality, startup speed, freelancer pricing. All in one place.">
+        איכות עיצוב בוטיקית, מהירות סטארטאפ, מחיר של פרילנסר. הכל במקום אחד.
+      </p>
+    </div>
+
+    <div class="why-grid">
+      <div class="why reveal reveal-d-1">
+        <div class="num">01</div>
+        <h3 data-he="אספקה מהירה" data-en="Fast delivery">אספקה מהירה</h3>
+        <p data-he="רוב האתרים עולים לאוויר תוך 7 ימים. בלי המתנות אינסופיות."
+           data-en="Most sites are live within 7 days. No back-and-forth limbo.">רוב האתרים עולים לאוויר תוך 7 ימים. בלי המתנות אינסופיות.</p>
+      </div>
+      <div class="why reveal reveal-d-2">
+        <div class="num">02</div>
+        <h3 data-he="עיצוב מודרני" data-en="Modern design">עיצוב מודרני</h3>
+        <p data-he="אסתטיקה נקייה ופרימיום שמתחרה במותגים בינלאומיים."
+           data-en="Clean, premium aesthetics built to compete with international brands.">אסתטיקה נקייה ופרימיום שמתחרה במותגים בינלאומיים.</p>
+      </div>
+      <div class="why reveal reveal-d-3">
+        <div class="num">03</div>
+        <h3 data-he="תמחור נגיש" data-en="Affordable pricing">תמחור נגיש</h3>
+        <p data-he="בנוי לעסקים קטנים. בלי תוספות סוכנותיות, בלי הפתעות."
+           data-en="Built for small businesses. No agency premium, no hidden fees.">בנוי לעסקים קטנים. בלי תוספות סוכנותיות, בלי הפתעות.</p>
+      </div>
+      <div class="why reveal reveal-d-4">
+        <div class="num">04</div>
+        <h3 data-he="ליווי שוטף" data-en="Ongoing support">ליווי שוטף</h3>
+        <p data-he="עדכונים, שינויים ועזרה טכנית כל חודש, בלי חשבוניות מפתיעות."
+           data-en="Updates, edits, and tech help every month, without surprise invoices.">עדכונים, שינויים ועזרה טכנית כל חודש, בלי חשבוניות מפתיעות.</p>
+      </div>
+      <div class="why reveal reveal-d-5">
+        <div class="num">05</div>
+        <h3 data-he="בלי כאבי ראש" data-en="Stress-free">בלי כאבי ראש</h3>
+        <p data-he="אנחנו דואגים לאחסון, SSL, SEO והטכניקה. אתם מתמקדים בעסק."
+           data-en="We handle hosting, SSL, SEO, and tech. You focus on running your business.">אנחנו דואגים לאחסון, SSL, SEO והטכניקה. אתם מתמקדים בעסק.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ────────────── Portfolio ────────────── -->
+<section class="section section-soft" id="work">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker" data-he="עבודות נבחרות" data-en="Selected work">עבודות נבחרות</span>
+      <h2 data-he="עסקים אמיתיים. תוצאות אמיתיות."
+          data-en="Real businesses. Real results.">עסקים אמיתיים. תוצאות אמיתיות.</h2>
+      <p data-he="מבחר קטן מההשקות האחרונות שלנו: מזון, יופי, משפט, נדל״ן וקמעונאות."
+         data-en="A small selection of recent kifsy launches across food, beauty, legal, and retail.">
+        מבחר קטן מההשקות האחרונות שלנו: מזון, יופי, משפט, נדל״ן וקמעונאות.
+      </p>
+    </div>
+
+    <div class="port-grid">
+      <div class="port reveal reveal-d-1">
+        <div class="port-mock port-mock-bg-1">
+          <div class="browser">
+            <div class="browser-bar"><i></i><i></i><i></i></div>
+            <div class="mini-site">
+              <span class="mini-pill">Hummus Eliyahu</span>
+              <div class="mini-headline"></div>
+              <div class="mini-headline s"></div>
+              <div class="mini-row cards"><div class="mini-card"></div><div class="mini-card"></div><div class="mini-card"></div></div>
+              <div class="mini-row cards"><div class="mini-card"></div><div class="mini-card"></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="port-info">
+          <div>
+            <h3 data-he="חומוס אליהו" data-en="Hummus Eliyahu">חומוס אליהו</h3>
+            <div class="cat" data-he="מסעדה · תל אביב" data-en="Restaurant · Tel Aviv">מסעדה · תל אביב</div>
+          </div>
+          <div class="arrow-circle">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="port reveal reveal-d-2">
+        <div class="port-mock port-mock-bg-2">
+          <div class="browser">
+            <div class="browser-bar"><i></i><i></i><i></i></div>
+            <div class="mini-site">
+              <div class="mini-h"></div>
+              <div class="mini-headline mini-acc"></div>
+              <div class="mini-headline s"></div>
+              <div class="mini-row cards"><div class="mini-card"></div><div class="mini-card"></div></div>
+              <div class="mini-row"><div class="mini-block"></div><div class="mini-block"></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="port-info">
+          <div>
+            <h3 data-he="סלון מאיה" data-en="Salon Maya">סלון מאיה</h3>
+            <div class="cat" data-he="יופי · רמת גן" data-en="Beauty · Ramat Gan">יופי · רמת גן</div>
+          </div>
+          <div class="arrow-circle">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="port reveal reveal-d-3">
+        <div class="port-mock port-mock-bg-3">
+          <div class="browser">
+            <div class="browser-bar"><i></i><i></i><i></i></div>
+            <div class="mini-site">
+              <div class="mini-h"></div>
+              <div class="mini-headline"></div>
+              <div class="mini-headline s mini-acc"></div>
+              <div class="mini-row"><div class="mini-block"></div></div>
+              <div class="mini-row cards"><div class="mini-card"></div><div class="mini-card"></div><div class="mini-card"></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="port-info">
+          <div>
+            <h3 data-he="כהן ושות׳" data-en="Cohen & Partners">כהן ושות׳</h3>
+            <div class="cat" data-he="משרד עורכי דין · הרצליה" data-en="Law firm · Herzliya">משרד עורכי דין · הרצליה</div>
+          </div>
+          <div class="arrow-circle">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="port reveal reveal-d-1">
+        <div class="port-mock port-mock-bg-4">
+          <div class="browser">
+            <div class="browser-bar"><i></i><i></i><i></i></div>
+            <div class="mini-site">
+              <span class="mini-pill" style="background: var(--accent)">FitWithRoni</span>
+              <div class="mini-headline"></div>
+              <div class="mini-headline s"></div>
+              <div class="mini-row cards"><div class="mini-card"></div><div class="mini-card"></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="port-info">
+          <div>
+            <h3 data-he="FitWithRoni" data-en="FitWithRoni">FitWithRoni</h3>
+            <div class="cat" data-he="כושר · אונליין" data-en="Fitness · Online">כושר · אונליין</div>
+          </div>
+          <div class="arrow-circle">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="port reveal reveal-d-2">
+        <div class="port-mock port-mock-bg-5">
+          <div class="browser">
+            <div class="browser-bar"><i></i><i></i><i></i></div>
+            <div class="mini-site">
+              <div class="mini-h"></div>
+              <div class="mini-headline mini-acc"></div>
+              <div class="mini-headline s"></div>
+              <div class="mini-row cards"><div class="mini-card"></div><div class="mini-card"></div><div class="mini-card"></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="port-info">
+          <div>
+            <h3 data-he="לוי נדל״ן" data-en="Levi Realty">לוי נדל״ן</h3>
+            <div class="cat" data-he="נדל״ן · ירושלים" data-en="Real estate · Jerusalem">נדל״ן · ירושלים</div>
+          </div>
+          <div class="arrow-circle">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="port reveal reveal-d-3">
+        <div class="port-mock port-mock-bg-1">
+          <div class="browser">
+            <div class="browser-bar"><i></i><i></i><i></i></div>
+            <div class="mini-site">
+              <div class="mini-h"></div>
+              <div class="mini-headline"></div>
+              <div class="mini-headline s mini-acc"></div>
+              <div class="mini-row cards"><div class="mini-card"></div><div class="mini-card"></div></div>
+              <div class="mini-row"><div class="mini-block"></div><div class="mini-block"></div><div class="mini-block"></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="port-info">
+          <div>
+            <h3 data-he="בוטיק הדר" data-en="Hadar Boutique">בוטיק הדר</h3>
+            <div class="cat" data-he="קמעונאות · חיפה" data-en="Retail · Haifa">קמעונאות · חיפה</div>
+          </div>
+          <div class="arrow-circle">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ────────────── Testimonials ────────────── -->
+<section class="section" id="testimonials">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker" data-he="המלצות" data-en="Testimonials">המלצות</span>
+      <h2 data-he="אהוב על עסקים מכל הארץ."
+          data-en="Loved by businesses across Israel.">
+        אהוב על עסקים מכל הארץ.
+      </h2>
+      <p data-he="מילים אמיתיות מבעלי עסקים: מסעדות, מספרות, עורכי דין, מאמנים וחנויות."
+         data-en="Real words from real owners: restaurants, salons, lawyers, trainers, and shops.">
+        מילים אמיתיות מבעלי עסקים: מסעדות, מספרות, עורכי דין, מאמנים וחנויות.
+      </p>
+    </div>
+
+    <div class="test-grid">
+      <article class="test reveal reveal-d-1">
+        <p class="quote"
+           data-he="כבר מהשיחה הראשונה הרגשתי שהם באמת מבינים את העסק שלי. האתר עלה לאוויר תוך שבוע וההזמנות הוכפלו תוך חודש. בכנות, הכסף הכי טוב שהוצאתי."
+           data-en="From the first call I felt like they actually got my business. The site was live in a week and bookings doubled within a month. Honestly the best money I've spent.">
+          כבר מהשיחה הראשונה הרגשתי שהם באמת מבינים את העסק שלי. האתר עלה לאוויר תוך שבוע וההזמנות הוכפלו תוך חודש. בכנות, הכסף הכי טוב שהוצאתי.
+        </p>
+        <div class="test-person">
+          <div class="avatar" data-he="א״ל" data-en="EL">א״ל</div>
+          <div>
+            <div class="name" data-he="אליהו לוי" data-en="Eliyahu Levi">אליהו לוי</div>
+            <div class="role" data-he="בעלים, חומוס אליהו" data-en="Owner, Hummus Eliyahu">בעלים, חומוס אליהו</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="test reveal reveal-d-2">
+        <p class="quote"
+           data-he="קיבלתי הצעות מסוכנויות אחרות לכמעט 15,000 ₪ על משהו שכאן עשו לי תוך 6 ימים בעשירית מהמחיר. וזה גם נראה הרבה יותר טוב מכל מה שהראו לי."
+           data-en="I've been quoted nearly ₪15,000 by other agencies for what kifsy delivered in 6 days for a tenth of the price. And it looks way better than anything they showed me.">
+          קיבלתי הצעות מסוכנויות אחרות לכמעט 15,000 ₪ על משהו שכאן עשו לי תוך 6 ימים בעשירית מהמחיר. וזה גם נראה הרבה יותר טוב מכל מה שהראו לי.
+        </p>
+        <div class="test-person">
+          <div class="avatar a2" data-he="מ״ש" data-en="MS">מ״ש</div>
+          <div>
+            <div class="name" data-he="מאיה שפיר" data-en="Maya Shafir">מאיה שפיר</div>
+            <div class="role" data-he="מייסדת, סלון מאיה" data-en="Founder, Salon Maya">מייסדת, סלון מאיה</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="test reveal reveal-d-3">
+        <p class="quote"
+           data-he="האינטגרציה עם הווטסאפ לבדה שינתה את הדרך שבה לקוחות פונים אלי. האתר נראה כמו משהו שיוצא מסטארטאפ בתל אביב, רק שזה משרד עורכי דין."
+           data-en="The WhatsApp integration alone changed how clients reach me. The site looks like something a Tel Aviv tech startup would have, but for my law firm.">
+          האינטגרציה עם הווטסאפ לבדה שינתה את הדרך שבה לקוחות פונים אלי. האתר נראה כמו משהו שיוצא מסטארטאפ בתל אביב, רק שזה משרד עורכי דין.
+        </p>
+        <div class="test-person">
+          <div class="avatar a3" data-he="ד״כ" data-en="DC">ד״כ</div>
+          <div>
+            <div class="name" data-he="דניאל כהן" data-en="Daniel Cohen">דניאל כהן</div>
+            <div class="role" data-he="שותף, כהן ושות׳" data-en="Partner, Cohen & Partners">שותף, כהן ושות׳</div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ────────────── Final CTA ────────────── -->
+<section class="section" id="contact" style="padding-top: 40px;">
+  <div class="container">
+    <div class="final-cta reveal">
+      <svg class="final-leaves" viewBox="-80 -160 160 160" style="color: var(--bg)"><use href="#leaves"/></svg>
+      <div class="final-cta-inner">
+        <h2 data-he-html='מוכנים להיראות מודרניים<span class="accent-dot">.</span>'
+            data-en-html='Ready to look modern<span class="accent-dot">.</span>'>
+          מוכנים להיראות מודרניים<span class="accent-dot">.</span>
+        </h2>
+        <p data-he="ספרו לנו על העסק שלכם. נשלח אליכם תצוגת עיצוב מקדימה תוך 48 שעות, בלי התחייבות, בלי לחץ."
+           data-en="Tell us about your business. We'll send back a free design preview within 48 hours. No commitment, no pressure.">
+          ספרו לנו על העסק שלכם. נשלח אליכם תצוגת עיצוב מקדימה תוך 48 שעות, בלי התחייבות, בלי לחץ.
+        </p>
+        <div class="final-cta-row">
+          <a href="mailto:hello@kifsy.co" class="btn btn-primary">
+            <span data-he="התחילו את הפרויקט" data-en="Start your project">התחילו את הפרויקט</span>
+            <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+          <a href="https://wa.me/972500000000" class="btn btn-ghost" data-he="דברו איתנו בווטסאפ" data-en="Chat on WhatsApp">דברו איתנו בווטסאפ</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ────────────── Footer ────────────── -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="#" class="logo">
+          <svg viewBox="-80 -160 160 160" style="color: var(--ink)"><use href="#leaves"/></svg>
+          <span class="brand-mark">kifsy<span class="logo-dot">.</span></span>
+        </a>
+        <p data-he="אתרים מודרניים לעסקים מודרניים. נבנים מהר, מתומחרים בהוגנות ומלווים לאורך זמן. מישראל, לישראל."
+           data-en="Modern websites for modern businesses. Built fast, priced fairly, supported endlessly. From Israel, for Israel.">
+          אתרים מודרניים לעסקים מודרניים. נבנים מהר, מתומחרים בהוגנות ומלווים לאורך זמן. מישראל, לישראל.
+        </p>
+      </div>
+      <div class="foot-col">
+        <h4 data-he="שירותים" data-en="Services">שירותים</h4>
+        <ul>
+          <li><a href="#services" data-he="אתרים עסקיים" data-en="Business websites">אתרים עסקיים</a></li>
+          <li><a href="#services" data-he="דפי נחיתה" data-en="Landing pages">דפי נחיתה</a></li>
+          <li><a href="#services" data-he="ניהול אתרים" data-en="Management">ניהול אתרים</a></li>
+          <li><a href="#services" data-he="אינטגרציית ווטסאפ" data-en="WhatsApp integration">אינטגרציית ווטסאפ</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4 data-he="החברה" data-en="Company">החברה</h4>
+        <ul>
+          <li><a href="#why" data-he="למה kifsy" data-en="Why kifsy">למה kifsy</a></li>
+          <li><a href="#work" data-he="העבודות שלנו" data-en="Our work">העבודות שלנו</a></li>
+          <li><a href="#testimonials" data-he="המלצות" data-en="Testimonials">המלצות</a></li>
+          <li><a href="#contact" data-he="צרו קשר" data-en="Contact">צרו קשר</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4 data-he="צרו קשר" data-en="Get in touch">צרו קשר</h4>
+        <ul>
+          <li><a href="mailto:hello@kifsy.co">hello@kifsy.co</a></li>
+          <li><a href="https://wa.me/972500000000" data-he="ווטסאפ" data-en="WhatsApp">ווטסאפ</a></li>
+          <li><a href="#" data-he="תל אביב, ישראל" data-en="Tel Aviv, Israel">תל אביב, ישראל</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <span data-he="© 2026 kifsy. כל הזכויות שמורות." data-en="© 2026 kifsy. All rights reserved.">© 2026 kifsy. כל הזכויות שמורות.</span>
+      <div class="socials">
+        <a href="#" aria-label="Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM17.5 6.5h.01"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 6a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg></a>
+        <a href="#" aria-label="WhatsApp"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-1 4 8.5 8.5 0 0 1-7.6 4.5 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-1A8.5 8.5 0 0 1 21 11.5z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* ─── Language switching ─── */
+  const html = document.documentElement;
+  const STORAGE_KEY = 'kifsy-lang';
+
+  function setLang(lang){
+    if (lang !== 'he' && lang !== 'en') lang = 'he';
+    html.setAttribute('lang', lang);
+    html.setAttribute('dir', lang === 'he' ? 'rtl' : 'ltr');
+
+    document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+      const val = el.getAttribute('data-' + lang);
+      if (val !== null) el.textContent = val;
+    });
+    document.querySelectorAll('[data-' + lang + '-html]').forEach(el => {
+      const val = el.getAttribute('data-' + lang + '-html');
+      if (val !== null) el.innerHTML = val;
+    });
+
+    document.querySelectorAll('.lang-toggle button').forEach(b => {
+      b.classList.toggle('active', b.dataset.lang === lang);
+    });
+
+    try { localStorage.setItem(STORAGE_KEY, lang); } catch(e){}
+  }
+
+  document.querySelectorAll('.lang-toggle button').forEach(btn => {
+    btn.addEventListener('click', () => setLang(btn.dataset.lang));
+  });
+
+  /* Apply persisted language on load (default: Hebrew) */
+  let initial = 'he';
+  try { initial = localStorage.getItem(STORAGE_KEY) || 'he'; } catch(e){}
+  setLang(initial);
+
+  /* ─── Reveal on scroll ─── */
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  /* ─── Navbar shrink on scroll ─── */
+  const navWrap = document.getElementById('navWrap');
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        navWrap.classList.toggle('scrolled', window.scrollY > 20);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+
+  /* ─── Service card spotlight ─── */
+  document.querySelectorAll('.service').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const r = card.getBoundingClientRect();
+      card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      card.style.setProperty('--my', (e.clientY - r.top)  + 'px');
+    });
+  });
+</script>
+</body>
+</html>
