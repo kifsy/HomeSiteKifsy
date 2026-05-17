@@ -606,13 +606,15 @@
     display: flex; flex-direction: column;
   }
   .iframe-wrap{ flex: 1; overflow: hidden; position: relative; min-height: 0; }
-  .iframe-wrap iframe{
+  .iframe-wrap iframe,
+  .iframe-wrap img.site-preview{
     position: absolute; top: 0; left: 0;
-    width: 1280px; height: 900px;
+    width: 1280px; height: auto;
     border: 0;
     transform: scale(0.275); transform-origin: top left;
     pointer-events: none; display: block;
   }
+  .iframe-wrap iframe{ height: 900px; }
   .browser-bar{
     height: 22px;
     background: #F5F7F2;
@@ -1678,7 +1680,7 @@
           <div class="browser">
             <div class="browser-bar"><i></i><i></i><i></i></div>
             <div class="iframe-wrap">
-              <iframe src="https://www.bebkey.com" loading="lazy" scrolling="no" tabindex="-1" aria-hidden="true" title="BebKey preview"></iframe>
+              <img src="portfolio/previews/bebkey-screenshot.png" class="site-preview" loading="lazy" alt="BebKey preview">
             </div>
           </div>
         </div>
@@ -1698,7 +1700,7 @@
           <div class="browser">
             <div class="browser-bar"><i></i><i></i><i></i></div>
             <div class="iframe-wrap">
-              <iframe src="https://www.ramtours.com" loading="lazy" scrolling="no" tabindex="-1" aria-hidden="true" title="רם תיירות preview"></iframe>
+              <img src="portfolio/previews/ramtours-screenshot.png" class="site-preview" alt="רם תיירות website preview" loading="lazy">
             </div>
           </div>
         </div>
