@@ -5,6 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>kifsy · אתרים מודרניים לעסקים מודרניים</title>
 <meta name="description" content="kifsy בונים אתרים מהירים, מודרניים ובמחיר נגיש לעסקים קטנים בישראל. תמחור פשוט, ליווי שוטף, ובינה מלאכותית מאחורי הקלעים." />
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://kifsy.co/" />
+<meta property="og:title" content="kifsy · אתרים מודרניים לעסקים מודרניים" />
+<meta property="og:description" content="kifsy בונים אתרים מהירים, מודרניים ובמחיר נגיש לעסקים קטנים בישראל. תמחור פשוט, ליווי שוטף, ובינה מלאכותית מאחורי הקלעים." />
+<meta property="og:image" content="https://kifsy.co/kifsy-og.png" />
+<meta property="og:locale" content="he_IL" />
+<meta property="og:site_name" content="kifsy" />
+<!-- Twitter / X card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="kifsy · אתרים מודרניים לעסקים מודרניים" />
+<meta name="twitter:description" content="kifsy בונים אתרים מהירים, מודרניים ובמחיר נגיש לעסקים קטנים בישראל." />
+<meta name="twitter:image" content="https://kifsy.co/kifsy-og.png" />
+<!-- Canonical -->
+<link rel="canonical" href="https://kifsy.co/" />
+<!-- Structured data -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ProfessionalService","name":"kifsy","description":"בניית אתרים לעסקים קטנים בישראל","url":"https://kifsy.co","email":"info@kifsy.com","address":{"@type":"PostalAddress","addressCountry":"IL"},"serviceArea":{"@type":"Country","name":"Israel"},"priceRange":"₪₪"}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700&display=swap" rel="stylesheet">
@@ -490,6 +509,69 @@
   .why p{ font-size: 14.5px; line-height: 1.55; }
   @media (max-width: 1000px){ .why-grid{ grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 540px){ .why-grid{ grid-template-columns: 1fr; } }
+
+  /* ───────────────────────── Process (How it works) ───────────────────────── */
+  .steps-grid{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 0;
+    margin-top: 48px;
+    position: relative;
+  }
+  .steps-grid::before{
+    content: '';
+    position: absolute;
+    top: 28px;
+    inset-inline-start: 12.5%;
+    inset-inline-end: 12.5%;
+    height: 1px;
+    background: var(--line);
+    z-index: 0;
+  }
+  .step{
+    display: flex; flex-direction: column; align-items: center;
+    text-align: center; padding: 0 20px; position: relative; z-index: 1;
+  }
+  .step-num{
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--surface); border: 1.5px solid var(--line);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-en); font-size: 16px; font-weight: 700;
+    color: var(--ink-3); margin-bottom: 22px;
+    transition: background .3s, border-color .3s, color .3s;
+  }
+  .step:first-child .step-num{ background: var(--ink); border-color: var(--ink); color: var(--bg); }
+  .step h3{ font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+  .step p{ font-size: 14px; color: var(--ink-3); line-height: 1.6; }
+  @media(max-width:760px){ .steps-grid{ grid-template-columns:1fr 1fr; gap:36px; } .steps-grid::before{ display:none; } }
+  @media(max-width:480px){ .steps-grid{ grid-template-columns:1fr; } }
+
+  /* ───────────────────────── FAQ ───────────────────────── */
+  .faq-list{
+    margin-top: 48px; max-width: 740px; margin-inline: auto;
+    display: flex; flex-direction: column;
+  }
+  .faq-item{ border-bottom: 1px solid var(--line); }
+  .faq-item summary{
+    list-style: none; padding: 22px 0;
+    font-size: 16px; font-weight: 600; color: var(--ink);
+    cursor: pointer; display: flex; justify-content: space-between;
+    align-items: center; gap: 16px; user-select: none;
+    transition: color .2s;
+  }
+  .faq-item summary::-webkit-details-marker{ display: none; }
+  .faq-item summary::after{
+    content: '+'; font-size: 24px; font-weight: 300;
+    color: var(--ink-3); flex-shrink: 0;
+    transition: transform .25s var(--ease), color .2s;
+    line-height: 1;
+  }
+  .faq-item[open] summary{ color: var(--accent); }
+  .faq-item[open] summary::after{ transform: rotate(45deg); color: var(--accent); }
+  .faq-answer{
+    padding-bottom: 22px; font-size: 15px;
+    color: var(--ink-2); line-height: 1.75;
+  }
 
   /* ───────────────────────── Portfolio ───────────────────────── */
   .port-grid{
@@ -1075,6 +1157,14 @@
   html.a11y-no-motion .eyebrow .pulse{ animation: none !important; }
   html.a11y-no-motion .reveal{ opacity: 1 !important; transform: none !important; }
 </style>
+<!-- Google Analytics 4 — replace GA_MEASUREMENT_ID with your real Measurement ID from analytics.google.com -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'GA_MEASUREMENT_ID');
+</script>
 </head>
 <body>
 
@@ -1122,11 +1212,12 @@
     </div>
   </nav>
   <div class="mobile-menu" id="mobileMenu" role="navigation">
-    <a href="#services"     data-he="שירותים"   data-en="Services">שירותים</a>
-    <a href="#pricing"      data-he="מחירים"     data-en="Pricing">מחירים</a>
-    <a href="#work"         data-he="עבודות"    data-en="Work">עבודות</a>
-    <a href="#why"          data-he="למה kifsy" data-en="Why kifsy">למה kifsy</a>
-    <a href="#testimonials" data-he="המלצות"    data-en="Reviews">המלצות</a>
+    <a href="#services"     data-he="שירותים"      data-en="Services">שירותים</a>
+    <a href="#process"      data-he="איך זה עובד"  data-en="How it works">איך זה עובד</a>
+    <a href="#pricing"      data-he="מחירים"        data-en="Pricing">מחירים</a>
+    <a href="#work"         data-he="עבודות"       data-en="Work">עבודות</a>
+    <a href="#why"          data-he="למה kifsy"    data-en="Why kifsy">למה kifsy</a>
+    <a href="#faq"          data-he="שאלות נפוצות" data-en="FAQ">שאלות נפוצות</a>
     <a href="contact.html" class="mobile-cta" data-he="צרו קשר" data-en="Contact">צרו קשר</a>
   </div>
 </div>
@@ -1316,6 +1407,48 @@
           <svg class="arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
       </article>
+    </div>
+  </div>
+</section>
+
+<!-- ────────────── How it works ────────────── -->
+<section class="section section-soft" id="process">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker" data-he="איך זה עובד" data-en="How it works">איך זה עובד</span>
+      <h2 data-he="מהשיחה הראשונה ועד ההשקה." data-en="From first call to launch.">
+        מהשיחה הראשונה ועד ההשקה.
+      </h2>
+      <p data-he="תהליך פשוט ושקוף. בלי הפתעות, בלי המתנות."
+         data-en="A simple, transparent process. No surprises, no waiting around.">
+        תהליך פשוט ושקוף. בלי הפתעות, בלי המתנות.
+      </p>
+    </div>
+    <div class="steps-grid">
+      <div class="step reveal reveal-d-1">
+        <div class="step-num">01</div>
+        <h3 data-he="שיחה ראשונה" data-en="First call">שיחה ראשונה</h3>
+        <p data-he="15 דקות לספר לנו על העסק שלכם. בלי מצגת מכירות, בלי סיבובים."
+           data-en="15 minutes to tell us about your business. No sales pitch, no runaround.">15 דקות לספר לנו על העסק שלכם. בלי מצגת מכירות, בלי סיבובים.</p>
+      </div>
+      <div class="step reveal reveal-d-2">
+        <div class="step-num">02</div>
+        <h3 data-he="הצעה תוך 24 שעות" data-en="Quote in 24 hours">הצעה תוך 24 שעות</h3>
+        <p data-he="הצעת מחיר ברורה: מה כלול, מה לא, ומתי האתר יהיה מוכן."
+           data-en="A clear quote: what's included, what's not, and when your site will be ready.">הצעת מחיר ברורה: מה כלול, מה לא, ומתי האתר יהיה מוכן.</p>
+      </div>
+      <div class="step reveal reveal-d-3">
+        <div class="step-num">03</div>
+        <h3 data-he="עיצוב ובניה" data-en="Design &amp; build">עיצוב ובניה</h3>
+        <p data-he="תוך 7 ימי עבודה האתר מוכן לאישור שלכם. תראו אותו לפני שהוא עולה לאוויר."
+           data-en="Within 7 working days your site is ready for review. You see it before it goes live.">תוך 7 ימי עבודה האתר מוכן לאישור שלכם. תראו אותו לפני שהוא עולה לאוויר.</p>
+      </div>
+      <div class="step reveal reveal-d-4">
+        <div class="step-num">04</div>
+        <h3 data-he="השקה וליווי שוטף" data-en="Launch &amp; ongoing care">השקה וליווי שוטף</h3>
+        <p data-he="עולים לאוויר ביחד. ואנחנו כאן גם אחרי, כל חודש."
+           data-en="We go live together. And we're still here every month after that.">עולים לאוויר ביחד. ואנחנו כאן גם אחרי, כל חודש.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -1702,6 +1835,75 @@
           </div>
         </div>
       </article>
+    </div>
+  </div>
+</section>
+
+<!-- ────────────── FAQ ────────────── -->
+<section class="section section-soft" id="faq">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker" data-he="שאלות נפוצות" data-en="FAQ">שאלות נפוצות</span>
+      <h2 data-he="כל מה שרציתם לדעת." data-en="Everything you wanted to know.">
+        כל מה שרציתם לדעת.
+      </h2>
+    </div>
+    <div class="faq-list reveal">
+
+      <details class="faq-item">
+        <summary data-he="כמה זמן לוקח לבנות אתר?" data-en="How long does it take to build a site?">כמה זמן לוקח לבנות אתר?</summary>
+        <p class="faq-answer"
+           data-he="רוב האתרים עולים לאוויר תוך 5-10 ימי עבודה מרגע אישור ההצעה. אתרים מורכבים יותר, כמו חנות אונליין, עשויים לקחת 2-3 שבועות."
+           data-en="Most sites go live within 5-10 working days from the moment you approve the quote. More complex projects like online stores may take 2-3 weeks.">
+          רוב האתרים עולים לאוויר תוך 5-10 ימי עבודה מרגע אישור ההצעה. אתרים מורכבים יותר, כמו חנות אונליין, עשויים לקחת 2-3 שבועות.
+        </p>
+      </details>
+
+      <details class="faq-item">
+        <summary data-he="מי הבעלים של האתר אחרי ההשקה?" data-en="Who owns the site after launch?">מי הבעלים של האתר אחרי ההשקה?</summary>
+        <p class="faq-answer"
+           data-he="אתם. 100%. הקוד, התמונות, הדומיין, הכל שלכם לגמרי. אנחנו לא נועלים אתכם בשום פלטפורמה קנויה."
+           data-en="You do. 100%. The code, images, domain — everything is fully yours. We don't lock you into any proprietary platform.">
+          אתם. 100%. הקוד, התמונות, הדומיין, הכל שלכם לגמרי. אנחנו לא נועלים אתכם בשום פלטפורמה קנויה.
+        </p>
+      </details>
+
+      <details class="faq-item">
+        <summary data-he="מה אם אני רוצה שינויים אחרי ההשקה?" data-en="What if I want changes after launch?">מה אם אני רוצה שינויים אחרי ההשקה?</summary>
+        <p class="faq-answer"
+           data-he="שינויים שוטפים כלולים בחבילה החודשית. עדכון תמונה, טקסט, מחירים, שעות פתיחה, כל זה נכלל. לשינויים גדולים כמו עיצוב מחדש נדון בנפרד."
+           data-en="Ongoing edits are included in the monthly plan. Updating an image, text, prices, or opening hours — all covered. Major changes like a full redesign are discussed separately.">
+          שינויים שוטפים כלולים בחבילה החודשית. עדכון תמונה, טקסט, מחירים, שעות פתיחה, כל זה נכלל. לשינויים גדולים כמו עיצוב מחדש נדון בנפרד.
+        </p>
+      </details>
+
+      <details class="faq-item">
+        <summary data-he="האם צריך לי ידע טכני כלשהו?" data-en="Do I need any technical knowledge?">האם צריך לי ידע טכני כלשהו?</summary>
+        <p class="faq-answer"
+           data-he="בכלל לא. אנחנו מטפלים באחסון, SSL, עדכוני אבטחה, גיבויים ואנליטיקס. אתם מתמקדים בלנהל את העסק שלכם."
+           data-en="Not at all. We handle hosting, SSL, security updates, backups, and analytics. You focus on running your business.">
+          בכלל לא. אנחנו מטפלים באחסון, SSL, עדכוני אבטחה, גיבויים ואנליטיקס. אתם מתמקדים בלנהל את העסק שלכם.
+        </p>
+      </details>
+
+      <details class="faq-item">
+        <summary data-he="מה ההבדל בין שתי החבילות?" data-en="What's the difference between the two plans?">מה ההבדל בין שתי החבילות?</summary>
+        <p class="faq-answer"
+           data-he="Starter מושלמת לעסקים שרוצים נוכחות אונליין מקצועית ואמינה. Ads &amp; Growth בנויה לעסקים שרוצים לצמוח אקטיבית דרך SEO, גוגל מפות ופרסום ממומן."
+           data-en="Starter is perfect for businesses that want a professional online presence. Ads &amp; Growth is built for businesses that want to actively grow through SEO, Google Maps, and paid ads.">
+          Starter מושלמת לעסקים שרוצים נוכחות אונליין מקצועית ואמינה. Ads &amp; Growth בנויה לעסקים שרוצים לצמוח אקטיבית דרך SEO, גוגל מפות ופרסום ממומן.
+        </p>
+      </details>
+
+      <details class="faq-item">
+        <summary data-he="עובדים רק עם עסקים ישראלים?" data-en="Do you only work with Israeli businesses?">עובדים רק עם עסקים ישראלים?</summary>
+        <p class="faq-answer"
+           data-he="אנחנו מתמחים בשוק הישראלי. כל האתרים בנויים עם תמיכה מלאה בעברית ו-RTL, ואינטגרציות ישראליות כמו ווטסאפ וגוגל מפות. אם קהל היעד שלכם ישראלי, אנחנו הכתובת הנכונה."
+           data-en="We specialize in the Israeli market. Every site is built with full Hebrew and RTL support, and Israeli integrations like WhatsApp and Google Maps. If your audience is Israeli, we're the right fit.">
+          אנחנו מתמחים בשוק הישראלי. כל האתרים בנויים עם תמיכה מלאה בעברית ו-RTL, ואינטגרציות ישראליות כמו ווטסאפ וגוגל מפות. אם קהל היעד שלכם ישראלי, אנחנו הכתובת הנכונה.
+        </p>
+      </details>
+
     </div>
   </div>
 </section>
