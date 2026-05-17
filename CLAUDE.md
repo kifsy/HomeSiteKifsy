@@ -127,6 +127,7 @@ When adding new components: include keyboard support, `aria-label` for icon butt
 
 _Newest first. One line per push: `YYYY-MM-DD · summary`._
 
+- **2026-05-17** · Set up info@kifsy.com email forwarding via ImprovMX (MX records added to Namecheap). Updated all hello@kifsy.co references in index.html to info@kifsy.com.
 - **2026-05-17** · Updated logo SVG symbol paths in index.html to match the actual kifsy-mark.png (three pointed leaves fanning from a shared base, center leaf tallest). Added kifsy-mark.png as favicon to index.html and all 6 service pages.
 - **2026-05-17** · Split pricing into two plans: Starter (no SEO/Google Business) and Ads & Growth (from 350 NIS/month, includes SEO, Google Business, and Google Ads management).
 - **2026-05-17** · Added 6 service detail pages under services/ (business-websites, landing-pages, website-management, mobile-optimization, whatsapp, ai-workflows). Wired all Learn more links in index.html to the new pages.
