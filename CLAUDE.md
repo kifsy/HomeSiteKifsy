@@ -127,6 +127,8 @@ When adding new components: include keyboard support, `aria-label` for icon butt
 
 _Newest first. One line per push: `YYYY-MM-DD · summary`._
 
+- **2026-05-17** · Wire real GA4 Measurement ID (G-SXNX3SDS48) replacing placeholder; fix testimonial role from "חומוס אליהו" to "חומוס יוסי".
+
 - **2026-05-17** · Add 6 portfolio mockup pages (hummus-eliyahu, salon-maya, cohen-partners, fit-with-roni, levi-realty, hadar-boutique) under portfolio/; wire index.html cards to open them in a new tab.
 - **2026-05-17** · Add contact.html with Formspree form, two team contacts (Doron/Ron), business hours; wire all index.html contact links to the new page.
 - **2026-05-17** · Update hero subtitle copy: new bilingual text emphasizing AI, modern design, and fast launch.
