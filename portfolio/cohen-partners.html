@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>כהן ושות׳ · עורכי דין</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../kifsy-mark.png">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#1A2848;--navy-2:#243360;--gold:#B8954A;--gold-l:#D4B06A;--off:#F7F6F3;
+  --text:#1A2848;--muted:#6A6A7A;--line:rgba(26,40,72,.1);--r:12px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Heebo',sans-serif;background:var(--off);color:var(--text);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:var(--navy);border-bottom:1px solid rgba(255,255,255,.08)}
+.nav-inner{max-width:1140px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{display:flex;flex-direction:column;gap:1px}
+.logo-name{font-size:17px;font-weight:700;color:#fff;letter-spacing:0.02em}
+.logo-sub{font-size:10px;color:var(--gold);letter-spacing:.15em;text-transform:uppercase}
+.nav-links{display:flex;gap:28px}
+.nav-links a{font-size:13.5px;font-weight:500;color:rgba(255,255,255,.65);transition:color .2s;letter-spacing:.01em}
+.nav-links a:hover{color:#fff}
+.btn-consult{background:var(--gold);color:#fff;padding:9px 20px;border-radius:6px;font-size:13.5px;font-weight:600;transition:background .2s}
+.btn-consult:hover{background:var(--gold-l)}
+.back-link{font-size:12px;color:rgba(255,255,255,.4);transition:color .2s}
+.back-link:hover{color:rgba(255,255,255,.8)}
+@media(max-width:720px){.nav-links{display:none}}
+
+/* HERO */
+.hero{background:var(--navy);padding:100px 24px 90px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h100v100H0z' fill='none'/%3E%3Cpath d='M0 50h100M50 0v100' stroke='rgba(184,149,74,0.04)' stroke-width='1'/%3E%3C/svg%3E") repeat}
+.hero-inner{max-width:780px;margin:0 auto;text-align:center;position:relative}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(184,149,74,.3);border-radius:4px;padding:6px 16px;font-size:12px;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;margin-bottom:32px}
+.hero h1{font-size:clamp(2.2rem,5vw,3.8rem);font-weight:800;color:#fff;letter-spacing:-0.03em;line-height:1.1;margin-bottom:24px}
+.hero h1 em{color:var(--gold);font-style:normal}
+.hero p{font-size:1.05rem;color:rgba(255,255,255,.6);line-height:1.75;margin-bottom:40px;max-width:580px;margin-left:auto;margin-right:auto}
+.hero-ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-main{background:var(--gold);color:#fff;padding:14px 28px;border-radius:6px;font-size:14px;font-weight:600}
+.btn-ghost{border:1px solid rgba(255,255,255,.2);color:#fff;padding:14px 28px;border-radius:6px;font-size:14px}
+.hero-stats{display:flex;justify-content:center;gap:48px;margin-top:56px;padding-top:40px;border-top:1px solid rgba(255,255,255,.1)}
+.stat .n{font-size:2rem;font-weight:800;color:var(--gold-l)}
+.stat .l{font-size:13px;color:rgba(255,255,255,.5);margin-top:4px}
+
+/* PRACTICE AREAS */
+.practice{padding:80px 24px;max-width:1140px;margin:0 auto}
+.section-label{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.section-title{font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:800;color:var(--navy);letter-spacing:-0.03em;line-height:1.2;margin-bottom:36px}
+.areas-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px}
+.area-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:30px 26px;position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.area-card:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(26,40,72,.1)}
+.area-card::before{content:'';position:absolute;top:0;right:0;width:3px;height:100%;background:var(--gold)}
+.area-num{font-size:11px;font-weight:700;color:var(--gold);letter-spacing:.1em;margin-bottom:14px}
+.area-name{font-size:17px;font-weight:700;color:var(--navy);margin-bottom:10px}
+.area-desc{font-size:13.5px;color:var(--muted);line-height:1.65}
+
+/* TEAM */
+.team-section{background:var(--navy);padding:80px 24px}
+.team-inner{max-width:1140px;margin:0 auto}
+.team-section .section-label{color:var(--gold)}
+.team-section .section-title{color:#fff;margin-bottom:36px}
+.team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+.member-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:var(--r);padding:28px}
+.member-photo{width:72px;height:72px;border-radius:50%;margin-bottom:16px}
+.member-photo.p1{background:linear-gradient(135deg,#243360,#6a7ab0)}
+.member-photo.p2{background:linear-gradient(135deg,#304070,#8090c0)}
+.member-photo.p3{background:linear-gradient(135deg,#1a2848,#506090)}
+.member-name{font-size:17px;font-weight:700;color:#fff;margin-bottom:4px}
+.member-role{font-size:13px;color:var(--gold);margin-bottom:10px}
+.member-bio{font-size:13.5px;color:rgba(255,255,255,.55);line-height:1.65}
+.member-edu{font-size:12px;color:rgba(255,255,255,.35);margin-top:12px}
+
+/* CONTACT STRIP */
+.contact-strip{background:var(--gold);padding:56px 24px;text-align:center}
+.contact-strip h2{font-size:1.8rem;font-weight:800;color:#fff;margin-bottom:10px;letter-spacing:-0.02em}
+.contact-strip p{font-size:1rem;color:rgba(255,255,255,.8);margin-bottom:28px}
+.btn-dark{background:var(--navy);color:#fff;padding:13px 28px;border-radius:6px;font-size:14px;font-weight:600;display:inline-block}
+
+/* FOOTER */
+footer{background:var(--navy-2);color:rgba(255,255,255,.4);text-align:center;padding:28px 24px;font-size:13px;border-top:1px solid rgba(255,255,255,.06)}
+footer strong{color:rgba(255,255,255,.7)}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="back-link">← חזרה ל-kifsy</a>
+    <div class="logo">
+      <div class="logo-name">כהן ושות׳</div>
+      <div class="logo-sub">עורכי דין ונוטריון</div>
+    </div>
+    <div class="nav-links">
+      <a href="#">תחומי עיסוק</a>
+      <a href="#">הצוות</a>
+      <a href="#">הצלחות</a>
+      <a href="#">יצירת קשר</a>
+    </div>
+    <a href="#" class="btn-consult">ייעוץ ראשוני</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">⚖ מאז 1998 · הרצליה פיתוח</div>
+    <h1>ליווי משפטי <em>מקצועי ואמין.</em></h1>
+    <p>משרד כהן ושות׳ מספק ייעוץ ושירות משפטי ברמה הגבוהה ביותר לחברות ויחידים. אנחנו כאן כדי להגן על האינטרסים שלכם.</p>
+    <div class="hero-ctas">
+      <a href="#" class="btn-main">לייעוץ ראשוני</a>
+      <a href="#" class="btn-ghost">תחומי עיסוק</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="n">25+</div><div class="l">שנות ניסיון</div></div>
+      <div class="stat"><div class="n">1,200+</div><div class="l">תיקים שטופלו</div></div>
+      <div class="stat"><div class="n">8</div><div class="l">עורכי דין</div></div>
+      <div class="stat"><div class="n">98%</div><div class="l">שביעות רצון</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="practice">
+  <div class="section-label">תחומי עיסוק</div>
+  <div class="section-title">הגנה מקיפה על כל צרכיכם המשפטיים</div>
+  <div class="areas-grid">
+    <div class="area-card">
+      <div class="area-num">01</div>
+      <div class="area-name">דיני חברות ומסחר</div>
+      <div class="area-desc">ייסוד חברות, הסכמי שותפות, מיזוגים ורכישות, ממשל תאגידי ותקנות ניירות ערך.</div>
+    </div>
+    <div class="area-card">
+      <div class="area-num">02</div>
+      <div class="area-name">נדל"ן ותכנון</div>
+      <div class="area-desc">עסקאות מקרקעין, ליווי פרויקטים, תמ"א 38, פינוי-בינוי, וסכסוכי שכנים.</div>
+    </div>
+    <div class="area-card">
+      <div class="area-num">03</div>
+      <div class="area-name">ליטיגציה ובוררות</div>
+      <div class="area-desc">ייצוג בבתי משפט, בוררות ומגשרות. ניסיון עשיר בניהול תיקים מורכבים.</div>
+    </div>
+    <div class="area-card">
+      <div class="area-num">04</div>
+      <div class="area-name">דיני עבודה</div>
+      <div class="area-desc">ייעוץ למעסיקים ועובדים, הסכמי עבודה, פיטורין, הסכמים קיבוציים ותביעות.</div>
+    </div>
+  </div>
+</section>
+
+<section class="team-section">
+  <div class="team-inner">
+    <div class="section-label">הצוות שלנו</div>
+    <div class="section-title">המומחים שיעמדו לצדכם</div>
+    <div class="team-grid">
+      <div class="member-card">
+        <div class="member-photo p1"></div>
+        <div class="member-name">עו"ד דניאל כהן</div>
+        <div class="member-role">מייסד ושותף בכיר</div>
+        <div class="member-bio">מתמחה בדיני חברות ומסחר בינלאומי. ייצג חברות פורצ'ון 500 וחברות ישראליות בורסאיות.</div>
+        <div class="member-edu">LL.B · האוניברסיטה העברית · 1997</div>
+      </div>
+      <div class="member-card">
+        <div class="member-photo p2"></div>
+        <div class="member-name">עו"ד מירב לוי</div>
+        <div class="member-role">שותפה · נדל"ן ותכנון</div>
+        <div class="member-bio">מומחית בדיני מקרקעין ותכנון ובנייה עם ניסיון של 15 שנה בליווי פרויקטי נדל"ן מורכבים.</div>
+        <div class="member-edu">LL.B · אוניברסיטת תל אביב · 2005</div>
+      </div>
+      <div class="member-card">
+        <div class="member-photo p3"></div>
+        <div class="member-name">עו"ד יוסי אברהם</div>
+        <div class="member-role">שותף · ליטיגציה</div>
+        <div class="member-bio">מנהל את מחלקת הליטיגציה. ידוע בגישתו האסטרטגית וביכולתו לנהל תיקים מורכבים עם הצלחה.</div>
+        <div class="member-edu">LL.B · המכללה למשפטים · 2002</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-strip">
+  <h2>מוכנים לדבר?</h2>
+  <p>ייעוץ ראשוני ללא עלות. אנחנו כאן לשמוע ולעזור.</p>
+  <a href="#" class="btn-dark">השאירו פרטים עכשיו</a>
+</section>
+
+<footer>
+  <strong>כהן ושות׳ עורכי דין</strong> · הרצליה פיתוח · 09-555-1234 · cohen-law.co.il · כל הזכויות שמורות 2024
+</footer>
+
+</body>
+</html>

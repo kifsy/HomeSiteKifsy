@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>בוטיק הדר · חיפה</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../kifsy-mark.png">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#111;--black-2:#1A1A1A;--black-3:#222;--gold:#C4963A;--gold-l:#D4A850;
+  --cream:#FAF8F4;--beige:#EDE8E0;--text:#111;--muted:#888;--line:rgba(17,17,17,.08);--r:12px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Heebo',sans-serif;background:var(--cream);color:var(--text);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(250,248,244,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-size:22px;font-weight:300;letter-spacing:.2em;text-transform:uppercase;color:var(--black)}
+.logo strong{font-weight:800;color:var(--gold)}
+.nav-links{display:flex;gap:32px}
+.nav-links a{font-size:13px;font-weight:500;color:var(--muted);transition:color .2s;letter-spacing:.06em;text-transform:uppercase}
+.nav-links a:hover{color:var(--black)}
+.nav-actions{display:flex;gap:16px;align-items:center}
+.nav-icon{width:36px;height:36px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:18px;cursor:pointer}
+.btn-shop{background:var(--black);color:var(--cream);padding:9px 20px;border-radius:3px;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+.back-link{font-size:11px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;transition:color .2s}
+.back-link:hover{color:var(--gold)}
+@media(max-width:720px){.nav-links{display:none}}
+
+/* HERO BANNER */
+.hero{height:88vh;min-height:500px;background:var(--black);display:grid;grid-template-columns:1.4fr 1fr;position:relative;overflow:hidden}
+.hero-left{background:linear-gradient(145deg,#111 0%,#1a1a1a 50%,#2a2010 100%);display:flex;flex-direction:column;justify-content:center;padding:80px 60px;position:relative;overflow:hidden}
+.hero-left::after{content:'';position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(to top,rgba(196,150,58,.06),transparent)}
+.hero-season{font-size:11px;font-weight:500;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:24px}
+.hero h1{font-size:clamp(2.6rem,5vw,4.2rem);font-weight:900;color:#fff;letter-spacing:-0.04em;line-height:1.02;margin-bottom:22px}
+.hero h1 em{color:var(--gold);font-style:normal;display:block}
+.hero p{font-size:.95rem;color:rgba(255,255,255,.5);line-height:1.75;margin-bottom:36px;max-width:360px;font-weight:300}
+.hero-ctas{display:flex;gap:14px;align-items:center}
+.btn-light{background:var(--cream);color:var(--black);padding:14px 28px;border-radius:3px;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.btn-outline{border:1px solid rgba(255,255,255,.2);color:#fff;padding:14px 28px;border-radius:3px;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+.hero-right{position:relative;overflow:hidden}
+.hero-img{position:absolute;inset:0;background:linear-gradient(160deg,#1a1008 0%,#c4963a 50%,#ede8e0 100%)}
+.hero-img::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(196,150,58,.05) 40px,rgba(196,150,58,.05) 41px)}
+.product-silhouette{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:200px;height:420px;background:linear-gradient(180deg,#ede8e0,#c4b090 60%,#8a7050);border-radius:100px 100px 0 0}
+@media(max-width:720px){.hero{grid-template-columns:1fr;height:auto}.hero-right{height:300px}.hero-left{padding:48px 24px}}
+
+/* COLLECTIONS */
+.collections{padding:72px 24px;max-width:1200px;margin:0 auto}
+.section-label{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.section-title{font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:800;color:var(--black);letter-spacing:-0.03em;margin-bottom:8px}
+.section-sub{font-size:.95rem;color:var(--muted);margin-bottom:36px;font-weight:300}
+.coll-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.coll-card{border-radius:var(--r);overflow:hidden;position:relative;cursor:pointer;aspect-ratio:3/4}
+.coll-card:hover .coll-overlay{opacity:1}
+.coll-card:hover .coll-img{transform:scale(1.04)}
+.coll-img{width:100%;height:100%;transition:transform .4s}
+.coll-img.c1{background:linear-gradient(155deg,#ede8e0,#c4b090 60%,#8a6a40)}
+.coll-img.c2{background:linear-gradient(155deg,#1a1a1a,#3a3028 50%,#c4963a)}
+.coll-img.c3{background:linear-gradient(155deg,#f0ece4,#d4c8b0 50%,#a09070)}
+.coll-overlay{position:absolute;inset:0;background:rgba(17,17,17,.45);opacity:0;transition:opacity .3s;display:flex;align-items:flex-end;padding:24px}
+.coll-name{font-size:18px;font-weight:700;color:#fff;letter-spacing:.02em}
+.coll-count{font-size:13px;color:rgba(255,255,255,.7);margin-top:4px}
+.coll-label{position:absolute;bottom:16px;right:16px;background:rgba(250,248,244,.9);color:var(--black);padding:6px 14px;border-radius:3px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+@media(max-width:720px){.coll-grid{grid-template-columns:1fr 1fr}}
+
+/* NEW ARRIVALS */
+.arrivals{padding:0 24px 72px;max-width:1200px;margin:0 auto}
+.arrivals-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:28px}
+.view-all{font-size:13px;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:2px}
+.prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.prod-card{cursor:pointer}
+.prod-card:hover .prod-img-wrap{box-shadow:0 12px 36px rgba(17,17,17,.12)}
+.prod-img-wrap{border-radius:10px;overflow:hidden;aspect-ratio:3/4;margin-bottom:14px;transition:box-shadow .3s}
+.prod-img{width:100%;height:100%}
+.prod-img.p1{background:linear-gradient(145deg,#ede8e0,#c4b090)}
+.prod-img.p2{background:linear-gradient(145deg,#1a1008,#c4963a)}
+.prod-img.p3{background:linear-gradient(145deg,#f0ece4,#a09878)}
+.prod-img.p4{background:linear-gradient(145deg,#1a1a1a,#606060)}
+.prod-tag{font-size:11px;color:var(--gold);font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}
+.prod-name{font-size:14px;font-weight:600;color:var(--black);margin-bottom:4px}
+.prod-price{font-size:15px;font-weight:700;color:var(--black)}
+.prod-old{text-decoration:line-through;color:var(--muted);font-weight:400;font-size:13px;margin-right:6px}
+@media(max-width:720px){.prod-grid{grid-template-columns:1fr 1fr}}
+
+/* ABOUT STRIP */
+.about-strip{background:var(--beige);padding:72px 24px}
+.about-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about-img{height:440px;border-radius:var(--r);background:linear-gradient(160deg,#1a1008,#c4963a 60%,#ede8e0 110%)}
+.about-text .section-label{color:var(--gold)}
+.about-text .section-title{color:var(--black);margin-bottom:20px}
+.about-text p{font-size:.95rem;color:var(--muted);line-height:1.8;font-weight:300;margin-bottom:16px}
+.brand-values{display:flex;gap:24px;margin-top:24px;flex-wrap:wrap}
+.val{text-align:center}
+.val-icon{font-size:24px;margin-bottom:6px}
+.val-name{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+@media(max-width:720px){.about-inner{grid-template-columns:1fr}}
+
+/* FOOTER */
+footer{background:var(--black);color:rgba(255,255,255,.3);padding:36px 24px;text-align:center;font-size:13px}
+.footer-logo{font-size:18px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:8px}
+.footer-logo span{color:var(--gold)}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="back-link">← kifsy</a>
+    <div class="logo"><strong>הדר</strong> בוטיק</div>
+    <div class="nav-links">
+      <a href="#">קולקציות</a>
+      <a href="#">חדש</a>
+      <a href="#">מבצעים</a>
+      <a href="#">אודות</a>
+    </div>
+    <div class="nav-actions">
+      <div class="nav-icon">♡</div>
+      <div class="nav-icon">🛍</div>
+      <a href="#" class="btn-shop">קנייה</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-season">אביב/קיץ 2024</div>
+    <h1>סטייל שמדבר<br><em>בשבילך.</em></h1>
+    <p>פריטים מבוחרים בטעם ייחודי, מעצבים עצמאיים ומותגים אהובים. כי האופנה שלך היא הסיפור שלך.</p>
+    <div class="hero-ctas">
+      <a href="#" class="btn-light">לקניה עכשיו</a>
+      <a href="#" class="btn-outline">לקולקציה</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img">
+      <div class="product-silhouette"></div>
+    </div>
+  </div>
+</section>
+
+<section class="collections">
+  <div class="section-label">קולקציות</div>
+  <div class="section-title">גלי את הסגנון שלך</div>
+  <div class="section-sub">שלוש קולקציות שמגדירות את העונה</div>
+  <div class="coll-grid">
+    <div class="coll-card">
+      <div class="coll-img c1"></div>
+      <div class="coll-label">מידות קטנות XS-M</div>
+    </div>
+    <div class="coll-card">
+      <div class="coll-img c2"></div>
+      <div class="coll-label">ערב ואירועים</div>
+    </div>
+    <div class="coll-card">
+      <div class="coll-img c3"></div>
+      <div class="coll-label">קז'ואל יומיומי</div>
+    </div>
+  </div>
+</section>
+
+<section class="arrivals">
+  <div class="arrivals-header">
+    <div>
+      <div class="section-label">חדש בחנות</div>
+      <div class="section-title">הגיעו עכשיו</div>
+    </div>
+    <a href="#" class="view-all">לכל המוצרים</a>
+  </div>
+  <div class="prod-grid">
+    <div class="prod-card">
+      <div class="prod-img-wrap"><div class="prod-img p1"></div></div>
+      <div class="prod-tag">חדש</div>
+      <div class="prod-name">שמלת לינן קיצית</div>
+      <div class="prod-price">₪389</div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img-wrap"><div class="prod-img p2"></div></div>
+      <div class="prod-tag">מבצע</div>
+      <div class="prod-name">מעיל גשם כהה</div>
+      <div class="prod-price"><span class="prod-old">₪590</span>₪420</div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img-wrap"><div class="prod-img p3"></div></div>
+      <div class="prod-tag">חדש</div>
+      <div class="prod-name">חולצת ביינד קרם</div>
+      <div class="prod-price">₪220</div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img-wrap"><div class="prod-img p4"></div></div>
+      <div class="prod-tag">בלעדי</div>
+      <div class="prod-name">מכנסי עור שחורים</div>
+      <div class="prod-price">₪480</div>
+    </div>
+  </div>
+</section>
+
+<section class="about-strip">
+  <div class="about-inner">
+    <div class="about-img"></div>
+    <div class="about-text">
+      <div class="section-label">הסיפור שלנו</div>
+      <div class="section-title">בוטיק עם אופי</div>
+      <p>בוטיק הדר נוסד ב-2017 בחיפה מתוך אהבה לאופנה ייחודית ורצון לתת לנשים ישראליות גישה לעיצובים שמדברים.</p>
+      <p>כל פריט שאנחנו בוחרים עובר סינון קפדני. אנחנו לא מוכרים "עוד בגד" - אנחנו מוכרים רגע, תחושה, ביטחון.</p>
+      <div class="brand-values">
+        <div class="val"><div class="val-icon">✦</div><div class="val-name">ייחודיות</div></div>
+        <div class="val"><div class="val-icon">♻</div><div class="val-name">קיימות</div></div>
+        <div class="val"><div class="val-icon">🇮🇱</div><div class="val-name">מקומי</div></div>
+        <div class="val"><div class="val-icon">💛</div><div class="val-name">אהבה</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo"><span>הדר</span> בוטיק</div>
+  שדרות הנשיא 22, חיפה · 04-555-9876 · כל הזכויות שמורות 2024
+</footer>
+
+</body>
+</html>

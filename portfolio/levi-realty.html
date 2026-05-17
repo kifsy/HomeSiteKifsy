@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>לוי נדל"ן · ירושלים</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../kifsy-mark.png">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --stone:#C4A882;--stone-l:#E8D8C0;--navy:#1C2B4A;--navy-2:#243560;--gold:#B89A5A;
+  --cream:#F5F0E8;--off:#FDFAF6;--text:#1C2B4A;--muted:#7A7060;--line:rgba(28,43,74,.1);--r:14px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Heebo',sans-serif;background:var(--off);color:var(--text);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:var(--navy);border-bottom:1px solid rgba(255,255,255,.08)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:66px}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-icon{width:36px;height:36px;border-radius:8px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;color:var(--navy)}
+.logo-text{font-size:17px;font-weight:700;color:#fff;letter-spacing:0.01em}
+.logo-text span{color:var(--stone-l);font-size:12px;display:block;font-weight:400;letter-spacing:.08em;text-transform:uppercase}
+.nav-links{display:flex;gap:28px}
+.nav-links a{font-size:13.5px;font-weight:500;color:rgba(255,255,255,.6);transition:color .2s}
+.nav-links a:hover{color:#fff}
+.btn-contact{background:var(--gold);color:#fff;padding:9px 20px;border-radius:6px;font-size:13.5px;font-weight:600;transition:background .2s}
+.btn-contact:hover{background:#c4a870}
+.back-link{font-size:12px;color:rgba(255,255,255,.4);transition:color .2s}
+.back-link:hover{color:var(--stone-l)}
+@media(max-width:720px){.nav-links{display:none}}
+
+/* HERO */
+.hero{background:var(--navy);padding:80px 24px 0;position:relative;overflow:hidden;min-height:540px}
+.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='100' cy='100' r='98' fill='none' stroke='rgba(196,168,130,0.05)' stroke-width='1'/%3E%3C/svg%3E") repeat;background-size:200px}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 440px;gap:48px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(184,154,90,.15);border:1px solid rgba(184,154,90,.3);border-radius:4px;padding:5px 14px;font-size:12px;color:var(--stone-l);letter-spacing:.08em;text-transform:uppercase;margin-bottom:24px}
+.hero h1{font-size:clamp(2rem,4.5vw,3.4rem);font-weight:800;color:#fff;letter-spacing:-0.03em;line-height:1.1;margin-bottom:18px}
+.hero h1 em{color:var(--gold);font-style:normal}
+.hero p{font-size:1rem;color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:32px;max-width:420px}
+.search-box{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:20px;margin-bottom:0}
+.search-row{display:flex;gap:10px;margin-bottom:12px}
+.fake-select{flex:1;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:10px 14px;font-size:13px;color:rgba(255,255,255,.5);font-family:'Heebo',sans-serif}
+.search-btn{background:var(--gold);color:#fff;padding:10px 20px;border-radius:8px;font-size:14px;font-weight:600;border:none;cursor:pointer;white-space:nowrap;font-family:'Heebo',sans-serif}
+.search-tags{display:flex;gap:8px;flex-wrap:wrap}
+.s-tag{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.5);padding:5px 12px;border-radius:999px;font-size:12px}
+.hero-visual{height:420px;border-radius:16px 16px 0 0;background:linear-gradient(160deg,#2a3a5a 0%,#364a6a 40%,#c4a882 80%,#e8d8c0 100%);position:relative;overflow:hidden;align-self:end}
+.building{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:140px;height:240px;background:linear-gradient(180deg,#f5f0e8,#e8d8c0);border-radius:4px 4px 0 0}
+.building::before{content:'';position:absolute;top:-40px;left:50%;transform:translateX(-50%);border-left:70px solid transparent;border-right:70px solid transparent;border-bottom:40px solid #e8d8c0}
+.building::after{content:'';position:absolute;inset:16px;background:repeating-linear-gradient(transparent,transparent 28px,rgba(28,43,74,.15) 28px,rgba(28,43,74,.15) 29px),repeating-linear-gradient(90deg,transparent,transparent 28px,rgba(28,43,74,.15) 28px,rgba(28,43,74,.15) 29px)}
+@media(max-width:900px){.hero-inner{grid-template-columns:1fr}.hero-visual{display:none}}
+
+/* STATS BAR */
+.stats-bar{background:var(--cream);border-bottom:1px solid var(--line)}
+.stats-inner{max-width:1200px;margin:0 auto;padding:24px;display:flex;justify-content:center;gap:48px;flex-wrap:wrap}
+.stat-item .num{font-size:1.8rem;font-weight:800;color:var(--navy)}
+.stat-item .lbl{font-size:12px;color:var(--muted);margin-top:2px}
+
+/* LISTINGS */
+.listings{padding:72px 24px;max-width:1200px;margin:0 auto}
+.section-label{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.section-title{font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:800;color:var(--navy);letter-spacing:-0.03em;margin-bottom:8px}
+.section-sub{font-size:1rem;color:var(--muted);margin-bottom:36px}
+.listings-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:22px}
+.listing-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:transform .2s,box-shadow .2s}
+.listing-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(28,43,74,.1)}
+.listing-img{height:210px;position:relative}
+.listing-img.l1{background:linear-gradient(135deg,#c4a882,#8a6040)}
+.listing-img.l2{background:linear-gradient(135deg,#8a9ab0,#364a6a)}
+.listing-img.l3{background:linear-gradient(135deg,#a09880,#6a5a40)}
+.listing-tag{position:absolute;top:14px;right:14px;background:var(--navy);color:#fff;font-size:11px;font-weight:700;padding:4px 10px;border-radius:4px}
+.listing-price{position:absolute;bottom:14px;right:14px;background:#fff;color:var(--navy);font-size:15px;font-weight:800;padding:6px 12px;border-radius:8px}
+.listing-body{padding:20px}
+.listing-name{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:4px}
+.listing-loc{font-size:13px;color:var(--muted);margin-bottom:14px;display:flex;align-items:center;gap:4px}
+.listing-details{display:flex;gap:16px}
+.detail{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:4px}
+.detail strong{color:var(--text);font-weight:600}
+
+/* ABOUT */
+.about-section{background:var(--navy);padding:72px 24px}
+.about-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.about-section .section-label{color:var(--gold)}
+.about-section .section-title{color:#fff;margin-bottom:20px}
+.about-section p{color:rgba(255,255,255,.6);line-height:1.75;font-size:1rem;margin-bottom:16px}
+.agents{display:flex;gap:16px;margin-top:28px}
+.agent{display:flex;align-items:center;gap:10px}
+.agent-photo{width:44px;height:44px;border-radius:50%}
+.agent-photo.a1{background:linear-gradient(135deg,#6a7ab0,#2a3a6a)}
+.agent-photo.a2{background:linear-gradient(135deg,#8090c0,#364870)}
+.agent-info .name{font-size:14px;font-weight:600;color:#fff}
+.agent-info .role{font-size:12px;color:rgba(255,255,255,.5)}
+.about-visual{height:380px;border-radius:20px;background:linear-gradient(160deg,#2a3a5a,#c4a882 100%)}
+@media(max-width:720px){.about-inner{grid-template-columns:1fr}}
+
+/* FOOTER */
+footer{background:var(--navy-2);color:rgba(255,255,255,.4);text-align:center;padding:28px 24px;font-size:13px}
+footer strong{color:rgba(255,255,255,.7)}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="back-link">← kifsy</a>
+    <div class="logo">
+      <div class="logo-icon">ל</div>
+      <div class="logo-text">לוי נדל"ן <span>ירושלים</span></div>
+    </div>
+    <div class="nav-links">
+      <a href="#">נכסים למכירה</a>
+      <a href="#">נכסים להשכרה</a>
+      <a href="#">שמאות</a>
+      <a href="#">אודותינו</a>
+    </div>
+    <a href="#" class="btn-contact">ייעוץ ללא עלות</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">🏠 ירושלים · מאז 2003</div>
+      <h1>הנדל"ן הירושלמי<br><em>בידיים הנכונות.</em></h1>
+      <p>מעל 20 שנה אנחנו מלווים משפחות ומשקיעים בחיפוש, רכישה והשכרה של נכסים בירושלים והסביבה.</p>
+      <div class="search-box">
+        <div class="search-row">
+          <div class="fake-select">סוג נכס</div>
+          <div class="fake-select">שכונה</div>
+          <div class="fake-select">תקציב</div>
+          <button class="search-btn">חפש</button>
+        </div>
+        <div class="search-tags">
+          <div class="s-tag">רחביה</div>
+          <div class="s-tag">טלביה</div>
+          <div class="s-tag">בית הכרם</div>
+          <div class="s-tag">קטמון</div>
+          <div class="s-tag">גילה</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="building"></div>
+    </div>
+  </div>
+</section>
+
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item"><div class="num">850+</div><div class="lbl">עסקאות שנסגרו</div></div>
+    <div class="stat-item"><div class="num">20+</div><div class="lbl">שנות ניסיון</div></div>
+    <div class="stat-item"><div class="num">120+</div><div class="lbl">נכסים פעילים</div></div>
+    <div class="stat-item"><div class="num">98%</div><div class="lbl">שביעות רצון</div></div>
+  </div>
+</div>
+
+<section class="listings">
+  <div class="section-label">נכסים מומלצים</div>
+  <div class="section-title">בחירות מובחרות לאחרונה</div>
+  <div class="section-sub">מגוון נכסים בשכונות המבוקשות של ירושלים</div>
+  <div class="listings-grid">
+    <div class="listing-card">
+      <div class="listing-img l1">
+        <div class="listing-tag">למכירה</div>
+        <div class="listing-price">₪3,800,000</div>
+      </div>
+      <div class="listing-body">
+        <div class="listing-name">דירת 4 חדרים · רחביה</div>
+        <div class="listing-loc">📍 רחוב רמב"ם, רחביה</div>
+        <div class="listing-details">
+          <div class="detail"><strong>4</strong> חדרים</div>
+          <div class="detail"><strong>110</strong> מ"ר</div>
+          <div class="detail"><strong>קומה 3</strong></div>
+          <div class="detail"><strong>מרפסת</strong></div>
+        </div>
+      </div>
+    </div>
+    <div class="listing-card">
+      <div class="listing-img l2">
+        <div class="listing-tag">להשכרה</div>
+        <div class="listing-price">₪6,800/חודש</div>
+      </div>
+      <div class="listing-body">
+        <div class="listing-name">דירת 3 חדרים · טלביה</div>
+        <div class="listing-loc">📍 רחוב לויצקי, טלביה</div>
+        <div class="listing-details">
+          <div class="detail"><strong>3</strong> חדרים</div>
+          <div class="detail"><strong>85</strong> מ"ר</div>
+          <div class="detail"><strong>קומה 1</strong></div>
+          <div class="detail"><strong>גינה</strong></div>
+        </div>
+      </div>
+    </div>
+    <div class="listing-card">
+      <div class="listing-img l3">
+        <div class="listing-tag">למכירה</div>
+        <div class="listing-price">₪5,200,000</div>
+      </div>
+      <div class="listing-body">
+        <div class="listing-name">פנטהאוז 5 חדרים · קטמון</div>
+        <div class="listing-loc">📍 רחוב עזה, קטמון</div>
+        <div class="listing-details">
+          <div class="detail"><strong>5</strong> חדרים</div>
+          <div class="detail"><strong>155</strong> מ"ר</div>
+          <div class="detail"><strong>קומה 6</strong></div>
+          <div class="detail"><strong>גג+חניה</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about-section">
+  <div class="about-inner">
+    <div>
+      <div class="section-label">אודות המשרד</div>
+      <div class="section-title">הכרנו כל אבן בירושלים</div>
+      <p>משרד לוי נדל"ן נוסד ב-2003 ע"י אבי לוי, סוכן נדל"ן מנוסה עם ידע מעמיק של שוק הנכסים הירושלמי. במשך שנים בנינו מוניטין של מקצועיות, שקיפות ויחס אישי.</p>
+      <p>הצוות שלנו מתמחה בשכונות מבוקשות כמו רחביה, טלביה, קטמון, בית הכרם, ובאזורי הפיתוח החדשים.</p>
+      <div class="agents">
+        <div class="agent">
+          <div class="agent-photo a1"></div>
+          <div class="agent-info"><div class="name">אבי לוי</div><div class="role">מייסד ומנכ"ל</div></div>
+        </div>
+        <div class="agent">
+          <div class="agent-photo a2"></div>
+          <div class="agent-info"><div class="name">שרה כהן</div><div class="role">סוכנת בכירה</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="about-visual"></div>
+  </div>
+</section>
+
+<footer>
+  <strong>לוי נדל"ן</strong> · רחוב יפו 80, ירושלים · 02-555-6789 · כל הזכויות שמורות 2024
+</footer>
+
+</body>
+</html>
