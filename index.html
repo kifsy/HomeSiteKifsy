@@ -521,6 +521,15 @@
     box-shadow: 0 10px 30px -10px rgba(42,58,44,.18);
     overflow: hidden;
     direction: ltr;
+    display: flex; flex-direction: column;
+  }
+  .iframe-wrap{ flex: 1; overflow: hidden; position: relative; min-height: 0; }
+  .iframe-wrap iframe{
+    position: absolute; top: 0; left: 0;
+    width: 1280px; height: 900px;
+    border: 0;
+    transform: scale(0.275); transform-origin: top left;
+    pointer-events: none; display: block;
   }
   .browser-bar{
     height: 22px;
@@ -1514,12 +1523,8 @@
         <div class="port-mock port-mock-bg-1">
           <div class="browser">
             <div class="browser-bar"><i></i><i></i><i></i></div>
-            <div class="mini-site">
-              <span class="mini-pill">Hummus Eliyahu</span>
-              <div class="mini-headline"></div>
-              <div class="mini-headline s"></div>
-              <div class="mini-row cards"><div class="mini-card"></div><div class="mini-card"></div><div class="mini-card"></div></div>
-              <div class="mini-row cards"><div class="mini-card"></div><div class="mini-card"></div></div>
+            <div class="iframe-wrap">
+              <iframe src="portfolio/hummus-eliyahu.html" loading="lazy" scrolling="no" tabindex="-1" aria-hidden="true" title="חומוס יוסי preview"></iframe>
             </div>
           </div>
         </div>
@@ -1538,12 +1543,8 @@
         <div class="port-mock port-mock-bg-2">
           <div class="browser">
             <div class="browser-bar"><i></i><i></i><i></i></div>
-            <div class="mini-site">
-              <div class="mini-h"></div>
-              <div class="mini-headline mini-acc"></div>
-              <div class="mini-headline s"></div>
-              <div class="mini-row cards"><div class="mini-card"></div><div class="mini-card"></div></div>
-              <div class="mini-row"><div class="mini-block"></div><div class="mini-block"></div></div>
+            <div class="iframe-wrap">
+              <iframe src="portfolio/salon-maya.html" loading="lazy" scrolling="no" tabindex="-1" aria-hidden="true" title="Salon Maya preview"></iframe>
             </div>
           </div>
         </div>
@@ -1562,12 +1563,8 @@
         <div class="port-mock port-mock-bg-3">
           <div class="browser">
             <div class="browser-bar"><i></i><i></i><i></i></div>
-            <div class="mini-site">
-              <div class="mini-h"></div>
-              <div class="mini-headline"></div>
-              <div class="mini-headline s mini-acc"></div>
-              <div class="mini-row"><div class="mini-block"></div></div>
-              <div class="mini-row cards"><div class="mini-card"></div><div class="mini-card"></div><div class="mini-card"></div></div>
+            <div class="iframe-wrap">
+              <iframe src="portfolio/cohen-partners.html" loading="lazy" scrolling="no" tabindex="-1" aria-hidden="true" title="Cohen &amp; Partners preview"></iframe>
             </div>
           </div>
         </div>
@@ -1586,11 +1583,8 @@
         <div class="port-mock port-mock-bg-4">
           <div class="browser">
             <div class="browser-bar"><i></i><i></i><i></i></div>
-            <div class="mini-site">
-              <span class="mini-pill" style="background: var(--accent)">FitWithRoni</span>
-              <div class="mini-headline"></div>
-              <div class="mini-headline s"></div>
-              <div class="mini-row cards"><div class="mini-card"></div><div class="mini-card"></div></div>
+            <div class="iframe-wrap">
+              <iframe src="portfolio/fit-with-roni.html" loading="lazy" scrolling="no" tabindex="-1" aria-hidden="true" title="FitWithRoni preview"></iframe>
             </div>
           </div>
         </div>
@@ -1609,11 +1603,8 @@
         <div class="port-mock port-mock-bg-5">
           <div class="browser">
             <div class="browser-bar"><i></i><i></i><i></i></div>
-            <div class="mini-site">
-              <div class="mini-h"></div>
-              <div class="mini-headline mini-acc"></div>
-              <div class="mini-headline s"></div>
-              <div class="mini-row cards"><div class="mini-card"></div><div class="mini-card"></div><div class="mini-card"></div></div>
+            <div class="iframe-wrap">
+              <iframe src="portfolio/levi-realty.html" loading="lazy" scrolling="no" tabindex="-1" aria-hidden="true" title="Levi Realty preview"></iframe>
             </div>
           </div>
         </div>
@@ -1632,12 +1623,8 @@
         <div class="port-mock port-mock-bg-1">
           <div class="browser">
             <div class="browser-bar"><i></i><i></i><i></i></div>
-            <div class="mini-site">
-              <div class="mini-h"></div>
-              <div class="mini-headline"></div>
-              <div class="mini-headline s mini-acc"></div>
-              <div class="mini-row cards"><div class="mini-card"></div><div class="mini-card"></div></div>
-              <div class="mini-row"><div class="mini-block"></div><div class="mini-block"></div><div class="mini-block"></div></div>
+            <div class="iframe-wrap">
+              <iframe src="portfolio/hadar-boutique.html" loading="lazy" scrolling="no" tabindex="-1" aria-hidden="true" title="Hadar Boutique preview"></iframe>
             </div>
           </div>
         </div>
