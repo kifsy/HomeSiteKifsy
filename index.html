@@ -700,12 +700,11 @@
     outline-offset: 4px;
   }
 
-  /* Floating accessibility button — fixed to mid-side of viewport */
+  /* Floating accessibility button — fixed to bottom corner of viewport */
   .a11y-fab{
     position: fixed;
-    top: 50%;
-    transform: translateY(-50%);
-    inset-inline-end: 16px;
+    inset-block-end: 24px;
+    inset-inline-end: 24px;
     z-index: 250;
     width: 54px; height: 54px;
     border-radius: 50%;
@@ -715,9 +714,9 @@
     display: flex; align-items: center; justify-content: center;
     transition: transform .25s var(--ease), background .2s var(--ease);
   }
-  .a11y-fab:hover{ transform: translateY(-50%) scale(1.05); background: #1E2B20; }
-  .a11y-fab[aria-expanded="true"]{ background: var(--accent); transform: translateY(-50%); }
-  .a11y-fab[aria-expanded="true"]:hover{ background: var(--accent-deep); transform: translateY(-50%) scale(1.05); }
+  .a11y-fab:hover{ transform: translateY(-3px) scale(1.05); background: #1E2B20; }
+  .a11y-fab[aria-expanded="true"]{ background: var(--accent); }
+  .a11y-fab[aria-expanded="true"]:hover{ background: var(--accent-deep); }
   .a11y-fab svg{ width: 26px; height: 26px; }
 
   /* Dark-mode contrast for a11y controls */
@@ -731,16 +730,15 @@
   html.a11y-contrast-dark .a11y-close:hover{ background: rgba(244,247,240,0.15); }
   html.a11y-contrast-dark .a11y-statement-content .a11y-contact{ background: rgba(244,247,240,0.05); }
 
-  /* Accessibility panel — opens to the interior side of the FAB */
+  /* Accessibility panel — opens above the FAB */
   .a11y-panel{
     position: fixed;
-    top: 50%;
-    transform: translateY(-50%) scale(.98);
-    inset-inline-end: 82px;
+    inset-block-end: 92px;
+    inset-inline-end: 24px;
     z-index: 199;
     width: 340px;
-    max-width: calc(100vw - 96px);
-    max-height: calc(100vh - 48px);
+    max-width: calc(100vw - 32px);
+    max-height: calc(100vh - 130px);
     overflow-y: auto;
     background: var(--surface);
     border: 1px solid var(--line);
@@ -748,10 +746,11 @@
     box-shadow: var(--shadow-lg);
     padding: 22px;
     opacity: 0;
+    transform: translateY(10px) scale(.98);
     transition: opacity .25s var(--ease), transform .25s var(--ease);
     pointer-events: none;
   }
-  .a11y-panel.open{ opacity: 1; transform: translateY(-50%) scale(1); pointer-events: auto; }
+  .a11y-panel.open{ opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
   .a11y-panel[hidden]{ display: none; }
 
   .a11y-header{
