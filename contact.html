@@ -38,6 +38,8 @@ nav{position:sticky;top:0;z-index:10;background:rgba(214,227,209,.88);backdrop-f
 html[dir="rtl"] .back-icon{transform:scaleX(-1)}
 html[dir="rtl"] .back:hover .back-icon{transform:scaleX(-1) translateX(-3px)}
 html[dir="ltr"] .back:hover .back-icon{transform:translateX(-3px)}
+.about-link{font-size:14px;font-weight:500;color:var(--ink-2);transition:color .2s}.about-link:hover{color:var(--ink)}
+@media(max-width:600px){.about-link{display:none}}
 .lang-toggle{display:flex;gap:3px;background:rgba(42,58,44,.08);border-radius:999px;padding:3px}
 .lang-toggle button{padding:4px 11px;border-radius:999px;font-size:13px;font-weight:500;color:var(--ink-3);transition:all .2s}
 .lang-toggle button.active{background:var(--ink);color:var(--bg)}
@@ -123,6 +125,7 @@ html[dir="rtl"] .btn-submit svg{transform:scaleX(-1)}
       <span data-he="חזרה לאתר" data-en="Back to site">חזרה לאתר</span>
     </a>
     <a href="index.html" class="brand-mark">kifsy<span class="dot">.</span></a>
+    <a href="about.html" class="about-link" data-he="אודותינו" data-en="About">אודותינו</a>
     <div class="lang-toggle">
       <button data-lang="he" class="active">עב</button>
       <button data-lang="en">EN</button>
