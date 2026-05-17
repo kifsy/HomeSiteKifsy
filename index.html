@@ -330,9 +330,9 @@
   /* ───────────────────────── Pricing ───────────────────────── */
   .pricing-wrap{
     display: grid;
-    grid-template-columns: 1fr 1.1fr;
+    grid-template-columns: 1fr 1.05fr;
     gap: 32px;
-    align-items: center;
+    align-items: start;
   }
   .pricing-copy h2{ margin-bottom: 18px; }
   .pricing-copy p{ font-size: 17px; max-width: 460px; }
@@ -350,11 +350,13 @@
     flex-shrink: 0;
   }
 
+  .price-cards{ display: grid; gap: 20px; }
+
   .price-card{
     background: var(--surface);
     border: 1px solid var(--line-soft);
     border-radius: var(--radius-xl);
-    padding: 40px;
+    padding: 28px 32px;
     box-shadow: var(--shadow-lg);
     position: relative;
     overflow: hidden;
@@ -371,34 +373,37 @@
     border-radius: 999px;
     background: var(--accent-soft);
     color: var(--accent);
-    margin-bottom: 22px;
+    margin-bottom: 16px;
     letter-spacing: 0.04em;
     text-transform: uppercase;
   }
   html[lang="he"] .price-tag{ text-transform: none; letter-spacing: 0.05em; }
-  .price-card h3{ font-size: 24px; margin-bottom: 6px; }
-  .price-card .desc{ font-size: 14.5px; color: var(--ink-3); margin-bottom: 28px; }
+  .price-card h3{ font-size: 20px; margin-bottom: 5px; }
+  .price-card .desc{ font-size: 13.5px; color: var(--ink-3); margin-bottom: 20px; }
 
   .price-block{
     display: flex; align-items: baseline; gap: 8px;
-    padding: 18px 0;
+    padding: 14px 0;
     border-bottom: 1px solid var(--line-soft);
   }
   .price-block:last-of-type{ border-bottom: none; }
   .price-block .amt{
-    font-weight: 700; font-size: 38px; color: var(--ink);
+    font-weight: 700; font-size: 32px; color: var(--ink);
     letter-spacing: -0.02em;
     direction: ltr; unicode-bidi: isolate;
   }
   html[lang="en"] .price-block .amt{ font-family: var(--font-en-disp); font-weight: 600; letter-spacing: -0.03em; }
   .price-block .per{ font-size: 14px; color: var(--ink-3); }
   .price-block .label{ font-size: 14px; color: var(--ink-2); margin-inline-start: auto; }
+  .price-block .price-from{ font-size: 12px; color: var(--ink-3); margin-bottom: 2px; }
 
-  .price-features{ margin: 24px 0 32px; display: grid; gap: 10px; }
+  .budget-note{ font-size: 12px; color: var(--ink-3); margin-top: 8px; }
+
+  .price-features{ margin: 18px 0 24px; display: grid; gap: 9px; }
   .price-features li{
     list-style: none;
     display: flex; align-items: center; gap: 10px;
-    font-size: 14.5px; color: var(--ink-2);
+    font-size: 14px; color: var(--ink-2);
   }
   .price-features .dot{
     width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0;
@@ -1236,13 +1241,13 @@
   <div class="container">
     <div class="section-head reveal">
       <span class="kicker" data-he="מחירים" data-en="Pricing">מחירים</span>
-      <h2 data-he="חבילה אחת. בלי הפתעות."
-          data-en="One simple plan. No surprises.">
-        חבילה אחת. בלי הפתעות.
+      <h2 data-he="שתי חבילות. בלי הפתעות."
+          data-en="Two plans. No surprises.">
+        שתי חבילות. בלי הפתעות.
       </h2>
-      <p data-he="עלות הקמה קבועה ודמי ניהול חודשיים נמוכים. הכל כלול: עיצוב, בנייה, אחסון, עדכונים ותמיכה."
-         data-en="A flat setup fee and a low monthly retainer. Everything included: design, build, hosting, updates, support.">
-        עלות הקמה קבועה ודמי ניהול חודשיים נמוכים. הכל כלול: עיצוב, בנייה, אחסון, עדכונים ותמיכה.
+      <p data-he="חבילת הקמה לעסקים שרוצים נוכחות מקצועית. חבילת פרסום לעסקים שרוצים גם להביא לקוחות חדשים."
+         data-en="A starter plan to get online professionally. An ads plan to actively grow your customer base.">
+        חבילת הקמה לעסקים שרוצים נוכחות מקצועית. חבילת פרסום לעסקים שרוצים גם להביא לקוחות חדשים.
       </p>
     </div>
 
@@ -1281,47 +1286,88 @@
         </ul>
       </div>
 
-      <div class="price-card reveal reveal-d-1">
-        <span class="price-tag" data-he="חבילת הקמה" data-en="Starter package">חבילת הקמה</span>
-        <h3 data-he="כל מה שצריך כדי לעלות לאוויר, בצורה יפה."
-            data-en="Everything to get online, beautifully.">
-          כל מה שצריך כדי לעלות לאוויר, בצורה יפה.
-        </h3>
-        <p class="desc" data-he="מושלם למסעדות, מספרות, עורכי דין, מאמנים וחנויות מקומיות."
-           data-en="Perfect for restaurants, salons, lawyers, trainers, and local shops.">
-          מושלם למסעדות, מספרות, עורכי דין, מאמנים וחנויות מקומיות.
-        </p>
+      <div class="price-cards">
+        <div class="price-card reveal reveal-d-1">
+          <span class="price-tag" data-he="חבילת הקמה" data-en="Starter">חבילת הקמה</span>
+          <h3 data-he="כל מה שצריך כדי לעלות לאוויר, בצורה יפה."
+              data-en="Everything to get online, beautifully.">
+            כל מה שצריך כדי לעלות לאוויר, בצורה יפה.
+          </h3>
+          <p class="desc" data-he="מושלם למסעדות, מספרות, עורכי דין, מאמנים וחנויות מקומיות."
+             data-en="Perfect for restaurants, salons, lawyers, trainers, and local shops.">
+            מושלם למסעדות, מספרות, עורכי דין, מאמנים וחנויות מקומיות.
+          </p>
 
-        <div class="price-block">
-          <span class="amt">₪500</span>
-          <span class="per" data-he="חד פעמי" data-en="one-time">חד פעמי</span>
-          <span class="label" data-he="הקמה והשקה" data-en="Setup & launch">הקמה והשקה</span>
+          <div class="price-block">
+            <span class="amt">₪500</span>
+            <span class="per" data-he="חד פעמי" data-en="one-time">חד פעמי</span>
+            <span class="label" data-he="הקמה והשקה" data-en="Setup & launch">הקמה והשקה</span>
+          </div>
+          <div class="price-block">
+            <span class="amt">₪200</span>
+            <span class="per" data-he="/ חודש" data-en="/ month">/ חודש</span>
+            <span class="label" data-he="אחסון וניהול" data-en="Hosting & management">אחסון וניהול</span>
+          </div>
+
+          <ul class="price-features">
+            <li><span class="dot"></span><span data-he="עיצוב מותאם אישית למותג שלכם"
+                                               data-en="Custom design tailored to your brand">עיצוב מותאם אישית למותג שלכם</span></li>
+            <li><span class="dot"></span><span data-he="עד 5 עמודים, RTL ומובייל-קודם"
+                                               data-en="Up to 5 pages, RTL & mobile-first">עד 5 עמודים, RTL ומובייל-קודם</span></li>
+            <li><span class="dot"></span><span data-he="חיבור לווטסאפ וגוגל מפות"
+                                               data-en="WhatsApp & Google Maps integration">חיבור לווטסאפ וגוגל מפות</span></li>
+            <li><span class="dot"></span><span data-he="עדכונים ושינויים חודשיים כלולים"
+                                               data-en="Monthly updates and edits included">עדכונים ושינויים חודשיים כלולים</span></li>
+            <li><span class="dot"></span><span data-he="SSL חינם, גיבויים ואנליטיקס"
+                                               data-en="Free SSL, backups, and analytics">SSL חינם, גיבויים ואנליטיקס</span></li>
+          </ul>
+
+          <a href="#contact" class="btn btn-accent">
+            <span data-he="התחילו את הפרויקט" data-en="Start your project">התחילו את הפרויקט</span>
+            <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
         </div>
-        <div class="price-block">
-          <span class="amt">₪200</span>
-          <span class="per" data-he="/ חודש" data-en="/ month">/ חודש</span>
-          <span class="label" data-he="אחסון וניהול" data-en="Hosting & management">אחסון וניהול</span>
+
+        <div class="price-card reveal reveal-d-2">
+          <span class="price-tag" data-he="חבילת פרסום" data-en="Ads & Growth">חבילת פרסום</span>
+          <h3 data-he="להביא לקוחות חדשים. כל חודש."
+              data-en="Bring in new customers. Every month.">
+            להביא לקוחות חדשים. כל חודש.
+          </h3>
+          <p class="desc" data-he="לעסקים שרוצים נוכחות בגוגל ולקבל יותר פניות בצורה פעילה."
+             data-en="For businesses that want active Google visibility and a steady stream of leads.">
+            לעסקים שרוצים נוכחות בגוגל ולקבל יותר פניות בצורה פעילה.
+          </p>
+
+          <div class="price-block">
+            <div>
+              <div class="price-from" data-he="החל מ" data-en="from">החל מ</div>
+              <span class="amt">₪350</span>
+            </div>
+            <span class="per" data-he="/ חודש" data-en="/ month">/ חודש</span>
+            <span class="label" data-he="ניהול פרסום" data-en="Ad management">ניהול פרסום</span>
+          </div>
+          <p class="budget-note" data-he="* תקציב הפרסום בגוגל בנוסף, לפי הסכמה מראש."
+             data-en="* Google ad spend is separate and agreed in advance.">* תקציב הפרסום בגוגל בנוסף, לפי הסכמה מראש.</p>
+
+          <ul class="price-features">
+            <li><span class="dot"></span><span data-he="הגדרת SEO וחיבור לגוגל לעסק שלי"
+                                               data-en="SEO setup and Google Business linking">הגדרת SEO וחיבור לגוגל לעסק שלי</span></li>
+            <li><span class="dot"></span><span data-he="יצירה וניהול קמפיין Google Ads"
+                                               data-en="Google Ads campaign setup and management">יצירה וניהול קמפיין Google Ads</span></li>
+            <li><span class="dot"></span><span data-he="אופטימיזציה שוטפת של הקמפיין"
+                                               data-en="Ongoing campaign optimization">אופטימיזציה שוטפת של הקמפיין</span></li>
+            <li><span class="dot"></span><span data-he="דוח חודשי: חשיפות, קליקים והמרות"
+                                               data-en="Monthly report: impressions, clicks, and conversions">דוח חודשי: חשיפות, קליקים והמרות</span></li>
+            <li><span class="dot"></span><span data-he="תיאום תקציב פרסום יחד"
+                                               data-en="Ad budget planned together with you">תיאום תקציב פרסום יחד</span></li>
+          </ul>
+
+          <a href="#contact" class="btn btn-primary">
+            <span data-he="נדבר על פרסום" data-en="Let's talk ads">נדבר על פרסום</span>
+            <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
         </div>
-
-        <ul class="price-features">
-          <li><span class="dot"></span><span data-he="עיצוב מותאם אישית למותג שלכם"
-                                             data-en="Custom design tailored to your brand">עיצוב מותאם אישית למותג שלכם</span></li>
-          <li><span class="dot"></span><span data-he="עד 5 עמודים, RTL ומובייל-קודם"
-                                             data-en="Up to 5 pages, RTL & mobile-first">עד 5 עמודים, RTL ומובייל-קודם</span></li>
-          <li><span class="dot"></span><span data-he="חיבור לווטסאפ וגוגל מפות"
-                                             data-en="WhatsApp & Google Maps integration">חיבור לווטסאפ וגוגל מפות</span></li>
-          <li><span class="dot"></span><span data-he="הגדרת SEO וחיבור לגוגל לעסק שלי"
-                                             data-en="SEO setup + Google Business linking">הגדרת SEO וחיבור לגוגל לעסק שלי</span></li>
-          <li><span class="dot"></span><span data-he="עדכונים ושינויים חודשיים כלולים"
-                                             data-en="Monthly updates and edits included">עדכונים ושינויים חודשיים כלולים</span></li>
-          <li><span class="dot"></span><span data-he="SSL חינם, גיבויים ואנליטיקס"
-                                             data-en="Free SSL, backups, and analytics">SSL חינם, גיבויים ואנליטיקס</span></li>
-        </ul>
-
-        <a href="#contact" class="btn btn-accent">
-          <span data-he="התחילו את הפרויקט" data-en="Start your project">התחילו את הפרויקט</span>
-          <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-        </a>
       </div>
     </div>
   </div>
