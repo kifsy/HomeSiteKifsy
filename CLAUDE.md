@@ -127,6 +127,7 @@ When adding new components: include keyboard support, `aria-label` for icon butt
 
 _Newest first. One line per push: `YYYY-MM-DD · summary`._
 
+- **2026-05-17** · Move a11y FAB back to bottom corner (bottom-right EN, bottom-left HE). Panel opens upward above it.
 - **2026-05-17** · Fix grayscale mode breaking position:fixed on FAB. Replaced filter:grayscale on body with backdrop-filter on body::before so position:fixed stays anchored to the viewport.
 - **2026-05-17** · Move a11y FAB to mid-height side of viewport (top: 50%) so it is always visible regardless of scroll. Panel opens to the interior side of the button. Right side in English, left side in Hebrew.
 - **2026-05-17** · Fix accessibility FAB position: now bottom-right in English (LTR) and bottom-left in Hebrew (RTL), using inset-inline-end. Updated CLAUDE.md with team git workflow rules (pull before work, manual review before push).
