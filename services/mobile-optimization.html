@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>התאמה למובייל · kifsy</title>
+<meta name="description" content="80% מהלקוחות שלכם בנייד. כל אתר של kifsy מתוכנן מובייל-קודם. גלילה חלקה, טעינה מיידית." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&family=Inter:wght@400;500;600&family=Inter+Tight:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#D6E3D1;--bg-soft:#E1ECDC;--surface:#fff;--ink:#2A3A2C;--ink-2:#4C5C4E;--ink-3:#7C8A7D;--accent:#A64253;--line:rgba(42,58,44,.10);--radius:16px;--max:720px;--ease:cubic-bezier(.2,.7,.2,1);--font-he:'Heebo',sans-serif;--font-en:'Inter',sans-serif;--font-en-disp:'Inter Tight','Inter',sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--font-he);background:var(--bg);color:var(--ink);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+html[lang="en"] body{font-family:var(--font-en)}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
+h1,h2,h3{font-family:var(--font-he);font-weight:700;line-height:1.2;color:var(--ink);letter-spacing:-0.02em}
+html[lang="en"] h1,html[lang="en"] h2,html[lang="en"] h3{font-family:var(--font-en-disp)}
+h1{font-size:clamp(2rem,5vw,3.2rem)}h2{font-size:1.4rem;margin-bottom:16px}h3{font-size:1.05rem;margin-bottom:6px}
+p{color:var(--ink-2);line-height:1.7}
+.brand-mark{direction:ltr;unicode-bidi:isolate;font-family:var(--font-en-disp);font-weight:600;letter-spacing:-0.04em}
+.dot{color:var(--accent)}
+nav{position:sticky;top:0;z-index:10;background:rgba(214,227,209,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-inner{max-width:calc(var(--max) + 48px);margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.back{display:flex;align-items:center;gap:6px;font-size:14px;color:var(--ink-2);transition:color .2s}.back:hover{color:var(--ink)}
+.back-icon{display:inline-block;transition:transform .2s}
+html[dir="rtl"] .back-icon{transform:scaleX(-1)}
+html[dir="rtl"] .back:hover .back-icon{transform:scaleX(-1) translateX(-3px)}
+html[dir="ltr"] .back:hover .back-icon{transform:translateX(-3px)}
+.lang-toggle{display:flex;gap:3px;background:rgba(42,58,44,.08);border-radius:999px;padding:3px}
+.lang-toggle button{padding:4px 11px;border-radius:999px;font-size:13px;font-weight:500;color:var(--ink-3);transition:all .2s}
+.lang-toggle button.active{background:var(--ink);color:var(--bg)}
+.hero{padding:56px 24px 40px;max-width:calc(var(--max) + 48px);margin:0 auto}
+.badge{display:inline-flex;align-items:center;gap:8px;background:var(--bg-soft);border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:13px;color:var(--ink-2);margin-bottom:24px}
+.hero h1{margin-bottom:18px}.hero .lead{font-size:1.1rem;color:var(--ink-2);max-width:540px}
+.content{max-width:calc(var(--max) + 48px);margin:0 auto;padding:0 24px 56px}
+.block{margin-bottom:44px}
+.steps{display:grid;gap:12px;margin-top:18px}
+.step{display:flex;gap:14px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px}
+.num{width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--bg);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.includes{display:grid;gap:9px;margin-top:18px}
+.inc{display:flex;align-items:flex-start;gap:10px;font-size:15px;color:var(--ink-2)}
+.inc::before{content:'✓';color:var(--accent);font-weight:700;font-size:14px;flex-shrink:0;margin-top:2px}
+.cta{background:var(--ink);border-radius:24px;padding:44px 32px;text-align:center;max-width:var(--max);margin:0 auto 64px}
+.cta h2{color:var(--bg);margin-bottom:10px}.cta p{color:rgba(214,227,209,.7);margin-bottom:26px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:999px;font-size:15px;font-weight:600;transition:all .2s var(--ease)}
+.btn-light{background:var(--bg);color:var(--ink)}.btn-light:hover{background:#fff;transform:translateY(-2px)}
+@media(max-width:600px){.hero{padding:40px 20px 32px}.content{padding:0 20px 48px}.cta{margin:0 20px 48px;padding:36px 24px}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="back">
+      <svg class="back-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      <span data-he="חזרה לאתר" data-en="Back to site">חזרה לאתר</span>
+    </a>
+    <a href="../index.html" class="brand-mark">kifsy<span class="dot">.</span></a>
+    <div class="lang-toggle">
+      <button data-lang="he" class="active">עב</button>
+      <button data-lang="en">EN</button>
+    </div>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="badge">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg>
+    <span data-he="שירות" data-en="Service">שירות</span>
+  </div>
+  <h1 data-he="התאמה למובייל" data-en="Mobile Optimization">התאמה למובייל</h1>
+  <p class="lead" data-he="רוב הלקוחות שלכם מגיעים מהטלפון. אנחנו מוודאים שהחוויה שלהם מהירה, נוחה ומובילה לפעולה." data-en="Most of your customers arrive on a phone. We make sure their experience is fast, smooth, and leads to action.">רוב הלקוחות שלכם מגיעים מהטלפון. אנחנו מוודאים שהחוויה שלהם מהירה, נוחה ומובילה לפעולה.</p>
+</div>
+
+<div class="content">
+  <div class="block">
+    <h2 data-he="מה זה אומר בפועל" data-en="What this means in practice">מה זה אומר בפועל</h2>
+    <p data-he="מובייל-קודם זה לא רק שהאתר 'נראה בסדר' בטלפון. זה אומר שהוא תוכנן מהגדול לקטן, שהכפתורים גדולים מספיק לאצבע, שהטקסט נקרא בלי זום, ושהדף טוען לפני שהמשתמש מאבד סבלנות." data-en="Mobile-first does not just mean the site 'looks okay' on a phone. It means designed from small to large, buttons big enough for a thumb, text readable without zooming, and the page loads before the user loses patience.">מובייל-קודם זה לא רק שהאתר 'נראה בסדר' בטלפון. זה אומר שהוא תוכנן מהגדול לקטן, שהכפתורים גדולים מספיק לאצבע, שהטקסט נקרא בלי זום, ושהדף טוען לפני שהמשתמש מאבד סבלנות.</p>
+  </div>
+
+  <div class="block">
+    <h2 data-he="מה אנחנו בודקים ומשפרים" data-en="What we audit and improve">מה אנחנו בודקים ומשפרים</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <div>
+          <h3 data-he="מהירות טעינה" data-en="Load speed">מהירות טעינה</h3>
+          <p data-he="דחיסת תמונות, קוד רזה, טעינה עצלה. מגיעים לציון Core Web Vitals ירוק ולזמן טעינה מתחת לשנייה וחצי." data-en="Image compression, lean code, lazy loading. We reach a green Core Web Vitals score and load times under 1.5 seconds.">דחיסת תמונות, קוד רזה, טעינה עצלה. מגיעים לציון Core Web Vitals ירוק ולזמן טעינה מתחת לשנייה וחצי.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <div>
+          <h3 data-he="מגע ונגישות" data-en="Touch and accessibility">מגע ונגישות</h3>
+          <p data-he="כפתורי מגע בגודל מינימלי של 44px, ריווח בין אלמנטים, לא צריך לזום לקרוא. נוח לכולם." data-en="Touch targets at a minimum 44px, adequate spacing between elements, no zoom needed to read. Comfortable for everyone.">כפתורי מגע בגודל מינימלי של 44px, ריווח בין אלמנטים, לא צריך לזום לקרוא. נוח לכולם.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <div>
+          <h3 data-he="פעולות חיוניות בולטות" data-en="Key actions are prominent">פעולות חיוניות בולטות</h3>
+          <p data-he="כפתורי התקשרות, ווטסאפ וניווט נמצאים בדיוק במקום שאצבע מגיעה אליו בקלות. לא צריך לגלול כדי ליצור קשר." data-en="Call, WhatsApp, and navigation buttons are exactly where a thumb reaches naturally. No scrolling needed to get in touch.">כפתורי התקשרות, ווטסאפ וניווט נמצאים בדיוק במקום שאצבע מגיעה אליו בקלות. לא צריך לגלול כדי ליצור קשר.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">4</div>
+        <div>
+          <h3 data-he="בדיקה על מכשירים אמיתיים" data-en="Testing on real devices">בדיקה על מכשירים אמיתיים</h3>
+          <p data-he="לא רק סימולטור. בודקים על אנדרואיד ואייפון, על מסכים קטנים וגדולים. עד שהכל עובד חלק." data-en="Not just a simulator. We test on Android and iPhone, small and large screens. Until everything is smooth.">לא רק סימולטור. בודקים על אנדרואיד ואייפון, על מסכים קטנים וגדולים. עד שהכל עובד חלק.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2 data-he="מה מקבלים" data-en="What you get">מה מקבלים</h2>
+    <div class="includes">
+      <div class="inc"><span data-he="עיצוב מובייל-קודם מהיסוד" data-en="Mobile-first design from the ground up">עיצוב מובייל-קודם מהיסוד</span></div>
+      <div class="inc"><span data-he="ציון Core Web Vitals ירוק" data-en="Green Core Web Vitals score">ציון Core Web Vitals ירוק</span></div>
+      <div class="inc"><span data-he="טעינה מתחת לשנייה וחצי" data-en="Load time under 1.5 seconds">טעינה מתחת לשנייה וחצי</span></div>
+      <div class="inc"><span data-he="כפתורי מגע בגודל נוח לאצבע" data-en="Touch targets sized for a thumb">כפתורי מגע בגודל נוח לאצבע</span></div>
+      <div class="inc"><span data-he="קריאות מלאה בלי זום" data-en="Full readability without zooming">קריאות מלאה בלי זום</span></div>
+      <div class="inc"><span data-he="בדיקות על אנדרואיד ואייפון" data-en="Tested on Android and iPhone">בדיקות על אנדרואיד ואייפון</span></div>
+      <div class="inc"><span data-he="חיבור מהיר לשיחה ולווטסאפ מהנייד" data-en="Fast tap-to-call and WhatsApp from mobile">חיבור מהיר לשיחה ולווטסאפ מהנייד</span></div>
+    </div>
+  </div>
+
+  <div class="cta">
+    <h2 data-he="תבדקו את האתר שלכם עכשיו" data-en="Check your site right now">תבדקו את האתר שלכם עכשיו</h2>
+    <p data-he="שלחו לנו קישור ונגיד לכם במדויק מה כדאי לשפר." data-en="Send us a link and we will tell you exactly what to improve.">שלחו לנו קישור ונגיד לכם במדויק מה כדאי לשפר.</p>
+    <a href="https://wa.me/972500000000" class="btn btn-light">
+      <span data-he="דברו איתנו בווטסאפ" data-en="Chat with us on WhatsApp">דברו איתנו בווטסאפ</span>
+    </a>
+  </div>
+</div>
+
+<script>
+const html = document.documentElement;
+const saved = (() => { try { return localStorage.getItem('kifsy-lang'); } catch(e){ return null; } })();
+function setLang(lang) {
+  html.setAttribute('lang', lang);
+  html.setAttribute('dir', lang === 'he' ? 'rtl' : 'ltr');
+  document.title = lang === 'en' ? 'Mobile Optimization · kifsy' : 'התאמה למובייל · kifsy';
+  document.querySelectorAll('[data-' + lang + ']').forEach(el => el.textContent = el.getAttribute('data-' + lang));
+  document.querySelectorAll('.lang-toggle button').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+  try { localStorage.setItem('kifsy-lang', lang); } catch(e) {}
+}
+setLang(saved === 'en' ? 'en' : 'he');
+document.querySelectorAll('.lang-toggle button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+</script>
+</body>
+</html>

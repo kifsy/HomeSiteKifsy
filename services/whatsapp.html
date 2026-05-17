@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>אינטגרציית ווטסאפ · kifsy</title>
+<meta name="description" content="צ׳אט בלחיצה אחת, מענה אוטומטי, ותהליכי הזמנה ישירות לווטסאפ העסקי שלכם." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&family=Inter:wght@400;500;600&family=Inter+Tight:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#D6E3D1;--bg-soft:#E1ECDC;--surface:#fff;--ink:#2A3A2C;--ink-2:#4C5C4E;--ink-3:#7C8A7D;--accent:#A64253;--line:rgba(42,58,44,.10);--radius:16px;--max:720px;--ease:cubic-bezier(.2,.7,.2,1);--font-he:'Heebo',sans-serif;--font-en:'Inter',sans-serif;--font-en-disp:'Inter Tight','Inter',sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--font-he);background:var(--bg);color:var(--ink);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+html[lang="en"] body{font-family:var(--font-en)}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
+h1,h2,h3{font-family:var(--font-he);font-weight:700;line-height:1.2;color:var(--ink);letter-spacing:-0.02em}
+html[lang="en"] h1,html[lang="en"] h2,html[lang="en"] h3{font-family:var(--font-en-disp)}
+h1{font-size:clamp(2rem,5vw,3.2rem)}h2{font-size:1.4rem;margin-bottom:16px}h3{font-size:1.05rem;margin-bottom:6px}
+p{color:var(--ink-2);line-height:1.7}
+.brand-mark{direction:ltr;unicode-bidi:isolate;font-family:var(--font-en-disp);font-weight:600;letter-spacing:-0.04em}
+.dot{color:var(--accent)}
+nav{position:sticky;top:0;z-index:10;background:rgba(214,227,209,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-inner{max-width:calc(var(--max) + 48px);margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.back{display:flex;align-items:center;gap:6px;font-size:14px;color:var(--ink-2);transition:color .2s}.back:hover{color:var(--ink)}
+.back-icon{display:inline-block;transition:transform .2s}
+html[dir="rtl"] .back-icon{transform:scaleX(-1)}
+html[dir="rtl"] .back:hover .back-icon{transform:scaleX(-1) translateX(-3px)}
+html[dir="ltr"] .back:hover .back-icon{transform:translateX(-3px)}
+.lang-toggle{display:flex;gap:3px;background:rgba(42,58,44,.08);border-radius:999px;padding:3px}
+.lang-toggle button{padding:4px 11px;border-radius:999px;font-size:13px;font-weight:500;color:var(--ink-3);transition:all .2s}
+.lang-toggle button.active{background:var(--ink);color:var(--bg)}
+.hero{padding:56px 24px 40px;max-width:calc(var(--max) + 48px);margin:0 auto}
+.badge{display:inline-flex;align-items:center;gap:8px;background:var(--bg-soft);border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:13px;color:var(--ink-2);margin-bottom:24px}
+.hero h1{margin-bottom:18px}.hero .lead{font-size:1.1rem;color:var(--ink-2);max-width:540px}
+.content{max-width:calc(var(--max) + 48px);margin:0 auto;padding:0 24px 56px}
+.block{margin-bottom:44px}
+.steps{display:grid;gap:12px;margin-top:18px}
+.step{display:flex;gap:14px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px}
+.num{width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--bg);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.includes{display:grid;gap:9px;margin-top:18px}
+.inc{display:flex;align-items:flex-start;gap:10px;font-size:15px;color:var(--ink-2)}
+.inc::before{content:'✓';color:var(--accent);font-weight:700;font-size:14px;flex-shrink:0;margin-top:2px}
+.cta{background:var(--ink);border-radius:24px;padding:44px 32px;text-align:center;max-width:var(--max);margin:0 auto 64px}
+.cta h2{color:var(--bg);margin-bottom:10px}.cta p{color:rgba(214,227,209,.7);margin-bottom:26px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:999px;font-size:15px;font-weight:600;transition:all .2s var(--ease)}
+.btn-light{background:var(--bg);color:var(--ink)}.btn-light:hover{background:#fff;transform:translateY(-2px)}
+@media(max-width:600px){.hero{padding:40px 20px 32px}.content{padding:0 20px 48px}.cta{margin:0 20px 48px;padding:36px 24px}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="back">
+      <svg class="back-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      <span data-he="חזרה לאתר" data-en="Back to site">חזרה לאתר</span>
+    </a>
+    <a href="../index.html" class="brand-mark">kifsy<span class="dot">.</span></a>
+    <div class="lang-toggle">
+      <button data-lang="he" class="active">עב</button>
+      <button data-lang="en">EN</button>
+    </div>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="badge">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21 11.5a8.38 8.38 0 0 1-1 4 8.5 8.5 0 0 1-7.6 4.5 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-1A8.5 8.5 0 0 1 21 11.5z"/></svg>
+    <span data-he="שירות" data-en="Service">שירות</span>
+  </div>
+  <h1 data-he="אינטגרציית ווטסאפ" data-en="WhatsApp Integration">אינטגרציית ווטסאפ</h1>
+  <p class="lead" data-he="ווטסאפ הוא הערוץ שבו הלקוחות הישראלים הכי אוהבים לתקשר. אנחנו מחברים את האתר שלכם ישירות לאפליקציה שהם כבר פותחים עשרות פעמים ביום." data-en="WhatsApp is the channel Israeli customers prefer. We wire your site directly to the app they already open dozens of times a day.">ווטסאפ הוא הערוץ שבו הלקוחות הישראלים הכי אוהבים לתקשר. אנחנו מחברים את האתר שלכם ישירות לאפליקציה שהם כבר פותחים עשרות פעמים ביום.</p>
+</div>
+
+<div class="content">
+  <div class="block">
+    <h2 data-he="למה ווטסאפ וגם אתר" data-en="Why WhatsApp and a site">למה ווטסאפ וגם אתר</h2>
+    <p data-he="אתר נותן לכם נוכחות, אמינות וחשיפה בגוגל. ווטסאפ סוגר עסקות. השניים ביחד, עם חיבור חלק ביניהם, הם הקומבינציה שעובדת הכי טוב לעסקים קטנים בישראל." data-en="A site gives you presence, credibility, and Google exposure. WhatsApp closes deals. Both together, with a smooth connection between them, is the combination that works best for small businesses in Israel.">אתר נותן לכם נוכחות, אמינות וחשיפה בגוגל. ווטסאפ סוגר עסקות. השניים ביחד, עם חיבור חלק ביניהם, הם הקומבינציה שעובדת הכי טוב לעסקים קטנים בישראל.</p>
+  </div>
+
+  <div class="block">
+    <h2 data-he="מה אנחנו מגדירים" data-en="What we set up">מה אנחנו מגדירים</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <div>
+          <h3 data-he="כפתור ווטסאפ צף" data-en="Floating WhatsApp button">כפתור ווטסאפ צף</h3>
+          <p data-he="כפתור ירוק תמיד נראה, על כל עמוד, על כל מסך. לחיצה פותחת שיחה ישירה עם מסר פתיחה מוכן מראש." data-en="A green button always visible, on every page, on every screen. A tap opens a direct chat with a pre-written opening message.">כפתור ירוק תמיד נראה, על כל עמוד, על כל מסך. לחיצה פותחת שיחה ישירה עם מסר פתיחה מוכן מראש.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <div>
+          <h3 data-he="מסר פתיחה מותאם" data-en="Custom opening message">מסר פתיחה מותאם</h3>
+          <p data-he="הלקוח לא צריך לחשוב מה לכתוב. מגיע מסר מוכן, לדוגמה: 'היי, ראיתי את האתר שלכם ורוצה לתאם תור'. אתם מקבלים ליד מוכן." data-en="The customer does not have to think what to write. A ready message arrives: 'Hi, I saw your site and want to book an appointment.' You receive a warm lead.">הלקוח לא צריך לחשוב מה לכתוב. מגיע מסר מוכן, לדוגמה: 'היי, ראיתי את האתר שלכם ורוצה לתאם תור'. אתם מקבלים ליד מוכן.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <div>
+          <h3 data-he="הגדרת WhatsApp Business" data-en="WhatsApp Business setup">הגדרת WhatsApp Business</h3>
+          <p data-he="אם עדיין לא עברתם לחשבון עסקי, אנחנו עוזרים עם ההגדרה: פרופיל, שעות פעילות, מסרים אוטומטיים לשעות מחוץ למשרד." data-en="If you have not switched to a business account yet, we help with setup: profile, business hours, and automatic replies for off-hours messages.">אם עדיין לא עברתם לחשבון עסקי, אנחנו עוזרים עם ההגדרה: פרופיל, שעות פעילות, מסרים אוטומטיים לשעות מחוץ למשרד.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">4</div>
+        <div>
+          <h3 data-he="אינטגרציה עם טפסי האתר" data-en="Integration with site forms">אינטגרציה עם טפסי האתר</h3>
+          <p data-he="פניות מהטופס באתר מגיעות ישירות לווטסאפ שלכם, לא לאימייל שאולי תפתחו מחר. מגיבים בזמן, סוגרים יותר עסקאות." data-en="Inquiries from your site form arrive directly to your WhatsApp, not an email you might open tomorrow. Respond in time, close more deals.">פניות מהטופס באתר מגיעות ישירות לווטסאפ שלכם, לא לאימייל שאולי תפתחו מחר. מגיבים בזמן, סוגרים יותר עסקאות.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2 data-he="מה מקבלים" data-en="What you get">מה מקבלים</h2>
+    <div class="includes">
+      <div class="inc"><span data-he="כפתור ווטסאפ צף על כל עמוד" data-en="Floating WhatsApp button on every page">כפתור ווטסאפ צף על כל עמוד</span></div>
+      <div class="inc"><span data-he="מסר פתיחה מותאם לעסק שלכם" data-en="Opening message customized for your business">מסר פתיחה מותאם לעסק שלכם</span></div>
+      <div class="inc"><span data-he="הגדרת פרופיל WhatsApp Business" data-en="WhatsApp Business profile setup">הגדרת פרופיל WhatsApp Business</span></div>
+      <div class="inc"><span data-he="מסרים אוטומטיים לשעות מחוץ למשרד" data-en="Automatic off-hours replies">מסרים אוטומטיים לשעות מחוץ למשרד</span></div>
+      <div class="inc"><span data-he="חיבור טפסי האתר לווטסאפ" data-en="Site forms connected to WhatsApp">חיבור טפסי האתר לווטסאפ</span></div>
+      <div class="inc"><span data-he="כפתור לחיצה-להתקשרות לצד ווטסאפ" data-en="Click-to-call alongside WhatsApp">כפתור לחיצה-להתקשרות לצד ווטסאפ</span></div>
+    </div>
+  </div>
+
+  <div class="cta">
+    <h2 data-he="תנו ללקוחות להגיע אליכם בקלות" data-en="Let customers reach you easily">תנו ללקוחות להגיע אליכם בקלות</h2>
+    <p data-he="שיחה של 20 דקות ויש לנו את כל מה שצריך." data-en="A 20-minute call and we have everything we need.">שיחה של 20 דקות ויש לנו את כל מה שצריך.</p>
+    <a href="https://wa.me/972500000000" class="btn btn-light">
+      <span data-he="דברו איתנו בווטסאפ" data-en="Chat with us on WhatsApp">דברו איתנו בווטסאפ</span>
+    </a>
+  </div>
+</div>
+
+<script>
+const html = document.documentElement;
+const saved = (() => { try { return localStorage.getItem('kifsy-lang'); } catch(e){ return null; } })();
+function setLang(lang) {
+  html.setAttribute('lang', lang);
+  html.setAttribute('dir', lang === 'he' ? 'rtl' : 'ltr');
+  document.title = lang === 'en' ? 'WhatsApp Integration · kifsy' : 'אינטגרציית ווטסאפ · kifsy';
+  document.querySelectorAll('[data-' + lang + ']').forEach(el => el.textContent = el.getAttribute('data-' + lang));
+  document.querySelectorAll('.lang-toggle button').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+  try { localStorage.setItem('kifsy-lang', lang); } catch(e) {}
+}
+setLang(saved === 'en' ? 'en' : 'he');
+document.querySelectorAll('.lang-toggle button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+</script>
+</body>
+</html>

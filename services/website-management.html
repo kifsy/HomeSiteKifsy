@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ניהול אתרים · kifsy</title>
+<meta name="description" content="אנחנו דואגים שהאתר יישאר מהיר, מאובטח ומעודכן. עדכוני תוכן, גיבויים, ניטור ושינויים קטנים, כל חודש." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&family=Inter:wght@400;500;600&family=Inter+Tight:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#D6E3D1;--bg-soft:#E1ECDC;--surface:#fff;--ink:#2A3A2C;--ink-2:#4C5C4E;--ink-3:#7C8A7D;--accent:#A64253;--line:rgba(42,58,44,.10);--radius:16px;--max:720px;--ease:cubic-bezier(.2,.7,.2,1);--font-he:'Heebo',sans-serif;--font-en:'Inter',sans-serif;--font-en-disp:'Inter Tight','Inter',sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--font-he);background:var(--bg);color:var(--ink);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+html[lang="en"] body{font-family:var(--font-en)}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
+h1,h2,h3{font-family:var(--font-he);font-weight:700;line-height:1.2;color:var(--ink);letter-spacing:-0.02em}
+html[lang="en"] h1,html[lang="en"] h2,html[lang="en"] h3{font-family:var(--font-en-disp)}
+h1{font-size:clamp(2rem,5vw,3.2rem)}h2{font-size:1.4rem;margin-bottom:16px}h3{font-size:1.05rem;margin-bottom:6px}
+p{color:var(--ink-2);line-height:1.7}
+.brand-mark{direction:ltr;unicode-bidi:isolate;font-family:var(--font-en-disp);font-weight:600;letter-spacing:-0.04em}
+.dot{color:var(--accent)}
+nav{position:sticky;top:0;z-index:10;background:rgba(214,227,209,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-inner{max-width:calc(var(--max) + 48px);margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.back{display:flex;align-items:center;gap:6px;font-size:14px;color:var(--ink-2);transition:color .2s}.back:hover{color:var(--ink)}
+.back-icon{display:inline-block;transition:transform .2s}
+html[dir="rtl"] .back-icon{transform:scaleX(-1)}
+html[dir="rtl"] .back:hover .back-icon{transform:scaleX(-1) translateX(-3px)}
+html[dir="ltr"] .back:hover .back-icon{transform:translateX(-3px)}
+.lang-toggle{display:flex;gap:3px;background:rgba(42,58,44,.08);border-radius:999px;padding:3px}
+.lang-toggle button{padding:4px 11px;border-radius:999px;font-size:13px;font-weight:500;color:var(--ink-3);transition:all .2s}
+.lang-toggle button.active{background:var(--ink);color:var(--bg)}
+.hero{padding:56px 24px 40px;max-width:calc(var(--max) + 48px);margin:0 auto}
+.badge{display:inline-flex;align-items:center;gap:8px;background:var(--bg-soft);border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:13px;color:var(--ink-2);margin-bottom:24px}
+.hero h1{margin-bottom:18px}.hero .lead{font-size:1.1rem;color:var(--ink-2);max-width:540px}
+.content{max-width:calc(var(--max) + 48px);margin:0 auto;padding:0 24px 56px}
+.block{margin-bottom:44px}
+.steps{display:grid;gap:12px;margin-top:18px}
+.step{display:flex;gap:14px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px}
+.num{width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--bg);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.includes{display:grid;gap:9px;margin-top:18px}
+.inc{display:flex;align-items:flex-start;gap:10px;font-size:15px;color:var(--ink-2)}
+.inc::before{content:'✓';color:var(--accent);font-weight:700;font-size:14px;flex-shrink:0;margin-top:2px}
+.cta{background:var(--ink);border-radius:24px;padding:44px 32px;text-align:center;max-width:var(--max);margin:0 auto 64px}
+.cta h2{color:var(--bg);margin-bottom:10px}.cta p{color:rgba(214,227,209,.7);margin-bottom:26px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:999px;font-size:15px;font-weight:600;transition:all .2s var(--ease)}
+.btn-light{background:var(--bg);color:var(--ink)}.btn-light:hover{background:#fff;transform:translateY(-2px)}
+@media(max-width:600px){.hero{padding:40px 20px 32px}.content{padding:0 20px 48px}.cta{margin:0 20px 48px;padding:36px 24px}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="back">
+      <svg class="back-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      <span data-he="חזרה לאתר" data-en="Back to site">חזרה לאתר</span>
+    </a>
+    <a href="../index.html" class="brand-mark">kifsy<span class="dot">.</span></a>
+    <div class="lang-toggle">
+      <button data-lang="he" class="active">עב</button>
+      <button data-lang="en">EN</button>
+    </div>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="badge">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+    <span data-he="שירות" data-en="Service">שירות</span>
+  </div>
+  <h1 data-he="ניהול אתרים" data-en="Website Management">ניהול אתרים</h1>
+  <p class="lead" data-he="אנחנו מטפלים בכל מה שקורה מאחורי הקלעים כדי שהאתר שלכם יישאר מהיר, מאובטח ועדכני, כל חודש." data-en="We handle everything behind the scenes so your site stays fast, secure, and current, every month.">אנחנו מטפלים בכל מה שקורה מאחורי הקלעים כדי שהאתר שלכם יישאר מהיר, מאובטח ועדכני, כל חודש.</p>
+</div>
+
+<div class="content">
+  <div class="block">
+    <h2 data-he="למה זה חשוב" data-en="Why it matters">למה זה חשוב</h2>
+    <p data-he="אתר שנבנה ולא מתוחזק מתיישן מהר. תוכן לא עדכני, תמונות שבורות, תקלות אבטחה. ניהול שוטף הוא מה שמבטיח שהאתר ימשיך לעבוד בשבילכם ולא נגדכם." data-en="A site that is built and never maintained ages fast. Stale content, broken images, security gaps. Ongoing management is what keeps your site working for you, not against you.">אתר שנבנה ולא מתוחזק מתיישן מהר. תוכן לא עדכני, תמונות שבורות, תקלות אבטחה. ניהול שוטף הוא מה שמבטיח שהאתר ימשיך לעבוד בשבילכם ולא נגדכם.</p>
+  </div>
+
+  <div class="block">
+    <h2 data-he="מה עושים כל חודש" data-en="What we do every month">מה עושים כל חודש</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <div>
+          <h3 data-he="עדכוני תוכן" data-en="Content updates">עדכוני תוכן</h3>
+          <p data-he="שלחו לנו מה השתנה, תפריט חדש, מחיר חדש, שעות חדשות. אנחנו מעדכנים תוך 24 שעות." data-en="Send us what changed: a new menu, new price, new hours. We update within 24 hours.">שלחו לנו מה השתנה, תפריט חדש, מחיר חדש, שעות חדשות. אנחנו מעדכנים תוך 24 שעות.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <div>
+          <h3 data-he="גיבויים וניטור" data-en="Backups and monitoring">גיבויים וניטור</h3>
+          <p data-he="האתר מגובה אוטומטית. אם משהו נשבר, אנחנו מקבלים התראה לפניכם ומתקנים לפני שתרגישו." data-en="The site is backed up automatically. If something breaks, we get the alert before you do and fix it before you feel it.">האתר מגובה אוטומטית. אם משהו נשבר, אנחנו מקבלים התראה לפניכם ומתקנים לפני שתרגישו.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <div>
+          <h3 data-he="ביצועים ואבטחה" data-en="Performance and security">ביצועים ואבטחה</h3>
+          <p data-he="בודקים מהירות טעינה, SSL, ותקינות הקישורים. מטפלים בעדכוני אבטחה לפני שהם הופכים לבעיה." data-en="We check load speed, SSL, and link integrity. Security updates are applied before they become a problem.">בודקים מהירות טעינה, SSL, ותקינות הקישורים. מטפלים בעדכוני אבטחה לפני שהם הופכים לבעיה.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">4</div>
+        <div>
+          <h3 data-he="שינויים קטנים ללא הגבלה" data-en="Unlimited small tweaks">שינויים קטנים ללא הגבלה</h3>
+          <p data-he="רוצים לשנות כותרת? להוסיף תמונה? לעדכן שעות החג? שלחו הודעה בווטסאפ וזה נעשה." data-en="Want to change a headline? Add a photo? Update holiday hours? Send a WhatsApp message and it is done.">רוצים לשנות כותרת? להוסיף תמונה? לעדכן שעות החג? שלחו הודעה בווטסאפ וזה נעשה.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2 data-he="מה מקבלים" data-en="What you get">מה מקבלים</h2>
+    <div class="includes">
+      <div class="inc"><span data-he="עדכוני תוכן ב-24 שעות" data-en="Content updates within 24 hours">עדכוני תוכן ב-24 שעות</span></div>
+      <div class="inc"><span data-he="גיבוי אוטומטי יומי" data-en="Daily automatic backups">גיבוי אוטומטי יומי</span></div>
+      <div class="inc"><span data-he="ניטור זמינות וביצועים" data-en="Uptime and performance monitoring">ניטור זמינות וביצועים</span></div>
+      <div class="inc"><span data-he="עדכוני אבטחה ו-SSL מתמשכים" data-en="Ongoing security and SSL updates">עדכוני אבטחה ו-SSL מתמשכים</span></div>
+      <div class="inc"><span data-he="שינויים קטנים ללא הגבלה" data-en="Unlimited small tweaks">שינויים קטנים ללא הגבלה</span></div>
+      <div class="inc"><span data-he="תמיכה ישירה בווטסאפ" data-en="Direct WhatsApp support">תמיכה ישירה בווטסאפ</span></div>
+      <div class="inc"><span data-he="דוח חודשי קצר על מצב האתר" data-en="Short monthly site status report">דוח חודשי קצר על מצב האתר</span></div>
+    </div>
+  </div>
+
+  <div class="cta">
+    <h2 data-he="שקט נפשי ב-450 ₪ לחודש" data-en="Peace of mind for 450 ₪ a month">שקט נפשי ב-450 ₪ לחודש</h2>
+    <p data-he="נדבר על מה שהאתר שלכם צריך ואיך נוכל לעזור." data-en="Let's talk about what your site needs and how we can help.">נדבר על מה שהאתר שלכם צריך ואיך נוכל לעזור.</p>
+    <a href="https://wa.me/972500000000" class="btn btn-light">
+      <span data-he="דברו איתנו בווטסאפ" data-en="Chat with us on WhatsApp">דברו איתנו בווטסאפ</span>
+    </a>
+  </div>
+</div>
+
+<script>
+const html = document.documentElement;
+const saved = (() => { try { return localStorage.getItem('kifsy-lang'); } catch(e){ return null; } })();
+function setLang(lang) {
+  html.setAttribute('lang', lang);
+  html.setAttribute('dir', lang === 'he' ? 'rtl' : 'ltr');
+  document.title = lang === 'en' ? 'Website Management · kifsy' : 'ניהול אתרים · kifsy';
+  document.querySelectorAll('[data-' + lang + ']').forEach(el => el.textContent = el.getAttribute('data-' + lang));
+  document.querySelectorAll('.lang-toggle button').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+  try { localStorage.setItem('kifsy-lang', lang); } catch(e) {}
+}
+setLang(saved === 'en' ? 'en' : 'he');
+document.querySelectorAll('.lang-toggle button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+</script>
+</body>
+</html>
