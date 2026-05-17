@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>צרו קשר · kifsy</title>
+<meta name="description" content="דברו איתנו. נשמח לשמוע על הפרויקט שלכם ולחזור אליכם תוך יום עסקים." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&family=Inter:wght@400;500;600&family=Inter+Tight:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="kifsy-mark.png?v=2">
+<style>
+:root{
+  --bg:#D6E3D1;--bg-soft:#E1ECDC;--surface:#fff;--ink:#2A3A2C;--ink-2:#4C5C4E;--ink-3:#7C8A7D;
+  --accent:#A64253;--line:rgba(42,58,44,.10);--radius:16px;--max:900px;--ease:cubic-bezier(.2,.7,.2,1);
+  --font-he:'Heebo',sans-serif;--font-en:'Inter',sans-serif;--font-en-disp:'Inter Tight','Inter',sans-serif
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--font-he);background:var(--bg);color:var(--ink);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+html[lang="en"] body{font-family:var(--font-en)}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
+h1,h2,h3{font-family:var(--font-he);font-weight:700;line-height:1.2;color:var(--ink);letter-spacing:-0.02em}
+html[lang="en"] h1,html[lang="en"] h2,html[lang="en"] h3{font-family:var(--font-en-disp)}
+h1{font-size:clamp(2rem,5vw,3.2rem)}
+h2{font-size:1.3rem;margin-bottom:16px}
+h3{font-size:1rem;margin-bottom:4px}
+p{color:var(--ink-2);line-height:1.7}
+.brand-mark{direction:ltr;unicode-bidi:isolate;font-family:var(--font-en-disp);font-weight:600;letter-spacing:-0.04em}
+.dot{color:var(--accent)}
+
+/* ── Nav ── */
+nav{position:sticky;top:0;z-index:10;background:rgba(214,227,209,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-inner{max-width:calc(var(--max) + 48px);margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.back{display:flex;align-items:center;gap:6px;font-size:14px;color:var(--ink-2);transition:color .2s}.back:hover{color:var(--ink)}
+.back-icon{display:inline-block;transition:transform .2s}
+html[dir="rtl"] .back-icon{transform:scaleX(-1)}
+html[dir="rtl"] .back:hover .back-icon{transform:scaleX(-1) translateX(-3px)}
+html[dir="ltr"] .back:hover .back-icon{transform:translateX(-3px)}
+.lang-toggle{display:flex;gap:3px;background:rgba(42,58,44,.08);border-radius:999px;padding:3px}
+.lang-toggle button{padding:4px 11px;border-radius:999px;font-size:13px;font-weight:500;color:var(--ink-3);transition:all .2s}
+.lang-toggle button.active{background:var(--ink);color:var(--bg)}
+
+/* ── Hero ── */
+.hero{padding:52px 24px 36px;max-width:calc(var(--max) + 48px);margin:0 auto}
+.badge{display:inline-flex;align-items:center;gap:8px;background:var(--bg-soft);border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:13px;color:var(--ink-2);margin-bottom:24px}
+.hero h1{margin-bottom:14px}
+.hero .lead{font-size:1.05rem;color:var(--ink-2);max-width:520px}
+
+/* ── Main grid ── */
+.content{max-width:calc(var(--max) + 48px);margin:0 auto;padding:0 24px 64px}
+.grid{display:grid;grid-template-columns:1fr 340px;gap:28px;align-items:start}
+html[dir="ltr"] .grid{grid-template-columns:1fr 320px}
+
+/* ── Form card ── */
+.form-card{background:var(--surface);border:1px solid var(--line);border-radius:calc(var(--radius) + 4px);padding:36px 40px}
+.form-group{margin-bottom:20px}
+.form-group label{display:block;font-size:14px;font-weight:600;color:var(--ink);margin-bottom:6px}
+.form-group input,
+.form-group textarea{
+  width:100%;padding:11px 14px;border:1.5px solid var(--line);border-radius:10px;
+  font:inherit;font-size:15px;color:var(--ink);background:var(--bg-soft);
+  transition:border-color .2s,background .2s;resize:none;outline:none
+}
+.form-group input:focus,
+.form-group textarea:focus{border-color:var(--ink);background:#fff}
+.form-group textarea{min-height:130px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.btn-submit{
+  width:100%;padding:13px 24px;border-radius:999px;font-size:15px;font-weight:600;
+  background:var(--ink);color:var(--bg);border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  transition:all .2s var(--ease);margin-top:4px
+}
+.btn-submit:hover{background:#1a2a1c;transform:translateY(-2px)}
+.btn-submit svg{flex-shrink:0}
+html[dir="rtl"] .btn-submit svg{transform:scaleX(-1)}
+.form-note{font-size:12px;color:var(--ink-3);text-align:center;margin-top:12px}
+.success-msg{display:none;text-align:center;padding:20px;color:var(--ink-2);font-size:15px}
+.success-msg strong{color:var(--ink)}
+
+/* ── Info card ── */
+.info-card{display:flex;flex-direction:column;gap:16px}
+.info-block{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+.info-block h3{font-size:13px;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px}
+.info-row{display:flex;align-items:flex-start;gap:12px;margin-bottom:12px}
+.info-row:last-child{margin-bottom:0}
+.info-icon{width:34px;height:34px;border-radius:9px;background:var(--bg-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--ink)}
+.info-text{padding-top:2px}
+.info-text span{display:block;font-size:13px;color:var(--ink-3);margin-bottom:2px}
+.info-text a,.info-text p{font-size:15px;color:var(--ink);font-weight:500}
+.info-text a:hover{color:var(--accent)}
+.hours-grid{display:grid;gap:6px}
+.hours-row{display:flex;justify-content:space-between;font-size:14px;color:var(--ink-2)}
+.hours-row span:first-child{color:var(--ink);font-weight:500}
+
+/* ── Socials ── */
+.socials{display:flex;gap:10px;margin-top:4px}
+.social-link{
+  width:40px;height:40px;border-radius:10px;background:var(--bg-soft);
+  border:1px solid var(--line);display:flex;align-items:center;justify-content:center;
+  color:var(--ink-2);transition:all .2s
+}
+.social-link:hover{background:var(--ink);color:var(--bg);border-color:var(--ink);transform:translateY(-2px)}
+
+/* ── Mobile ── */
+@media(max-width:720px){
+  .grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .form-card{padding:28px 24px}
+  .hero{padding:36px 20px 28px}
+  .content{padding:0 20px 48px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="back">
+      <svg class="back-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      <span data-he="חזרה לאתר" data-en="Back to site">חזרה לאתר</span>
+    </a>
+    <a href="index.html" class="brand-mark">kifsy<span class="dot">.</span></a>
+    <div class="lang-toggle">
+      <button data-lang="he" class="active">עב</button>
+      <button data-lang="en">EN</button>
+    </div>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="badge">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <span data-he="צרו קשר" data-en="Contact">צרו קשר</span>
+  </div>
+  <h1 data-he="נשמח לשמוע מכם" data-en="We'd love to hear from you">נשמח לשמוע מכם</h1>
+  <p class="lead" data-he="ספרו לנו על העסק שלכם ומה אתם מחפשים. נחזור אליכם תוך יום עסקים." data-en="Tell us about your business and what you're looking for. We'll get back to you within one business day.">ספרו לנו על העסק שלכם ומה אתם מחפשים. נחזור אליכם תוך יום עסקים.</p>
+</div>
+
+<div class="content">
+  <div class="grid">
+
+    <!-- Contact form -->
+    <!-- To activate: create a free account at formspree.io, get your form ID, and replace YOUR_FORM_ID below -->
+    <div class="form-card">
+      <form id="contactForm" action="https://formspree.io/f/mpqnalde" method="POST">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name" data-he="שם מלא" data-en="Full name">שם מלא</label>
+            <input type="text" id="name" name="name" required
+              data-he-placeholder="ישראל ישראלי" data-en-placeholder="Jane Smith"
+              placeholder="ישראל ישראלי">
+          </div>
+          <div class="form-group">
+            <label for="phone" data-he="טלפון" data-en="Phone">טלפון</label>
+            <input type="tel" id="phone" name="phone" dir="ltr"
+              data-he-placeholder="050-000-0000" data-en-placeholder="050-000-0000"
+              placeholder="050-000-0000">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email" data-he="אימייל" data-en="Email">אימייל</label>
+          <input type="email" id="email" name="email" required dir="ltr"
+            data-he-placeholder="you@example.com" data-en-placeholder="you@example.com"
+            placeholder="you@example.com">
+        </div>
+        <div class="form-group">
+          <label for="message" data-he="ספרו לנו" data-en="Tell us more">ספרו לנו</label>
+          <textarea id="message" name="message" required
+            data-he-placeholder="על מה סוג העסק שלכם? מה אתם מחפשים? כל פרט עוזר."
+            data-en-placeholder="What kind of business do you run? What are you looking for? Any detail helps."
+            placeholder="על מה סוג העסק שלכם? מה אתם מחפשים? כל פרט עוזר."></textarea>
+        </div>
+        <button type="submit" class="btn-submit">
+          <span data-he="שלחו הודעה" data-en="Send message">שלחו הודעה</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </button>
+        <p class="form-note" data-he="נחזור אליכם תוך יום עסקים" data-en="We'll reply within one business day">נחזור אליכם תוך יום עסקים</p>
+      </form>
+      <div class="success-msg" id="successMsg">
+        <strong data-he="קיבלנו!" data-en="Got it!">קיבלנו!</strong><br>
+        <span data-he="נחזור אליכם בהקדם." data-en="We'll be in touch soon.">נחזור אליכם בהקדם.</span>
+      </div>
+    </div>
+
+    <!-- Info card -->
+    <div class="info-card">
+
+      <div class="info-block">
+        <h3 data-he="פרטי התקשרות" data-en="Contact details">פרטי התקשרות</h3>
+
+        <div class="info-row">
+          <div class="info-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div class="info-text">
+            <span data-he="אימייל" data-en="Email">אימייל</span>
+            <a href="mailto:info@kifsy.com" dir="ltr">info@kifsy.com</a>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <div class="info-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.63 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l.96-.96a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div class="info-text">
+            <span data-he="דורון זלצר" data-en="Doron Zeltzer">דורון זלצר</span>
+            <a href="tel:+972549369527" dir="ltr">054-936-9527</a>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <div class="info-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.63 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l.96-.96a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div class="info-text">
+            <span data-he="רון מורדוב" data-en="Ron Mordov">רון מורדוב</span>
+            <a href="tel:+972528622646" dir="ltr">052-862-2646</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-block">
+        <h3 data-he="שעות פעילות" data-en="Business hours">שעות פעילות</h3>
+        <div class="hours-grid">
+          <div class="hours-row">
+            <span data-he="ראשון - חמישי" data-en="Sun - Thu">ראשון - חמישי</span>
+            <span>09:00 - 18:00</span>
+          </div>
+          <div class="hours-row">
+            <span data-he="שישי - שבת" data-en="Fri - Sat">שישי - שבת</span>
+            <span data-he="סגור" data-en="Closed">סגור</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-block">
+        <h3 data-he="עקבו אחרינו" data-en="Follow us">עקבו אחרינו</h3>
+        <div class="socials">
+          <!-- Replace # with real profile URLs -->
+          <a href="#" class="social-link" aria-label="Instagram" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="Facebook" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="TikTok" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+const html = document.documentElement;
+const saved = (() => { try { return localStorage.getItem('kifsy-lang'); } catch(e){ return null; } })();
+
+function setLang(lang) {
+  html.setAttribute('lang', lang);
+  html.setAttribute('dir', lang === 'he' ? 'rtl' : 'ltr');
+  document.title = lang === 'en' ? 'Contact · kifsy' : 'צרו קשר · kifsy';
+  document.querySelectorAll('[data-' + lang + ']').forEach(el => el.textContent = el.getAttribute('data-' + lang));
+  document.querySelectorAll('[data-' + lang + '-placeholder]').forEach(el => el.placeholder = el.getAttribute('data-' + lang + '-placeholder'));
+  document.querySelectorAll('.lang-toggle button').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+  try { localStorage.setItem('kifsy-lang', lang); } catch(e) {}
+}
+
+setLang(saved === 'en' ? 'en' : 'he');
+document.querySelectorAll('.lang-toggle button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+
+/* Formspree AJAX submission */
+const form = document.getElementById('contactForm');
+const successMsg = document.getElementById('successMsg');
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const btn = form.querySelector('.btn-submit');
+  btn.disabled = true;
+  try {
+    const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
+    if (res.ok) {
+      form.style.display = 'none';
+      successMsg.style.display = 'block';
+    } else {
+      btn.disabled = false;
+    }
+  } catch {
+    btn.disabled = false;
+  }
+});
+</script>
+
+</body>
+</html>
