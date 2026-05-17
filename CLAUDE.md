@@ -127,6 +127,7 @@ When adding new components: include keyboard support, `aria-label` for icon butt
 
 _Newest first. One line per push: `YYYY-MM-DD · summary`._
 
+- **2026-05-17** · Replace BebKey and ramtours iframes with headless-Chrome screenshots; BebKey blocked iframes (X-Frame-Options: DENY), ramtours fired a JS alert when embedded. Screenshots saved to portfolio/previews/.
 - **2026-05-17** · Wire real GA4 Measurement ID (G-SXNX3SDS48) replacing placeholder; fix testimonial role from "חומוס אליהו" to "חומוס יוסי".
 
 - **2026-05-17** · Add 6 portfolio mockup pages (hummus-eliyahu, salon-maya, cohen-partners, fit-with-roni, levi-realty, hadar-boutique) under portfolio/; wire index.html cards to open them in a new tab.
