@@ -704,36 +704,60 @@
     /* ════════════════════════════════════════════════════
        8. FUTURE PLACEHOLDER
     ═══════════════════════════════════════════════════════ */
-    .future { background: var(--bg); }
-    .future-inner {
-      /* ── PLACEHOLDER SECTION ────────────────────────────
-         This section is reserved for future content.
-         Replace this block with any new section as needed.
-         Suggested uses: testimonials, press mentions, awards,
-         client logos, or a photo gallery.
-      ─────────────────────────────────────────────────── */
-      border: 1.5px dashed var(--line);
-      border-radius: 24px;
-      padding: 80px 40px;
-      text-align: center;
-      background: rgba(255,255,255,.25);
-      position: relative; overflow: hidden;
-      transition: background .3s, border-color .3s;
+    /* ════════════════════════════════════════════════════
+       REVIEWS / TESTIMONIALS
+    ═══════════════════════════════════════════════════════ */
+    .future { background: var(--bg-warm); }
+    .reviews-header { text-align: center; margin-bottom: 64px; }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
     }
-    .future-inner:hover { background: rgba(255,255,255,.45); border-color: var(--ink-3); }
-    .future-icon { font-size: 40px; margin-bottom: 20px; opacity: .35; }
-    .future-inner h3 { color: var(--ink-2); font-size: 20px; margin-bottom: 10px; }
-    .future-inner p { color: var(--ink-3); font-size: 14px; font-weight: 300; }
-    .future-tag {
-      position: absolute; top: 20px; left: 20px;
-      background: rgba(42,58,44,.06);
+    @media (max-width: 1060px) { .reviews-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 680px)  { .reviews-grid { grid-template-columns: 1fr; } }
+    .review-card {
+      background: rgba(255,255,255,.72);
       border: 1px solid var(--line-soft);
-      border-radius: 100px;
-      padding: 4px 12px;
-      font-size: 11px; font-weight: 600; color: var(--ink-3);
-      font-family: 'Inter Tight', sans-serif;
-      letter-spacing: .08em;
+      border-radius: var(--radius-lg);
+      padding: 32px 28px 28px;
+      display: flex; flex-direction: column;
+      transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .25s;
     }
+    .review-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--line); }
+    .review-quote {
+      font-size: 15px; line-height: 1.75;
+      color: var(--ink-2); font-weight: 300;
+      flex: 1; position: relative; padding-top: 30px;
+    }
+    .review-quote::before {
+      content: '״';
+      position: absolute; top: -6px; right: 0;
+      font-size: 46px; line-height: 1;
+      color: var(--accent); opacity: .65;
+      font-family: 'Heebo', sans-serif;
+    }
+    html[lang="en"] .review-quote::before { content: '\201C'; }
+    .review-person {
+      display: flex; align-items: center; gap: 12px;
+      margin-top: 24px; padding-top: 18px;
+      border-top: 1px solid var(--line-soft);
+    }
+    .review-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--bg-soft);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11.5px; font-weight: 700; color: var(--ink);
+      flex-shrink: 0; direction: ltr;
+      font-family: 'Inter Tight', sans-serif;
+    }
+    .ra2 { background: rgba(166,66,83,.13); color: var(--accent); }
+    .ra3 { background: #DDE7D6; color: var(--ink); }
+    .ra4 { background: rgba(42,58,44,.10); color: var(--ink); }
+    .ra5 { background: rgba(166,66,83,.08); color: #8B3244; }
+    .ra6 { background: #E6EDE1; color: var(--ink); }
+    .review-name { font-size: 14px; font-weight: 600; color: var(--ink); line-height: 1.2; }
+    .review-role { font-size: 12.5px; color: var(--ink-3); margin-top: 2px; }
 
     /* ════════════════════════════════════════════════════
        FOOTER
@@ -1145,19 +1169,113 @@
 
 
   <!-- ════════════════════════════════════════════════
-       8. FUTURE PLACEHOLDER
+       8. REVIEWS
   ═══════════════════════════════════════════════════ -->
-  <section class="section future">
+  <section class="section future" id="reviews">
     <div class="container">
-      <div class="future-inner reveal">
-        <span class="future-tag">COMING SOON</span>
-        <div class="future-icon">🌱</div>
-        <h3 data-he="תוכן בדרך" data-en="Content coming soon">תוכן בדרך</h3>
-        <!-- ── REPLACE THIS SECTION WITH FUTURE CONTENT ──
-             Suggestions: client testimonials, press logos,
-             awards, gallery, team expansion, blog posts.
-        ─────────────────────────────────────────────────── -->
-        <p data-he="המקום הזה שמור לתוכן עתידי: לקוחות, המלצות, הישגים ועוד." data-en="This space is reserved for future content: clients, testimonials, achievements and more.">המקום הזה שמור לתוכן עתידי: לקוחות, המלצות, הישגים ועוד.</p>
+
+      <div class="reviews-header reveal">
+        <span class="section-tag" data-he="המלצות" data-en="Testimonials">המלצות</span>
+        <h2 data-he="מה אומרים עלינו." data-en="What people say about us.">מה אומרים עלינו.</h2>
+        <p style="margin-top:14px;font-size:16px;color:var(--ink-2);font-weight:300;"
+           data-he="מילים אמיתיות מבעלי עסקים שעבדנו איתם."
+           data-en="Real words from business owners we worked with.">
+          מילים אמיתיות מבעלי עסקים שעבדנו איתם.
+        </p>
+      </div>
+
+      <div class="reviews-grid">
+
+        <article class="review-card reveal reveal-d1">
+          <p class="review-quote"
+             data-he="כבר מהשיחה הראשונה הרגשתי שהם באמת מבינים את העסק שלי. האתר עלה לאוויר תוך שבוע וההזמנות הוכפלו תוך חודש. בכנות, הכסף הכי טוב שהוצאתי."
+             data-en="From the first call I felt like they actually got my business. The site was live in a week and bookings doubled within a month. Honestly the best money I've spent.">
+            כבר מהשיחה הראשונה הרגשתי שהם באמת מבינים את העסק שלי. האתר עלה לאוויר תוך שבוע וההזמנות הוכפלו תוך חודש. בכנות, הכסף הכי טוב שהוצאתי.
+          </p>
+          <div class="review-person">
+            <div class="review-avatar" data-he="א״ל" data-en="EL">א״ל</div>
+            <div>
+              <div class="review-name" data-he="אליהו לוי" data-en="Eliyahu Levi">אליהו לוי</div>
+              <div class="review-role" data-he="בעלים, חומוס יוסי" data-en="Owner, Hummus Yossi">בעלים, חומוס יוסי</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="review-card reveal reveal-d2">
+          <p class="review-quote"
+             data-he="קיבלתי הצעות מסוכנויות אחרות לכמעט 15,000 ₪ על משהו שכאן עשו לי תוך 6 ימים בעשירית מהמחיר. וזה גם נראה הרבה יותר טוב מכל מה שהראו לי."
+             data-en="I've been quoted nearly ₪15,000 by other agencies for what kifsy delivered in 6 days for a tenth of the price. And it looks way better than anything they showed me.">
+            קיבלתי הצעות מסוכנויות אחרות לכמעט 15,000 ₪ על משהו שכאן עשו לי תוך 6 ימים בעשירית מהמחיר. וזה גם נראה הרבה יותר טוב מכל מה שהראו לי.
+          </p>
+          <div class="review-person">
+            <div class="review-avatar ra2" data-he="מ״ש" data-en="MS">מ״ש</div>
+            <div>
+              <div class="review-name" data-he="מאיה שפיר" data-en="Maya Shafir">מאיה שפיר</div>
+              <div class="review-role" data-he="מייסדת, סלון מאיה" data-en="Founder, Salon Maya">מייסדת, סלון מאיה</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="review-card reveal reveal-d3">
+          <p class="review-quote"
+             data-he="האינטגרציה עם הווטסאפ לבדה שינתה את הדרך שבה לקוחות פונים אלי. האתר נראה כמו משהו שיוצא מסטארטאפ בתל אביב, רק שזה משרד עורכי דין."
+             data-en="The WhatsApp integration alone changed how clients reach me. The site looks like something a Tel Aviv startup would have, but for my law firm.">
+            האינטגרציה עם הווטסאפ לבדה שינתה את הדרך שבה לקוחות פונים אלי. האתר נראה כמו משהו שיוצא מסטארטאפ בתל אביב, רק שזה משרד עורכי דין.
+          </p>
+          <div class="review-person">
+            <div class="review-avatar ra3" data-he="ד״כ" data-en="DC">ד״כ</div>
+            <div>
+              <div class="review-name" data-he="דניאל כהן" data-en="Daniel Cohen">דניאל כהן</div>
+              <div class="review-role" data-he="שותף, כהן ושות׳" data-en="Partner, Cohen & Partners">שותף, כהן ושות׳</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="review-card reveal reveal-d1">
+          <p class="review-quote"
+             data-he="האתר החדש מדבר בדיוק בשפת המותג שלנו. כל פרט, כל צבע, כל אנימציה מרגישה נכונה. kifsy הבינו את הוויזיה של ADMORÉ בלי שצריך להסביר יותר מדי. זה נדיר."
+             data-en="The new site speaks exactly in our brand's language. Every detail, every color, every animation feels right. kifsy understood the ADMORÉ vision without needing much explanation. That's rare.">
+            האתר החדש מדבר בדיוק בשפת המותג שלנו. כל פרט, כל צבע, כל אנימציה מרגישה נכונה. kifsy הבינו את הוויזיה של ADMORÉ בלי שצריך להסביר יותר מדי. זה נדיר.
+          </p>
+          <div class="review-person">
+            <div class="review-avatar ra4" data-he="א״ה" data-en="AH">א״ה</div>
+            <div>
+              <div class="review-name" data-he="אלמוג הפנר" data-en="Almog Hafner">אלמוג הפנר</div>
+              <div class="review-role" data-he="בעלים, ADMORÉ" data-en="Owner, ADMORÉ">בעלים, ADMORÉ</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="review-card reveal reveal-d2">
+          <p class="review-quote"
+             data-he="האתר של רם תיירות כבר לא נראה כמו של חברה קטנה. לקוחות חדשים פונים אלינו כי הם מרגישים שמדובר בחברה מקצועית ואמינה. ההשקעה השתלמה כבר בחודש הראשון."
+             data-en="Ram Tours' site no longer looks like a small company. New clients approach us because they sense professionalism and credibility. The investment paid off within the first month.">
+            האתר של רם תיירות כבר לא נראה כמו של חברה קטנה. לקוחות חדשים פונים אלינו כי הם מרגישים שמדובר בחברה מקצועית ואמינה. ההשקעה השתלמה כבר בחודש הראשון.
+          </p>
+          <div class="review-person">
+            <div class="review-avatar ra5" data-he="ר״מ" data-en="RM">ר״מ</div>
+            <div>
+              <div class="review-name" data-he="רמי מורדוב" data-en="Rami Mordov">רמי מורדוב</div>
+              <div class="review-role" data-he="בעלים, רם תיירות" data-en="Owner, Ram Tours">בעלים, רם תיירות</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="review-card reveal reveal-d3">
+          <p class="review-quote"
+             data-he="הגעתי ל-kifsy עם מוצר טכנולוגי שצריך להיראות premium. התוצאה עברה את הציפיות שלי. האתר נראה כמו של חברה בינלאומית, ולקוחות מחו״ל כבר מגיבים לזה."
+             data-en="I came to kifsy with a tech product that needed to look premium. The result exceeded my expectations. The site looks like an international company, and overseas clients are already responding.">
+            הגעתי ל-kifsy עם מוצר טכנולוגי שצריך להיראות premium. התוצאה עברה את הציפיות שלי. האתר נראה כמו של חברה בינלאומית, ולקוחות מחו״ל כבר מגיבים לזה.
+          </p>
+          <div class="review-person">
+            <div class="review-avatar ra6" data-he="ד׳" data-en="D">ד׳</div>
+            <div>
+              <div class="review-name" data-he="דורון" data-en="Doron">דורון</div>
+              <div class="review-role" data-he="בעלים, BebKey" data-en="Owner, BebKey">בעלים, BebKey</div>
+            </div>
+          </div>
+        </article>
+
       </div>
     </div>
   </section>
