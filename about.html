@@ -335,19 +335,20 @@
       content: '';
       position: absolute;
       top: 0; bottom: 0;
-      left: 19px;
+      inset-inline-start: 19px;
       width: 1px;
       background: linear-gradient(to bottom, transparent, var(--line) 10%, var(--line) 90%, transparent);
     }
     .tl-item {
       display: grid;
-      grid-template-columns: 1fr 40px;
+      grid-template-columns: 40px 1fr;
       gap: 0 24px;
       padding-bottom: 56px;
       position: relative;
     }
     .tl-item:last-child { padding-bottom: 0; }
-    .tl-body { text-align: right; }
+    .tl-item > .tl-icon { order: -1; }
+    .tl-body { text-align: start; }
     .tl-icon {
       width: 40px; height: 40px; border-radius: 50%;
       background: var(--bg);
