@@ -127,6 +127,7 @@ When adding new components: include keyboard support, `aria-label` for icon butt
 
 _Newest first. One line per push: `YYYY-MM-DD · summary`._
 
+- **2026-05-18** · Add privacy.html, terms.html, cookies.html (bilingual legal pages, sticky TOC, brand style); add cookie-banner-preview.html prototype with bar and manage-panel states.
 - **2026-05-18** · Align about-page timeline icons to the start side of each language (right in HE, left in EN). Switched grid to '40px 1fr' with 'order: -1' on the icon, changed line position to logical 'inset-inline-start', and replaced hard-coded 'text-align: right' with 'text-align: start'.
 - **2026-05-18** · Add about.html (8-section About Us page); integrate full shared nav with lang toggle and burger; add 'אודותינו' link to index.html and contact.html navs.
 - **2026-05-17** · Replace BebKey and ramtours iframes with headless-Chrome screenshots; BebKey blocked iframes (X-Frame-Options: DENY), ramtours fired a JS alert when embedded. Screenshots saved to portfolio/previews/.

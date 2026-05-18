@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>מדיניות פרטיות · kifsy</title>
+<meta name="description" content="מדיניות הפרטיות של kifsy. איזה מידע אנחנו אוספים, איך אנחנו משתמשים בו, ומה הזכויות שלכם תחת חוק הגנת הפרטיות התשמ״א-1981." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&family=Inter:wght@400;500;600&family=Inter+Tight:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="kifsy-mark.png">
+<style>
+:root{--bg:#D6E3D1;--bg-soft:#E1ECDC;--surface:#fff;--ink:#2A3A2C;--ink-2:#4C5C4E;--ink-3:#7C8A7D;--accent:#A64253;--line:rgba(42,58,44,.10);--radius:16px;--max:760px;--ease:cubic-bezier(.2,.7,.2,1);--font-he:'Heebo',sans-serif;--font-en:'Inter',sans-serif;--font-en-disp:'Inter Tight','Inter',sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--font-he);background:var(--bg);color:var(--ink);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased}
+html[lang="en"] body{font-family:var(--font-en)}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s}
+a:hover{border-bottom-color:var(--accent)}
+button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
+h1,h2,h3{font-family:var(--font-he);font-weight:700;line-height:1.25;color:var(--ink);letter-spacing:-0.02em}
+html[lang="en"] h1,html[lang="en"] h2,html[lang="en"] h3{font-family:var(--font-en-disp)}
+h1{font-size:clamp(2rem,5vw,3rem)}
+h2{font-size:1.35rem;margin-top:40px;margin-bottom:14px;scroll-margin-top:80px}
+h3{font-size:1.05rem;margin-top:20px;margin-bottom:6px}
+p{color:var(--ink-2);margin-bottom:14px}
+ul,ol{color:var(--ink-2);margin:0 0 14px 0;padding-inline-start:22px}
+li{margin-bottom:6px}
+strong{color:var(--ink);font-weight:600}
+.brand-mark{direction:ltr;unicode-bidi:isolate;font-family:var(--font-en-disp);font-weight:600;letter-spacing:-0.04em}
+.dot{color:var(--accent)}
+nav{position:sticky;top:0;z-index:10;background:rgba(214,227,209,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-inner{max-width:calc(var(--max) + 48px);margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.back{display:flex;align-items:center;gap:6px;font-size:14px;color:var(--ink-2);transition:color .2s;border-bottom:none}
+.back:hover{color:var(--ink);border-bottom:none}
+.back-icon{display:inline-block;transition:transform .2s}
+html[dir="rtl"] .back-icon{transform:scaleX(-1)}
+html[dir="rtl"] .back:hover .back-icon{transform:scaleX(-1) translateX(-3px)}
+html[dir="ltr"] .back:hover .back-icon{transform:translateX(-3px)}
+.lang-toggle{display:flex;gap:3px;background:rgba(42,58,44,.08);border-radius:999px;padding:3px}
+.lang-toggle button{padding:4px 11px;border-radius:999px;font-size:13px;font-weight:500;color:var(--ink-3);transition:all .2s}
+.lang-toggle button.active{background:var(--ink);color:var(--bg)}
+.hero{padding:56px 24px 30px;max-width:calc(var(--max) + 48px);margin:0 auto}
+.badge{display:inline-flex;align-items:center;gap:8px;background:var(--bg-soft);border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:13px;color:var(--ink-2);margin-bottom:24px}
+.hero h1{margin-bottom:14px}
+.hero .lead{font-size:1.1rem;color:var(--ink-2);max-width:600px;margin-bottom:18px}
+.meta{font-size:13px;color:var(--ink-3);margin-bottom:6px}
+.placeholder{display:inline-block;background:rgba(166,66,83,.10);color:var(--accent);padding:1px 8px;border-radius:6px;font-weight:600;font-size:0.92em}
+.content{max-width:1100px;margin:0 auto;padding:0 24px 56px}
+.legal-wrap{display:flex;gap:32px;align-items:flex-start}
+.legal-sections{flex:1 1 0;min-width:0}
+.toc{flex:0 0 210px;background:var(--bg-soft);border:1px solid var(--line);border-radius:var(--radius);padding:20px 20px;position:sticky;top:70px}
+.toc h2{margin-top:0;font-size:0.95rem;margin-bottom:10px}
+.toc ol{margin:0;padding-inline-start:18px;color:var(--ink-2);font-size:13px}
+.toc li{margin-bottom:4px}
+.toc a{color:var(--ink-2);border-bottom:1px solid transparent}
+.toc a:hover{color:var(--ink);border-bottom-color:var(--ink)}
+.block{margin-bottom:8px}
+@media(max-width:768px){.legal-wrap{flex-direction:column}.toc{flex:none;width:100%;position:static}}
+.callout{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px 22px;margin:18px 0}
+.callout p:last-child{margin-bottom:0}
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+th,td{text-align:start;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--bg-soft);font-weight:600;color:var(--ink);font-size:13px}
+tr:last-child td{border-bottom:none}
+code{font-family:'Inter',monospace;background:rgba(42,58,44,.06);padding:1px 6px;border-radius:4px;font-size:0.92em;color:var(--ink)}
+.cross-links{display:flex;flex-wrap:wrap;gap:10px;padding:24px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);margin-top:40px}
+.cross-links a{flex:1 1 200px;text-align:center;padding:14px 18px;background:var(--bg-soft);border-radius:12px;color:var(--ink);font-weight:600;font-size:14px;border-bottom:none;transition:background .2s}
+.cross-links a:hover{background:var(--bg);border-bottom:none}
+footer{max-width:calc(var(--max) + 48px);margin:0 auto;padding:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;border-top:1px solid var(--line);font-size:13px;color:var(--ink-3)}
+footer .brand-mark{color:var(--ink);font-size:15px}
+@media(max-width:600px){.hero{padding:40px 20px 24px}.content{padding:0 20px 48px}h2{font-size:1.2rem}footer{padding:20px}}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="back">
+      <svg class="back-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      <span data-he="חזרה לאתר" data-en="Back to site">חזרה לאתר</span>
+    </a>
+    <a href="index.html" class="brand-mark">kifsy<span class="dot">.</span></a>
+    <div class="lang-toggle">
+      <button data-lang="he" class="active">עב</button>
+      <button data-lang="en">EN</button>
+    </div>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="badge">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.4 9.6 8 10 4.6-.4 8-5 8-10V6l-8-4z"/></svg>
+    <span data-he="משפטי" data-en="Legal">משפטי</span>
+  </div>
+  <h1 data-he="מדיניות פרטיות" data-en="Privacy Policy">מדיניות פרטיות</h1>
+  <p class="lead" data-he="במדיניות זו אנחנו מסבירים איזה מידע אנחנו אוספים על המבקרים באתר, איך אנחנו משתמשים בו, עם מי הוא משותף ומה הזכויות שלכם." data-en="This policy explains what information we collect about visitors to our site, how we use it, whom it is shared with, and what your rights are.">במדיניות זו אנחנו מסבירים איזה מידע אנחנו אוספים על המבקרים באתר, איך אנחנו משתמשים בו, עם מי הוא משותף ומה הזכויות שלכם.</p>
+  <div class="meta"><span data-he="עודכן לאחרונה: 18 במאי 2026" data-en="Last updated: May 18, 2026">עודכן לאחרונה: 18 במאי 2026</span></div>
+  <div class="meta"><span data-he="הדין החל: חוק הגנת הפרטיות, התשמ״א-1981 ותקנותיו" data-en="Governing law: Israeli Privacy Protection Law, 5741-1981 and its regulations">הדין החל: חוק הגנת הפרטיות, התשמ״א-1981 ותקנותיו</span></div>
+</div>
+
+<main class="content">
+<div class="legal-wrap">
+
+  <nav class="toc" aria-label="תוכן עניינים / Table of contents">
+    <h2 data-he="תוכן העניינים" data-en="Contents">תוכן העניינים</h2>
+    <ol>
+      <li><a href="#identity" data-he="מי אנחנו" data-en="Who we are">מי אנחנו</a></li>
+      <li><a href="#collect" data-he="איזה מידע אנחנו אוספים" data-en="What we collect">איזה מידע אנחנו אוספים</a></li>
+      <li><a href="#purposes" data-he="מטרות העיבוד" data-en="Purposes">מטרות העיבוד</a></li>
+      <li><a href="#voluntary" data-he="חובת מסירה" data-en="Voluntariness">חובת מסירה</a></li>
+      <li><a href="#sharing" data-he="עם מי משותף המידע" data-en="Who we share with">עם מי משותף המידע</a></li>
+      <li><a href="#transfer" data-he="העברה מחוץ לישראל" data-en="International transfer">העברה מחוץ לישראל</a></li>
+      <li><a href="#retention" data-he="תקופת שמירה" data-en="Retention">תקופת שמירה</a></li>
+      <li><a href="#security" data-he="אבטחת מידע" data-en="Security">אבטחת מידע</a></li>
+      <li><a href="#rights" data-he="הזכויות שלכם" data-en="Your rights">הזכויות שלכם</a></li>
+      <li><a href="#cookies" data-he="עוגיות" data-en="Cookies">עוגיות</a></li>
+      <li><a href="#minors" data-he="קטינים" data-en="Minors">קטינים</a></li>
+      <li><a href="#changes" data-he="שינויים במדיניות" data-en="Changes">שינויים במדיניות</a></li>
+      <li><a href="#contact" data-he="פנייה אלינו" data-en="Contact">פנייה אלינו</a></li>
+    </ol>
+  </nav>
+
+  <div class="legal-sections">
+
+  <section class="block" id="identity">
+    <h2 data-he="1. מי אנחנו" data-en="1. Who we are">1. מי אנחנו</h2>
+    <p data-he-html='האתר kifsy.com מופעל על ידי <strong>kifsy</strong> (להלן: ״אנחנו״, ״kifsy״ או ״בעל המאגר״). פרטי הזיהוי שלנו, כנדרש בסעיף 14ג לחוק הגנת הצרכן, התשמ״א-1981:'
+       data-en-html='The site kifsy.com is operated by <strong>kifsy</strong> (referred to here as "we", "kifsy" or "the database owner"). Our identifying details, as required by section 14C of the Consumer Protection Law, 5741-1981:'>
+      האתר kifsy.com מופעל על ידי <strong>kifsy</strong> (להלן: ״אנחנו״, ״kifsy״ או ״בעל המאגר״). פרטי הזיהוי שלנו, כנדרש בסעיף 14ג לחוק הגנת הצרכן, התשמ״א-1981:
+    </p>
+    <ul>
+      <li><strong data-he="שם:" data-en="Name:">שם:</strong> kifsy</li>
+      <li><strong data-he="דוא״ל:" data-en="Email:">דוא״ל:</strong> <a href="mailto:info@kifsy.com">info@kifsy.com</a></li>
+      <li><strong data-he="טל. דורון:" data-en="Phone, Doron:">טל. דורון:</strong> <a href="tel:+972549369527">054-936-9527</a></li>
+      <li><strong data-he="טל. רון:" data-en="Phone, Ron:">טל. רון:</strong> <a href="tel:+972528622646">052-862-2646</a></li>
+    </ul>
+    <p data-he="אנחנו ״בעל המאגר״ ו״מחזיק המאגר״ של המידע הנאסף דרך האתר, כהגדרת המונחים בחוק הגנת הפרטיות, התשמ״א-1981 (להלן: ״החוק״)." data-en='We are the "database owner" and "database holder" of the data collected through the site, as those terms are defined in the Israeli Privacy Protection Law, 5741-1981 (the "Law").'>אנחנו ״בעל המאגר״ ו״מחזיק המאגר״ של המידע הנאסף דרך האתר, כהגדרת המונחים בחוק הגנת הפרטיות, התשמ״א-1981 (להלן: ״החוק״).</p>
+  </section>
+
+  <section class="block" id="collect">
+    <h2 data-he="2. איזה מידע אנחנו אוספים" data-en="2. What we collect">2. איזה מידע אנחנו אוספים</h2>
+
+    <h3 data-he="2.1 מידע שאתם מוסרים לנו ביוזמתכם" data-en="2.1 Information you submit to us">2.1 מידע שאתם מוסרים לנו ביוזמתכם</h3>
+    <p data-he="כאשר אתם פונים אלינו דרך טופס יצירת הקשר באתר, אנחנו אוספים את הפרטים שאתם בוחרים למלא: שם, כתובת דוא״ל, מספר טלפון, שם העסק ותוכן ההודעה. השדות מסומנים בטופס וכוללים שדות חובה ושדות רשות." data-en="When you contact us through the contact form on the site, we collect the details you choose to provide: name, email address, phone number, business name, and message content. Fields are marked on the form as required or optional.">כאשר אתם פונים אלינו דרך טופס יצירת הקשר באתר, אנחנו אוספים את הפרטים שאתם בוחרים למלא: שם, כתובת דוא״ל, מספר טלפון, שם העסק ותוכן ההודעה. השדות מסומנים בטופס וכוללים שדות חובה ושדות רשות.</p>
+
+    <h3 data-he="2.2 מידע הנאסף אוטומטית" data-en="2.2 Information collected automatically">2.2 מידע הנאסף אוטומטית</h3>
+    <p data-he="בעת הביקור באתר, השירותים שאנחנו משתמשים בהם רושמים מידע טכני מסוים: כתובת IP, סוג הדפדפן ומערכת ההפעלה, הדפים שנצפו, מקור ההפניה, תאריך ושעת הגלישה, וזמני המתנה. מידע זה משמש סטטיסטיקה ולא לזיהוי אישי שלכם." data-en="When you visit the site, the services we rely on log certain technical information: IP address, browser type and operating system, pages viewed, referral source, date and time of visit, and load times. This data is used for statistics and not for identifying you personally.">בעת הביקור באתר, השירותים שאנחנו משתמשים בהם רושמים מידע טכני מסוים: כתובת IP, סוג הדפדפן ומערכת ההפעלה, הדפים שנצפו, מקור ההפניה, תאריך ושעת הגלישה, וזמני המתנה. מידע זה משמש סטטיסטיקה ולא לזיהוי אישי שלכם.</p>
+
+    <h3 data-he="2.3 עוגיות ואחסון מקומי" data-en="2.3 Cookies and local storage">2.3 עוגיות ואחסון מקומי</h3>
+    <p data-he-html='אנחנו משתמשים בעוגיות אנליטיקה (Google Analytics 4) ובאחסון מקומי (localStorage) לשמירת העדפות (שפה ונגישות). פירוט מלא מופיע ב<a href="cookies.html">מדיניות העוגיות</a> שלנו.'
+       data-en-html='We use analytics cookies (Google Analytics 4) and local storage (localStorage) to remember your preferences (language and accessibility). Full details appear in our <a href="cookies.html">Cookie Policy</a>.'>
+      אנחנו משתמשים בעוגיות אנליטיקה (Google Analytics 4) ובאחסון מקומי (localStorage) לשמירת העדפות (שפה ונגישות). פירוט מלא מופיע ב<a href="cookies.html">מדיניות העוגיות</a> שלנו.
+    </p>
+  </section>
+
+  <section class="block" id="purposes">
+    <h2 data-he="3. מטרות העיבוד" data-en="3. Purposes">3. מטרות העיבוד</h2>
+    <p data-he="אנחנו מעבדים את המידע למטרות הבאות:" data-en="We process the information for the following purposes:">אנחנו מעבדים את המידע למטרות הבאות:</p>
+    <ul>
+      <li data-he="מענה לפניות באמצעות טופס יצירת הקשר ויצירת קשר חוזר עמכם." data-en="Responding to inquiries submitted through the contact form and following up with you.">מענה לפניות באמצעות טופס יצירת הקשר ויצירת קשר חוזר עמכם.</li>
+      <li data-he="ניהול והפעלת האתר, תחזוקה ושיפור חוויית המשתמש." data-en="Operating, maintaining, and improving the user experience of the site.">ניהול והפעלת האתר, תחזוקה ושיפור חוויית המשתמש.</li>
+      <li data-he="ניתוח שימוש סטטיסטי באמצעות Google Analytics לצורך זיהוי דפוסי שימוש ושיפור התוכן." data-en="Statistical analysis via Google Analytics to identify usage patterns and improve content.">ניתוח שימוש סטטיסטי באמצעות Google Analytics לצורך זיהוי דפוסי שימוש ושיפור התוכן.</li>
+      <li data-he="עמידה בחובות חוקיות ורגולטוריות (לדוגמה, שמירת תיעוד מס לתקופה הקבועה בדין)." data-en="Complying with legal and regulatory obligations (for example, retaining tax records for the period required by law).">עמידה בחובות חוקיות ורגולטוריות (לדוגמה, שמירת תיעוד מס לתקופה הקבועה בדין).</li>
+      <li data-he="הגנה על הזכויות, הרכוש והבטיחות שלנו, של המשתמשים ושל הציבור." data-en="Protecting our rights, property, and the safety of ourselves, users, and the public.">הגנה על הזכויות, הרכוש והבטיחות שלנו, של המשתמשים ושל הציבור.</li>
+    </ul>
+  </section>
+
+  <section class="block" id="voluntary">
+    <h2 data-he="4. חובת מסירה והבסיס המשפטי" data-en="4. Voluntariness and legal basis">4. חובת מסירה והבסיס המשפטי</h2>
+    <p data-he-html='בהתאם לסעיף 11 לחוק הגנת הפרטיות, נבהיר: <strong>אין חובה חוקית למסור לנו מידע</strong>. מסירת המידע נעשית מרצונכם החופשי ועל בסיס הסכמתכם. אם תבחרו לא למלא את טופס יצירת הקשר, פשוט לא נוכל ליצור איתכם קשר חוזר. הסכמתכם להעברת המידע לספקי שירות מחוץ לישראל מוצגת ב<a href="#transfer">סעיף 6</a>.'
+       data-en-html='Per section 11 of the Privacy Protection Law, we clarify: <strong>there is no legal duty to provide information to us</strong>. Providing information is voluntary and based on your consent. If you choose not to fill in the contact form, we simply will not be able to follow up with you. Your consent to transfer information to service providers outside Israel is addressed in <a href="#transfer">section 6</a>.'>
+      בהתאם לסעיף 11 לחוק הגנת הפרטיות, נבהיר: <strong>אין חובה חוקית למסור לנו מידע</strong>. מסירת המידע נעשית מרצונכם החופשי ועל בסיס הסכמתכם. אם תבחרו לא למלא את טופס יצירת הקשר, פשוט לא נוכל ליצור איתכם קשר חוזר. הסכמתכם להעברת המידע לספקי שירות מחוץ לישראל מוצגת ב<a href="#transfer">סעיף 6</a>.
+    </p>
+  </section>
+
+  <section class="block" id="sharing">
+    <h2 data-he="5. עם מי משותף המידע" data-en="5. Who we share with">5. עם מי משותף המידע</h2>
+    <p data-he="איננו מוכרים מידע אישי. אנחנו משתפים את המידע רק עם ספקי שירות שמסייעים לנו להפעיל את האתר, ובהיקף הנדרש לפעילותם:" data-en="We do not sell personal information. We share information only with service providers that help us operate the site, and only to the extent required for their operation:">איננו מוכרים מידע אישי. אנחנו משתפים את המידע רק עם ספקי שירות שמסייעים לנו להפעיל את האתר, ובהיקף הנדרש לפעילותם:</p>
+    <ul>
+      <li data-he-html='<strong>Formspree (Formspree, Inc., ארה״ב)</strong>:שירות לקבלת פניות מטפסים. כל פנייה דרך טופס יצירת הקשר עוברת דרכם ומועברת אלינו בדוא״ל. מדיניות הפרטיות שלהם: <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener">formspree.io/legal/privacy-policy</a>.'
+          data-en-html='<strong>Formspree (Formspree, Inc., USA)</strong>, a form-handling service. Every contact-form submission is processed by them and forwarded to us by email. Their privacy policy: <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener">formspree.io/legal/privacy-policy</a>.'>
+        <strong>Formspree (Formspree, Inc., ארה״ב)</strong>:שירות לקבלת פניות מטפסים. כל פנייה דרך טופס יצירת הקשר עוברת דרכם ומועברת אלינו בדוא״ל. מדיניות הפרטיות שלהם: <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener">formspree.io/legal/privacy-policy</a>.
+      </li>
+      <li data-he-html='<strong>Google (Google LLC, ארה״ב)</strong>:שירות Google Analytics 4 לסטטיסטיקה אנונימית של שימוש באתר. מדיניות הפרטיות: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>.'
+          data-en-html='<strong>Google (Google LLC, USA)</strong>, the Google Analytics 4 service for anonymized site-usage statistics. Privacy policy: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>.'>
+        <strong>Google (Google LLC, ארה״ב)</strong>:שירות Google Analytics 4 לסטטיסטיקה אנונימית של שימוש באתר. מדיניות הפרטיות: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>.
+      </li>
+      <li data-he-html='<strong>Vercel (Vercel Inc., ארה״ב)</strong>: מארח את קבצי האתר ויומני השרת. מדיניות הפרטיות: <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener">vercel.com/legal/privacy-policy</a>.'
+          data-en-html='<strong>Vercel (Vercel Inc., USA)</strong>: hosts the site files and server logs. Privacy policy: <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener">vercel.com/legal/privacy-policy</a>.'>
+        <strong>Vercel (Vercel Inc., ארה״ב)</strong>: מארח את קבצי האתר ויומני השרת. מדיניות הפרטיות: <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener">vercel.com/legal/privacy-policy</a>.
+      </li>
+    </ul>
+    <p data-he="כמו כן, אנחנו עשויים להעביר מידע לגורם מוסמך אם נידרש לכך מכוח הדין, צו שיפוטי, או הליך משפטי תקף." data-en="In addition, we may transfer information to a competent authority if required to do so by law, a judicial order, or a valid legal process.">כמו כן, אנחנו עשויים להעביר מידע לגורם מוסמך אם נידרש לכך מכוח הדין, צו שיפוטי, או הליך משפטי תקף.</p>
+  </section>
+
+  <section class="block" id="transfer">
+    <h2 data-he="6. העברה מחוץ לישראל" data-en="6. International transfer">6. העברה מחוץ לישראל</h2>
+    <p data-he-html='חלק מספקי השירות שלנו פועלים מחוץ לישראל, בעיקר בארצות הברית. העברת מידע למאגרי מידע מחוץ לישראל מוסדרת בתקנות הגנת הפרטיות (העברת מידע אל מאגרי מידע שמחוץ לגבולות המדינה), התשס״א-2001. הבסיס לעיבוד הוא הסכמתכם המפורשת, הניתנת בעת מסירת המידע ושימוש באתר. ברצוננו לציין כי דיני הגנת הפרטיות במדינות היעד אינם זהים לדינים בישראל, ועשויים להעניק רמת הגנה נמוכה יותר.'
+       data-en-html='Some of our service providers operate outside Israel, primarily in the United States. Transferring information to databases outside Israel is regulated by the Privacy Protection Regulations (Transfer of Data to Databases Abroad), 5761-2001. The basis for processing is your explicit consent, given when you provide the information and use the site. Please note that the privacy laws of destination countries are not identical to Israeli law and may offer a lower level of protection.'>
+      חלק מספקי השירות שלנו פועלים מחוץ לישראל, בעיקר בארצות הברית. העברת מידע למאגרי מידע מחוץ לישראל מוסדרת בתקנות הגנת הפרטיות (העברת מידע אל מאגרי מידע שמחוץ לגבולות המדינה), התשס״א-2001. הבסיס לעיבוד הוא הסכמתכם המפורשת, הניתנת בעת מסירת המידע ושימוש באתר. ברצוננו לציין כי דיני הגנת הפרטיות במדינות היעד אינם זהים לדינים בישראל, ועשויים להעניק רמת הגנה נמוכה יותר.
+    </p>
+    <p data-he="ספקי השירות הללו התחייבו לשמור על המידע בהתאם להוראות הדין, להגן עליו ולהשתמש בו אך ורק למטרות שלשמן הועבר." data-en="These service providers have undertaken to safeguard the information in accordance with applicable law, to protect it, and to use it solely for the purposes for which it was transferred.">ספקי השירות הללו התחייבו לשמור על המידע בהתאם להוראות הדין, להגן עליו ולהשתמש בו אך ורק למטרות שלשמן הועבר.</p>
+  </section>
+
+  <section class="block" id="retention">
+    <h2 data-he="7. תקופת שמירה" data-en="7. Retention">7. תקופת שמירה</h2>
+    <p data-he="נשמור את המידע רק כל עוד נדרש למטרות שלשמן נאסף, ובכל מקרה לא יותר מהזמן המותר על פי דין:" data-en="We will keep the information only for as long as needed for the purposes for which it was collected, and in any case no longer than the law permits:">נשמור את המידע רק כל עוד נדרש למטרות שלשמן נאסף, ובכל מקרה לא יותר מהזמן המותר על פי דין:</p>
+    <ul>
+      <li data-he="פניות דרך טופס יצירת הקשר: עד 7 שנים, בהתאם לחוק ההתיישנות ולחובות תיעוד מס." data-en="Contact-form submissions: up to 7 years, in line with the Statute of Limitations and tax-record retention duties.">פניות דרך טופס יצירת הקשר: עד 7 שנים, בהתאם לחוק ההתיישנות ולחובות תיעוד מס.</li>
+      <li data-he="נתוני Google Analytics: עד 14 חודשים." data-en="Google Analytics data: up to 14 months.">נתוני Google Analytics: עד 14 חודשים.</li>
+      <li data-he="העדפות שמורות באחסון מקומי (שפה, נגישות): עד מחיקה ידנית של נתוני הדפדפן על ידכם." data-en="Preferences stored in local storage (language, accessibility): until you manually clear your browser data.">העדפות שמורות באחסון מקומי (שפה, נגישות): עד מחיקה ידנית של נתוני הדפדפן על ידכם.</li>
+    </ul>
+  </section>
+
+  <section class="block" id="security">
+    <h2 data-he="8. אבטחת מידע" data-en="8. Security">8. אבטחת מידע</h2>
+    <p data-he="אנחנו מיישמים אמצעי אבטחה פיזיים, ארגוניים וטכנולוגיים סבירים להגנה על המידע מפני גישה לא מורשית, שימוש, שינוי או הרס. בכלל זה: גישה מוגבלת לפי הצורך, סיסמאות חזקות, חיבור מאובטח (HTTPS), ובחירה בספקי שירות שמיישמים תקני אבטחה מקובלים. הכל בהתאם לתקנות הגנת הפרטיות (אבטחת מידע), התשע״ז-2017, ברמת האבטחה המתאימה למאגר המנוהל בידי יחיד." data-en="We apply reasonable physical, organizational, and technological security measures to protect the information against unauthorized access, use, alteration, or destruction. This includes need-to-know access, strong passwords, secure connections (HTTPS), and selecting service providers that implement accepted security standards. All in accordance with the Privacy Protection Regulations (Data Security), 5777-2017, at the security level appropriate for an individual-managed database.">אנחנו מיישמים אמצעי אבטחה פיזיים, ארגוניים וטכנולוגיים סבירים להגנה על המידע מפני גישה לא מורשית, שימוש, שינוי או הרס. בכלל זה: גישה מוגבלת לפי הצורך, סיסמאות חזקות, חיבור מאובטח (HTTPS), ובחירה בספקי שירות שמיישמים תקני אבטחה מקובלים. הכל בהתאם לתקנות הגנת הפרטיות (אבטחת מידע), התשע״ז-2017, ברמת האבטחה המתאימה למאגר המנוהל בידי יחיד.</p>
+    <p data-he="חשוב לדעת: גם כשנוקטים באמצעי אבטחה מתקדמים, לא ניתן להבטיח הגנה מוחלטת מפני חדירה או שימוש לרעה." data-en="Important: even with advanced security measures, complete protection against intrusion or misuse cannot be guaranteed.">חשוב לדעת: גם כשנוקטים באמצעי אבטחה מתקדמים, לא ניתן להבטיח הגנה מוחלטת מפני חדירה או שימוש לרעה.</p>
+  </section>
+
+  <section class="block" id="rights">
+    <h2 data-he="9. הזכויות שלכם" data-en="9. Your rights">9. הזכויות שלכם</h2>
+    <p data-he="על פי החוק, יש לכם הזכויות הבאות בנוגע למידע האישי שלכם:" data-en="Under the Law, you have the following rights regarding your personal information:">על פי החוק, יש לכם הזכויות הבאות בנוגע למידע האישי שלכם:</p>
+    <ul>
+      <li data-he-html='<strong>זכות עיון (סעיף 13 לחוק):</strong> זכות לעיין במידע האישי שלכם המוחזק אצלנו.'
+          data-en-html='<strong>Right of access (sec. 13 of the Law):</strong> the right to inspect your personal information held by us.'>
+        <strong>זכות עיון (סעיף 13 לחוק):</strong> זכות לעיין במידע האישי שלכם המוחזק אצלנו.
+      </li>
+      <li data-he-html='<strong>זכות תיקון ומחיקה (סעיף 14 לחוק):</strong> זכות לבקש תיקון מידע שגוי או מחיקה של מידע שאינו נחוץ עוד למטרה שלשמה נאסף.'
+          data-en-html='<strong>Right to correction and deletion (sec. 14 of the Law):</strong> the right to request correction of inaccurate information or deletion of information no longer needed for the purpose for which it was collected.'>
+        <strong>זכות תיקון ומחיקה (סעיף 14 לחוק):</strong> זכות לבקש תיקון מידע שגוי או מחיקה של מידע שאינו נחוץ עוד למטרה שלשמה נאסף.
+      </li>
+      <li data-he-html='<strong>זכות לבטל הסכמה:</strong> זכות לחזור בכם מהסכמה לעיבוד נתוני שימוש (לדוגמה, להפסיק את האנליטיקה דרך הגדרות הדפדפן או תוסף הביטול של Google).'
+          data-en-html='<strong>Right to withdraw consent:</strong> the right to withdraw consent to the processing of usage data (for example, to disable analytics through browser settings or the Google opt-out add-on).'>
+        <strong>זכות לבטל הסכמה:</strong> זכות לחזור בכם מהסכמה לעיבוד נתוני שימוש (לדוגמה, להפסיק את האנליטיקה דרך הגדרות הדפדפן או תוסף הביטול של Google).
+      </li>
+      <li data-he-html='<strong>זכות להגיש תלונה:</strong> זכות לפנות לרשות הגנת הפרטיות במשרד המשפטים. פרטים: <a href="https://www.gov.il/he/departments/the_privacy_protection_authority" target="_blank" rel="noopener">www.gov.il/he/departments/the_privacy_protection_authority</a>.'
+          data-en-html='<strong>Right to lodge a complaint:</strong> the right to contact the Privacy Protection Authority at the Ministry of Justice. Details: <a href="https://www.gov.il/he/departments/the_privacy_protection_authority" target="_blank" rel="noopener">www.gov.il/he/departments/the_privacy_protection_authority</a>.'>
+        <strong>זכות להגיש תלונה:</strong> זכות לפנות לרשות הגנת הפרטיות במשרד המשפטים. פרטים: <a href="https://www.gov.il/he/departments/the_privacy_protection_authority" target="_blank" rel="noopener">www.gov.il/he/departments/the_privacy_protection_authority</a>.
+      </li>
+    </ul>
+    <p data-he-html='למימוש זכות, פנו אלינו בכתב לכתובת <a href="mailto:info@kifsy.com">info@kifsy.com</a>. נשיב לבקשה תוך 30 יום ממועד קבלתה, כנדרש בחוק.'
+       data-en-html='To exercise a right, contact us in writing at <a href="mailto:info@kifsy.com">info@kifsy.com</a>. We will respond within 30 days of receiving the request, as required by law.'>
+      למימוש זכות, פנו אלינו בכתב לכתובת <a href="mailto:info@kifsy.com">info@kifsy.com</a>. נשיב לבקשה תוך 30 יום ממועד קבלתה, כנדרש בחוק.
+    </p>
+  </section>
+
+  <section class="block" id="cookies">
+    <h2 data-he="10. עוגיות" data-en="10. Cookies">10. עוגיות</h2>
+    <p data-he-html='אנחנו משתמשים במספר מצומצם של עוגיות ושל פריטי אחסון מקומי. הפירוט המלא והאופן לביטולן מופיע ב<a href="cookies.html">מדיניות העוגיות</a>.'
+       data-en-html='We use a small number of cookies and local-storage items. Full details and instructions for disabling them appear in our <a href="cookies.html">Cookie Policy</a>.'>
+      אנחנו משתמשים במספר מצומצם של עוגיות ושל פריטי אחסון מקומי. הפירוט המלא והאופן לביטולן מופיע ב<a href="cookies.html">מדיניות העוגיות</a>.
+    </p>
+  </section>
+
+  <section class="block" id="minors">
+    <h2 data-he="11. קטינים" data-en="11. Minors">11. קטינים</h2>
+    <p data-he="האתר מיועד לבעלי עסקים ולמבוגרים בני 18 ומעלה. איננו אוספים ביודעין מידע אישי מקטינים. אם הינכם מתחת לגיל 18, אנא הימנעו ממסירת מידע אישי. אם נודע לנו שאספנו מידע מקטין ללא הסכמת ההורה או האפוטרופוס החוקי, נמחק את המידע מיד." data-en="The site is intended for business owners and adults aged 18 and over. We do not knowingly collect personal information from minors. If you are under 18, please do not submit personal information. If we learn that we have collected information from a minor without parental or guardian consent, we will delete it immediately.">האתר מיועד לבעלי עסקים ולמבוגרים בני 18 ומעלה. איננו אוספים ביודעין מידע אישי מקטינים. אם הינכם מתחת לגיל 18, אנא הימנעו ממסירת מידע אישי. אם נודע לנו שאספנו מידע מקטין ללא הסכמת ההורה או האפוטרופוס החוקי, נמחק את המידע מיד.</p>
+  </section>
+
+  <section class="block" id="changes">
+    <h2 data-he="12. שינויים במדיניות" data-en="12. Changes to this policy">12. שינויים במדיניות</h2>
+    <p data-he="אנחנו עשויים לעדכן את מדיניות הפרטיות מעת לעת. הגרסה העדכנית פורסמת בכתובת זו, עם תאריך עדכון בראש העמוד. שימוש מתמשך באתר לאחר עדכון מהווה את אישורכם לתנאים החדשים." data-en="We may update this privacy policy from time to time. The current version is published at this URL with the update date at the top of the page. Continued use of the site after an update constitutes your acceptance of the updated terms.">אנחנו עשויים לעדכן את מדיניות הפרטיות מעת לעת. הגרסה העדכנית פורסמת בכתובת זו, עם תאריך עדכון בראש העמוד. שימוש מתמשך באתר לאחר עדכון מהווה את אישורכם לתנאים החדשים.</p>
+  </section>
+
+  <section class="block" id="contact">
+    <h2 data-he="13. פנייה אלינו" data-en="13. Contact us">13. פנייה אלינו</h2>
+    <p data-he="לכל שאלה, בקשה או תלונה הנוגעת לפרטיות, אנא פנו אלינו:" data-en="For any question, request, or complaint regarding privacy, please contact us:">לכל שאלה, בקשה או תלונה הנוגעת לפרטיות, אנא פנו אלינו:</p>
+    <div class="callout">
+      <p><strong>kifsy</strong></p>
+      <p data-he-html='דוא״ל: <a href="mailto:info@kifsy.com">info@kifsy.com</a>' data-en-html='Email: <a href="mailto:info@kifsy.com">info@kifsy.com</a>'>דוא״ל: <a href="mailto:info@kifsy.com">info@kifsy.com</a></p>
+      <p data-he-html='טל. דורון: <a href="tel:+972549369527">054-936-9527</a>' data-en-html='Phone, Doron: <a href="tel:+972549369527">054-936-9527</a>'>טל. דורון: <a href="tel:+972549369527">054-936-9527</a></p>
+      <p data-he-html='טל. רון: <a href="tel:+972528622646">052-862-2646</a>' data-en-html='Phone, Ron: <a href="tel:+972528622646">052-862-2646</a>'>טל. רון: <a href="tel:+972528622646">052-862-2646</a></p>
+      <p data-he-html='ממונה על הפרטיות: <span class="placeholder">[להשלים: שם הממונה]</span>'
+         data-en-html='Privacy contact: <span class="placeholder">[To complete: contact name]</span>'>
+        ממונה על הפרטיות: <span class="placeholder">[להשלים: שם הממונה]</span>
+      </p>
+    </div>
+  </section>
+
+  </div><!-- /legal-sections -->
+
+  <div class="cross-links">
+    <a href="terms.html" data-he="תנאי שימוש" data-en="Terms of Use">תנאי שימוש</a>
+    <a href="cookies.html" data-he="מדיניות עוגיות" data-en="Cookie Policy">מדיניות עוגיות</a>
+    <a href="contact.html" data-he="צרו קשר" data-en="Contact">צרו קשר</a>
+  </div>
+
+</div><!-- /legal-wrap -->
+</main>
+
+<footer>
+  <div class="brand-mark">kifsy<span class="dot">.</span></div>
+  <div><span data-he="© 2026 kifsy. כל הזכויות שמורות." data-en="© 2026 kifsy. All rights reserved.">© 2026 kifsy. כל הזכויות שמורות.</span></div>
+</footer>
+
+<script>
+const html = document.documentElement;
+const STORAGE_KEY = 'kifsy-lang';
+function setLang(lang) {
+  if (lang !== 'he' && lang !== 'en') lang = 'he';
+  html.setAttribute('lang', lang);
+  html.setAttribute('dir', lang === 'he' ? 'rtl' : 'ltr');
+  document.title = lang === 'en' ? 'Privacy Policy · kifsy' : 'מדיניות פרטיות · kifsy';
+  document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+    const val = el.getAttribute('data-' + lang);
+    if (val !== null) el.textContent = val;
+  });
+  document.querySelectorAll('[data-' + lang + '-html]').forEach(el => {
+    const val = el.getAttribute('data-' + lang + '-html');
+    if (val !== null) el.innerHTML = val;
+  });
+  document.querySelectorAll('.lang-toggle button').forEach(b => {
+    b.classList.toggle('active', b.dataset.lang === lang);
+  });
+  try { localStorage.setItem(STORAGE_KEY, lang); } catch(e){}
+}
+let initial = 'he';
+try { initial = localStorage.getItem(STORAGE_KEY) || 'he'; } catch(e){}
+setLang(initial);
+document.querySelectorAll('.lang-toggle button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+</script>
+</body>
+</html>
