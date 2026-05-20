@@ -1427,7 +1427,7 @@
     /* ── COOKIE CONSENT LOGIC ── */
     document.addEventListener('DOMContentLoaded', function() {
       var CK_KEY = 'kifsy-cookies';
-      var bar   = document.getElementById('ckBar');
+      var bar   = document.getElementById('kf-notice');
       var panel = document.getElementById('ckPanel');
       var consent = null;
       try { consent = JSON.parse(localStorage.getItem(CK_KEY)); } catch(e) {}
@@ -1447,7 +1447,7 @@
   </script>
 
 <!-- ── COOKIE CONSENT BAR ── -->
-<div class="ck-bar" id="ckBar" role="region" aria-label="הסכמה לקוקיז">
+<div class="ck-bar" id="kf-notice" role="region" aria-label="הסכמה לקוקיז">
   <p class="ck-bar__text">
     <span data-he="אנו משתמשים בקוקיז כדי לשפר את חוויית הגלישה ולנתח את תנועת האתר. קוקיז אנליטיים פועלים רק בהסכמתך. " data-en="We use cookies to improve your experience and analyse site traffic. Analytics cookies only run with your consent. ">אנו משתמשים בקוקיז כדי לשפר את חוויית הגלישה ולנתח את תנועת האתר. קוקיז אנליטיים פועלים רק בהסכמתך. </span><a href="cookies.html" data-he="מדיניות קוקיז" data-en="Cookie Policy">מדיניות קוקיז</a>
   </p>
