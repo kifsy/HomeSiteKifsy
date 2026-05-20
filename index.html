@@ -2660,6 +2660,11 @@
   /* ── COOKIE CONSENT LOGIC ── */
   (function() {
     var CK_KEY = 'kifsy-cookies';
+    // ?reset in URL clears stored consent (for testing)
+    if (location.search.indexOf('reset') !== -1) {
+      try { localStorage.removeItem(CK_KEY); } catch(e) {}
+      history.replaceState(null, '', location.pathname);
+    }
     var bar    = document.getElementById('cookieBar');
     var panel  = document.getElementById('cookiePanel');
     var consent = null;
