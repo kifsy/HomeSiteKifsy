@@ -115,9 +115,9 @@ html[dir="rtl"] .btn-submit svg{transform:scaleX(-1)}
   .content{padding:0 20px 48px}
 }
 /* ── COOKIE CONSENT BAR ── */
-.cookie-bar{position:fixed;bottom:0;left:0;right:0;background:var(--ink);color:#fff;padding:18px 32px;display:flex;align-items:center;gap:20px;z-index:998;animation:ckSlideUp .35s ease}
+.cookie-bar{position:fixed;bottom:0;left:0;right:0;background:var(--ink);color:#fff;padding:18px 32px;display:none;align-items:center;gap:20px;z-index:998}
+.cookie-bar.visible{display:flex;animation:ckSlideUp .35s ease}
 @keyframes ckSlideUp{from{transform:translateY(100%);opacity:0}to{transform:translateY(0);opacity:1}}
-.cookie-bar.hidden{display:none}
 .cookie-bar__text{flex:1;font-size:14px;line-height:1.55}
 .cookie-bar__text a{color:#fff;text-decoration:underline;text-underline-offset:3px}
 .cookie-bar__actions{display:flex;gap:10px;flex-shrink:0;flex-wrap:wrap}
@@ -334,16 +334,17 @@ document.addEventListener('DOMContentLoaded', function() {
   var panel = document.getElementById('cookiePanel');
   var consent = null;
   try { consent = JSON.parse(localStorage.getItem(CK_KEY)); } catch(e) {}
-  if (consent) { bar.classList.add('hidden'); return; }
+  if (consent) return;
+  bar.classList.add('visible');
   function saveConsent(analytics) {
     localStorage.setItem(CK_KEY, JSON.stringify({ analytics: analytics, ts: Date.now() }));
-    bar.classList.add('hidden');
+    bar.classList.remove('visible');
     panel.classList.remove('open');
   }
   document.getElementById('ckBtnAccept').addEventListener('click', function() { saveConsent(true); });
   document.getElementById('ckBtnDecline').addEventListener('click', function() { saveConsent(false); });
-  document.getElementById('ckBtnManage').addEventListener('click', function() { bar.classList.add('hidden'); panel.classList.add('open'); });
-  document.getElementById('ckBtnBack').addEventListener('click', function() { panel.classList.remove('open'); bar.classList.remove('hidden'); });
+  document.getElementById('ckBtnManage').addEventListener('click', function() { bar.classList.remove('visible'); panel.classList.add('open'); });
+  document.getElementById('ckBtnBack').addEventListener('click', function() { panel.classList.remove('open'); bar.classList.add('visible'); });
   document.getElementById('ckBtnSave').addEventListener('click', function() { saveConsent(document.getElementById('ckToggleAnalytics').checked); });
 });
 </script>
