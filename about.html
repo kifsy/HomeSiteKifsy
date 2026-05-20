@@ -779,6 +779,38 @@
       .reveal, .hero-word span, .hero-badge, .hero-sub, .hero-cta-row, .scroll-cue { animation: none !important; opacity: 1 !important; transform: none !important; }
       .hero-orb { animation: none !important; }
     }
+
+    /* ── COOKIE CONSENT BAR ── */
+    .cookie-bar{position:fixed;bottom:0;left:0;right:0;background:var(--ink);color:#fff;padding:18px 32px;display:flex;align-items:center;gap:20px;z-index:998;animation:ckSlideUp .35s ease}
+    @keyframes ckSlideUp{from{transform:translateY(100%);opacity:0}to{transform:translateY(0);opacity:1}}
+    .cookie-bar.hidden{display:none}
+    .cookie-bar__text{flex:1;font-size:14px;line-height:1.55}
+    .cookie-bar__text a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+    .cookie-bar__actions{display:flex;gap:10px;flex-shrink:0;flex-wrap:wrap}
+    .ck-btn-accept{padding:10px 22px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;transition:opacity .15s}
+    .ck-btn-accept:hover{opacity:.88}
+    .ck-btn-decline{padding:10px 22px;background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.4);border-radius:8px;font-family:inherit;font-size:14px;font-weight:500;cursor:pointer;transition:border-color .15s}
+    .ck-btn-decline:hover{border-color:#fff}
+    .ck-btn-manage{padding:10px 14px;background:transparent;color:rgba(255,255,255,.6);border:none;font-family:inherit;font-size:13px;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+    .cookie-panel{position:fixed;bottom:0;left:0;right:0;background:var(--warm);color:var(--ink);border-top:2px solid rgba(42,58,44,.15);padding:24px 32px 28px;z-index:999;display:none;animation:ckSlideUp .3s ease}
+    .cookie-panel.open{display:block}
+    .cookie-panel h3{font-size:16px;font-weight:700;margin-bottom:18px}
+    .cookie-panel__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:20px}
+    .ck-category{background:var(--soft);border-radius:10px;padding:14px;display:flex;gap:12px;align-items:flex-start}
+    .ck-category__name{font-size:14px;font-weight:600;margin-bottom:4px}
+    .ck-category__desc{font-size:12.5px;line-height:1.5;opacity:.72}
+    .ck-toggle-wrap{flex-shrink:0;margin-top:2px}
+    .ck-toggle{position:relative;width:40px;height:22px;display:inline-block}
+    .ck-toggle input{opacity:0;width:0;height:0}
+    .ck-track{position:absolute;inset:0;background:rgba(42,58,44,.2);border-radius:99px;cursor:pointer;transition:background .2s}
+    .ck-track::after{content:'';position:absolute;width:16px;height:16px;background:#fff;border-radius:50%;top:3px;inset-inline-start:3px;transition:inset-inline-start .2s;box-shadow:0 1px 3px rgba(0,0,0,.25)}
+    .ck-toggle input:checked+.ck-track{background:var(--accent)}
+    .ck-toggle input:checked+.ck-track::after{inset-inline-start:21px}
+    .ck-toggle input:disabled+.ck-track{background:var(--accent);opacity:.55;cursor:not-allowed}
+    .ck-toggle input:disabled+.ck-track::after{inset-inline-start:21px}
+    .cookie-panel__footer{display:flex;gap:10px;justify-content:flex-end}
+    [dir="rtl"] .cookie-panel__footer{justify-content:flex-start}
+    @media(max-width:600px){.cookie-bar{flex-direction:column;align-items:flex-start;padding:18px 20px}.cookie-bar__actions{width:100%}.ck-btn-accept,.ck-btn-decline{flex:1;text-align:center}.cookie-panel{padding:20px 20px 24px}}
   </style>
 </head>
 
@@ -1392,7 +1424,60 @@
         }
       });
     });
+
+    /* ── COOKIE CONSENT LOGIC ── */
+    document.addEventListener('DOMContentLoaded', function() {
+      var CK_KEY = 'kifsy-cookies';
+      var bar   = document.getElementById('cookieBar');
+      var panel = document.getElementById('cookiePanel');
+      var consent = null;
+      try { consent = JSON.parse(localStorage.getItem(CK_KEY)); } catch(e) {}
+      if (consent) { bar.classList.add('hidden'); return; }
+      function saveConsent(analytics) {
+        localStorage.setItem(CK_KEY, JSON.stringify({ analytics: analytics, ts: Date.now() }));
+        bar.classList.add('hidden');
+        panel.classList.remove('open');
+      }
+      document.getElementById('ckBtnAccept').addEventListener('click', function() { saveConsent(true); });
+      document.getElementById('ckBtnDecline').addEventListener('click', function() { saveConsent(false); });
+      document.getElementById('ckBtnManage').addEventListener('click', function() { bar.classList.add('hidden'); panel.classList.add('open'); });
+      document.getElementById('ckBtnBack').addEventListener('click', function() { panel.classList.remove('open'); bar.classList.remove('hidden'); });
+      document.getElementById('ckBtnSave').addEventListener('click', function() { saveConsent(document.getElementById('ckToggleAnalytics').checked); });
+    });
   </script>
+
+<!-- ── COOKIE CONSENT BAR ── -->
+<div class="cookie-bar" id="cookieBar" role="region" aria-label="הסכמה לקוקיז">
+  <p class="cookie-bar__text">
+    <span data-he="אנו משתמשים בקוקיז כדי לשפר את חוויית הגלישה ולנתח את תנועת האתר. קוקיז אנליטיים פועלים רק בהסכמתך. " data-en="We use cookies to improve your experience and analyse site traffic. Analytics cookies only run with your consent. ">אנו משתמשים בקוקיז כדי לשפר את חוויית הגלישה ולנתח את תנועת האתר. קוקיז אנליטיים פועלים רק בהסכמתך. </span><a href="cookies.html" data-he="מדיניות קוקיז" data-en="Cookie Policy">מדיניות קוקיז</a>
+  </p>
+  <div class="cookie-bar__actions">
+    <button class="ck-btn-accept" id="ckBtnAccept" data-he="קבל הכל" data-en="Accept all">קבל הכל</button>
+    <button class="ck-btn-decline" id="ckBtnDecline" data-he="דחה אנליטיים" data-en="Decline analytics">דחה אנליטיים</button>
+    <button class="ck-btn-manage" id="ckBtnManage" data-he="ניהול העדפות" data-en="Manage preferences">ניהול העדפות</button>
+  </div>
+</div>
+<div class="cookie-panel" id="cookiePanel" role="dialog" aria-modal="true" aria-labelledby="ckPanelTitle">
+  <h3 id="ckPanelTitle" data-he="ניהול העדפות קוקיז" data-en="Cookie preferences">ניהול העדפות קוקיז</h3>
+  <div class="cookie-panel__grid">
+    <div class="ck-category">
+      <div class="ck-category__info"><div class="ck-category__name" data-he="קוקיז הכרחיים" data-en="Necessary">קוקיז הכרחיים</div><div class="ck-category__desc" data-he="נחוצים להפעלת האתר. לא ניתן לבטל." data-en="Required for the site to work. Cannot be disabled.">נחוצים להפעלת האתר. לא ניתן לבטל.</div></div>
+      <div class="ck-toggle-wrap"><label class="ck-toggle"><input type="checkbox" checked disabled><span class="ck-track"></span></label></div>
+    </div>
+    <div class="ck-category">
+      <div class="ck-category__info"><div class="ck-category__name" data-he="קוקיז פונקציונליים" data-en="Functional">קוקיז פונקציונליים</div><div class="ck-category__desc" data-he="שומרים העדפות כמו שפה ונגישות." data-en="Remember preferences like language and accessibility.">שומרים העדפות כמו שפה ונגישות.</div></div>
+      <div class="ck-toggle-wrap"><label class="ck-toggle"><input type="checkbox" checked id="ckToggleFunctional"><span class="ck-track"></span></label></div>
+    </div>
+    <div class="ck-category">
+      <div class="ck-category__info"><div class="ck-category__name" data-he="קוקיז אנליטיים" data-en="Analytics">קוקיז אנליטיים</div><div class="ck-category__desc" data-he="עוזרים לנו להבין כיצד מבקרים משתמשים באתר (Google Analytics)." data-en="Help us understand how visitors use the site (Google Analytics).">עוזרים לנו להבין כיצד מבקרים משתמשים באתר (Google Analytics).</div></div>
+      <div class="ck-toggle-wrap"><label class="ck-toggle"><input type="checkbox" id="ckToggleAnalytics"><span class="ck-track"></span></label></div>
+    </div>
+  </div>
+  <div class="cookie-panel__footer">
+    <button class="ck-btn-decline" id="ckBtnBack" style="color:var(--ink);border-color:rgba(42,58,44,.3);" data-he="חזור" data-en="Back">חזור</button>
+    <button class="ck-btn-accept" id="ckBtnSave" data-he="שמור העדפות" data-en="Save preferences">שמור העדפות</button>
+  </div>
+</div>
 
 </body>
 </html>
