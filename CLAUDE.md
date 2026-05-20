@@ -127,6 +127,7 @@ When adding new components: include keyboard support, `aria-label` for icon butt
 
 _Newest first. One line per push: `YYYY-MM-DD · summary`._
 
+- **2026-05-20** · Fix cookie banner hidden by Brave: Brave's cosmetic filter blocklist targets #ckBar at extension-origin priority; renamed element id to kf-notice to bypass the filter.
 - **2026-05-20** · Wire cookie consent banner into index.html, about.html, and contact.html: fixed bottom bar with accept/decline/manage, expandable per-category panel (necessary/functional/analytics), persisted to localStorage as kifsy-cookies, bilingual HE/EN.
 - **2026-05-18** · Add privacy.html, terms.html, cookies.html (bilingual legal pages, sticky TOC, brand style); add cookie-banner-preview.html prototype with bar and manage-panel states.
 - **2026-05-18** · Align about-page timeline icons to the start side of each language (right in HE, left in EN). Switched grid to '40px 1fr' with 'order: -1' on the icon, changed line position to logical 'inset-inline-start', and replaced hard-coded 'text-align: right' with 'text-align: start'.
