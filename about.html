@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>אנחנו · kifsy</title>
+  <meta name="description" content="הכירו את רון ודורון, המייסדים של kifsy. אתרים מודרניים לעסקים מודרניים.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Inter+Tight:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─── Design tokens ─────────────────────────────────── */
+    :root {
+      --bg:        #D6E3D1;
+      --bg-soft:   #E1ECDC;
+      --bg-warm:   #ECEFE6;
+      --ink:       #2A3A2C;
+      --ink-2:     rgba(42,58,44,.62);
+      --ink-3:     rgba(42,58,44,.32);
+      --accent:    #A64253;
+      --accent-deep: #8B3244;
+      --line:      rgba(42,58,44,.14);
+      --line-soft: rgba(42,58,44,.07);
+      --shadow-sm: 0 2px 8px -2px rgba(42,58,44,.10);
+      --shadow-md: 0 8px 32px -8px rgba(42,58,44,.14);
+      --shadow-lg: 0 20px 60px -16px rgba(42,58,44,.18);
+      --radius:    12px;
+      --radius-lg: 20px;
+      --ease:      cubic-bezier(.22,1,.36,1);
+      --ease-in:   cubic-bezier(.55,0,1,.45);
+      --max:       1180px;
+      --font-he:   'Heebo', sans-serif;
+      --font-en:   'Inter', sans-serif;
+      --font-en-disp: 'Inter Tight', sans-serif;
+    }
+
+    /* ─── Reset & base ──────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Heebo', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+
+    /* ─── Typography ────────────────────────────────────── */
+    .display {
+      font-size: clamp(52px, 9vw, 104px);
+      font-weight: 800;
+      line-height: 1.0;
+      letter-spacing: -0.03em;
+    }
+    h1 { font-size: clamp(36px, 5.5vw, 72px); font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; }
+    h2 { font-size: clamp(26px, 3.5vw, 48px); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; }
+    h3 { font-size: clamp(18px, 2.2vw, 26px); font-weight: 600; line-height: 1.3; }
+    .brand-mark { font-family: 'Inter Tight', sans-serif; direction: ltr; display: inline-block; }
+    .accent-dot { color: var(--accent); }
+
+    /* ─── Layout ────────────────────────────────────────── */
+    .container { width: 100%; max-width: 1160px; margin: 0 auto; padding: 0 28px; }
+    .section { padding: 120px 0; }
+    @media (max-width: 768px) { .section { padding: 80px 0; } .container { padding: 0 20px; } }
+
+    /* ─── Scroll reveal ─────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .7s var(--ease), transform .7s var(--ease);
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-d1 { transition-delay: .1s; }
+    .reveal-d2 { transition-delay: .2s; }
+    .reveal-d3 { transition-delay: .3s; }
+    .reveal-d4 { transition-delay: .4s; }
+    .reveal-d5 { transition-delay: .5s; }
+
+    /* ════════════════════════════════════════════════════
+       NAV - identical to index.html
+    ═══════════════════════════════════════════════════════ */
+    .nav-wrap { position: sticky; top: 0; z-index: 100; transition: all .3s var(--ease); padding-top: 18px; }
+    .nav-wrap.scrolled { padding-top: 10px; }
+    .nav {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 11px 18px 11px 22px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 14px;
+      border-radius: 999px;
+      background: rgba(214, 227, 209, 0.75);
+      backdrop-filter: saturate(140%) blur(14px);
+      -webkit-backdrop-filter: saturate(140%) blur(14px);
+      border: 1px solid var(--line-soft);
+      transition: all .3s var(--ease);
+    }
+    .nav-wrap.scrolled .nav {
+      background: rgba(214, 227, 209, 0.92);
+      box-shadow: var(--shadow-md);
+    }
+    .logo {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 20px;
+    }
+    .logo svg { width: 26px; height: 26px; }
+    .nav-links { display: flex; gap: 26px; }
+    .nav-links a { font-size: 14.5px; color: var(--ink-2); font-weight: 500; transition: color .2s var(--ease); }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-links a.nav-active { color: var(--ink); font-weight: 600; }
+    html[dir="rtl"] .arrow { transform: scaleX(-1); }
+    .nav-right { display: flex; align-items: center; gap: 10px; }
+    .nav-cta { padding: 9px 18px; font-size: 14px; }
+    /* Language toggle */
+    .lang-toggle {
+      display: inline-flex;
+      background: rgba(255,255,255,0.5);
+      border: 1px solid var(--line-soft);
+      border-radius: 999px;
+      padding: 3px;
+      font-size: 12.5px;
+      font-weight: 500;
+    }
+    .lang-toggle button {
+      padding: 5px 11px;
+      border-radius: 999px;
+      color: var(--ink-3);
+      transition: color .2s var(--ease), background .2s var(--ease);
+      font-family: var(--font-en);
+      letter-spacing: 0;
+    }
+    .lang-toggle button.active { background: var(--ink); color: var(--bg); }
+    .lang-toggle button:not(.active):hover { color: var(--ink); }
+    /* Burger */
+    .burger {
+      display: none; flex-direction: column; justify-content: center; gap: 5px;
+      width: 36px; height: 36px; border-radius: 9px; padding: 7px 6px;
+      background: rgba(42,58,44,.08); cursor: pointer; transition: background .2s; flex-shrink: 0;
+    }
+    .burger:hover { background: rgba(42,58,44,.14); }
+    .burger span { display: block; width: 100%; height: 2px; background: var(--ink); transition: transform .25s var(--ease), opacity .2s; }
+    .burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    /* Mobile dropdown */
+    .mobile-menu { display: none; flex-direction: column; background: rgba(214,227,209,.97); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-top: 1px solid var(--line); padding: 4px 24px 20px; }
+    .mobile-menu.is-open { display: flex; }
+    .mobile-menu a { display: flex; align-items: center; padding: 13px 0; font-size: 16px; font-weight: 500; color: var(--ink-2); border-bottom: 1px solid var(--line); transition: color .2s; }
+    .mobile-menu a:hover { color: var(--ink); }
+    .mobile-menu .mobile-cta { justify-content: center; margin-top: 14px; border-bottom: none; border-radius: 999px; padding: 12px 24px; background: var(--ink); color: var(--bg); font-weight: 600; font-size: 15px; }
+    .mobile-menu .mobile-cta:hover { background: #1a2a1c; color: var(--bg); }
+    @media (max-width: 820px) {
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .burger { display: flex; }
+    }
+
+    /* ════════════════════════════════════════════════════
+       1. HERO
+    ═══════════════════════════════════════════════════════ */
+    .hero {
+      min-height: 100svh;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      text-align: center;
+      padding: 80px 28px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Animated background orbs */
+    .hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      animation: drift 12s ease-in-out infinite alternate;
+    }
+    .hero-orb-1 {
+      width: 520px; height: 520px;
+      background: radial-gradient(circle, rgba(166,66,83,.12) 0%, transparent 70%);
+      top: -100px; left: -80px;
+      animation-duration: 14s;
+    }
+    .hero-orb-2 {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(42,58,44,.08) 0%, transparent 70%);
+      bottom: -120px; right: -100px;
+      animation-duration: 10s;
+      animation-direction: alternate-reverse;
+    }
+    .hero-orb-3 {
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(166,66,83,.07) 0%, transparent 70%);
+      top: 40%; left: 50%;
+      transform: translate(-50%,-50%);
+      animation-duration: 18s;
+    }
+    @keyframes drift {
+      from { transform: translate(0, 0) scale(1); }
+      to   { transform: translate(40px, 30px) scale(1.08); }
+    }
+
+    /* Floating badge */
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(42,58,44,.07);
+      border: 1px solid var(--line);
+      border-radius: 100px;
+      padding: 7px 16px;
+      font-size: 13px; font-weight: 500; color: var(--ink-2);
+      margin-bottom: 32px;
+      animation: fadeUp .8s var(--ease) .2s both;
+    }
+    .hero-badge-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50%      { opacity: .5; transform: scale(.7); }
+    }
+
+    /* Word-by-word headline reveal */
+    .hero-headline {
+      font-size: clamp(54px, 9vw, 110px);
+      font-weight: 800;
+      line-height: 1.0;
+      letter-spacing: -0.035em;
+      margin-bottom: 28px;
+    }
+    .hero-word {
+      display: inline-block;
+      overflow: hidden;
+      vertical-align: bottom;
+    }
+    .hero-word span {
+      display: inline-block;
+      animation: slideUp .9s var(--ease) both;
+    }
+    .hw1 span { animation-delay: .3s; }
+    .hw2 span { animation-delay: .45s; }
+    .hw3 span { animation-delay: .6s; }
+    .hw4 span { animation-delay: .75s; }
+    @keyframes slideUp {
+      from { transform: translateY(110%); opacity: 0; }
+      to   { transform: translateY(0);    opacity: 1; }
+    }
+    @keyframes fadeUp {
+      from { transform: translateY(16px); opacity: 0; }
+      to   { transform: translateY(0);    opacity: 1; }
+    }
+
+    .hero-sub {
+      font-size: clamp(16px, 1.8vw, 20px);
+      font-weight: 300;
+      color: var(--ink-2);
+      max-width: 520px;
+      line-height: 1.65;
+      margin: 0 auto 52px;
+      animation: fadeUp .9s var(--ease) .9s both;
+    }
+
+    .hero-cta-row {
+      display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+      animation: fadeUp .9s var(--ease) 1.05s both;
+    }
+
+    /* Scroll cue */
+    .scroll-cue {
+      position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      font-size: 12px; color: var(--ink-3); letter-spacing: .06em;
+      animation: fadeUp .9s var(--ease) 1.3s both;
+    }
+    .scroll-cue-line {
+      width: 1px; height: 48px;
+      background: linear-gradient(to bottom, var(--ink-3), transparent);
+      animation: grow 1.6s ease-in-out 1.6s infinite;
+    }
+    @keyframes grow {
+      0%   { transform: scaleY(0); transform-origin: top; opacity: 1; }
+      50%  { transform: scaleY(1); transform-origin: top; opacity: 1; }
+      100% { transform: scaleY(1); transform-origin: top; opacity: 0; }
+    }
+
+    /* ─── Buttons ────────────────────────────────────────── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 26px; border-radius: 100px;
+      font-family: 'Heebo', sans-serif;
+      font-size: 15px; font-weight: 600;
+      cursor: pointer; border: none;
+      transition: transform .25s var(--ease), box-shadow .25s var(--ease), background .2s;
+      will-change: transform;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      background: var(--ink); color: var(--bg);
+      box-shadow: var(--shadow-md);
+    }
+    .btn-primary:hover { background: #1E2B20; box-shadow: var(--shadow-lg); }
+    .btn-ghost {
+      background: transparent; color: var(--ink);
+      border: 1.5px solid var(--line);
+    }
+    .btn-ghost:hover { background: rgba(42,58,44,.04); }
+
+    /* ════════════════════════════════════════════════════
+       2. STORY
+    ═══════════════════════════════════════════════════════ */
+    .story { background: var(--bg-soft); }
+    .story-header {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+    .section-tag {
+      display: inline-block;
+      font-size: 12px; font-weight: 600;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 16px;
+      font-family: 'Inter Tight', sans-serif;
+    }
+
+    /* Timeline */
+    .timeline {
+      position: relative;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      inset-inline-start: 19px;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, var(--line) 10%, var(--line) 90%, transparent);
+    }
+    .tl-item {
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      gap: 0 24px;
+      padding-bottom: 56px;
+      position: relative;
+    }
+    .tl-item:last-child { padding-bottom: 0; }
+    .tl-item > .tl-icon { order: -1; }
+    .tl-body { text-align: start; }
+    .tl-icon {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--bg);
+      border: 1.5px solid var(--line);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      margin-top: 4px;
+      font-size: 18px;
+      transition: background .3s, border-color .3s, transform .3s var(--ease);
+      position: relative; z-index: 1;
+    }
+    .tl-item:hover .tl-icon { background: var(--accent); border-color: var(--accent); transform: scale(1.12); }
+    .tl-label {
+      font-size: 12px; font-weight: 600; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--ink-3);
+      margin-bottom: 8px;
+      font-family: 'Inter Tight', sans-serif;
+    }
+    .tl-text {
+      font-size: clamp(16px, 1.6vw, 18px);
+      font-weight: 400; color: var(--ink);
+      line-height: 1.7;
+    }
+    .tl-text strong { font-weight: 700; }
+    .tl-quote {
+      margin-top: 14px;
+      padding: 16px 20px;
+      background: rgba(42,58,44,.04);
+      border-right: 3px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      font-style: italic;
+      font-size: 15px; color: var(--ink-2);
+      font-weight: 300;
+    }
+
+    /* ════════════════════════════════════════════════════
+       3. WHY KIFSY
+    ═══════════════════════════════════════════════════════ */
+    .why { background: var(--bg); }
+    .why-header { text-align: center; margin-bottom: 80px; }
+
+    /* Stats row */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--line-soft);
+      border: 1px solid var(--line-soft);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: 80px;
+    }
+    .stat-cell {
+      background: rgba(255,255,255,.4);
+      padding: 44px 32px;
+      text-align: center;
+      transition: background .3s;
+    }
+    .stat-cell:hover { background: rgba(255,255,255,.7); }
+    .stat-n {
+      font-size: clamp(42px, 6vw, 72px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      color: var(--ink);
+      margin-bottom: 8px;
+      font-family: 'Inter Tight', sans-serif;
+      display: flex; align-items: baseline; justify-content: center; gap: 4px;
+    }
+    .stat-n .unit { font-size: .45em; font-weight: 600; font-family: 'Heebo', sans-serif; }
+    .stat-l { font-size: 14px; color: var(--ink-2); font-weight: 400; }
+    @media (max-width: 600px) {
+      .stats-row { grid-template-columns: 1fr; }
+    }
+
+    /* Value cards */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .why-card {
+      background: rgba(255,255,255,.45);
+      border: 1px solid var(--line-soft);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      position: relative; overflow: hidden;
+      transition: transform .3s var(--ease), box-shadow .3s var(--ease), background .3s;
+    }
+    .why-card::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at 80% 20%, rgba(166,66,83,.06) 0%, transparent 60%);
+      opacity: 0; transition: opacity .4s;
+    }
+    .why-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); background: rgba(255,255,255,.7); }
+    .why-card:hover::before { opacity: 1; }
+    .why-card-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: var(--bg-soft);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; margin-bottom: 20px;
+      transition: transform .3s var(--ease);
+    }
+    .why-card:hover .why-card-icon { transform: scale(1.1) rotate(-4deg); }
+    .why-card h3 { margin-bottom: 10px; }
+    .why-card p { font-size: 15px; color: var(--ink-2); line-height: 1.65; font-weight: 400; }
+    @media (max-width: 640px) { .why-grid { grid-template-columns: 1fr; } }
+
+    /* ════════════════════════════════════════════════════
+       4. FEATURES
+    ═══════════════════════════════════════════════════════ */
+    .features { background: var(--ink); }
+    .features .section-tag { color: rgba(214,227,209,.5); }
+    .features-header { text-align: center; margin-bottom: 72px; }
+    .features-header h2 { color: var(--bg); }
+    .features-header p { color: rgba(214,227,209,.6); font-size: 17px; font-weight: 300; margin-top: 16px; max-width: 480px; margin-right: auto; margin-left: auto; }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    .feature-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      position: relative; overflow: hidden;
+      transition: transform .35s var(--ease), border-color .35s, background .35s;
+      cursor: default;
+    }
+    .feature-card::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(214,227,209,.08) 0%, transparent 60%);
+      opacity: 0; transition: opacity .4s;
+    }
+    .feature-card:hover { transform: translateY(-6px); border-color: rgba(255,255,255,.18); background: rgba(255,255,255,.07); }
+    .feature-card:hover::after { opacity: 1; }
+    /* Glow effect */
+    .feature-card:hover .feature-glow { opacity: 1; }
+    .feature-glow {
+      position: absolute; top: -40px; left: 50%; transform: translateX(-50%);
+      width: 120px; height: 80px;
+      background: radial-gradient(circle, rgba(166,66,83,.4) 0%, transparent 70%);
+      filter: blur(20px);
+      opacity: 0; transition: opacity .4s;
+      pointer-events: none;
+    }
+    .feature-icon {
+      font-size: 28px; margin-bottom: 20px; display: block;
+      position: relative; z-index: 1;
+    }
+    .feature-card h3 {
+      color: var(--bg);
+      font-size: 17px;
+      margin-bottom: 10px;
+      position: relative; z-index: 1;
+    }
+    .feature-card p {
+      font-size: 14px;
+      color: rgba(214,227,209,.5);
+      line-height: 1.65;
+      font-weight: 300;
+      position: relative; z-index: 1;
+    }
+    @media (max-width: 900px) { .features-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 500px) { .features-grid { grid-template-columns: 1fr; } }
+
+    /* ════════════════════════════════════════════════════
+       5. INTERACTIVE: HOW WE WORK
+    ═══════════════════════════════════════════════════════ */
+    .process { background: var(--bg-warm); }
+    .process-header { text-align: center; margin-bottom: 72px; }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+    }
+    /* Connecting line */
+    .steps::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      right: 12.5%; left: 12.5%;
+      height: 1px;
+      background: linear-gradient(to left, transparent, var(--line) 15%, var(--line) 85%, transparent);
+      pointer-events: none;
+    }
+    .step {
+      text-align: center;
+      padding: 0 16px;
+      position: relative;
+      cursor: default;
+    }
+    .step-dot {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: var(--bg);
+      border: 1.5px solid var(--line);
+      margin: 0 auto 24px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      position: relative; z-index: 1;
+      transition: background .3s var(--ease), border-color .3s, transform .4s var(--ease), box-shadow .3s;
+    }
+    .step:hover .step-dot {
+      background: var(--ink);
+      border-color: var(--ink);
+      transform: scale(1.15);
+      box-shadow: 0 0 0 8px rgba(42,58,44,.08);
+    }
+    .step-num {
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 11px; font-weight: 500;
+      color: var(--ink-3); letter-spacing: .08em;
+      margin-bottom: 10px;
+    }
+    .step h3 {
+      font-size: 16px; font-weight: 600; margin-bottom: 8px;
+      transition: color .2s;
+    }
+    .step:hover h3 { color: var(--accent); }
+    .step p { font-size: 13px; color: var(--ink-2); line-height: 1.6; font-weight: 300; }
+
+    /* Time badge */
+    .step-time {
+      display: inline-block; margin-top: 12px;
+      background: rgba(42,58,44,.07);
+      border-radius: 100px;
+      padding: 4px 12px;
+      font-size: 11px; font-weight: 600;
+      color: var(--ink-2);
+      font-family: 'Inter Tight', sans-serif;
+    }
+    @media (max-width: 720px) {
+      .steps { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+      .steps::before { display: none; }
+    }
+    @media (max-width: 440px) { .steps { grid-template-columns: 1fr; } }
+
+    /* ════════════════════════════════════════════════════
+       6. FOUNDERS
+    ═══════════════════════════════════════════════════════ */
+    .founders { background: var(--bg-soft); }
+    .founders-header { text-align: center; margin-bottom: 72px; }
+
+    .founders-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      max-width: 760px; margin: 0 auto;
+    }
+    .founder-card {
+      background: rgba(255,255,255,.5);
+      border: 1px solid var(--line-soft);
+      border-radius: 24px;
+      padding: 48px 36px 40px;
+      text-align: center;
+      position: relative; overflow: hidden;
+      transition: transform .35s var(--ease), box-shadow .35s var(--ease);
+    }
+    .founder-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0; transition: opacity .3s;
+    }
+    .founder-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .founder-card:hover::before { opacity: 1; }
+
+    /* ── PHOTO PLACEHOLDER ──────────────────────────────────
+       To add a real photo later:
+       Replace .founder-avatar with:
+       <img src="path/to/photo.jpg" alt="Name" class="founder-photo">
+       And add CSS: .founder-photo { width:140px; height:140px; border-radius:50%; object-fit:cover; margin:0 auto 28px; }
+    ─────────────────────────────────────────────────────── */
+    .founder-avatar {
+      width: 140px; height: 140px; border-radius: 50%;
+      margin: 0 auto 28px;
+      background: linear-gradient(135deg, var(--bg-warm) 0%, var(--bg) 100%);
+      border: 1.5px solid var(--line);
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+      transition: border-color .3s, transform .35s var(--ease);
+    }
+    .founder-card:hover .founder-avatar { border-color: var(--accent); transform: scale(1.04); }
+    .founder-initial {
+      font-size: 52px; font-weight: 800;
+      color: var(--ink-3);
+      letter-spacing: -0.02em;
+      user-select: none;
+      transition: color .3s;
+    }
+    .founder-card:hover .founder-initial { color: var(--ink-2); }
+    /* Photo-coming-soon indicator */
+    .founder-avatar::after {
+      content: 'תמונה בקרוב';
+      position: absolute; bottom: 4px;
+      background: rgba(42,58,44,.75);
+      color: var(--bg); font-size: 9px; font-weight: 600;
+      padding: 3px 8px; border-radius: 100px;
+      letter-spacing: .04em;
+      opacity: 0; transition: opacity .25s;
+    }
+    .founder-card:hover .founder-avatar::after { opacity: 1; }
+
+    .founder-name { font-size: 24px; font-weight: 700; margin-bottom: 4px; }
+    .founder-role {
+      font-size: 13px; color: var(--accent); font-weight: 600;
+      letter-spacing: .06em; text-transform: uppercase;
+      margin-bottom: 16px;
+      font-family: 'Inter Tight', sans-serif;
+    }
+    .founder-bio { font-size: 14px; color: var(--ink-2); line-height: 1.7; font-weight: 300; }
+
+    @media (max-width: 560px) { .founders-grid { grid-template-columns: 1fr; } }
+
+    /* ════════════════════════════════════════════════════
+       7. CTA
+    ═══════════════════════════════════════════════════════ */
+    .cta-section {
+      background: var(--ink);
+      position: relative; overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 80% 50%, rgba(166,66,83,.14) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 60% at 20% 50%, rgba(214,227,209,.04) 0%, transparent 60%);
+    }
+    .cta-inner {
+      position: relative; z-index: 1;
+      max-width: 640px; margin: 0 auto;
+      text-align: center;
+    }
+    .cta-inner h2 { color: var(--bg); margin-bottom: 18px; }
+    .cta-inner p { color: rgba(214,227,209,.62); font-size: 17px; font-weight: 300; line-height: 1.65; margin-bottom: 44px; }
+    .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-cta-primary {
+      background: var(--bg); color: var(--ink);
+      box-shadow: 0 8px 32px -8px rgba(214,227,209,.18);
+    }
+    .btn-cta-primary:hover { background: #fff; }
+    .btn-cta-ghost {
+      background: transparent; color: rgba(214,227,209,.8);
+      border: 1.5px solid rgba(214,227,209,.2);
+    }
+    .btn-cta-ghost:hover { background: rgba(214,227,209,.06); color: var(--bg); }
+
+    /* ════════════════════════════════════════════════════
+       8. FUTURE PLACEHOLDER
+    ═══════════════════════════════════════════════════════ */
+    /* ════════════════════════════════════════════════════
+       REVIEWS / TESTIMONIALS
+    ═══════════════════════════════════════════════════════ */
+    .future { background: var(--bg-warm); }
+    .reviews-header { text-align: center; margin-bottom: 64px; }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 1060px) { .reviews-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 680px)  { .reviews-grid { grid-template-columns: 1fr; } }
+    .review-card {
+      background: rgba(255,255,255,.72);
+      border: 1px solid var(--line-soft);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px 28px;
+      display: flex; flex-direction: column;
+      transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .25s;
+    }
+    .review-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--line); }
+    .review-quote {
+      font-size: 15px; line-height: 1.75;
+      color: var(--ink-2); font-weight: 300;
+      flex: 1; position: relative; padding-top: 30px;
+    }
+    .review-quote::before {
+      content: '״';
+      position: absolute; top: -6px; right: 0;
+      font-size: 46px; line-height: 1;
+      color: var(--accent); opacity: .65;
+      font-family: 'Heebo', sans-serif;
+    }
+    html[lang="en"] .review-quote::before { content: '\201C'; }
+    .review-person {
+      display: flex; align-items: center; gap: 12px;
+      margin-top: 24px; padding-top: 18px;
+      border-top: 1px solid var(--line-soft);
+    }
+    .review-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--bg-soft);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11.5px; font-weight: 700; color: var(--ink);
+      flex-shrink: 0; direction: ltr;
+      font-family: 'Inter Tight', sans-serif;
+    }
+    .ra2 { background: rgba(166,66,83,.13); color: var(--accent); }
+    .ra3 { background: #DDE7D6; color: var(--ink); }
+    .ra4 { background: rgba(42,58,44,.10); color: var(--ink); }
+    .ra5 { background: rgba(166,66,83,.08); color: #8B3244; }
+    .ra6 { background: #E6EDE1; color: var(--ink); }
+    .review-name { font-size: 14px; font-weight: 600; color: var(--ink); line-height: 1.2; }
+    .review-role { font-size: 12.5px; color: var(--ink-3); margin-top: 2px; }
+
+    /* ════════════════════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════════════════════ */
+    .foot {
+      background: var(--bg-soft);
+      padding: 36px 28px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-top: 1px solid var(--line-soft);
+      flex-wrap: wrap; gap: 12px;
+    }
+    .foot-brand { font-family: 'Inter Tight', sans-serif; font-size: 17px; font-weight: 500; direction: ltr; }
+    .foot-brand .dot { color: var(--accent); }
+    .foot-copy { font-size: 13px; color: var(--ink-3); }
+
+    /* ─── Reduced motion ─────────────────────────────────── */
+    @media (prefers-reduced-motion: reduce) {
+      .reveal, .hero-word span, .hero-badge, .hero-sub, .hero-cta-row, .scroll-cue { animation: none !important; opacity: 1 !important; transform: none !important; }
+      .hero-orb { animation: none !important; }
+    }
+
+    /* ── COOKIE CONSENT BAR ── */
+    .ck-bar{position:fixed;bottom:0;left:0;right:0;background:var(--ink);color:#fff;padding:18px 32px;display:flex;align-items:center;gap:20px;z-index:998;transform:translateY(100%);transition:transform .35s ease;pointer-events:none}
+    .ck-bar.visible{transform:translateY(0);pointer-events:auto}
+    .ck-bar__text{flex:1;font-size:14px;line-height:1.55}
+    .ck-bar__text a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+    .ck-bar__actions{display:flex;gap:10px;flex-shrink:0;flex-wrap:wrap}
+    .ck-btn-accept{padding:10px 22px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;transition:opacity .15s}
+    .ck-btn-accept:hover{opacity:.88}
+    .ck-btn-decline{padding:10px 22px;background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.4);border-radius:8px;font-family:inherit;font-size:14px;font-weight:500;cursor:pointer;transition:border-color .15s}
+    .ck-btn-decline:hover{border-color:#fff}
+    .ck-btn-manage{padding:10px 14px;background:transparent;color:rgba(255,255,255,.6);border:none;font-family:inherit;font-size:13px;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+    .ck-panel{position:fixed;bottom:0;left:0;right:0;background:var(--warm);color:var(--ink);border-top:2px solid rgba(42,58,44,.15);padding:24px 32px 28px;z-index:999;display:none;animation:ckSlideUp .3s ease}
+    .ck-panel.open{display:block}
+    .ck-panel h3{font-size:16px;font-weight:700;margin-bottom:18px}
+    .ck-panel__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:20px}
+    .ck-category{background:var(--soft);border-radius:10px;padding:14px;display:flex;gap:12px;align-items:flex-start}
+    .ck-category__name{font-size:14px;font-weight:600;margin-bottom:4px}
+    .ck-category__desc{font-size:12.5px;line-height:1.5;opacity:.72}
+    .ck-toggle-wrap{flex-shrink:0;margin-top:2px}
+    .ck-toggle{position:relative;width:40px;height:22px;display:inline-block}
+    .ck-toggle input{opacity:0;width:0;height:0}
+    .ck-track{position:absolute;inset:0;background:rgba(42,58,44,.2);border-radius:99px;cursor:pointer;transition:background .2s}
+    .ck-track::after{content:'';position:absolute;width:16px;height:16px;background:#fff;border-radius:50%;top:3px;inset-inline-start:3px;transition:inset-inline-start .2s;box-shadow:0 1px 3px rgba(0,0,0,.25)}
+    .ck-toggle input:checked+.ck-track{background:var(--accent)}
+    .ck-toggle input:checked+.ck-track::after{inset-inline-start:21px}
+    .ck-toggle input:disabled+.ck-track{background:var(--accent);opacity:.55;cursor:not-allowed}
+    .ck-toggle input:disabled+.ck-track::after{inset-inline-start:21px}
+    .ck-panel__footer{display:flex;gap:10px;justify-content:flex-end}
+    [dir="rtl"] .ck-panel__footer{justify-content:flex-start}
+    @media(max-width:600px){.ck-bar{flex-direction:column;align-items:flex-start;padding:18px 20px}.ck-bar__actions{width:100%}.ck-btn-accept,.ck-btn-decline{flex:1;text-align:center}.ck-panel{padding:20px 20px 24px}}
+  </style>
+</head>
+
+<body>
+
+  <!-- ── SVG symbols ───────────────────────────────── -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="leaves" viewBox="-80 -160 160 160">
+        <g fill="currentColor">
+          <path d="M 0,0 C -20,-38 -18,-95 0,-130 C 18,-95 20,-38 0,0 Z" transform="rotate(-34)"/>
+          <path d="M 0,0 C -14,-46 -14,-112 0,-156 C 14,-112 14,-46 0,0 Z"/>
+          <path d="M 0,0 C -20,-38 -18,-95 0,-130 C 18,-95 20,-38 0,0 Z" transform="rotate(34)"/>
+        </g>
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- ── NAV ─────────────────────────────────────── -->
+  <div class="nav-wrap" id="navWrap">
+    <nav class="nav container">
+      <a href="index.html" class="logo brand-mark" aria-label="kifsy">
+        <svg viewBox="-80 -160 160 160"><use href="#leaves"/></svg>
+        <span>kifsy<span class="accent-dot">.</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html#services"     data-he="שירותים"    data-en="Services">שירותים</a>
+        <a href="index.html#pricing"      data-he="מחירים"      data-en="Pricing">מחירים</a>
+        <a href="index.html#work"         data-he="עבודות"     data-en="Work">עבודות</a>
+        <a href="index.html#why"          data-he="למה kifsy"  data-en="Why kifsy">למה kifsy</a>
+        <a href="index.html#testimonials" data-he="המלצות"     data-en="Reviews">המלצות</a>
+        <a href="about.html" class="nav-active" data-he="אודותינו" data-en="About">אודותינו</a>
+      </div>
+      <div class="nav-right">
+        <div class="lang-toggle" role="tablist" aria-label="Language">
+          <button id="lang-he" class="active" data-lang="he">עב</button>
+          <button id="lang-en" data-lang="en">EN</button>
+        </div>
+        <a href="contact.html" class="btn btn-primary nav-cta">
+          <span data-he="צרו קשר" data-en="Contact">צרו קשר</span>
+          <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <button class="burger" id="burgerBtn" aria-expanded="false" aria-label="Menu" aria-controls="mobileMenu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu" role="navigation">
+      <a href="index.html#services"     data-he="שירותים"      data-en="Services">שירותים</a>
+      <a href="index.html#process"      data-he="איך זה עובד"  data-en="How it works">איך זה עובד</a>
+      <a href="index.html#pricing"      data-he="מחירים"        data-en="Pricing">מחירים</a>
+      <a href="index.html#work"         data-he="עבודות"       data-en="Work">עבודות</a>
+      <a href="index.html#why"          data-he="למה kifsy"    data-en="Why kifsy">למה kifsy</a>
+      <a href="index.html#faq"          data-he="שאלות נפוצות" data-en="FAQ">שאלות נפוצות</a>
+      <a href="about.html"              data-he="אודותינו"     data-en="About">אודותינו</a>
+      <a href="contact.html" class="mobile-cta" data-he="צרו קשר" data-en="Contact">צרו קשר</a>
+    </div>
+  </div>
+
+
+  <!-- ════════════════════════════════════════════════
+       1. HERO
+  ═══════════════════════════════════════════════════ -->
+  <section class="hero" aria-label="כותרת ראשית">
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
+
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      <span data-he="הכירו את הצוות שמאחורי kifsy" data-en="Meet the team behind kifsy">הכירו את הצוות שמאחורי kifsy</span>
+    </div>
+
+    <h1 class="hero-headline" aria-label="בנינו את זה כי האינטרנט הישראלי מגיע לזה"
+        data-he-html='<span class="hero-word hw1"><span>בנינו&nbsp;</span></span><span class="hero-word hw2"><span>את&nbsp;</span></span><span class="hero-word hw3"><span>זה&nbsp;</span></span><span class="hero-word hw4"><span>כי&nbsp;<span class="accent-dot">.</span></span></span>'
+        data-en-html='<span class="hero-word hw1"><span>We&nbsp;</span></span><span class="hero-word hw2"><span>built&nbsp;</span></span><span class="hero-word hw3"><span>this&nbsp;</span></span><span class="hero-word hw4"><span>because<span class="accent-dot">.</span></span></span>'>
+      <span class="hero-word hw1"><span>בנינו&nbsp;</span></span>
+      <span class="hero-word hw2"><span>את&nbsp;</span></span>
+      <span class="hero-word hw3"><span>זה&nbsp;</span></span>
+      <span class="hero-word hw4"><span>כי&nbsp;<span class="accent-dot">.</span></span></span>
+    </h1>
+
+    <p class="hero-sub" data-he="שני חברים, הרבה קפה, ואמונה אחת פשוטה: לכל עסק מגיע אתר שמרגיש מקצועי, מודרני ואמיתי." data-en="Two friends, lots of coffee, and one simple belief: every business deserves a site that feels professional, modern and real.">
+      שני חברים, הרבה קפה, ואמונה אחת פשוטה: לכל עסק מגיע אתר שמרגיש מקצועי, מודרני ואמיתי.
+    </p>
+
+    <div class="hero-cta-row">
+      <a href="#story" class="btn btn-primary" data-he="הסיפור שלנו" data-en="Our story">הסיפור שלנו</a>
+      <a href="#founders" class="btn btn-ghost" data-he="הכירו אותנו" data-en="Meet us">הכירו אותנו</a>
+    </div>
+
+    <div class="scroll-cue" aria-hidden="true">
+      <div class="scroll-cue-line"></div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════
+       2. STORY
+  ═══════════════════════════════════════════════════ -->
+  <section class="section story" id="story">
+    <div class="container">
+      <div class="story-header reveal">
+        <span class="section-tag" data-he="הסיפור שלנו" data-en="Our Story">הסיפור שלנו</span>
+        <h2 data-he-html='הכול התחיל בשיחה אחת<span class="accent-dot">.</span>' data-en-html='It all started with one conversation<span class="accent-dot">.</span>'>הכול התחיל בשיחה אחת<span class="accent-dot">.</span></h2>
+      </div>
+
+      <div class="timeline">
+
+        <div class="tl-item reveal reveal-d1">
+          <div class="tl-body">
+            <div class="tl-label" data-he="ההתחלה" data-en="The Beginning">ההתחלה</div>
+            <p class="tl-text" data-he-html='Kifsy הוקמה על ידי <strong>רון ודורון</strong>, שני חברים וסטודנטים למערכות מידע ו-AI, שאוהבים טכנולוגיה, עיצוב וכל מה שביניהם.' data-en-html='Kifsy was founded by <strong>Ron and Doron</strong>, two friends and students of information systems and AI, who love technology, design, and everything in between.'>
+              Kifsy הוקמה על ידי <strong>רון ודורון</strong>, שני חברים וסטודנטים למערכות מידע ו-AI,
+              שאוהבים טכנולוגיה, עיצוב וכל מה שביניהם.
+            </p>
+          </div>
+          <div class="tl-icon">👥</div>
+        </div>
+
+        <div class="tl-item reveal reveal-d2">
+          <div class="tl-body">
+            <div class="tl-label" data-he="הניצוץ" data-en="The Spark">הניצוץ</div>
+            <p class="tl-text" data-he="הכול התחיל משיחות אקראיות על עסקים בישראל שנראים מעולה במציאות… אבל עם אתרים שמרגישים כאילו נתקעו ב-2012." data-en="It all started with random conversations about Israeli businesses that look amazing in real life… but with websites that feel stuck in 2012.">
+              הכול התחיל משיחות אקראיות על עסקים בישראל שנראים מעולה במציאות…
+              אבל עם אתרים שמרגישים כאילו נתקעו ב-2012.
+            </p>
+            <div class="tl-quote" data-he='אחרי עוד לילה של קפה, רעיונות ו"בוא נבדוק משהו רגע". כך נולד Kifsy.' data-en="After another late night of coffee, ideas and &quot;let's just try something.&quot; That's how Kifsy was born.">
+              אחרי עוד לילה של קפה, רעיונות ו"בוא נבדוק משהו רגע". כך נולד Kifsy.
+            </div>
+          </div>
+          <div class="tl-icon">💡</div>
+        </div>
+
+        <div class="tl-item reveal reveal-d3">
+          <div class="tl-body">
+            <div class="tl-label" data-he="ההבנה" data-en="The Realization">ההבנה</div>
+            <p class="tl-text" data-he="עם הזמן הבנו שעולם בניית האתרים הפך ליקר ומסובך מדי עבור הרבה בעלי עסקים. המחירים קפצו, התהליכים נהיו ארוכים, ופשוט להקים אתר איכותי הפך למשהו שלא כל עסק יכול להרשות לעצמו." data-en="Over time we realized that web development had become too expensive and complex for most small business owners. Prices jumped, timelines stretched, and simply launching a quality site became something not every business could afford.">
+              עם הזמן הבנו שעולם בניית האתרים הפך ליקר ומסובך מדי עבור הרבה בעלי עסקים.
+              המחירים קפצו, התהליכים נהיו ארוכים, ופשוט להקים אתר איכותי הפך למשהו שלא כל עסק יכול להרשות לעצמו.
+            </p>
+          </div>
+          <div class="tl-icon">🔍</div>
+        </div>
+
+        <div class="tl-item reveal reveal-d4">
+          <div class="tl-body">
+            <div class="tl-label" data-he="ההחלטה" data-en="The Decision">ההחלטה</div>
+            <p class="tl-text" data-he-html='אז החלטנו לבוא בגישה אחרת.<br><br>המטרה של Kifsy היא לשבור את השוק: לבנות אתרים מודרניים, מהירים ומושכים במחירים נגישים, בלי להתפשר על איכות, עיצוב או חוויית משתמש.' data-en-html='So we decided to take a different approach.<br><br>Kifsy&apos;s goal is to disrupt the market: to build modern, fast and beautiful websites at accessible prices, without compromising on quality, design or user experience.'>
+              אז החלטנו לבוא בגישה אחרת.
+              <br><br>
+              המטרה של Kifsy היא לשבור את השוק: לבנות אתרים מודרניים, מהירים ומושכים במחירים נגישים,
+              בלי להתפשר על איכות, עיצוב או חוויית משתמש.
+            </p>
+          </div>
+          <div class="tl-icon">🚀</div>
+        </div>
+
+        <div class="tl-item reveal reveal-d5">
+          <div class="tl-body">
+            <div class="tl-label" data-he="היום" data-en="Today">היום</div>
+            <p class="tl-text" data-he='והאמת? אנחנו עדיין מתווכחים כמעט על כל פונט, צבע וכפתור באתר… כנראה שזה חלק מהקסם 😅' data-en="Honestly? We still argue about almost every font, color and button on the site… that's probably part of the magic 😅">
+              והאמת? אנחנו עדיין מתווכחים כמעט על כל פונט, צבע וכפתור באתר…
+              כנראה שזה חלק מהקסם 😅
+            </p>
+          </div>
+          <div class="tl-icon">✨</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════
+       3. WHY KIFSY
+  ═══════════════════════════════════════════════════ -->
+  <section class="section why" id="why">
+    <div class="container">
+      <div class="why-header reveal">
+        <span class="section-tag" data-he="למה kifsy" data-en="Why kifsy">למה kifsy</span>
+        <h2 data-he="גישה אחרת. לגמרי." data-en="A different approach. Entirely.">גישה אחרת. לגמרי<span class="accent-dot">.</span></h2>
+        <p style="margin-top:16px;font-size:17px;color:var(--ink-2);font-weight:300;max-width:480px;margin-right:auto;margin-left:auto;line-height:1.65;" data-he="שילוב של עיצוב נקי, חוויית משתמש ו-AI מתקדם, כדי ליצור אתרים שעובדים חכם." data-en="A blend of clean design, UX and advanced AI to create websites that work smart.">
+          שילוב של עיצוב נקי, חוויית משתמש ו-AI מתקדם, כדי ליצור אתרים שעובדים חכם.
+        </p>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-row reveal">
+        <div class="stat-cell">
+          <div class="stat-n"><span class="counter" data-target="7">0</span><span class="unit" data-he="ימים" data-en="days">ימים</span></div>
+          <div class="stat-l" data-he="זמן אספקה ממוצע" data-en="Average delivery time">זמן אספקה ממוצע</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-n">₪<span class="counter" data-target="500">0</span></div>
+          <div class="stat-l" data-he="עלות הקמה שקופה" data-en="Transparent setup cost">עלות הקמה שקופה</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-n"><span class="counter" data-target="100">0</span><span class="unit">%</span></div>
+          <div class="stat-l" data-he="ללא התפשרות על איכות" data-en="Zero compromise on quality">ללא התפשרות על איכות</div>
+        </div>
+      </div>
+
+      <!-- Value cards -->
+      <div class="why-grid">
+        <div class="why-card reveal reveal-d1">
+          <div class="why-card-icon">⚡</div>
+          <h3 data-he="מהיר. לא מסובך." data-en="Fast. No fuss.">מהיר. לא מסובך.</h3>
+          <p data-he="תהליך פשוט, שקוף ומהיר. מהשיחה הראשונה ועד האתר החי: שבוע אחד, לא חודשים." data-en="A simple, transparent and fast process. From the first call to a live website: one week, not months.">תהליך פשוט, שקוף ומהיר. מהשיחה הראשונה ועד האתר החי: שבוע אחד, לא חודשים.</p>
+        </div>
+        <div class="why-card reveal reveal-d2">
+          <div class="why-card-icon">🎨</div>
+          <h3 data-he="עיצוב שמרגיש פרמיום" data-en="Design that feels premium">עיצוב שמרגיש פרמיום</h3>
+          <p data-he='אנחנו מתווכחים על כל פיקסל. כי אנחנו מאמינים שעיצוב טוב הוא לא בונוס, הוא הבסיס.' data-en="We argue about every pixel. Because we believe good design isn't a bonus, it's the foundation.">אנחנו מתווכחים על כל פיקסל. כי אנחנו מאמינים שעיצוב טוב הוא לא בונוס, הוא הבסיס.</p>
+        </div>
+        <div class="why-card reveal reveal-d3">
+          <div class="why-card-icon">🤖</div>
+          <h3 data-he="AI שעובד בשבילך" data-en="AI that works for you">AI שעובד בשבילך</h3>
+          <p data-he="מאחורי כל אתר שאנחנו בונים עומדות טכנולוגיות AI שמייעלות, מאיצות ומשדרגות את התוצאה." data-en="Behind every site we build are AI technologies that streamline, accelerate and elevate the result.">מאחורי כל אתר שאנחנו בונים עומדות טכנולוגיות AI שמייעלות, מאיצות ומשדרגות את התוצאה.</p>
+        </div>
+        <div class="why-card reveal reveal-d4">
+          <div class="why-card-icon">💰</div>
+          <h3 data-he="מחיר שלא מפחיד" data-en="Pricing that doesn't scare">מחיר שלא מפחיד</h3>
+          <p data-he='מחנויות ובוטיקים, דרך מסעדות ועד עורכי דין ונדל"ן. כולם מגיע להם נוכחות דיגיטלית אמיתית.' data-en="From shops and boutiques, to restaurants and law firms. Every business deserves a real digital presence.">מחנויות ובוטיקים, דרך מסעדות ועד עורכי דין ונדל"ן. כולם מגיע להם נוכחות דיגיטלית אמיתית.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════
+       4. FEATURES (dark)
+  ═══════════════════════════════════════════════════ -->
+  <section class="section features" id="features">
+    <div class="container">
+      <div class="features-header reveal">
+        <span class="section-tag" data-he="מה מקבלים" data-en="What's included">מה מקבלים</span>
+        <h2 data-he-html='הכול כלול<span class="accent-dot">.</span>' data-en-html='Everything included<span class="accent-dot">.</span>'>הכול כלול<span class="accent-dot">.</span></h2>
+        <p data-he="כל אתר שאנחנו בונים מגיע עם כל מה שצריך, מהראשון ועד הפרט האחרון." data-en="Every site we build comes with everything needed, from day one to the last detail.">כל אתר שאנחנו בונים מגיע עם כל מה שצריך, מהראשון ועד הפרט האחרון.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card reveal reveal-d1">
+          <div class="feature-glow"></div>
+          <span class="feature-icon">📱</span>
+          <h3 data-he="מובייל ראשון" data-en="Mobile first">מובייל ראשון</h3>
+          <p data-he="כל אתר מעוצב קודם כל למסך הטלפון. כי שם המשתמשים שלך." data-en="Every site is designed for mobile first. Because that's where your users are.">כל אתר מעוצב קודם כל למסך הטלפון. כי שם המשתמשים שלך.</p>
+        </div>
+        <div class="feature-card reveal reveal-d2">
+          <div class="feature-glow"></div>
+          <span class="feature-icon">🔒</span>
+          <h3 data-he="נגישות מלאה" data-en="Full accessibility">נגישות מלאה</h3>
+          <p data-he="עמידה בתקן הנגישות הישראלי SI 5568. לא אופציה, חובה." data-en="Compliant with Israeli accessibility standard SI 5568. Not optional, mandatory.">עמידה בתקן הנגישות הישראלי SI 5568. לא אופציה, חובה.</p>
+        </div>
+        <div class="feature-card reveal reveal-d3">
+          <div class="feature-glow"></div>
+          <span class="feature-icon">🌐</span>
+          <h3 data-he="עברית ואנגלית" data-en="Hebrew and English">עברית ואנגלית</h3>
+          <p data-he="כל אתר תומך בשתי שפות, RTL מושלם, ומוכן לקהל בינלאומי." data-en="Every site supports both languages, perfect RTL, and is ready for international audiences.">כל אתר תומך בשתי שפות, RTL מושלם, ומוכן לקהל בינלאומי.</p>
+        </div>
+        <div class="feature-card reveal reveal-d4">
+          <div class="feature-glow"></div>
+          <span class="feature-icon">📊</span>
+          <h3 data-he="ביצועים גבוהים" data-en="High performance">ביצועים גבוהים</h3>
+          <p data-he="אתרים מהירים, מאובטחים ומותאמים ל-SEO מהיום הראשון." data-en="Fast, secure websites optimized for SEO from day one.">אתרים מהירים, מאובטחים ומותאמים ל-SEO מהיום הראשון.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════
+       5. PROCESS (interactive)
+  ═══════════════════════════════════════════════════ -->
+  <section class="section process" id="process">
+    <div class="container">
+      <div class="process-header reveal">
+        <span class="section-tag" data-he="איך זה עובד" data-en="How it works">איך זה עובד</span>
+        <h2 data-he-html='מרעיון לאתר חי, בארבעה שלבים<span class="accent-dot">.</span>' data-en-html='From idea to live site, in four steps<span class="accent-dot">.</span>'>מרעיון לאתר חי, בארבעה שלבים<span class="accent-dot">.</span></h2>
+      </div>
+
+      <div class="steps">
+        <div class="step reveal reveal-d1">
+          <div class="step-dot">💬</div>
+          <div class="step-num">01</div>
+          <h3 data-he="שיחה ראשונית" data-en="Initial call">שיחה ראשונית</h3>
+          <p data-he="מבינים את העסק, הצרכים והחזון שלך. בלי טפסים מסובכים." data-en="We understand your business, needs and vision. No complicated forms.">מבינים את העסק, הצרכים והחזון שלך. בלי טפסים מסובכים.</p>
+          <span class="step-time" data-he="24 שעות" data-en="24 hours">24 שעות</span>
+        </div>
+        <div class="step reveal reveal-d2">
+          <div class="step-dot">🎨</div>
+          <div class="step-num">02</div>
+          <h3 data-he="עיצוב מקדים" data-en="Initial design">עיצוב מקדים</h3>
+          <p data-he="שולחים לך תצוגה ראשונה של האתר לפני שמתחילים לפתח." data-en="We send you a first look at the site before development begins.">שולחים לך תצוגה ראשונה של האתר לפני שמתחילים לפתח.</p>
+          <span class="step-time" data-he="48 שעות" data-en="48 hours">48 שעות</span>
+        </div>
+        <div class="step reveal reveal-d3">
+          <div class="step-dot">⚙️</div>
+          <div class="step-num">03</div>
+          <h3 data-he="פיתוח ובנייה" data-en="Development &amp; build">פיתוח ובנייה</h3>
+          <p data-he="עיצוב + קוד + AI. הכול מותאם אישית לעסק שלך." data-en="Design + code + AI. Everything tailored to your business.">עיצוב + קוד + AI. הכול מותאם אישית לעסק שלך.</p>
+          <span class="step-time" data-he="3-5 ימים" data-en="3-5 days">3-5 ימים</span>
+        </div>
+        <div class="step reveal reveal-d4">
+          <div class="step-dot">🚀</div>
+          <div class="step-num">04</div>
+          <h3 data-he="השקה ומסירה" data-en="Launch &amp; handover">השקה ומסירה</h3>
+          <p data-he="האתר עולה לאוויר, אתה מקבל גישה מלאה ותמיכה שוטפת." data-en="The site goes live, you get full access and ongoing support.">האתר עולה לאוויר, אתה מקבל גישה מלאה ותמיכה שוטפת.</p>
+          <span class="step-time" data-he="יום אחד" data-en="One day">יום אחד</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════
+       6. FOUNDERS (no photos yet)
+  ═══════════════════════════════════════════════════ -->
+  <section class="section founders" id="founders">
+    <div class="container">
+      <div class="founders-header reveal">
+        <span class="section-tag" data-he="הצוות" data-en="The Team">הצוות</span>
+        <h2 data-he-html='שניים שמאמינים בפרטים הקטנים<span class="accent-dot">.</span>' data-en-html='Two who believe in the small details<span class="accent-dot">.</span>'>שניים שמאמינים בפרטים הקטנים<span class="accent-dot">.</span></h2>
+        <p style="margin-top:14px;font-size:16px;color:var(--ink-2);font-weight:300;" data-he="סטודנטים למערכות מידע ו-AI, עם אובססיה לעיצוב טוב." data-en="Information systems &amp; AI students, with an obsession for good design.">
+          סטודנטים למערכות מידע ו-AI, עם אובססיה לעיצוב טוב.
+        </p>
+      </div>
+
+      <div class="founders-grid">
+
+        <!-- ── FOUNDER 1: RON ──────────────────────────────
+             To add photo: replace .founder-avatar div with
+             <img src="ron-photo.jpg" alt="רון" class="founder-photo">
+        ───────────────────────────────────────────────── -->
+        <div class="founder-card reveal reveal-d1">
+          <div class="founder-avatar">
+            <span class="founder-initial">ר</span>
+          </div>
+          <div class="founder-name">רון</div>
+          <div class="founder-role" data-he="שותף מייסד · פיתוח וטכנולוגיה" data-en="Co-founder · Dev &amp; Technology">שותף מייסד · פיתוח וטכנולוגיה</div>
+          <p class="founder-bio" data-he="בונה דברים שעובדים. מהיר, נכון ומדויק. מתמחה בפיתוח web ובאינטגרציות AI שהופכות כל אתר לחכם יותר." data-en="Builds things that work. Fast, precise, and reliable. Specializes in web development and AI integrations that make every site smarter.">
+            בונה דברים שעובדים. מהיר, נכון ומדויק. מתמחה בפיתוח web ובאינטגרציות AI שהופכות כל אתר לחכם יותר.
+          </p>
+        </div>
+
+        <!-- ── FOUNDER 2: DORON ───────────────────────────
+             To add photo: replace .founder-avatar div with
+             <img src="doron-photo.jpg" alt="דורון" class="founder-photo">
+        ───────────────────────────────────────────────── -->
+        <div class="founder-card reveal reveal-d2">
+          <div class="founder-avatar">
+            <span class="founder-initial">ד</span>
+          </div>
+          <div class="founder-name">דורון</div>
+          <div class="founder-role" data-he="שותף מייסד · עיצוב ו-AI" data-en="Co-founder · Design &amp; AI">שותף מייסד · עיצוב ו-AI</div>
+          <p class="founder-bio" data-he='אובססיה לפרטים קטנים ואהבה גדולה לממשקים שגורמים לאנשים לחייך. אחראי על העיצוב, ה-UX ועל ה"זה לא נראה טוב מספיק" של הצוות.' data-en="An obsession with small details and a deep love for interfaces that make people smile. Responsible for design, UX, and the team's &quot;this doesn't look good enough&quot; voice.">
+            אובססיה לפרטים קטנים ואהבה גדולה לממשקים שגורמים לאנשים לחייך. אחראי על העיצוב, ה-UX ועל ה"זה לא נראה טוב מספיק" של הצוות.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════
+       7. CTA
+  ═══════════════════════════════════════════════════ -->
+  <section class="section cta-section">
+    <div class="container">
+      <div class="cta-inner reveal">
+        <h2 data-he-html='מוכנים לאתר שמרגיש אמיתי<span class="accent-dot">?</span>' data-en-html='Ready for a website that feels real<span class="accent-dot">?</span>'>מוכנים לאתר שמרגיש אמיתי<span class="accent-dot">?</span></h2>
+        <p data-he="ספרו לנו על העסק שלכם. נשלח אליכם תצוגת עיצוב מקדימה תוך 48 שעות, בלי התחייבות, בלי לחץ." data-en="Tell us about your business. We'll send you a preview design within 48 hours, no commitment, no pressure.">
+          ספרו לנו על העסק שלכם. נשלח אליכם תצוגת עיצוב מקדימה תוך 48 שעות, בלי התחייבות, בלי לחץ.
+        </p>
+        <div class="cta-row">
+          <a href="https://wa.me/972528622646?text=%D7%94%D7%99%D7%99%20kifsy%20%F0%9F%91%8B%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%95%D7%93%20%D7%A2%D7%9C%20%D7%94%D7%A9%D7%99%D7%A8%D7%95%D7%AA%D7%99%D7%9D%20%D7%A9%D7%9C%D7%9B%D7%9D."
+             class="btn btn-cta-primary" target="_blank" rel="noopener">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+            <span data-he="דברו איתנו בוואטסאפ" data-en="Chat with us on WhatsApp">דברו איתנו בוואטסאפ</span>
+          </a>
+          <a href="mailto:info@kifsy.com" class="btn btn-cta-ghost">
+            info@kifsy.com
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════
+       8. REVIEWS
+  ═══════════════════════════════════════════════════ -->
+  <section class="section future" id="reviews">
+    <div class="container">
+
+      <div class="reviews-header reveal">
+        <span class="section-tag" data-he="המלצות" data-en="Testimonials">המלצות</span>
+        <h2 data-he="מה אומרים עלינו." data-en="What people say about us.">מה אומרים עלינו.</h2>
+        <p style="margin-top:14px;font-size:16px;color:var(--ink-2);font-weight:300;"
+           data-he="מילים אמיתיות מבעלי עסקים שעבדנו איתם."
+           data-en="Real words from business owners we worked with.">
+          מילים אמיתיות מבעלי עסקים שעבדנו איתם.
+        </p>
+      </div>
+
+      <div class="reviews-grid">
+
+        <article class="review-card reveal reveal-d1">
+          <p class="review-quote"
+             data-he="כבר מהשיחה הראשונה הרגשתי שהם באמת מבינים את העסק שלי. האתר עלה לאוויר תוך שבוע וההזמנות הוכפלו תוך חודש. בכנות, הכסף הכי טוב שהוצאתי."
+             data-en="From the first call I felt like they actually got my business. The site was live in a week and bookings doubled within a month. Honestly the best money I've spent.">
+            כבר מהשיחה הראשונה הרגשתי שהם באמת מבינים את העסק שלי. האתר עלה לאוויר תוך שבוע וההזמנות הוכפלו תוך חודש. בכנות, הכסף הכי טוב שהוצאתי.
+          </p>
+          <div class="review-person">
+            <div class="review-avatar" data-he="א״ל" data-en="EL">א״ל</div>
+            <div>
+              <div class="review-name" data-he="אליהו לוי" data-en="Eliyahu Levi">אליהו לוי</div>
+              <div class="review-role" data-he="בעלים, חומוס יוסי" data-en="Owner, Hummus Yossi">בעלים, חומוס יוסי</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="review-card reveal reveal-d2">
+          <p class="review-quote"
+             data-he="קיבלתי הצעות מסוכנויות אחרות לכמעט 15,000 ₪ על משהו שכאן עשו לי תוך 6 ימים בעשירית מהמחיר. וזה גם נראה הרבה יותר טוב מכל מה שהראו לי."
+             data-en="I've been quoted nearly ₪15,000 by other agencies for what kifsy delivered in 6 days for a tenth of the price. And it looks way better than anything they showed me.">
+            קיבלתי הצעות מסוכנויות אחרות לכמעט 15,000 ₪ על משהו שכאן עשו לי תוך 6 ימים בעשירית מהמחיר. וזה גם נראה הרבה יותר טוב מכל מה שהראו לי.
+          </p>
+          <div class="review-person">
+            <div class="review-avatar ra2" data-he="מ״ש" data-en="MS">מ״ש</div>
+            <div>
+              <div class="review-name" data-he="מאיה שפיר" data-en="Maya Shafir">מאיה שפיר</div>
+              <div class="review-role" data-he="מייסדת, סלון מאיה" data-en="Founder, Salon Maya">מייסדת, סלון מאיה</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="review-card reveal reveal-d3">
+          <p class="review-quote"
+             data-he="האינטגרציה עם הווטסאפ לבדה שינתה את הדרך שבה לקוחות פונים אלי. האתר נראה כמו משהו שיוצא מסטארטאפ בתל אביב, רק שזה משרד עורכי דין."
+             data-en="The WhatsApp integration alone changed how clients reach me. The site looks like something a Tel Aviv startup would have, but for my law firm.">
+            האינטגרציה עם הווטסאפ לבדה שינתה את הדרך שבה לקוחות פונים אלי. האתר נראה כמו משהו שיוצא מסטארטאפ בתל אביב, רק שזה משרד עורכי דין.
+          </p>
+          <div class="review-person">
+            <div class="review-avatar ra3" data-he="ד״כ" data-en="DC">ד״כ</div>
+            <div>
+              <div class="review-name" data-he="דניאל כהן" data-en="Daniel Cohen">דניאל כהן</div>
+              <div class="review-role" data-he="שותף, כהן ושות׳" data-en="Partner, Cohen & Partners">שותף, כהן ושות׳</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="review-card reveal reveal-d1">
+          <p class="review-quote"
+             data-he="האתר החדש מדבר בדיוק בשפת המותג שלנו. כל פרט, כל צבע, כל אנימציה מרגישה נכונה. kifsy הבינו את הוויזיה של ADMORÉ בלי שצריך להסביר יותר מדי. זה נדיר."
+             data-en="The new site speaks exactly in our brand's language. Every detail, every color, every animation feels right. kifsy understood the ADMORÉ vision without needing much explanation. That's rare.">
+            האתר החדש מדבר בדיוק בשפת המותג שלנו. כל פרט, כל צבע, כל אנימציה מרגישה נכונה. kifsy הבינו את הוויזיה של ADMORÉ בלי שצריך להסביר יותר מדי. זה נדיר.
+          </p>
+          <div class="review-person">
+            <div class="review-avatar ra4" data-he="א״ה" data-en="AH">א״ה</div>
+            <div>
+              <div class="review-name" data-he="אלמוג הפנר" data-en="Almog Hafner">אלמוג הפנר</div>
+              <div class="review-role" data-he="בעלים, ADMORÉ" data-en="Owner, ADMORÉ">בעלים, ADMORÉ</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="review-card reveal reveal-d2">
+          <p class="review-quote"
+             data-he="האתר של רם תיירות כבר לא נראה כמו של חברה קטנה. לקוחות חדשים פונים אלינו כי הם מרגישים שמדובר בחברה מקצועית ואמינה. ההשקעה השתלמה כבר בחודש הראשון."
+             data-en="Ram Tours' site no longer looks like a small company. New clients approach us because they sense professionalism and credibility. The investment paid off within the first month.">
+            האתר של רם תיירות כבר לא נראה כמו של חברה קטנה. לקוחות חדשים פונים אלינו כי הם מרגישים שמדובר בחברה מקצועית ואמינה. ההשקעה השתלמה כבר בחודש הראשון.
+          </p>
+          <div class="review-person">
+            <div class="review-avatar ra5" data-he="ר״מ" data-en="RM">ר״מ</div>
+            <div>
+              <div class="review-name" data-he="רמי מורדוב" data-en="Rami Mordov">רמי מורדוב</div>
+              <div class="review-role" data-he="בעלים, רם תיירות" data-en="Owner, Ram Tours">בעלים, רם תיירות</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="review-card reveal reveal-d3">
+          <p class="review-quote"
+             data-he="הגעתי ל-kifsy עם מוצר טכנולוגי שצריך להיראות premium. התוצאה עברה את הציפיות שלי. האתר נראה כמו של חברה בינלאומית, ולקוחות מחו״ל כבר מגיבים לזה."
+             data-en="I came to kifsy with a tech product that needed to look premium. The result exceeded my expectations. The site looks like an international company, and overseas clients are already responding.">
+            הגעתי ל-kifsy עם מוצר טכנולוגי שצריך להיראות premium. התוצאה עברה את הציפיות שלי. האתר נראה כמו של חברה בינלאומית, ולקוחות מחו״ל כבר מגיבים לזה.
+          </p>
+          <div class="review-person">
+            <div class="review-avatar ra6" data-he="ד׳" data-en="D">ד׳</div>
+            <div>
+              <div class="review-name" data-he="דורון" data-en="Doron">דורון</div>
+              <div class="review-role" data-he="בעלים, BebKey" data-en="Owner, BebKey">בעלים, BebKey</div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── FOOTER ──────────────────────────────────── -->
+  <footer class="foot">
+    <div class="foot-brand brand-mark">kifsy<span class="dot">.</span></div>
+    <div class="foot-copy" data-he="© 2026 kifsy. כל הזכויות שמורות." data-en="© 2026 kifsy. All rights reserved.">© 2026 kifsy. כל הזכויות שמורות.</div>
+    <a href="index.html" class="nav-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      <span data-he="דף הבית" data-en="Home">חזרה לאתר</span>
+    </a>
+  </footer>
+
+
+  <script>
+    /* ── Scroll-reveal (Intersection Observer) ─────── */
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    /* ── Language switching ──────────────────────────── */
+    const html = document.documentElement;
+    const STORAGE_KEY = 'kifsy-lang';
+    function setLang(lang) {
+      if (lang !== 'he' && lang !== 'en') lang = 'he';
+      html.setAttribute('lang', lang);
+      html.setAttribute('dir', lang === 'he' ? 'rtl' : 'ltr');
+      document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+        const val = el.getAttribute('data-' + lang);
+        if (val !== null) el.textContent = val;
+      });
+      document.querySelectorAll('[data-' + lang + '-html]').forEach(el => {
+        const val = el.getAttribute('data-' + lang + '-html');
+        if (val !== null) el.innerHTML = val;
+      });
+      document.querySelectorAll('.lang-toggle button').forEach(b => {
+        b.classList.toggle('active', b.dataset.lang === lang);
+      });
+      try { localStorage.setItem(STORAGE_KEY, lang); } catch(e){}
+    }
+    document.querySelectorAll('.lang-toggle button').forEach(btn => {
+      btn.addEventListener('click', () => setLang(btn.dataset.lang));
+    });
+    let initial = 'he';
+    try { initial = localStorage.getItem(STORAGE_KEY) || 'he'; } catch(e){}
+    setLang(initial);
+
+    /* ── Burger menu ─────────────────────────────────── */
+    const burgerBtn = document.getElementById('burgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    function closeMobileMenu() {
+      burgerBtn.setAttribute('aria-expanded', 'false');
+      mobileMenu.classList.remove('is-open');
+    }
+    burgerBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      const open = burgerBtn.getAttribute('aria-expanded') === 'true';
+      burgerBtn.setAttribute('aria-expanded', String(!open));
+      mobileMenu.classList.toggle('is-open', !open);
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobileMenu));
+    document.addEventListener('click', e => {
+      if (!document.getElementById('navWrap').contains(e.target)) closeMobileMenu();
+    });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMobileMenu(); });
+
+    /* ── Nav shrink on scroll ────────────────────────── */
+    const navWrap = document.getElementById('navWrap');
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          navWrap.classList.toggle('scrolled', window.scrollY > 20);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    /* ── Counter animation ──────────────────────────── */
+    const counterObserver = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const el = e.target;
+        const target = +el.dataset.target;
+        const duration = 1400;
+        const start = performance.now();
+        const tick = now => {
+          const elapsed = now - start;
+          const progress = Math.min(elapsed / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.round(eased * target).toLocaleString();
+          if (progress < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+        counterObserver.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+
+    /* ── Smooth anchor scroll ───────────────────────── */
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    /* ── COOKIE CONSENT LOGIC ── */
+    document.addEventListener('DOMContentLoaded', function() {
+      var CK_KEY = 'kifsy-cookies';
+      var bar   = document.getElementById('kf-notice');
+      var panel = document.getElementById('ckPanel');
+      var consent = null;
+      try { consent = JSON.parse(localStorage.getItem(CK_KEY)); } catch(e) {}
+      if (consent) return;
+      bar.classList.add('visible');
+      function saveConsent(analytics) {
+        localStorage.setItem(CK_KEY, JSON.stringify({ analytics: analytics, ts: Date.now() }));
+        bar.classList.remove('visible');
+        panel.classList.remove('open');
+      }
+      document.getElementById('ckBtnAccept').addEventListener('click', function() { saveConsent(true); });
+      document.getElementById('ckBtnDecline').addEventListener('click', function() { saveConsent(false); });
+      document.getElementById('ckBtnManage').addEventListener('click', function() { bar.classList.remove('visible'); panel.classList.add('open'); });
+      document.getElementById('ckBtnBack').addEventListener('click', function() { panel.classList.remove('open'); bar.classList.add('visible'); });
+      document.getElementById('ckBtnSave').addEventListener('click', function() { saveConsent(document.getElementById('ckToggleAnalytics').checked); });
+    });
+  </script>
+
+<!-- ── COOKIE CONSENT BAR ── -->
+<div class="ck-bar" id="kf-notice" role="region" aria-label="הסכמה לקוקיז">
+  <p class="ck-bar__text">
+    <span data-he="אנו משתמשים בקוקיז כדי לשפר את חוויית הגלישה ולנתח את תנועת האתר. קוקיז אנליטיים פועלים רק בהסכמתך. " data-en="We use cookies to improve your experience and analyse site traffic. Analytics cookies only run with your consent. ">אנו משתמשים בקוקיז כדי לשפר את חוויית הגלישה ולנתח את תנועת האתר. קוקיז אנליטיים פועלים רק בהסכמתך. </span><a href="cookies.html" data-he="מדיניות קוקיז" data-en="Cookie Policy">מדיניות קוקיז</a>
+  </p>
+  <div class="ck-bar__actions">
+    <button class="ck-btn-accept" id="ckBtnAccept" data-he="קבל הכל" data-en="Accept all">קבל הכל</button>
+    <button class="ck-btn-decline" id="ckBtnDecline" data-he="דחה אנליטיים" data-en="Decline analytics">דחה אנליטיים</button>
+    <button class="ck-btn-manage" id="ckBtnManage" data-he="ניהול העדפות" data-en="Manage preferences">ניהול העדפות</button>
+  </div>
+</div>
+<div class="ck-panel" id="ckPanel" role="dialog" aria-modal="true" aria-labelledby="ckPanelTitle">
+  <h3 id="ckPanelTitle" data-he="ניהול העדפות קוקיז" data-en="Cookie preferences">ניהול העדפות קוקיז</h3>
+  <div class="ck-panel__grid">
+    <div class="ck-category">
+      <div class="ck-category__info"><div class="ck-category__name" data-he="קוקיז הכרחיים" data-en="Necessary">קוקיז הכרחיים</div><div class="ck-category__desc" data-he="נחוצים להפעלת האתר. לא ניתן לבטל." data-en="Required for the site to work. Cannot be disabled.">נחוצים להפעלת האתר. לא ניתן לבטל.</div></div>
+      <div class="ck-toggle-wrap"><label class="ck-toggle"><input type="checkbox" checked disabled><span class="ck-track"></span></label></div>
+    </div>
+    <div class="ck-category">
+      <div class="ck-category__info"><div class="ck-category__name" data-he="קוקיז פונקציונליים" data-en="Functional">קוקיז פונקציונליים</div><div class="ck-category__desc" data-he="שומרים העדפות כמו שפה ונגישות." data-en="Remember preferences like language and accessibility.">שומרים העדפות כמו שפה ונגישות.</div></div>
+      <div class="ck-toggle-wrap"><label class="ck-toggle"><input type="checkbox" checked id="ckToggleFunctional"><span class="ck-track"></span></label></div>
+    </div>
+    <div class="ck-category">
+      <div class="ck-category__info"><div class="ck-category__name" data-he="קוקיז אנליטיים" data-en="Analytics">קוקיז אנליטיים</div><div class="ck-category__desc" data-he="עוזרים לנו להבין כיצד מבקרים משתמשים באתר (Google Analytics)." data-en="Help us understand how visitors use the site (Google Analytics).">עוזרים לנו להבין כיצד מבקרים משתמשים באתר (Google Analytics).</div></div>
+      <div class="ck-toggle-wrap"><label class="ck-toggle"><input type="checkbox" id="ckToggleAnalytics"><span class="ck-track"></span></label></div>
+    </div>
+  </div>
+  <div class="ck-panel__footer">
+    <button class="ck-btn-decline" id="ckBtnBack" style="color:var(--ink);border-color:rgba(42,58,44,.3);" data-he="חזור" data-en="Back">חזור</button>
+    <button class="ck-btn-accept" id="ckBtnSave" data-he="שמור העדפות" data-en="Save preferences">שמור העדפות</button>
+  </div>
+</div>
+
+</body>
+</html>

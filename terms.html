@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>תנאי שימוש · kifsy</title>
+<meta name="description" content="תנאי השימוש של אתר kifsy.com. הגדרת הזכויות והחובות של המשתמשים ושל kifsy, הגבלת אחריות, קניין רוחני ודין ישראלי." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&family=Inter:wght@400;500;600&family=Inter+Tight:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="kifsy-mark.png">
+<style>
+:root{--bg:#D6E3D1;--bg-soft:#E1ECDC;--surface:#fff;--ink:#2A3A2C;--ink-2:#4C5C4E;--ink-3:#7C8A7D;--accent:#A64253;--line:rgba(42,58,44,.10);--radius:16px;--max:760px;--ease:cubic-bezier(.2,.7,.2,1);--font-he:'Heebo',sans-serif;--font-en:'Inter',sans-serif;--font-en-disp:'Inter Tight','Inter',sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--font-he);background:var(--bg);color:var(--ink);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased}
+html[lang="en"] body{font-family:var(--font-en)}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s}
+a:hover{border-bottom-color:var(--accent)}
+button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
+h1,h2,h3{font-family:var(--font-he);font-weight:700;line-height:1.25;color:var(--ink);letter-spacing:-0.02em}
+html[lang="en"] h1,html[lang="en"] h2,html[lang="en"] h3{font-family:var(--font-en-disp)}
+h1{font-size:clamp(2rem,5vw,3rem)}
+h2{font-size:1.35rem;margin-top:40px;margin-bottom:14px;scroll-margin-top:80px}
+h3{font-size:1.05rem;margin-top:20px;margin-bottom:6px}
+p{color:var(--ink-2);margin-bottom:14px}
+ul,ol{color:var(--ink-2);margin:0 0 14px 0;padding-inline-start:22px}
+li{margin-bottom:6px}
+strong{color:var(--ink);font-weight:600}
+.brand-mark{direction:ltr;unicode-bidi:isolate;font-family:var(--font-en-disp);font-weight:600;letter-spacing:-0.04em}
+.dot{color:var(--accent)}
+nav{position:sticky;top:0;z-index:10;background:rgba(214,227,209,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-inner{max-width:1100px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.back{display:flex;align-items:center;gap:6px;font-size:14px;color:var(--ink-2);transition:color .2s;border-bottom:none}
+.back:hover{color:var(--ink);border-bottom:none}
+.back-icon{display:inline-block;transition:transform .2s}
+html[dir="rtl"] .back-icon{transform:scaleX(-1)}
+html[dir="rtl"] .back:hover .back-icon{transform:scaleX(-1) translateX(-3px)}
+html[dir="ltr"] .back:hover .back-icon{transform:translateX(-3px)}
+.lang-toggle{display:flex;gap:3px;background:rgba(42,58,44,.08);border-radius:999px;padding:3px}
+.lang-toggle button{padding:4px 11px;border-radius:999px;font-size:13px;font-weight:500;color:var(--ink-3);transition:all .2s}
+.lang-toggle button.active{background:var(--ink);color:var(--bg)}
+.hero{padding:56px 24px 30px;max-width:1100px;margin:0 auto}
+.badge{display:inline-flex;align-items:center;gap:8px;background:var(--bg-soft);border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:13px;color:var(--ink-2);margin-bottom:24px}
+.hero h1{margin-bottom:14px}
+.hero .lead{font-size:1.1rem;color:var(--ink-2);max-width:600px;margin-bottom:18px}
+.meta{font-size:13px;color:var(--ink-3);margin-bottom:6px}
+.content{max-width:1100px;margin:0 auto;padding:0 24px 56px}
+.legal-wrap{display:flex;gap:32px;align-items:flex-start}
+.legal-sections{flex:1 1 0;min-width:0}
+.toc{flex:0 0 210px;background:var(--bg-soft);border:1px solid var(--line);border-radius:var(--radius);padding:20px;position:sticky;top:70px}
+.toc h2{margin-top:0;font-size:0.95rem;margin-bottom:10px}
+.toc ol{margin:0;padding-inline-start:18px;color:var(--ink-2);font-size:13px}
+.toc li{margin-bottom:4px}
+.toc a{color:var(--ink-2);border-bottom:1px solid transparent}
+.toc a:hover{color:var(--ink);border-bottom-color:var(--ink)}
+.block{margin-bottom:8px}
+@media(max-width:768px){.legal-wrap{flex-direction:column}.toc{flex:none;width:100%;position:static}}
+.callout{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px 22px;margin:18px 0}
+.callout p:last-child{margin-bottom:0}
+.cross-links{display:flex;flex-wrap:wrap;gap:10px;padding:24px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);margin-top:40px}
+.cross-links a{flex:1 1 200px;text-align:center;padding:14px 18px;background:var(--bg-soft);border-radius:12px;color:var(--ink);font-weight:600;font-size:14px;border-bottom:none;transition:background .2s}
+.cross-links a:hover{background:var(--bg);border-bottom:none}
+footer{max-width:1100px;margin:0 auto;padding:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;border-top:1px solid var(--line);font-size:13px;color:var(--ink-3)}
+footer .brand-mark{color:var(--ink);font-size:15px}
+@media(max-width:600px){.hero{padding:40px 20px 24px}.content{padding:0 20px 48px}h2{font-size:1.2rem}footer{padding:20px}}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="back">
+      <svg class="back-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      <span data-he="חזרה לאתר" data-en="Back to site">חזרה לאתר</span>
+    </a>
+    <a href="index.html" class="brand-mark">kifsy<span class="dot">.</span></a>
+    <div class="lang-toggle">
+      <button data-lang="he" class="active">עב</button>
+      <button data-lang="en">EN</button>
+    </div>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="badge">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.4 9.6 8 10 4.6-.4 8-5 8-10V6l-8-4z"/></svg>
+    <span data-he="משפטי" data-en="Legal">משפטי</span>
+  </div>
+  <h1 data-he="תנאי שימוש" data-en="Terms of Use">תנאי שימוש</h1>
+  <p class="lead" data-he="השימוש באתר kifsy.com כפוף לתנאים המפורטים להלן. אנא קראו אותם לפני השימוש באתר." data-en="Use of the site kifsy.com is subject to the terms set out below. Please read them before using the site.">השימוש באתר kifsy.com כפוף לתנאים המפורטים להלן. אנא קראו אותם לפני השימוש באתר.</p>
+  <div class="meta"><span data-he="עודכן לאחרונה: 18 במאי 2026" data-en="Last updated: May 18, 2026">עודכן לאחרונה: 18 במאי 2026</span></div>
+  <div class="meta"><span data-he="הדין החל: דין ישראל. סמכות שיפוט ייחודית: בתי המשפט בתל אביב" data-en="Governing law: Israeli law. Exclusive jurisdiction: courts of Tel Aviv">הדין החל: דין ישראל. סמכות שיפוט ייחודית: בתי המשפט בתל אביב</span></div>
+</div>
+
+<main class="content">
+<div class="legal-wrap">
+
+  <nav class="toc" aria-label="תוכן עניינים / Table of contents">
+    <h2 data-he="תוכן העניינים" data-en="Contents">תוכן העניינים</h2>
+    <ol>
+      <li><a href="#identity" data-he="זיהוי בעל האתר" data-en="Site operator">זיהוי בעל האתר</a></li>
+      <li><a href="#use" data-he="מטרת האתר" data-en="Purpose of the site">מטרת האתר</a></li>
+      <li><a href="#ip" data-he="קניין רוחני" data-en="Intellectual property">קניין רוחני</a></li>
+      <li><a href="#privacy" data-he="פרטיות" data-en="Privacy">פרטיות</a></li>
+      <li><a href="#liability" data-he="הגבלת אחריות" data-en="Limitation of liability">הגבלת אחריות</a></li>
+      <li><a href="#links" data-he="קישורים חיצוניים" data-en="External links">קישורים חיצוניים</a></li>
+      <li><a href="#acceptable" data-he="שימוש מותר" data-en="Acceptable use">שימוש מותר</a></li>
+      <li><a href="#changes" data-he="שינויים בתנאים" data-en="Changes">שינויים בתנאים</a></li>
+      <li><a href="#general" data-he="כללי" data-en="General">כללי</a></li>
+      <li><a href="#law" data-he="דין ושיפוט" data-en="Law and jurisdiction">דין ושיפוט</a></li>
+      <li><a href="#contact" data-he="פנייה אלינו" data-en="Contact">פנייה אלינו</a></li>
+    </ol>
+  </nav>
+
+  <div class="legal-sections">
+
+  <section class="block" id="identity">
+    <h2 data-he="1. זיהוי בעל האתר" data-en="1. Site operator">1. זיהוי בעל האתר</h2>
+    <p data-he="האתר kifsy.com מופעל על ידי kifsy, סוכנות דיגיטל ישראלית המתמחה בבניית אתרים לעסקים קטנים ובינוניים. פרטי יצירת הקשר:" data-en="The site kifsy.com is operated by kifsy, an Israeli digital agency specializing in website development for small and medium-sized businesses. Contact details:">האתר kifsy.com מופעל על ידי kifsy, סוכנות דיגיטל ישראלית המתמחה בבניית אתרים לעסקים קטנים ובינוניים. פרטי יצירת הקשר:</p>
+    <ul>
+      <li><strong data-he="שם:" data-en="Name:">שם:</strong> kifsy</li>
+      <li><strong data-he="דוא״ל:" data-en="Email:">דוא״ל:</strong> <a href="mailto:info@kifsy.com">info@kifsy.com</a></li>
+      <li><strong data-he="טל. דורון:" data-en="Phone, Doron:">טל. דורון:</strong> <a href="tel:+972549369527">054-936-9527</a></li>
+      <li><strong data-he="טל. רון:" data-en="Phone, Ron:">טל. רון:</strong> <a href="tel:+972528622646">052-862-2646</a></li>
+    </ul>
+  </section>
+
+  <section class="block" id="use">
+    <h2 data-he="2. מטרת האתר" data-en="2. Purpose of the site">2. מטרת האתר</h2>
+    <p data-he="האתר משמש לצרכי שיווק ומידע בלבד. כל תוכן המוצג באתר, לרבות תיאורי שירותים, מחירים, לוחות זמנים ודוגמאות עבודה, הוא אינפורמטיבי ואינו מהווה הצעה מחייבת לחוזה, מצג מחייב, או הבטחה משפטית." data-en="The site serves informational and marketing purposes only. All content presented on the site, including service descriptions, prices, timelines, and work examples, is informational and does not constitute a binding offer to contract, a binding representation, or a legal guarantee.">האתר משמש לצרכי שיווק ומידע בלבד. כל תוכן המוצג באתר, לרבות תיאורי שירותים, מחירים, לוחות זמנים ודוגמאות עבודה, הוא אינפורמטיבי ואינו מהווה הצעה מחייבת לחוזה, מצג מחייב, או הבטחה משפטית.</p>
+    <p data-he="התקשרות לשירות ספציפי תיעשה בהסכם נפרד וחתום בין הצדדים." data-en="Engagement for any specific service will be made through a separate, signed agreement between the parties.">התקשרות לשירות ספציפי תיעשה בהסכם נפרד וחתום בין הצדדים.</p>
+  </section>
+
+  <section class="block" id="ip">
+    <h2 data-he="3. קניין רוחני" data-en="3. Intellectual property">3. קניין רוחני</h2>
+    <p data-he="כל הזכויות בתכנים המופיעים באתר, לרבות עיצוב, טקסטים, גרפיקה, לוגו, שמות, קוד ותמונות, הם רכוש של kifsy ומוגנים בחוק זכות יוצרים, התשס״ח-2007 וחוקים נוספים." data-en="All rights in the content appearing on the site, including design, text, graphics, logo, names, code, and images, are the property of kifsy and are protected under the Copyright Law, 5768-2007 and other applicable laws.">כל הזכויות בתכנים המופיעים באתר, לרבות עיצוב, טקסטים, גרפיקה, לוגו, שמות, קוד ותמונות, הם רכוש של kifsy ומוגנים בחוק זכות יוצרים, התשס״ח-2007 וחוקים נוספים.</p>
+    <p data-he="אין להעתיק, לשכפל, להפיץ, לשנות, למכור או לעשות שימוש מסחרי בכל תוכן מהאתר ללא אישור מפורש בכתב מ-kifsy." data-en="No content from the site may be copied, reproduced, distributed, modified, sold, or used commercially without the explicit written permission of kifsy.">אין להעתיק, לשכפל, להפיץ, לשנות, למכור או לעשות שימוש מסחרי בכל תוכן מהאתר ללא אישור מפורש בכתב מ-kifsy.</p>
+    <p data-he="שם המותג ״kifsy״ והלוגו המלווה אותו הם סימני מסחר של kifsy. אין לעשות בהם שימוש ללא אישור מוקדם בכתב." data-en='The brand name "kifsy" and its accompanying logo are trademarks of kifsy. They may not be used without prior written permission.'>שם המותג ״kifsy״ והלוגו המלווה אותו הם סימני מסחר של kifsy. אין לעשות בהם שימוש ללא אישור מוקדם בכתב.</p>
+  </section>
+
+  <section class="block" id="privacy">
+    <h2 data-he="4. פרטיות" data-en="4. Privacy">4. פרטיות</h2>
+    <p data-he-html='השימוש באתר כפוף גם ל<a href="privacy.html">מדיניות הפרטיות</a> שלנו, המהווה חלק בלתי נפרד מתנאי השימוש. מדיניות הפרטיות מפרטת כיצד אנחנו אוספים ומשתמשים במידע האישי שלכם, לרבות מידע שנמסר דרך טופס יצירת הקשר ונתוני שימוש שנאספים אוטומטית.'
+       data-en-html='Use of the site is also subject to our <a href="privacy.html">Privacy Policy</a>, which forms an integral part of these terms. The Privacy Policy details how we collect and use your personal information, including information submitted through the contact form and usage data collected automatically.'>
+      השימוש באתר כפוף גם ל<a href="privacy.html">מדיניות הפרטיות</a> שלנו, המהווה חלק בלתי נפרד מתנאי השימוש. מדיניות הפרטיות מפרטת כיצד אנחנו אוספים ומשתמשים במידע האישי שלכם, לרבות מידע שנמסר דרך טופס יצירת הקשר ונתוני שימוש שנאספים אוטומטית.
+    </p>
+  </section>
+
+  <section class="block" id="liability">
+    <h2 data-he="5. הגבלת אחריות" data-en="5. Limitation of liability">5. הגבלת אחריות</h2>
+    <p data-he='האתר מסופק "כפי שהוא" (as-is), ללא אחריות מכל סוג, מפורשת או משתמעת. kifsy אינה מתחייבת שהאתר יפעל ללא הפרעות, יהיה נקי מטעויות, או שהמידע בו יהיה מדויק ועדכני בכל עת.' data-en='The site is provided "as is" without warranty of any kind, express or implied. kifsy does not warrant that the site will operate without interruption, be free from errors, or that the information it contains will be accurate and up to date at all times.'>האתר מסופק "כפי שהוא" (as-is), ללא אחריות מכל סוג, מפורשת או משתמעת. kifsy אינה מתחייבת שהאתר יפעל ללא הפרעות, יהיה נקי מטעויות, או שהמידע בו יהיה מדויק ועדכני בכל עת.</p>
+    <p data-he="במידה המרבית המותרת על פי חוק הגנת הצרכן, התשמ״א-1981, וכל דין אחר, kifsy לא תהיה אחראית לנזקים עקיפים, תוצאתיים, מיוחדים או עונשיים הנובעים מהשימוש באתר או מחוסר היכולת להשתמש בו." data-en="To the maximum extent permitted by the Consumer Protection Law, 5741-1981, and all other applicable law, kifsy will not be liable for indirect, consequential, special, or punitive damages arising from use of the site or inability to use it.">במידה המרבית המותרת על פי חוק הגנת הצרכן, התשמ״א-1981, וכל דין אחר, kifsy לא תהיה אחראית לנזקים עקיפים, תוצאתיים, מיוחדים או עונשיים הנובעים מהשימוש באתר או מחוסר היכולת להשתמש בו.</p>
+    <p data-he="הגבלת אחריות זו אינה חלה על נזק גוף, רשלנות רבתי, מעשה מכוון, או כל זכות שאינה ניתנת לוויתור לפי הדין הישראלי." data-en="This limitation of liability does not apply to personal injury, gross negligence, intentional misconduct, or any right that cannot be waived under Israeli law.">הגבלת אחריות זו אינה חלה על נזק גוף, רשלנות רבתי, מעשה מכוון, או כל זכות שאינה ניתנת לוויתור לפי הדין הישראלי.</p>
+  </section>
+
+  <section class="block" id="links">
+    <h2 data-he="6. קישורים חיצוניים" data-en="6. External links">6. קישורים חיצוניים</h2>
+    <p data-he="האתר עשוי לכלול קישורים לאתרים חיצוניים. קישורים אלה מוצגים לנוחותכם בלבד. kifsy אינה שולטת על תוכן אתרים אלה ואינה אחראית להם, למדיניות הפרטיות שלהם, לדיוק המידע בהם, או לכל נזק שייגרם כתוצאה מהשימוש בהם." data-en="The site may include links to external websites. These links are provided for your convenience only. kifsy has no control over the content of those sites and is not responsible for them, their privacy practices, the accuracy of their information, or any damage resulting from their use.">האתר עשוי לכלול קישורים לאתרים חיצוניים. קישורים אלה מוצגים לנוחותכם בלבד. kifsy אינה שולטת על תוכן אתרים אלה ואינה אחראית להם, למדיניות הפרטיות שלהם, לדיוק המידע בהם, או לכל נזק שייגרם כתוצאה מהשימוש בהם.</p>
+  </section>
+
+  <section class="block" id="acceptable">
+    <h2 data-he="7. שימוש מותר" data-en="7. Acceptable use">7. שימוש מותר</h2>
+    <p data-he="אתם מתחייבים שלא לעשות באתר שימוש שיש בו כדי:" data-en="You undertake not to use the site in any manner that:">אתם מתחייבים שלא לעשות באתר שימוש שיש בו כדי:</p>
+    <ul>
+      <li data-he="להפר כל חוק ישראלי או בינלאומי חל." data-en="Violates any applicable Israeli or international law.">להפר כל חוק ישראלי או בינלאומי חל.</li>
+      <li data-he="לגרד, לסרוק אוטומטית, לחלץ נתונים בכמות גדולה (scraping) מהאתר ללא אישור." data-en="Scrapes, crawls, or extracts data in bulk from the site without permission.">לגרד, לסרוק אוטומטית, לחלץ נתונים בכמות גדולה (scraping) מהאתר ללא אישור.</li>
+      <li data-he="לפרוץ, לפגוע, להאט או לשבש את פעולת האתר." data-en="Hacks, damages, slows, or disrupts the operation of the site.">לפרוץ, לפגוע, להאט או לשבש את פעולת האתר.</li>
+      <li data-he="להתחזות לגורם אחר או לספק מידע שגוי." data-en="Impersonates another party or provides false information.">להתחזות לגורם אחר או לספק מידע שגוי.</li>
+      <li data-he="להפיץ תוכן פוגעני, בלתי חוקי, או תוכנות זדוניות." data-en="Distributes harmful, unlawful, or malicious content.">להפיץ תוכן פוגעני, בלתי חוקי, או תוכנות זדוניות.</li>
+    </ul>
+    <p data-he="kifsy שומרת לעצמה את הזכות לחסום גישה לאתר לכל מי שמפר תנאים אלה." data-en="kifsy reserves the right to block site access for anyone who violates these terms.">kifsy שומרת לעצמה את הזכות לחסום גישה לאתר לכל מי שמפר תנאים אלה.</p>
+  </section>
+
+  <section class="block" id="changes">
+    <h2 data-he="8. שינויים בתנאים" data-en="8. Changes to these terms">8. שינויים בתנאים</h2>
+    <p data-he="kifsy רשאית לעדכן תנאים אלה בכל עת. הגרסה העדכנית מפורסמת בכתובת זו עם תאריך העדכון. שימוש מתמשך באתר לאחר פרסום גרסה מעודכנת מהווה הסכמה לתנאים החדשים. מומלץ לבדוק עמוד זה מעת לעת." data-en="kifsy may update these terms at any time. The current version is published at this URL with the update date. Continued use of the site after a new version is published constitutes acceptance of the updated terms. We recommend checking this page periodically.">kifsy רשאית לעדכן תנאים אלה בכל עת. הגרסה העדכנית מפורסמת בכתובת זו עם תאריך העדכון. שימוש מתמשך באתר לאחר פרסום גרסה מעודכנת מהווה הסכמה לתנאים החדשים. מומלץ לבדוק עמוד זה מעת לעת.</p>
+  </section>
+
+  <section class="block" id="general">
+    <h2 data-he="9. כללי" data-en="9. General">9. כללי</h2>
+    <p data-he="אם ייקבע שסעיף כלשהו בתנאים אלה אינו תקף, בלתי אכיף, או בלתי חוקי, יופרד אותו סעיף מהתנאים הנותרים והם ימשיכו לחול במלואם. תנאי שימוש אלה מהווים את ההסכם המלא בין הצדדים ביחס לנושאים המוסדרים בהם, ומחליפים כל הסכמה, מצג, או הבנה קודמת." data-en="If any provision of these terms is found to be invalid, unenforceable, or unlawful, that provision shall be severed from the remaining terms, which shall continue in full force. These terms constitute the entire agreement between the parties regarding the matters covered and supersede any prior agreement, representation, or understanding.">אם ייקבע שסעיף כלשהו בתנאים אלה אינו תקף, בלתי אכיף, או בלתי חוקי, יופרד אותו סעיף מהתנאים הנותרים והם ימשיכו לחול במלואם. תנאי שימוש אלה מהווים את ההסכם המלא בין הצדדים ביחס לנושאים המוסדרים בהם, ומחליפים כל הסכמה, מצג, או הבנה קודמת.</p>
+  </section>
+
+  <section class="block" id="law">
+    <h2 data-he="10. דין ושיפוט" data-en="10. Governing law and jurisdiction">10. דין ושיפוט</h2>
+    <p data-he="תנאי שימוש אלה ופירושם יוסדרו על פי דיני מדינת ישראל. לבתי המשפט המוסמכים במחוז תל אביב תהיה סמכות שיפוט ייחודית וייחודית לדון בכל סכסוך הנובע מתנאים אלה או מהשימוש באתר." data-en="These terms and their interpretation shall be governed by the laws of the State of Israel. The competent courts in the Tel Aviv district shall have sole and exclusive jurisdiction over any dispute arising from these terms or from use of the site.">תנאי שימוש אלה ופירושם יוסדרו על פי דיני מדינת ישראל. לבתי המשפט המוסמכים במחוז תל אביב תהיה סמכות שיפוט ייחודית וייחודית לדון בכל סכסוך הנובע מתנאים אלה או מהשימוש באתר.</p>
+  </section>
+
+  <section class="block" id="contact">
+    <h2 data-he="11. פנייה אלינו" data-en="11. Contact us">11. פנייה אלינו</h2>
+    <p data-he="לכל שאלה הנוגעת לתנאי שימוש אלה, אנא פנו אלינו:" data-en="For any question regarding these terms, please contact us:">לכל שאלה הנוגעת לתנאי שימוש אלה, אנא פנו אלינו:</p>
+    <div class="callout">
+      <p><strong>kifsy</strong></p>
+      <p data-he-html='דוא״ל: <a href="mailto:info@kifsy.com">info@kifsy.com</a>' data-en-html='Email: <a href="mailto:info@kifsy.com">info@kifsy.com</a>'>דוא״ל: <a href="mailto:info@kifsy.com">info@kifsy.com</a></p>
+      <p data-he-html='טל. דורון: <a href="tel:+972549369527">054-936-9527</a>' data-en-html='Phone, Doron: <a href="tel:+972549369527">054-936-9527</a>'>טל. דורון: <a href="tel:+972549369527">054-936-9527</a></p>
+      <p data-he-html='טל. רון: <a href="tel:+972528622646">052-862-2646</a>' data-en-html='Phone, Ron: <a href="tel:+972528622646">052-862-2646</a>'>טל. רון: <a href="tel:+972528622646">052-862-2646</a></p>
+    </div>
+  </section>
+
+  </div><!-- /legal-sections -->
+
+  <div class="cross-links">
+    <a href="privacy.html" data-he="מדיניות פרטיות" data-en="Privacy Policy">מדיניות פרטיות</a>
+    <a href="cookies.html" data-he="מדיניות עוגיות" data-en="Cookie Policy">מדיניות עוגיות</a>
+    <a href="contact.html" data-he="צרו קשר" data-en="Contact">צרו קשר</a>
+  </div>
+
+</div><!-- /legal-wrap -->
+</main>
+
+<footer>
+  <div class="brand-mark">kifsy<span class="dot">.</span></div>
+  <span data-he="© 2026 kifsy. כל הזכויות שמורות." data-en="© 2026 kifsy. All rights reserved.">© 2026 kifsy. כל הזכויות שמורות.</span>
+</footer>
+
+<script>
+const html = document.documentElement;
+const STORAGE_KEY = 'kifsy-lang';
+function setLang(lang) {
+  if (lang !== 'he' && lang !== 'en') lang = 'he';
+  html.setAttribute('lang', lang);
+  html.setAttribute('dir', lang === 'he' ? 'rtl' : 'ltr');
+  document.title = lang === 'en' ? 'Terms of Use · kifsy' : 'תנאי שימוש · kifsy';
+  document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+    const val = el.getAttribute('data-' + lang);
+    if (val !== null) el.textContent = val;
+  });
+  document.querySelectorAll('[data-' + lang + '-html]').forEach(el => {
+    const val = el.getAttribute('data-' + lang + '-html');
+    if (val !== null) el.innerHTML = val;
+  });
+  document.querySelectorAll('.lang-toggle button').forEach(b => {
+    b.classList.toggle('active', b.dataset.lang === lang);
+  });
+  try { localStorage.setItem(STORAGE_KEY, lang); } catch(e){}
+}
+let initial = 'he';
+try { initial = localStorage.getItem(STORAGE_KEY) || 'he'; } catch(e){}
+setLang(initial);
+document.querySelectorAll('.lang-toggle button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+</script>
+</body>
+</html>

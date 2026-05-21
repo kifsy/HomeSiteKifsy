@@ -38,6 +38,8 @@ nav{position:sticky;top:0;z-index:10;background:rgba(214,227,209,.88);backdrop-f
 html[dir="rtl"] .back-icon{transform:scaleX(-1)}
 html[dir="rtl"] .back:hover .back-icon{transform:scaleX(-1) translateX(-3px)}
 html[dir="ltr"] .back:hover .back-icon{transform:translateX(-3px)}
+.about-link{font-size:14px;font-weight:500;color:var(--ink-2);transition:color .2s}.about-link:hover{color:var(--ink)}
+@media(max-width:600px){.about-link{display:none}}
 .lang-toggle{display:flex;gap:3px;background:rgba(42,58,44,.08);border-radius:999px;padding:3px}
 .lang-toggle button{padding:4px 11px;border-radius:999px;font-size:13px;font-weight:500;color:var(--ink-3);transition:all .2s}
 .lang-toggle button.active{background:var(--ink);color:var(--bg)}
@@ -112,7 +114,6 @@ html[dir="rtl"] .btn-submit svg{transform:scaleX(-1)}
   .hero{padding:36px 20px 28px}
   .content{padding:0 20px 48px}
 }
-
 /* ── Team ── */
 .team-section{max-width:calc(var(--max) + 48px);margin:0 auto;padding:0 24px 72px}
 .team-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
@@ -122,6 +123,37 @@ html[dir="rtl"] .btn-submit svg{transform:scaleX(-1)}
 .team-name{font-size:1.55rem;font-weight:700;color:var(--ink);letter-spacing:-0.02em}
 .team-role{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
 .team-bio{font-size:15px;color:var(--ink-2);line-height:1.7;max-width:300px}
+
+/* ── COOKIE CONSENT BAR ── */
+.ck-bar{position:fixed;bottom:0;left:0;right:0;background:var(--ink);color:#fff;padding:18px 32px;display:flex;align-items:center;gap:20px;z-index:998;transform:translateY(100%);transition:transform .35s ease;pointer-events:none}
+.ck-bar.visible{transform:translateY(0);pointer-events:auto}
+.ck-bar__text{flex:1;font-size:14px;line-height:1.55}
+.ck-bar__text a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.ck-bar__actions{display:flex;gap:10px;flex-shrink:0;flex-wrap:wrap}
+.ck-btn-accept{padding:10px 22px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;transition:opacity .15s}
+.ck-btn-accept:hover{opacity:.88}
+.ck-btn-decline{padding:10px 22px;background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.4);border-radius:8px;font-family:inherit;font-size:14px;font-weight:500;cursor:pointer;transition:border-color .15s}
+.ck-btn-decline:hover{border-color:#fff}
+.ck-btn-manage{padding:10px 14px;background:transparent;color:rgba(255,255,255,.6);border:none;font-family:inherit;font-size:13px;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.ck-panel{position:fixed;bottom:0;left:0;right:0;background:var(--warm);color:var(--ink);border-top:2px solid rgba(42,58,44,.15);padding:24px 32px 28px;z-index:999;display:none;animation:ckSlideUp .3s ease}
+.ck-panel.open{display:block}
+.ck-panel h3{font-size:16px;font-weight:700;margin-bottom:18px}
+.ck-panel__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:20px}
+.ck-category{background:var(--soft);border-radius:10px;padding:14px;display:flex;gap:12px;align-items:flex-start}
+.ck-category__name{font-size:14px;font-weight:600;margin-bottom:4px}
+.ck-category__desc{font-size:12.5px;line-height:1.5;opacity:.72}
+.ck-toggle-wrap{flex-shrink:0;margin-top:2px}
+.ck-toggle{position:relative;width:40px;height:22px;display:inline-block}
+.ck-toggle input{opacity:0;width:0;height:0}
+.ck-track{position:absolute;inset:0;background:rgba(42,58,44,.2);border-radius:99px;cursor:pointer;transition:background .2s}
+.ck-track::after{content:'';position:absolute;width:16px;height:16px;background:#fff;border-radius:50%;top:3px;inset-inline-start:3px;transition:inset-inline-start .2s;box-shadow:0 1px 3px rgba(0,0,0,.25)}
+.ck-toggle input:checked+.ck-track{background:var(--accent)}
+.ck-toggle input:checked+.ck-track::after{inset-inline-start:21px}
+.ck-toggle input:disabled+.ck-track{background:var(--accent);opacity:.55;cursor:not-allowed}
+.ck-toggle input:disabled+.ck-track::after{inset-inline-start:21px}
+.ck-panel__footer{display:flex;gap:10px;justify-content:flex-end}
+[dir="rtl"] .ck-panel__footer{justify-content:flex-start}
+@media(max-width:600px){.ck-bar{flex-direction:column;align-items:flex-start;padding:18px 20px}.ck-bar__actions{width:100%}.ck-btn-accept,.ck-btn-decline{flex:1;text-align:center}.ck-panel{padding:20px 20px 24px}}
 </style>
 </head>
 <body>
@@ -133,6 +165,7 @@ html[dir="rtl"] .btn-submit svg{transform:scaleX(-1)}
       <span data-he="חזרה לאתר" data-en="Back to site">חזרה לאתר</span>
     </a>
     <a href="index.html" class="brand-mark">kifsy<span class="dot">.</span></a>
+    <a href="about.html" class="about-link" data-he="אודותינו" data-en="About">אודותינו</a>
     <div class="lang-toggle">
       <button data-lang="he" class="active">עב</button>
       <button data-lang="en">EN</button>
@@ -250,10 +283,10 @@ html[dir="rtl"] .btn-submit svg{transform:scaleX(-1)}
         <h3 data-he="עקבו אחרינו" data-en="Follow us">עקבו אחרינו</h3>
         <div class="socials">
           <!-- Replace # with real profile URLs -->
-          <a href="#" class="social-link" aria-label="Instagram" target="_blank" rel="noopener">
+          <a href="https://www.instagram.com/kifsydr/" class="social-link" aria-label="Instagram" target="_blank" rel="noopener">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
           </a>
-          <a href="#" class="social-link" aria-label="Facebook" target="_blank" rel="noopener">
+          <a href="https://www.facebook.com/profile.php?id=61589998442012" class="social-link" aria-label="Facebook" target="_blank" rel="noopener">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
           </a>
           <a href="#" class="social-link" aria-label="TikTok" target="_blank" rel="noopener">
@@ -335,7 +368,61 @@ form.addEventListener('submit', async (e) => {
     btn.disabled = false;
   }
 });
+
+/* ── COOKIE CONSENT LOGIC ── */
+document.addEventListener('DOMContentLoaded', function() {
+  var CK_KEY = 'kifsy-cookies';
+  var bar   = document.getElementById('kf-notice');
+  var panel = document.getElementById('ckPanel');
+  var consent = null;
+  try { consent = JSON.parse(localStorage.getItem(CK_KEY)); } catch(e) {}
+  if (consent) return;
+  bar.classList.add('visible');
+  function saveConsent(analytics) {
+    localStorage.setItem(CK_KEY, JSON.stringify({ analytics: analytics, ts: Date.now() }));
+    bar.classList.remove('visible');
+    panel.classList.remove('open');
+  }
+  document.getElementById('ckBtnAccept').addEventListener('click', function() { saveConsent(true); });
+  document.getElementById('ckBtnDecline').addEventListener('click', function() { saveConsent(false); });
+  document.getElementById('ckBtnManage').addEventListener('click', function() { bar.classList.remove('visible'); panel.classList.add('open'); });
+  document.getElementById('ckBtnBack').addEventListener('click', function() { panel.classList.remove('open'); bar.classList.add('visible'); });
+  document.getElementById('ckBtnSave').addEventListener('click', function() { saveConsent(document.getElementById('ckToggleAnalytics').checked); });
+});
 </script>
+
+<!-- ── COOKIE CONSENT BAR ── -->
+<div class="ck-bar" id="kf-notice" role="region" aria-label="הסכמה לקוקיז">
+  <p class="ck-bar__text">
+    <span data-he="אנו משתמשים בקוקיז כדי לשפר את חוויית הגלישה ולנתח את תנועת האתר. קוקיז אנליטיים פועלים רק בהסכמתך. " data-en="We use cookies to improve your experience and analyse site traffic. Analytics cookies only run with your consent. ">אנו משתמשים בקוקיז כדי לשפר את חוויית הגלישה ולנתח את תנועת האתר. קוקיז אנליטיים פועלים רק בהסכמתך. </span><a href="cookies.html" data-he="מדיניות קוקיז" data-en="Cookie Policy">מדיניות קוקיז</a>
+  </p>
+  <div class="ck-bar__actions">
+    <button class="ck-btn-accept" id="ckBtnAccept" data-he="קבל הכל" data-en="Accept all">קבל הכל</button>
+    <button class="ck-btn-decline" id="ckBtnDecline" data-he="דחה אנליטיים" data-en="Decline analytics">דחה אנליטיים</button>
+    <button class="ck-btn-manage" id="ckBtnManage" data-he="ניהול העדפות" data-en="Manage preferences">ניהול העדפות</button>
+  </div>
+</div>
+<div class="ck-panel" id="ckPanel" role="dialog" aria-modal="true" aria-labelledby="ckPanelTitle">
+  <h3 id="ckPanelTitle" data-he="ניהול העדפות קוקיז" data-en="Cookie preferences">ניהול העדפות קוקיז</h3>
+  <div class="ck-panel__grid">
+    <div class="ck-category">
+      <div class="ck-category__info"><div class="ck-category__name" data-he="קוקיז הכרחיים" data-en="Necessary">קוקיז הכרחיים</div><div class="ck-category__desc" data-he="נחוצים להפעלת האתר. לא ניתן לבטל." data-en="Required for the site to work. Cannot be disabled.">נחוצים להפעלת האתר. לא ניתן לבטל.</div></div>
+      <div class="ck-toggle-wrap"><label class="ck-toggle"><input type="checkbox" checked disabled><span class="ck-track"></span></label></div>
+    </div>
+    <div class="ck-category">
+      <div class="ck-category__info"><div class="ck-category__name" data-he="קוקיז פונקציונליים" data-en="Functional">קוקיז פונקציונליים</div><div class="ck-category__desc" data-he="שומרים העדפות כמו שפה ונגישות." data-en="Remember preferences like language and accessibility.">שומרים העדפות כמו שפה ונגישות.</div></div>
+      <div class="ck-toggle-wrap"><label class="ck-toggle"><input type="checkbox" checked id="ckToggleFunctional"><span class="ck-track"></span></label></div>
+    </div>
+    <div class="ck-category">
+      <div class="ck-category__info"><div class="ck-category__name" data-he="קוקיז אנליטיים" data-en="Analytics">קוקיז אנליטיים</div><div class="ck-category__desc" data-he="עוזרים לנו להבין כיצד מבקרים משתמשים באתר (Google Analytics)." data-en="Help us understand how visitors use the site (Google Analytics).">עוזרים לנו להבין כיצד מבקרים משתמשים באתר (Google Analytics).</div></div>
+      <div class="ck-toggle-wrap"><label class="ck-toggle"><input type="checkbox" id="ckToggleAnalytics"><span class="ck-track"></span></label></div>
+    </div>
+  </div>
+  <div class="ck-panel__footer">
+    <button class="ck-btn-decline" id="ckBtnBack" style="color:var(--ink);border-color:rgba(42,58,44,.3);" data-he="חזור" data-en="Back">חזור</button>
+    <button class="ck-btn-accept" id="ckBtnSave" data-he="שמור העדפות" data-en="Save preferences">שמור העדפות</button>
+  </div>
+</div>
 
 </body>
 </html>

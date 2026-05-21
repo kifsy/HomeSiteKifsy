@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>מדיניות עוגיות · kifsy</title>
+<meta name="description" content="מדיניות העוגיות של kifsy. אילו עוגיות ופריטי אחסון אנחנו משתמשים בהם, מטרתם, וכיצד ניתן לבטל אותם." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&family=Inter:wght@400;500;600&family=Inter+Tight:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="kifsy-mark.png">
+<style>
+:root{--bg:#D6E3D1;--bg-soft:#E1ECDC;--surface:#fff;--ink:#2A3A2C;--ink-2:#4C5C4E;--ink-3:#7C8A7D;--accent:#A64253;--line:rgba(42,58,44,.10);--radius:16px;--max:760px;--ease:cubic-bezier(.2,.7,.2,1);--font-he:'Heebo',sans-serif;--font-en:'Inter',sans-serif;--font-en-disp:'Inter Tight','Inter',sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--font-he);background:var(--bg);color:var(--ink);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased}
+html[lang="en"] body{font-family:var(--font-en)}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s}
+a:hover{border-bottom-color:var(--accent)}
+button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
+h1,h2,h3{font-family:var(--font-he);font-weight:700;line-height:1.25;color:var(--ink);letter-spacing:-0.02em}
+html[lang="en"] h1,html[lang="en"] h2,html[lang="en"] h3{font-family:var(--font-en-disp)}
+h1{font-size:clamp(2rem,5vw,3rem)}
+h2{font-size:1.35rem;margin-top:40px;margin-bottom:14px;scroll-margin-top:80px}
+h3{font-size:1.05rem;margin-top:20px;margin-bottom:6px}
+p{color:var(--ink-2);margin-bottom:14px}
+ul,ol{color:var(--ink-2);margin:0 0 14px 0;padding-inline-start:22px}
+li{margin-bottom:6px}
+strong{color:var(--ink);font-weight:600}
+.brand-mark{direction:ltr;unicode-bidi:isolate;font-family:var(--font-en-disp);font-weight:600;letter-spacing:-0.04em}
+.dot{color:var(--accent)}
+nav{position:sticky;top:0;z-index:10;background:rgba(214,227,209,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-inner{max-width:1100px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.back{display:flex;align-items:center;gap:6px;font-size:14px;color:var(--ink-2);transition:color .2s;border-bottom:none}
+.back:hover{color:var(--ink);border-bottom:none}
+.back-icon{display:inline-block;transition:transform .2s}
+html[dir="rtl"] .back-icon{transform:scaleX(-1)}
+html[dir="rtl"] .back:hover .back-icon{transform:scaleX(-1) translateX(-3px)}
+html[dir="ltr"] .back:hover .back-icon{transform:translateX(-3px)}
+.lang-toggle{display:flex;gap:3px;background:rgba(42,58,44,.08);border-radius:999px;padding:3px}
+.lang-toggle button{padding:4px 11px;border-radius:999px;font-size:13px;font-weight:500;color:var(--ink-3);transition:all .2s}
+.lang-toggle button.active{background:var(--ink);color:var(--bg)}
+.hero{padding:56px 24px 30px;max-width:1100px;margin:0 auto}
+.badge{display:inline-flex;align-items:center;gap:8px;background:var(--bg-soft);border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:13px;color:var(--ink-2);margin-bottom:24px}
+.hero h1{margin-bottom:14px}
+.hero .lead{font-size:1.1rem;color:var(--ink-2);max-width:600px;margin-bottom:18px}
+.meta{font-size:13px;color:var(--ink-3);margin-bottom:6px}
+.content{max-width:1100px;margin:0 auto;padding:0 24px 56px}
+.legal-wrap{display:flex;gap:32px;align-items:flex-start}
+.legal-sections{flex:1 1 0;min-width:0}
+.toc{flex:0 0 210px;background:var(--bg-soft);border:1px solid var(--line);border-radius:var(--radius);padding:20px;position:sticky;top:70px}
+.toc h2{margin-top:0;font-size:0.95rem;margin-bottom:10px}
+.toc ol{margin:0;padding-inline-start:18px;color:var(--ink-2);font-size:13px}
+.toc li{margin-bottom:4px}
+.toc a{color:var(--ink-2);border-bottom:1px solid transparent}
+.toc a:hover{color:var(--ink);border-bottom-color:var(--ink)}
+.block{margin-bottom:8px}
+@media(max-width:768px){.legal-wrap{flex-direction:column}.toc{flex:none;width:100%;position:static}}
+.callout{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px 22px;margin:18px 0}
+.callout p:last-child{margin-bottom:0}
+.tag{display:inline-block;padding:2px 10px;border-radius:999px;font-size:12px;font-weight:600;letter-spacing:.03em}
+.tag-functional{background:rgba(42,58,44,.08);color:var(--ink-2)}
+.tag-analytics{background:rgba(166,66,83,.10);color:var(--accent)}
+.table-wrap{overflow-x:auto;margin:18px 0;border-radius:var(--radius);border:1px solid var(--line)}
+table{width:100%;border-collapse:collapse;font-size:14px;background:var(--surface)}
+th,td{text-align:start;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--bg-soft);font-weight:600;color:var(--ink);font-size:13px;white-space:nowrap}
+tr:last-child td{border-bottom:none}
+code{font-family:'Inter',monospace;background:rgba(42,58,44,.06);padding:1px 6px;border-radius:4px;font-size:0.88em;color:var(--ink)}
+.cross-links{display:flex;flex-wrap:wrap;gap:10px;padding:24px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);margin-top:40px}
+.cross-links a{flex:1 1 200px;text-align:center;padding:14px 18px;background:var(--bg-soft);border-radius:12px;color:var(--ink);font-weight:600;font-size:14px;border-bottom:none;transition:background .2s}
+.cross-links a:hover{background:var(--bg);border-bottom:none}
+footer{max-width:1100px;margin:0 auto;padding:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;border-top:1px solid var(--line);font-size:13px;color:var(--ink-3)}
+footer .brand-mark{color:var(--ink);font-size:15px}
+@media(max-width:600px){.hero{padding:40px 20px 24px}.content{padding:0 20px 48px}h2{font-size:1.2rem}footer{padding:20px}}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="back">
+      <svg class="back-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      <span data-he="חזרה לאתר" data-en="Back to site">חזרה לאתר</span>
+    </a>
+    <a href="index.html" class="brand-mark">kifsy<span class="dot">.</span></a>
+    <div class="lang-toggle">
+      <button data-lang="he" class="active">עב</button>
+      <button data-lang="en">EN</button>
+    </div>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="badge">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.4 9.6 8 10 4.6-.4 8-5 8-10V6l-8-4z"/></svg>
+    <span data-he="משפטי" data-en="Legal">משפטי</span>
+  </div>
+  <h1 data-he="מדיניות עוגיות" data-en="Cookie Policy">מדיניות עוגיות</h1>
+  <p class="lead" data-he="הסבר על העוגיות ופריטי האחסון המקומי שאנחנו משתמשים בהם, מטרתם וכיצד ניתן לנהל אותם." data-en="An explanation of the cookies and local-storage items we use, their purpose, and how you can manage them.">הסבר על העוגיות ופריטי האחסון המקומי שאנחנו משתמשים בהם, מטרתם וכיצד ניתן לנהל אותם.</p>
+  <div class="meta"><span data-he="עודכן לאחרונה: 18 במאי 2026" data-en="Last updated: May 18, 2026">עודכן לאחרונה: 18 במאי 2026</span></div>
+</div>
+
+<main class="content">
+<div class="legal-wrap">
+
+  <nav class="toc" aria-label="תוכן עניינים / Table of contents">
+    <h2 data-he="תוכן העניינים" data-en="Contents">תוכן העניינים</h2>
+    <ol>
+      <li><a href="#what" data-he="מה זה עוגיות" data-en="What are cookies">מה זה עוגיות</a></li>
+      <li><a href="#list" data-he="העוגיות שלנו" data-en="Our cookies">העוגיות שלנו</a></li>
+      <li><a href="#third" data-he="צד שלישי" data-en="Third parties">צד שלישי</a></li>
+      <li><a href="#transfer" data-he="העברה לחו״ל" data-en="International transfer">העברה לחו״ל</a></li>
+      <li><a href="#optout" data-he="ניהול וביטול" data-en="Managing cookies">ניהול וביטול</a></li>
+      <li><a href="#changes" data-he="שינויים" data-en="Changes">שינויים</a></li>
+      <li><a href="#contact" data-he="פנייה אלינו" data-en="Contact">פנייה אלינו</a></li>
+    </ol>
+  </nav>
+
+  <div class="legal-sections">
+
+  <section class="block" id="what">
+    <h2 data-he="1. מה זה עוגיות" data-en="1. What are cookies">1. מה זה עוגיות</h2>
+    <p data-he="עוגיות (cookies) הן קבצי טקסט קטנים שאתר אינטרנט שומר על המחשב או המכשיר הנייד שלכם בעת הביקור. הן מאפשרות לאתר לזכור פעולות והעדפות שלכם לפרק זמן מסוים, כך שלא תצטרכו להגדיר אותן מחדש בכל ביקור." data-en="Cookies are small text files that a website stores on your computer or mobile device when you visit. They allow the site to remember your actions and preferences for a period of time, so you do not have to set them up again on every visit.">עוגיות (cookies) הן קבצי טקסט קטנים שאתר אינטרנט שומר על המחשב או המכשיר הנייד שלכם בעת הביקור. הן מאפשרות לאתר לזכור פעולות והעדפות שלכם לפרק זמן מסוים, כך שלא תצטרכו להגדיר אותן מחדש בכל ביקור.</p>
+    <p data-he="בנוסף לעוגיות, האתר שלנו משתמש ב-localStorage, מנגנון אחסון מובנה בדפדפן שאינו שולח נתונים לשרת ומשמש אך ורק לשמירת העדפות מקומיות." data-en="In addition to cookies, our site uses localStorage, a built-in browser storage mechanism that does not transmit data to a server and is used solely to store local preferences.">בנוסף לעוגיות, האתר שלנו משתמש ב-localStorage, מנגנון אחסון מובנה בדפדפן שאינו שולח נתונים לשרת ומשמש אך ורק לשמירת העדפות מקומיות.</p>
+  </section>
+
+  <section class="block" id="list">
+    <h2 data-he="2. העוגיות שאנחנו משתמשים בהן" data-en="2. Cookies we use">2. העוגיות שאנחנו משתמשים בהן</h2>
+    <p data-he="אנחנו משתמשים במספר מצומצם של עוגיות ופריטי אחסון, המחולקים לשני סוגים:" data-en="We use a small number of cookies and storage items, divided into two types:">אנחנו משתמשים במספר מצומצם של עוגיות ופריטי אחסון, המחולקים לשני סוגים:</p>
+    <ul>
+      <li data-he-html='<strong>פונקציונליות</strong>:נדרשות לתפקוד תכונות שאתם מפעילים בעצמכם (שפה, נגישות). אינן מועברות לגורם שלישי.'
+          data-en-html='<strong>Functional</strong>:needed for features you activate yourself (language, accessibility). Not transmitted to any third party.'>
+        <strong>פונקציונליות</strong>:נדרשות לתפקוד תכונות שאתם מפעילים בעצמכם (שפה, נגישות). אינן מועברות לגורם שלישי.
+      </li>
+      <li data-he-html='<strong>אנליטיקה</strong>:נאספות על ידי Google Analytics 4 לצורך הבנת דפוסי שימוש. פסאודו-אנונימיות ומועברות לגוגל (ארה״ב).'
+          data-en-html='<strong>Analytics</strong>:collected by Google Analytics 4 to understand usage patterns. Pseudonymous and transferred to Google (USA).'>
+        <strong>אנליטיקה</strong>:נאספות על ידי Google Analytics 4 לצורך הבנת דפוסי שימוש. פסאודו-אנונימיות ומועברות לגוגל (ארה״ב).
+      </li>
+    </ul>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th data-he="שם" data-en="Name">שם</th>
+            <th data-he="סוג" data-en="Type">סוג</th>
+            <th data-he="תקופת שמירה" data-en="Retention">תקופת שמירה</th>
+            <th data-he="צד שלישי" data-en="Third party">צד שלישי</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>_ga</code></td>
+            <td><span class="tag tag-analytics" data-he="אנליטיקה" data-en="Analytics">אנליטיקה</span></td>
+            <td data-he="13 חודשים" data-en="13 months">13 חודשים</td>
+            <td>Google LLC</td>
+          </tr>
+          <tr>
+            <td><code>_ga_SXNX3SDS48</code></td>
+            <td><span class="tag tag-analytics" data-he="אנליטיקה" data-en="Analytics">אנליטיקה</span></td>
+            <td data-he="13 חודשים" data-en="13 months">13 חודשים</td>
+            <td>Google LLC</td>
+          </tr>
+          <tr>
+            <td><code>kifsy-lang</code></td>
+            <td><span class="tag tag-functional" data-he="פונקציונלי" data-en="Functional">פונקציונלי</span></td>
+            <td data-he="עד מחיקה ידנית" data-en="Until cleared">עד מחיקה ידנית</td>
+            <td data-he="אין" data-en="None">אין</td>
+          </tr>
+          <tr>
+            <td><code>kifsy-a11y</code></td>
+            <td><span class="tag tag-functional" data-he="פונקציונלי" data-en="Functional">פונקציונלי</span></td>
+            <td data-he="עד מחיקה ידנית" data-en="Until cleared">עד מחיקה ידנית</td>
+            <td data-he="אין" data-en="None">אין</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="block" id="third">
+    <h2 data-he="3. שירותי צד שלישי" data-en="3. Third-party services">3. שירותי צד שלישי</h2>
+    <p data-he-html='<strong>Google Analytics 4</strong> הוא שירות אנליטיקה של Google LLC. הוא אוסף נתוני שימוש בדפדפן שלכם ושולח אותם לשרתי גוגל. אנחנו הפעלנו אנונימיזציית IP. מדיניות הפרטיות של גוגל: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>. ניתן לסקור את תנאי עיבוד הנתונים של Google Analytics: <a href="https://business.safety.google/adsprocessorterms/" target="_blank" rel="noopener">business.safety.google/adsprocessorterms</a>.'
+       data-en-html='<strong>Google Analytics 4</strong> is an analytics service by Google LLC. It collects usage data in your browser and sends it to Google servers. We have enabled IP anonymization. Google privacy policy: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>. Google Analytics data processing terms: <a href="https://business.safety.google/adsprocessorterms/" target="_blank" rel="noopener">business.safety.google/adsprocessorterms</a>.'>
+      <strong>Google Analytics 4</strong> הוא שירות אנליטיקה של Google LLC. הוא אוסף נתוני שימוש בדפדפן שלכם ושולח אותם לשרתי גוגל. אנחנו הפעלנו אנונימיזציית IP. מדיניות הפרטיות של גוגל: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>. ניתן לסקור את תנאי עיבוד הנתונים של Google Analytics: <a href="https://business.safety.google/adsprocessorterms/" target="_blank" rel="noopener">business.safety.google/adsprocessorterms</a>.
+    </p>
+  </section>
+
+  <section class="block" id="transfer">
+    <h2 data-he="4. העברה מחוץ לישראל" data-en="4. International transfer">4. העברה מחוץ לישראל</h2>
+    <p data-he="נתוני Google Analytics מועברים לשרתים של Google LLC בארצות הברית. ארה״ב אינה מופיעה ברשימת המדינות בעלות הגנת פרטיות נאותה של הרשות לגנ הפרטיות בישראל. הבסיס המשפטי לעיבוד הוא הסכמתכם, הניתנת בעת השימוש באתר. ניתן לבטל הסכמה זו בכל עת בדרכים המפורטות בסעיף הבא." data-en="Google Analytics data is transferred to Google LLC servers in the United States. The USA does not appear on the Israeli Privacy Protection Authority's list of countries with adequate privacy protection. The legal basis for this transfer is your consent, given when you use the site. You may withdraw this consent at any time using the methods described in the next section.">נתוני Google Analytics מועברים לשרתים של Google LLC בארצות הברית. ארה״ב אינה מופיעה ברשימת המדינות בעלות הגנת פרטיות נאותה של הרשות לגנ הפרטיות בישראל. הבסיס המשפטי לעיבוד הוא הסכמתכם, הניתנת בעת השימוש באתר. ניתן לבטל הסכמה זו בכל עת בדרכים המפורטות בסעיף הבא.</p>
+  </section>
+
+  <section class="block" id="optout">
+    <h2 data-he="5. ניהול וביטול עוגיות" data-en="5. Managing and disabling cookies">5. ניהול וביטול עוגיות</h2>
+    <p data-he="יש לכם מספר אפשרויות לשלוט בעוגיות ובנתוני אחסון מקומי:" data-en="You have several options to control cookies and local storage data:">יש לכם מספר אפשרויות לשלוט בעוגיות ובנתוני אחסון מקומי:</p>
+
+    <h3 data-he="הגדרות הדפדפן" data-en="Browser settings">הגדרות הדפדפן</h3>
+    <p data-he="כל הדפדפנים המודרניים מאפשרים לחסום, למחוק ולנהל עוגיות דרך ההגדרות. בחיפוש ״עוגיות״ או ״cookies״ בתפריט ההגדרות של הדפדפן שלכם תמצאו את האפשרויות הרלוונטיות. שימו לב שחסימת עוגיות עשויה לפגוע בתפקוד של אתרים אחרים." data-en="All modern browsers allow you to block, delete, and manage cookies through the settings. Searching for 'cookies' in your browser's settings menu will show you the relevant options. Note that blocking cookies may affect the functionality of other websites.">כל הדפדפנים המודרניים מאפשרים לחסום, למחוק ולנהל עוגיות דרך ההגדרות. בחיפוש ״עוגיות״ או ״cookies״ בתפריט ההגדרות של הדפדפן שלכם תמצאו את האפשרויות הרלוונטיות. שימו לב שחסימת עוגיות עשויה לפגוע בתפקוד של אתרים אחרים.</p>
+
+    <h3 data-he="ביטול Google Analytics" data-en="Opting out of Google Analytics">ביטול Google Analytics</h3>
+    <p data-he-html='גוגל מציעה תוסף דפדפן ייעודי לביטול מעקב Analytics: <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">tools.google.com/dlpage/gaoptout</a>. לאחר התקנתו, גוגל לא תאסוף נתוני שימוש מהדפדפן שלכם באף אתר המשתמש ב-Google Analytics.'
+       data-en-html='Google offers a dedicated browser add-on to opt out of Analytics tracking: <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">tools.google.com/dlpage/gaoptout</a>. Once installed, Google will not collect usage data from your browser on any site that uses Google Analytics.'>
+      גוגל מציעה תוסף דפדפן ייעודי לביטול מעקב Analytics: <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">tools.google.com/dlpage/gaoptout</a>. לאחר התקנתו, גוגל לא תאסוף נתוני שימוש מהדפדפן שלכם באף אתר המשתמש ב-Google Analytics.
+    </p>
+
+    <h3 data-he="מחיקת אחסון מקומי" data-en="Clearing local storage">מחיקת אחסון מקומי</h3>
+    <p data-he="פריטי האחסון המקומי של האתר (<code>kifsy-lang</code>, <code>kifsy-a11y</code>) ניתנים למחיקה בקלות דרך כלי המפתח של הדפדפן (Application / Storage / Local Storage) או על ידי ניקוי נתוני האתר בהגדרות הדפדפן. מחיקתם תאפס את העדפות השפה והנגישות שלכם לברירת המחדל." data-en="The site's local-storage items (kifsy-lang, kifsy-a11y) can be easily deleted through the browser's developer tools (Application / Storage / Local Storage) or by clearing site data in the browser settings. Deleting them will reset your language and accessibility preferences to the defaults.">פריטי האחסון המקומי של האתר (<code>kifsy-lang</code>, <code>kifsy-a11y</code>) ניתנים למחיקה בקלות דרך כלי המפתח של הדפדפן (Application / Storage / Local Storage) או על ידי ניקוי נתוני האתר בהגדרות הדפדפן. מחיקתם תאפס את העדפות השפה והנגישות שלכם לברירת המחדל.</p>
+
+    <div class="callout">
+      <p data-he-html='<strong>שימו לב:</strong> ביטול עוגיות ה-Analytics אינו משפיע על הפונקציונליות של האתר. עוגיות הפונקציונליות (<code>kifsy-lang</code>, <code>kifsy-a11y</code>) מוגדרות רק כשאתם בוחרים הגדרה באופן אקטיבי ולכן אינן דורשות הסכמה מיוחדת.'
+           data-en-html='<strong>Please note:</strong> disabling Analytics cookies does not affect site functionality. The functional items (<code>kifsy-lang</code>, <code>kifsy-a11y</code>) are only set when you actively choose a setting and therefore do not require special consent.'>
+        <strong>שימו לב:</strong> ביטול עוגיות ה-Analytics אינו משפיע על הפונקציונליות של האתר. עוגיות הפונקציונליות (<code>kifsy-lang</code>, <code>kifsy-a11y</code>) מוגדרות רק כשאתם בוחרים הגדרה באופן אקטיבי ולכן אינן דורשות הסכמה מיוחדת.
+      </p>
+    </div>
+  </section>
+
+  <section class="block" id="changes">
+    <h2 data-he="6. שינויים במדיניות" data-en="6. Changes to this policy">6. שינויים במדיניות</h2>
+    <p data-he="אנחנו עשויים לעדכן מדיניות זו בעקבות שינויים בשירותים שאנחנו משתמשים בהם, בדרישות החוק, או בפעולות האתר. הגרסה העדכנית מפורסמת בכתובת זו עם תאריך העדכון." data-en="We may update this policy following changes to the services we use, legal requirements, or site functionality. The current version is published at this URL with the update date.">אנחנו עשויים לעדכן מדיניות זו בעקבות שינויים בשירותים שאנחנו משתמשים בהם, בדרישות החוק, או בפעולות האתר. הגרסה העדכנית מפורסמת בכתובת זו עם תאריך העדכון.</p>
+  </section>
+
+  <section class="block" id="contact">
+    <h2 data-he="7. פנייה אלינו" data-en="7. Contact us">7. פנייה אלינו</h2>
+    <p data-he="לכל שאלה בנושא עוגיות ופרטיות, פנו אלינו:" data-en="For any question about cookies and privacy, contact us:">לכל שאלה בנושא עוגיות ופרטיות, פנו אלינו:</p>
+    <div class="callout">
+      <p><strong>kifsy</strong></p>
+      <p data-he-html='דוא״ל: <a href="mailto:info@kifsy.com">info@kifsy.com</a>' data-en-html='Email: <a href="mailto:info@kifsy.com">info@kifsy.com</a>'>דוא״ל: <a href="mailto:info@kifsy.com">info@kifsy.com</a></p>
+      <p data-he-html='טל. דורון: <a href="tel:+972549369527">054-936-9527</a>' data-en-html='Phone, Doron: <a href="tel:+972549369527">054-936-9527</a>'>טל. דורון: <a href="tel:+972549369527">054-936-9527</a></p>
+      <p data-he-html='טל. רון: <a href="tel:+972528622646">052-862-2646</a>' data-en-html='Phone, Ron: <a href="tel:+972528622646">052-862-2646</a>'>טל. רון: <a href="tel:+972528622646">052-862-2646</a></p>
+    </div>
+  </section>
+
+  </div><!-- /legal-sections -->
+
+  <div class="cross-links">
+    <a href="privacy.html" data-he="מדיניות פרטיות" data-en="Privacy Policy">מדיניות פרטיות</a>
+    <a href="terms.html" data-he="תנאי שימוש" data-en="Terms of Use">תנאי שימוש</a>
+    <a href="contact.html" data-he="צרו קשר" data-en="Contact">צרו קשר</a>
+  </div>
+
+</div><!-- /legal-wrap -->
+</main>
+
+<footer>
+  <div class="brand-mark">kifsy<span class="dot">.</span></div>
+  <span data-he="© 2026 kifsy. כל הזכויות שמורות." data-en="© 2026 kifsy. All rights reserved.">© 2026 kifsy. כל הזכויות שמורות.</span>
+</footer>
+
+<script>
+const html = document.documentElement;
+const STORAGE_KEY = 'kifsy-lang';
+function setLang(lang) {
+  if (lang !== 'he' && lang !== 'en') lang = 'he';
+  html.setAttribute('lang', lang);
+  html.setAttribute('dir', lang === 'he' ? 'rtl' : 'ltr');
+  document.title = lang === 'en' ? 'Cookie Policy · kifsy' : 'מדיניות עוגיות · kifsy';
+  document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+    const val = el.getAttribute('data-' + lang);
+    if (val !== null) el.textContent = val;
+  });
+  document.querySelectorAll('[data-' + lang + '-html]').forEach(el => {
+    const val = el.getAttribute('data-' + lang + '-html');
+    if (val !== null) el.innerHTML = val;
+  });
+  document.querySelectorAll('.lang-toggle button').forEach(b => {
+    b.classList.toggle('active', b.dataset.lang === lang);
+  });
+  try { localStorage.setItem(STORAGE_KEY, lang); } catch(e){}
+}
+let initial = 'he';
+try { initial = localStorage.getItem(STORAGE_KEY) || 'he'; } catch(e){}
+setLang(initial);
+document.querySelectorAll('.lang-toggle button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+</script>
+</body>
+</html>
