@@ -112,6 +112,16 @@ html[dir="rtl"] .btn-submit svg{transform:scaleX(-1)}
   .hero{padding:36px 20px 28px}
   .content{padding:0 20px 48px}
 }
+
+/* ── Team ── */
+.team-section{max-width:calc(var(--max) + 48px);margin:0 auto;padding:0 24px 72px}
+.team-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+@media(max-width:720px){.team-grid{grid-template-columns:1fr}}
+.team-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:40px 28px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px}
+.team-avatar{width:96px;height:96px;border-radius:50%;background:rgba(42,58,44,.1);display:flex;align-items:center;justify-content:center;font-size:2rem;font-weight:600;color:var(--ink-3);line-height:1;flex-shrink:0;margin-bottom:4px}
+.team-name{font-size:1.55rem;font-weight:700;color:var(--ink);letter-spacing:-0.02em}
+.team-role{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.team-bio{font-size:15px;color:var(--ink-2);line-height:1.7;max-width:300px}
 </style>
 </head>
 <body>
@@ -253,6 +263,39 @@ html[dir="rtl"] .btn-submit svg{transform:scaleX(-1)}
       </div>
 
     </div>
+  </div>
+</div>
+
+<!-- ── Team ── -->
+<div class="team-section">
+  <div class="team-grid">
+
+    <div class="team-card">
+      <div class="team-avatar" data-he="ר" data-en="R">ר</div>
+      <div class="team-name" data-he="רון" data-en="Ron">רון</div>
+      <div class="team-role"
+           data-he="שותף מייסד · פיתוח וטכנולוגיה"
+           data-en="CO-FOUNDER · DEV &amp; TECHNOLOGY">שותף מייסד · פיתוח וטכנולוגיה</div>
+      <p class="team-bio"
+         data-he="בונה דברים שעובדים. מהיר, מדויק ואמין. מתמחה בפיתוח אתרים ואינטגרציות AI שהופכות כל אתר לחכם יותר."
+         data-en="Builds things that work. Fast, precise, and reliable. Specializes in web development and AI integrations that make every site smarter.">
+        בונה דברים שעובדים. מהיר, מדויק ואמין. מתמחה בפיתוח אתרים ואינטגרציות AI שהופכות כל אתר לחכם יותר.
+      </p>
+    </div>
+
+    <div class="team-card">
+      <div class="team-avatar" data-he="ד" data-en="D">ד</div>
+      <div class="team-name" data-he="דורון" data-en="Doron">דורון</div>
+      <div class="team-role"
+           data-he="שותף מייסד · עיצוב ובינה מלאכותית"
+           data-en="CO-FOUNDER · DESIGN &amp; AI">שותף מייסד · עיצוב ובינה מלאכותית</div>
+      <p class="team-bio"
+         data-he="אובססיה לפרטים קטנים ואהבה עמוקה לממשקים שגורמים לאנשים לחייך. אחראי על עיצוב, UX והקול של הצוות שתמיד אומר 'זה עדיין לא טוב מספיק'."
+         data-en="An obsession with small details and a deep love for interfaces that make people smile. Responsible for design, UX, and the team's 'this doesn't look good enough' voice.">
+        אובססיה לפרטים קטנים ואהבה עמוקה לממשקים שגורמים לאנשים לחייך. אחראי על עיצוב, UX והקול של הצוות שתמיד אומר 'זה עדיין לא טוב מספיק'.
+      </p>
+    </div>
+
   </div>
 </div>
 
